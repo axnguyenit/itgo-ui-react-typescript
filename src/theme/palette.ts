@@ -102,7 +102,7 @@ const palette = {
   chart: CHART_COLORS,
   divider: GREY[500_24],
   text: {
-    primary: GREY[800],
+    primary: GREY[900],
     secondary: GREY[600],
     disabled: GREY[500],
   },

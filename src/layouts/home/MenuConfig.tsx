@@ -15,7 +15,7 @@ const menuConfig: Menu[] = [
   {
     title: 'Home',
     icon: <Iconify icon='ant-design:home-filled' {...ICON_SIZE} />,
-    path: '/',
+    path: '/home',
   },
   {
     title: 'Become Instructor',

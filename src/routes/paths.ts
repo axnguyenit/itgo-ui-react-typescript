@@ -34,7 +34,7 @@ export const PATH_PAGE = {
 
 export const PATH_HOME = {
   root: ROOTS_HOME,
-  home: path(ROOTS_HOME, '/'),
+  home: path(ROOTS_HOME, '/home'),
   account: path(ROOTS_HOME, '/account-settings'),
   myLearning: {
     root: path(ROOTS_HOME, '/my-courses'),

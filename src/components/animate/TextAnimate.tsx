@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { m } from 'framer-motion';
+import { m, Variants } from 'framer-motion';
 // @mui
 import { Box, SxProps, Theme } from '@mui/material';
 //
@@ -7,15 +6,9 @@ import { varFade } from './variants';
 
 // ----------------------------------------------------------------------
 
-TextAnimate.propTypes = {
-  text: PropTypes.string.isRequired,
-  variants: PropTypes.object,
-  sx: PropTypes.object,
-};
-
 interface TextAnimateProps {
   text: string;
-  variants?: any;
+  variants?: Variants;
   sx: SxProps<Theme>;
 
   [key: string]: any;

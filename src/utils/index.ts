@@ -5,3 +5,4 @@ export { default as cssStyles } from './cssStyles';
 export { default as createAvatar } from './createAvatar';
 export { default as handleError } from './handleError';
 export * from './formatNumber';
+export * from './route';

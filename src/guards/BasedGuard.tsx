@@ -10,8 +10,8 @@ export interface BasedGuardProps {
 
 export default function BasedGuard({ children }: BasedGuardProps) {
   const { isAuthenticated, isInitialized } = useAuth();
-  if (!isInitialized) return <LoadingScreen />;
 
+  if (!isInitialized) return <LoadingScreen />;
   if (!isAuthenticated) return <Navigate to={PATH_AUTH.login} replace />;
   return <>{children}</>;
 }

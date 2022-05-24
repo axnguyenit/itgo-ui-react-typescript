@@ -4,6 +4,7 @@ import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Stack, Typography } from '@mui/material';
 import { Menu } from '@/models';
+import { getActive } from '@/utils';
 // components
 
 // ----------------------------------------------------------------------
@@ -12,6 +13,7 @@ const LinkStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
   color: theme.palette.text.primary,
   marginRight: theme.spacing(5),
+  textTransform: 'uppercase',
   transition: theme.transitions.create('opacity', {
     duration: theme.transitions.duration.shorter,
   }),
@@ -39,9 +41,8 @@ export default function MenuDesktop({
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (open) {
-      handleClose();
-    }
+    open && handleClose();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
@@ -90,14 +91,19 @@ function MenuDesktopItem({
   onClose,
 }: MenuDesktopItemProps) {
   const { title, path } = item;
+  const { pathname } = useLocation();
+
+  const active = getActive(path, pathname);
 
   return (
     <RouterLink to={path} end={path === '/'} style={{ textDecoration: 'none' }}>
       <LinkStyle
         sx={{
+          fontWeight: '600',
           textTransform: 'uppercase',
           ...(isHome && { color: 'common.white' }),
           ...(isOffset && { color: 'text.primary' }),
+          ...(active && { color: 'primary.main' }),
           '&.active': {
             color: 'primary.main',
           },

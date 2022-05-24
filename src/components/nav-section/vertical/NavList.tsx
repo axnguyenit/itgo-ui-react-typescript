@@ -1,19 +1,13 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 // @mui
 import { List, Collapse } from '@mui/material';
 //
 import { NavItemRoot, NavItemSub } from './NavItem';
-import { getActive } from '..';
 import { MenuItem } from '@/models';
+import { getActive } from '@/utils';
 
 // ----------------------------------------------------------------------
-
-// NavListRoot.propTypes = {
-//   isCollapse: PropTypes.bool,
-//   list: PropTypes.object,
-// };
 
 interface NavListRootProps {
   list: MenuItem;

@@ -57,7 +57,7 @@ export default function BecomeInstructor() {
                 sx={{ mb: 4, width: { xs: '100%', md: '80%' } }}
               >
                 ITGO needs talented human resources like you, let's create
-                values together with ITGO. To be a instructor at ITGO, you just
+                values together with ITGO. To be an instructor at ITGO, you just
                 fill in your working position and attach you CV as PDF. We will
                 consider your application and response to you if you can afford
                 it. Don't hesitate, we are always waiting for you

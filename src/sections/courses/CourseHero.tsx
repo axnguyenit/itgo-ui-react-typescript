@@ -2,7 +2,7 @@
 import { styled } from '@mui/material/styles';
 import { Box, Container, Stack } from '@mui/material';
 // components
-import { MotionContainer, TextAnimate } from '../../components/animate';
+import { MotionContainer, TextAnimate } from '@/components/animate';
 
 // ----------------------------------------------------------------------
 
