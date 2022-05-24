@@ -1,10 +1,5 @@
-import { CartResponse } from '@/models';
+import { CartData, CartResponse } from '@/models';
 import { axios } from '@/utils';
-
-interface CartAdd {
-  total: number;
-  courseId: string;
-}
 
 const cartApi = {
   get(): Promise<CartResponse> {
@@ -12,7 +7,7 @@ const cartApi = {
     return axios.get(url);
   },
 
-  add(data: CartAdd): Promise<any> {
+  add(data: CartData): Promise<any> {
     const url = '/api/cart';
     return axios.post(url, data);
   },

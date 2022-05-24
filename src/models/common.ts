@@ -49,3 +49,26 @@ export interface Error {
     msg: string;
   }[];
 }
+
+export interface CartData {
+  total: number;
+  courseId: string;
+}
+
+export type ColorType =
+  | 'inherit'
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';
+
+export type Color =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';

@@ -6,6 +6,7 @@ import { useRoutes } from 'react-router-dom';
 const Home = lazy(() => import('@/pages/home/Home'));
 const Login = lazy(() => import('@/pages/auth/Login'));
 const BecomeInstructor = lazy(() => import('@/pages/home/BecomeInstructor'));
+const Courses = lazy(() => import('@/pages/home/Courses'));
 
 export interface RouterProps {}
 
@@ -19,7 +20,7 @@ export default function Router(props: RouterProps) {
         { element: <Home />, index: true },
         // { path: 'checkout', element: <Checkout /> },
         // { path: 'faqs', element: <Faqs /> },
-        // { path: 'courses', element: <Courses /> },
+        { path: 'courses', element: <Courses /> },
         // { path: 'courses/:id', element: <CourseDetails /> },
         // { path: 'roadmaps/:id', element: <Roadmap /> },
         // {
