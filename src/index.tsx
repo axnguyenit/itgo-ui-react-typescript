@@ -1,11 +1,14 @@
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import LoadingScreen from './components/LoadingScreen';
-import reportWebVitals from './reportWebVitals';
-import App from './App';
-import './app.css';
+// highlight
+// import './utils/highlight';
+
+// scroll bar
+// import 'simplebar/src/simplebar.css';
+
+// lightbox
+// import 'react-image-lightbox/style.css';
+
+// editor
+// import 'react-quill/dist/quill.snow.css';
 
 // slick-carousel
 import 'slick-carousel/slick/slick.css';
@@ -16,17 +19,42 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import { Provider as ReduxProvider } from 'react-redux';
+// @mui
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// redux
+import { store } from './redux/store';
+// contexts
+import { AuthProvider } from './contexts';
+
+import App from './App';
+import './index.css';
+import LoadingScreen from './components/LoadingScreen';
+import reportWebVitals from './reportWebVitals';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <HelmetProvider>
-        <Suspense fallback={<LoadingScreen />}>
-          <App />
-        </Suspense>
-      </HelmetProvider>
+      <AuthProvider>
+        <ReduxProvider store={store}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <HelmetProvider>
+              <Suspense fallback={<LoadingScreen />}>
+                <App />
+              </Suspense>
+            </HelmetProvider>
+          </LocalizationProvider>
+        </ReduxProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

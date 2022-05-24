@@ -2,8 +2,16 @@ import { Theme, alpha } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
+type ColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';
+
 export default function ToggleButton(theme: Theme) {
-  const style = (color) => ({
+  const style = (color: ColorType) => ({
     props: { color },
     style: {
       '&:hover': {

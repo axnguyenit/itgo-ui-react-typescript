@@ -1,9 +1,7 @@
-import { ClassAttributes, HTMLAttributes, ReactNode } from 'react';
+import { ReactNode } from 'react';
 // @mui
-import { styled } from '@mui/material/styles';
-import { Popover, SxProps, Theme } from '@mui/material';
+import { Box, Popover, SxProps, Theme } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { MUIStyledCommonProps } from '@mui/system';
 
 // ----------------------------------------------------------------------
 
@@ -43,7 +41,7 @@ export default function MenuPopover({
 }: MenuPopoverProps) {
   const theme = useTheme();
 
-  const arrowStyle = () => {
+  const ArrowStyle = () => {
     const SIZE = 12;
 
     const POSITION = -(SIZE / 2);
@@ -75,7 +73,7 @@ export default function MenuPopover({
       borderLeft: borderStyle,
     };
 
-    return {
+    const style = {
       [theme.breakpoints.up('sm')]: {
         zIndex: 1,
         width: SIZE,
@@ -123,6 +121,8 @@ export default function MenuPopover({
       }),
       ...(arrow === 'right-bottom' && { ...rightStyle, bottom: 20 }),
     };
+
+    return <Box component={'span'} sx={style} />;
   };
 
   return (
@@ -135,13 +135,12 @@ export default function MenuPopover({
           p: 1,
           width: 200,
           overflow: 'inherit',
-          ...(!disabledArrow && arrowStyle()),
           ...sx,
         },
       }}
       {...other}
     >
-      {/* {!disabledArrow && <ArrowStyle arrow={arrow} />} */}
+      {!disabledArrow && <ArrowStyle />}
 
       {children}
     </Popover>

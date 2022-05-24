@@ -9,39 +9,51 @@ declare module '@mui/material/styles' {
         white: string;
       };
       primary: {
+        lighter: string;
         light: string;
         main: string;
         dark: string;
+        darker: string;
         contrastText: string;
       };
       secondary: {
+        lighter: string;
         light: string;
         main: string;
         dark: string;
+        darker: string;
         contrastText: string;
       };
       info: {
+        lighter: string;
         light: string;
         main: string;
         dark: string;
+        darker: string;
         contrastText: string;
       };
       success: {
+        lighter: string;
         light: string;
         main: string;
         dark: string;
+        darker: string;
         contrastText: string;
       };
       warning: {
+        lighter: string;
         light: string;
         main: string;
         dark: string;
+        darker: string;
         contrastText: string;
       };
       error: {
+        lighter: string;
         light: string;
         main: string;
         dark: string;
+        darker: string;
         contrastText: string;
       };
       grey: {

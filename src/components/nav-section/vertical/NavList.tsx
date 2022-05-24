@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 // @mui
@@ -5,13 +6,18 @@ import { List, Collapse } from '@mui/material';
 //
 import { NavItemRoot, NavItemSub } from './NavItem';
 import { getActive } from '..';
-import { MenuConfigItem } from '../../../models';
+import { MenuItem } from '@/models';
 
 // ----------------------------------------------------------------------
 
+// NavListRoot.propTypes = {
+//   isCollapse: PropTypes.bool,
+//   list: PropTypes.object,
+// };
+
 interface NavListRootProps {
+  list: MenuItem;
   isCollapse: boolean;
-  list: MenuConfigItem;
 }
 
 export function NavListRoot({ list, isCollapse }: NavListRootProps) {
@@ -52,7 +58,11 @@ export function NavListRoot({ list, isCollapse }: NavListRootProps) {
 
 // ----------------------------------------------------------------------
 
-function NavListSub({ list }: { list: MenuConfigItem }) {
+interface NavListSubProps {
+  list: MenuItem;
+}
+
+function NavListSub({ list }: NavListSubProps) {
   const { pathname } = useLocation();
 
   const active = getActive(list.path, pathname);

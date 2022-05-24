@@ -1,5 +1,5 @@
-import { cartApi } from '@/api';
-import { useAppDispatch } from '@/hooks';
+// import { cartApi } from '@/api';
+// import { useAppDispatch } from '@/hooks';
 import { CartItem } from '@/models';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { sum, unionBy } from 'lodash';

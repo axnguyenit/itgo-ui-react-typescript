@@ -1,5 +1,5 @@
 // @mui
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 import { Box, Stack } from '@mui/material';
 //
 import Iconify from '../Iconify';
@@ -9,7 +9,7 @@ import { IconifyIcon } from '@iconify/react';
 
 // ----------------------------------------------------------------------
 
-const BUTTON_SIZE = 40;
+// const BUTTON_SIZE = 40;
 
 // const ArrowStyle = styled(IconButtonAnimate, {
 //   shouldForwardProp: (prop) => prop !== 'filled',

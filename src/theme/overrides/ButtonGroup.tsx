@@ -2,8 +2,16 @@ import { Theme } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
+type ColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';
+
 export default function ButtonGroup(theme: Theme) {
-  const styleContained = (color: string) => ({
+  const styleContained = (color: ColorType) => ({
     props: { variant: 'contained', color },
     style: { boxShadow: theme.customShadows[color] },
   });

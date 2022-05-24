@@ -21,14 +21,29 @@ export interface User {
   updatedAt?: number;
 }
 
-export interface RegisterType {
+export interface Register {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
 }
 
-export interface ChangePasswordType {
+export interface Login {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  user: Partial<User>;
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface MyAccount {
+  user: Partial<User>;
+}
+
+export interface ChangePassword {
   oldPassword: string;
   newPassword: string;
   confirmNewPassword: string;

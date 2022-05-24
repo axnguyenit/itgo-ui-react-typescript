@@ -1,58 +1,55 @@
-import { alpha, lighten, darken } from '@mui/material';
+import { alpha } from '@mui/material';
 
 function createGradient(color1: string, color2: string) {
   return `linear-gradient(to bottom, ${color1}, ${color2})`;
 }
 
-const themeColors = {
-  primary: '#2e7d32',
-  secondary: '#304ffe',
-  info: '#2979ff',
-  success: '#54D62C',
-  warning: '#ff6d00',
-  error: '#d50000',
-};
-
 const PRIMARY = {
-  light: lighten(themeColors.primary, 0.3),
-  main: themeColors.primary,
-  dark: darken(themeColors.primary, 0.3),
-  contrastText: '#fff',
+  lighter: '#C8FACD',
+  light: '#5BE584',
+  main: '#FCA524',
+  dark: '#d29c4b',
+  darker: '#005249',
 };
 
 const SECONDARY = {
-  light: lighten(themeColors.secondary, 0.3),
-  main: themeColors.secondary,
-  dark: darken(themeColors.secondary, 0.3),
-  contrastText: '#fff',
+  lighter: '#D6E4FF',
+  light: '#84A9FF',
+  main: '#3366FF',
+  dark: '#1939B7',
+  darker: '#091A7A',
 };
 
 const INFO = {
-  light: lighten(themeColors.info, 0.3),
-  main: themeColors.info,
-  dark: darken(themeColors.info, 0.3),
-  contrastText: '#161C24',
+  lighter: '#D0F2FF',
+  light: '#74CAFF',
+  main: '#1890FF',
+  dark: '#0C53B7',
+  darker: '#04297A',
 };
 
 const SUCCESS = {
-  light: lighten(themeColors.success, 0.3),
-  main: themeColors.success,
-  dark: darken(themeColors.success, 0.3),
-  contrastText: '#161C24',
+  lighter: '#E9FCD4',
+  light: '#AAF27F',
+  main: '#54D62C',
+  dark: '#229A16',
+  darker: '#08660D',
 };
 
 const WARNING = {
-  light: lighten(themeColors.warning, 0.3),
-  main: themeColors.warning,
-  dark: darken(themeColors.warning, 0.3),
-  contrastText: '#161C24',
+  lighter: '#FFF7CD',
+  light: '#FFE16A',
+  main: '#FFC107',
+  dark: '#B78103',
+  darker: '#7A4F01',
 };
 
 const ERROR = {
-  light: lighten(themeColors.error, 0.3),
-  main: themeColors.error,
-  dark: darken(themeColors.error, 0.3),
-  contrastText: '#fff',
+  lighter: '#FFE7D9',
+  light: '#FFA48D',
+  main: '#FF4842',
+  dark: '#B72136',
+  darker: '#7A0C2E',
 };
 
 const GREY = {
@@ -94,12 +91,12 @@ const CHART_COLORS = {
 
 const palette = {
   common: { black: '#000', white: '#fff' },
-  primary: { ...PRIMARY },
-  secondary: { ...SECONDARY },
-  info: { ...INFO },
-  success: { ...SUCCESS },
-  warning: { ...WARNING },
-  error: { ...ERROR },
+  primary: { ...PRIMARY, contrastText: '#fff' },
+  secondary: { ...SECONDARY, contrastText: '#fff' },
+  info: { ...INFO, contrastText: '#fff' },
+  success: { ...SUCCESS, contrastText: GREY[800] },
+  warning: { ...WARNING, contrastText: GREY[800] },
+  error: { ...ERROR, contrastText: '#fff' },
   grey: GREY,
   gradients: GRADIENTS,
   chart: CHART_COLORS,

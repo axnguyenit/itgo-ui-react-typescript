@@ -1,21 +1,30 @@
 import { NavLink as RouterLink } from 'react-router-dom';
+import { ICON } from '@/config';
 // @mui
-import { Box, Link, LinkBaseProps, ListItemText } from '@mui/material';
+import { Box, ListItemText, ListItemIcon } from '@mui/material';
+import { useTheme, styled } from '@mui/material/styles';
 //
-import { ListItemStyle, ListItemTextStyle, ListItemIconStyle } from './style';
-import { isExternalLink } from '..';
-import { MenuConfigItem } from '@/models';
-import { forwardRef } from 'react';
-import Iconify from '@/components/Iconify';
+import Iconify from '../../Iconify';
+import ListItem from './ListItem';
+import { MenuItem } from '@/models';
 
 // ----------------------------------------------------------------------
+
+export const ListItemIconStyle = styled(ListItemIcon)({
+  width: ICON.NAVBAR_ITEM,
+  height: ICON.NAVBAR_ITEM,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '& svg': { width: '100%', height: '100%' },
+});
 
 interface NavItemRootProps {
   active: boolean;
   open?: boolean;
   isCollapse: boolean;
   onOpen?: () => void;
-  item: MenuConfigItem;
+  item: MenuItem;
 }
 
 export function NavItemRoot({
@@ -23,38 +32,48 @@ export function NavItemRoot({
   isCollapse,
   open = false,
   active,
-  onOpen,
+  onOpen = () => {},
 }: NavItemRootProps) {
   const { title, path, icon, children } = item;
+  const theme = useTheme();
 
   const renderContent = (
     <>
       {icon && <ListItemIconStyle>{icon}</ListItemIconStyle>}
-      <ListItemTextStyle
+
+      <ListItemText
         disableTypography
         primary={title}
-        isCollapse={isCollapse}
+        sx={{
+          whiteSpace: 'nowrap',
+          transition: theme.transitions.create(['width', 'opacity'], {
+            duration: theme.transitions.duration.shorter,
+          }),
+          ...(isCollapse && {
+            width: 0,
+            opacity: 0,
+          }),
+        }}
       />
+
       {!isCollapse && <>{children && <ArrowIcon open={open} />}</>}
     </>
   );
 
   if (children) {
     return (
-      <ListItemStyle onClick={onOpen} activeRoot={active}>
-        {renderContent}
-      </ListItemStyle>
+      <>
+        <ListItem onClick={onOpen} activeRoot={active}>
+          {renderContent}
+        </ListItem>
+      </>
     );
   }
 
-  return isExternalLink(path) ? (
-    <ListItemStyle component={Link} href={path} target='_blank' rel='noopener'>
-      {renderContent}
-    </ListItemStyle>
-  ) : (
-    <ListItemStyle component={RouterLink} to={path} activeRoot={active}>
-      {renderContent}
-    </ListItemStyle>
+  return (
+    <RouterLink to={path}>
+      <ListItem activeRoot={active}>{renderContent}</ListItem>
+    </RouterLink>
   );
 }
 
@@ -64,14 +83,14 @@ interface NavItemSubProps {
   active?: boolean;
   open?: boolean;
   onOpen?: () => void;
-  item: MenuConfigItem;
+  item: MenuItem;
 }
 
 export function NavItemSub({
   item,
   open = false,
   active = false,
-  onOpen,
+  onOpen = () => {},
 }: NavItemSubProps) {
   const { title, path, children } = item;
 
@@ -85,32 +104,28 @@ export function NavItemSub({
 
   if (children) {
     return (
-      <ListItemStyle onClick={onOpen} activeSub={active} subItem>
+      <ListItem onClick={onOpen} activeSub={active} subItem>
         {renderContent}
-      </ListItemStyle>
+      </ListItem>
     );
   }
 
-  return isExternalLink(path) ? (
-    <ListItemStyle
-      component={Link}
-      href={path}
-      target='_blank'
-      rel='noopener'
-      subItem
-    >
-      {renderContent}
-    </ListItemStyle>
-  ) : (
-    <ListItemStyle component={RouterLink} to={path} activeSub={active} subItem>
-      {renderContent}
-    </ListItemStyle>
+  return (
+    <RouterLink to={path}>
+      <ListItem activeSub={active} subItem>
+        {renderContent}
+      </ListItem>
+    </RouterLink>
   );
 }
 
 // ----------------------------------------------------------------------
 
-export function DotIcon({ active }: { active: boolean }) {
+interface DotIconProps {
+  active: boolean;
+}
+
+export function DotIcon({ active }: DotIconProps) {
   return (
     <ListItemIconStyle>
       <Box
@@ -136,7 +151,11 @@ export function DotIcon({ active }: { active: boolean }) {
 
 // ----------------------------------------------------------------------
 
-export function ArrowIcon({ open }: { open: boolean }) {
+interface ArrowIconProps {
+  open: boolean;
+}
+
+export function ArrowIcon({ open }: ArrowIconProps) {
   return (
     <Iconify
       icon={open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}

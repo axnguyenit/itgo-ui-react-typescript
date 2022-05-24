@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Link, Stack } from '@mui/material';
-import { Menu, MenuItem } from '@/models';
+import { Stack, Typography } from '@mui/material';
+import { Menu } from '@/models';
 // components
 
 // ----------------------------------------------------------------------
 
-const LinkStyle = styled(Link)(({ theme }) => ({
+const LinkStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
   color: theme.palette.text.primary,
   marginRight: theme.spacing(5),
@@ -72,35 +72,6 @@ export default function MenuDesktop({
 
 // ----------------------------------------------------------------------
 
-interface IconBulletProps {
-  type?: 'item' | 'subheader';
-}
-
-function IconBullet({ type = 'item' }: IconBulletProps) {
-  return (
-    <Box sx={{ width: 24, height: 16, display: 'flex', alignItems: 'center' }}>
-      <Box
-        component='span'
-        sx={{
-          ml: '2px',
-          width: 4,
-          height: 4,
-          borderRadius: '50%',
-          bgcolor: 'currentColor',
-          ...(type !== 'item' && {
-            ml: 0,
-            width: 8,
-            height: 2,
-            borderRadius: 2,
-          }),
-        }}
-      />
-    </Box>
-  );
-}
-
-// ----------------------------------------------------------------------
-
 interface MenuDesktopItemProps {
   isHome: boolean;
   isOffset: boolean;
@@ -121,7 +92,7 @@ function MenuDesktopItem({
   const { title, path } = item;
 
   return (
-    <RouterLink to={path} end={path === '/'}>
+    <RouterLink to={path} end={path === '/'} style={{ textDecoration: 'none' }}>
       <LinkStyle
         sx={{
           textTransform: 'uppercase',

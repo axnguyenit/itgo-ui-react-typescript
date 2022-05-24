@@ -1,5 +1,5 @@
 import { useSnackbar } from 'notistack';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
@@ -42,10 +42,10 @@ export default function AccountPopover() {
   const { user, dispatch: authDispatch } = useAuth();
   const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar } = useSnackbar();
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<HTMLButtonElement | null>(null);
 
-  const handleOpen = (event) => {
-    setOpen(event.currentTarget);
+  const handleOpen = (e: MouseEvent<HTMLButtonElement>) => {
+    setOpen(e.currentTarget);
   };
 
   const handleClose = () => {
@@ -54,7 +54,7 @@ export default function AccountPopover() {
 
   const handleLogout = async () => {
     try {
-      setSession(null, '');
+      setSession(null, null);
       authDispatch({ type: 'LOGOUT', payload: { user: null } });
       dispatch(resetCart());
       navigate(PATH_AUTH.login, { replace: true });
@@ -74,7 +74,7 @@ export default function AccountPopover() {
         onClick={handleOpen}
         sx={{
           p: 0,
-          // ...(open && {
+          // ...(open && (
           '&:before': {
             zIndex: 1,
             content: "''",
@@ -84,7 +84,7 @@ export default function AccountPopover() {
             position: 'absolute',
             bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
           },
-          // }),
+          // )),
         }}
       >
         <MyAvatar />

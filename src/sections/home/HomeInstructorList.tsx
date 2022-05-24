@@ -1,5 +1,5 @@
 import Slider from 'react-slick';
-import { LegacyRef, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -133,7 +133,7 @@ export default function HomeInstructorList() {
 const OverlayStyle = styled('div')(({ theme }) => ({
   ...cssStyles(theme).bgBlur({
     blur: 2,
-    color: theme.palette.primary.dark,
+    color: '#005249cc',
   }),
   top: 0,
   zIndex: 8,

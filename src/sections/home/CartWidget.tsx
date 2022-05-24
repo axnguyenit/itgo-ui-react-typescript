@@ -5,9 +5,9 @@ import { styled } from '@mui/material/styles';
 import { Badge } from '@mui/material';
 // redux
 // routes
-import { PATH_HOME } from '../../routes/paths';
+import { PATH_HOME } from '@/routes/paths';
 // components
-import Iconify from '../../components/Iconify';
+import Iconify from '@/components/Iconify';
 import { useAppSelector } from '@/hooks';
 import { selectCart } from '@/redux/slices/cart';
 

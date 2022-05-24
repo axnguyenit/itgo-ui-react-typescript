@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // ----------------------------------------------------------------------
 
-export function useOffSetTop(top) {
+export function useOffSetTop(top: number) {
   const [offsetTop, setOffSetTop] = useState(false);
   const isTop = top || 100;
 

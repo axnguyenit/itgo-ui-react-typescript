@@ -7,6 +7,7 @@ import { Box, SxProps, Theme } from '@mui/material';
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   disabledEffect?: boolean;
+  src?: string;
   effect?: Effect;
   ratio?:
     | '4/3'
@@ -25,6 +26,7 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 
 export default function Image({
   ratio,
+  src = '',
   disabledEffect = false,
   effect = 'blur',
   sx,
@@ -54,13 +56,12 @@ export default function Image({
         }}
         {...other}
       >
-        {/* <LazyLoadImage
-        /> */}
         <LazyLoadImage
           wrapperClassName='wrapper'
           effect={disabledEffect ? undefined : effect}
+          src={src}
           placeholderSrc='https://zone-assets-api.vercel.app/assets/img_placeholder.svg'
-          // sx={{ width: 1, height: 1, objectFit: 'cover' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </Box>
     );
@@ -85,8 +86,9 @@ export default function Image({
       <LazyLoadImage
         wrapperClassName='wrapper'
         effect={disabledEffect ? undefined : effect}
+        src={src}
         placeholderSrc='https://zone-assets-api.vercel.app/assets/img_placeholder.svg'
-        // sx={{ width: 1, height: 1, objectFit: 'cover' }}
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
     </Box>
   );

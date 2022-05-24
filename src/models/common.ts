@@ -43,3 +43,9 @@ export interface Menu {
   path: string;
   children?: SubMenu[];
 }
+
+export interface Error {
+  errors: {
+    msg: string;
+  }[];
+}

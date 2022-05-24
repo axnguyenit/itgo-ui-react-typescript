@@ -3,8 +3,11 @@ import {
   ListParams,
   InstructorsResponse,
   UsersResponse,
-  RegisterType,
-  ChangePasswordType,
+  Register,
+  ChangePassword,
+  Login,
+  LoginResponse,
+  MyAccount,
 } from '@/models';
 import { axios } from '@/utils';
 
@@ -19,9 +22,19 @@ const userApi = {
     return axios.get(url);
   },
 
-  register(data: RegisterType): Promise<any> {
+  register(data: Register): Promise<any> {
     const url = '/api/auth/register';
     return axios.post(url, data);
+  },
+
+  login(data: Login): Promise<LoginResponse> {
+    const url = '/api/auth/login';
+    return axios.post(url, data);
+  },
+
+  myAccount(): Promise<MyAccount> {
+    const url = `/api/users/my-account`;
+    return axios.get(url);
   },
 
   update(data: Partial<User>): Promise<any> {
@@ -44,7 +57,7 @@ const userApi = {
     return axios.get(url);
   },
 
-  changePassword(data: ChangePasswordType): Promise<any> {
+  changePassword(data: ChangePassword): Promise<any> {
     const url = `/api/users/change-password`;
     return axios.post(url, data);
   },

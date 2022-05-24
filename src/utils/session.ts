@@ -1,9 +1,11 @@
 import axios from './axios';
 
-const setSession = (accessToken: string | null, refreshToken: string) => {
+type Session = string | null;
+
+const setSession = (accessToken: Session, refreshToken: Session) => {
   if (accessToken) {
     localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('refreshToken', refreshToken);
+    refreshToken && localStorage.setItem('refreshToken', refreshToken);
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   } else {
     localStorage.removeItem('accessToken');

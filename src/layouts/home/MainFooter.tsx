@@ -100,7 +100,7 @@ export default function MainFooter() {
               ))}
             </Stack>
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <Typography
               component='p'
               variant='body2'

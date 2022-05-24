@@ -3,8 +3,16 @@ import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from './CustomIcons';
 
 // ----------------------------------------------------------------------
 
+type ColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';
+
 export default function Alert(theme: Theme) {
-  const standardStyle = (color) => ({
+  const standardStyle = (color: ColorType) => ({
     color: theme.palette[color]['darker'],
     backgroundColor: theme.palette[color]['lighter'],
     '& .MuiAlert-icon': {
@@ -12,11 +20,11 @@ export default function Alert(theme: Theme) {
     },
   });
 
-  const filledStyle = (color) => ({
+  const filledStyle = (color: ColorType) => ({
     color: theme.palette[color].contrastText,
   });
 
-  const outlinedStyle = (color) => ({
+  const outlinedStyle = (color: ColorType) => ({
     color: theme.palette[color]['darker'],
     border: `solid 1px ${theme.palette[color]['light']}`,
     backgroundColor: theme.palette[color]['lighter'],
