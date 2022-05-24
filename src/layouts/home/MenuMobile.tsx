@@ -116,7 +116,7 @@ interface MenuMobileItemProps {
 }
 
 function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
-  const { title, path, icon, children } = item;
+  const { title, path, icon } = item;
 
   const theme = useTheme();
 

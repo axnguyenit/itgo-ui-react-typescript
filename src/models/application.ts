@@ -3,7 +3,7 @@ import { PaginationParams } from '.';
 export interface Application {
   _id?: string;
   id?: string;
-  user: string;
+  user?: string;
   position: string;
   cv: string;
 

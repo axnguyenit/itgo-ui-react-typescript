@@ -1,94 +1,89 @@
-import { GuestGuard } from '@/guards';
+import { BasedGuard, GuestGuard } from '@/guards';
 import { HomeLayout } from '@/layouts';
 import React, { lazy } from 'react';
 import { useRoutes } from 'react-router-dom';
 
 const Home = lazy(() => import('@/pages/home/Home'));
 const Login = lazy(() => import('@/pages/auth/Login'));
+const BecomeInstructor = lazy(() => import('@/pages/home/BecomeInstructor'));
 
 export interface RouterProps {}
 
 export default function Router(props: RouterProps) {
   return useRoutes([
+    // Home Routes
     {
       path: '',
       element: <HomeLayout />,
-      children: [{ element: <Home />, index: true }],
-
-      // Home Routes
-      // {
-      // 	path: '',
-      // 	element: <HomeLayout />,
-      // 	children: [
-      // 		{ element: <Home />, index: true },
-      // 		{ path: 'checkout', element: <Checkout /> },
-      // 		{ path: 'faqs', element: <Faqs /> },
-      // 		{ path: 'courses', element: <Courses /> },
-      // 		{ path: 'courses/:id', element: <CourseDetails /> },
-      // 		{ path: 'roadmaps/:id', element: <Roadmap /> },
-      // 		{
-      // 			path: 'instructor/:id',
-      // 			element: (
-      // 				<BasedGuard>
-      // 					<InstructorProfile />
-      // 				</BasedGuard>
-      // 			),
-      // 		},
-      // 		{
-      // 			path: 'account-settings',
-      // 			element: (
-      // 				<BasedGuard>
-      // 					<AccountSettings />
-      // 				</BasedGuard>
-      // 			),
-      // 		},
-      // 		{
-      // 			path: 'my-courses',
-      // 			element: (
-      // 				<BasedGuard>
-      // 					<MyLearning />
-      // 				</BasedGuard>
-      // 			),
-      // 		},
-      // 		{
-      // 			path: 'my-courses/:id/events',
-      // 			element: (
-      // 				<BasedGuard>
-      // 					<StudentCalendar />
-      // 				</BasedGuard>
-      // 			),
-      // 		},
-      // 		{
-      // 			path: 'become-instructor',
-      // 			element: (
-      // 				<BasedGuard>
-      // 					<BecomeInstructor />
-      // 				</BasedGuard>
-      // 			),
-      // 		},
-      // 	],
-      // },
-
-      // Main Routes
-      // {
-      // 	path: '*',
-      // 	element: <LogoOnlyLayout />,
-      // 	children: [
-      // 		{
-      // 			path: 'learning/:id',
-      // 			element: (
-      // 				<BasedGuard>
-      // 					<Learning />
-      // 				</BasedGuard>
-      // 			),
-      // 		},
-      // 		{ path: '500', element: <Page500 /> },
-      // 		{ path: '404', element: <NotFound /> },
-      // 		{ path: '*', element: <Navigate to="/404" replace /> },
-      // 	],
-      // },
-      // { path: '*', element: <Navigate to='/404' replace /> },
+      children: [
+        { element: <Home />, index: true },
+        // { path: 'checkout', element: <Checkout /> },
+        // { path: 'faqs', element: <Faqs /> },
+        // { path: 'courses', element: <Courses /> },
+        // { path: 'courses/:id', element: <CourseDetails /> },
+        // { path: 'roadmaps/:id', element: <Roadmap /> },
+        // {
+        // 	path: 'instructor/:id',
+        // 	element: (
+        // 		<BasedGuard>
+        // 			<InstructorProfile />
+        // 		</BasedGuard>
+        // 	),
+        // },
+        // {
+        // 	path: 'account-settings',
+        // 	element: (
+        // 		<BasedGuard>
+        // 			<AccountSettings />
+        // 		</BasedGuard>
+        // 	),
+        // },
+        // {
+        // 	path: 'my-courses',
+        // 	element: (
+        // 		<BasedGuard>
+        // 			<MyLearning />
+        // 		</BasedGuard>
+        // 	),
+        // },
+        // {
+        // 	path: 'my-courses/:id/events',
+        // 	element: (
+        // 		<BasedGuard>
+        // 			<StudentCalendar />
+        // 		</BasedGuard>
+        // 	),
+        // },
+        {
+          path: 'become-instructor',
+          element: (
+            <BasedGuard>
+              <BecomeInstructor />
+            </BasedGuard>
+          ),
+        },
+      ],
     },
+
+    // Main Routes
+    // {
+    // 	path: '*',
+    // 	element: <LogoOnlyLayout />,
+    // 	children: [
+    // 		{
+    // 			path: 'learning/:id',
+    // 			element: (
+    // 				<BasedGuard>
+    // 					<Learning />
+    // 				</BasedGuard>
+    // 			),
+    // 		},
+    // 		{ path: '500', element: <Page500 /> },
+    // 		{ path: '404', element: <NotFound /> },
+    // 		{ path: '*', element: <Navigate to="/404" replace /> },
+    // 	],
+    // },
+    // { path: '*', element: <Navigate to='/404' replace /> },
 
     {
       path: 'auth',
