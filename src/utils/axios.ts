@@ -6,6 +6,7 @@ import axios, {
 import queryString from 'query-string';
 import { HOST_API } from '@/config';
 import setSession from './session';
+import { userApi } from '@/api';
 
 const axiosInstance = axios.create({
   baseURL: HOST_API,
@@ -35,10 +36,7 @@ axiosInstance.interceptors.response.use(async (response: AxiosResponse) => {
 
     // get new access token from refresh token
     try {
-      const accessToken: string = await axiosInstance.post(
-        '/api/auth/refresh-token',
-        { refreshToken }
-      );
+      const { accessToken } = await userApi.refreshToken({ refreshToken });
 
       // save new access token and config axios authorization headers
       setSession(accessToken, refreshToken);

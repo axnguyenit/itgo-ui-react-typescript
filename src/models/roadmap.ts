@@ -24,7 +24,17 @@ export interface Roadmap {
   updatedAt?: Date;
 }
 
-export interface RoadmapResponse {
+export interface RoadmapsResponse {
   roadmaps: Roadmap[];
   pagination?: PaginationParams;
 }
+
+export interface RoadmapResponse {
+  roadmap: Roadmap & {
+    technologies: RoadmapDetail[];
+  };
+}
+
+export type RoadmapType = Roadmap & {
+  technologies: RoadmapDetail[];
+};

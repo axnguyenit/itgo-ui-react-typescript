@@ -1,7 +1,7 @@
 // @mui
 import { Box } from '@mui/material';
 // components
-import { SkeletonProductItem } from '../../components/skeleton';
+import { SkeletonCourseItem } from '@/components/skeleton';
 //
 import CourseCard from './CourseCard';
 import { Course } from '@/models';
@@ -31,7 +31,7 @@ export default function CourseList({ courses, loading }: CourseListProps) {
         course ? (
           <CourseCard key={course._id} course={course} />
         ) : (
-          <SkeletonProductItem key={index} />
+          <SkeletonCourseItem key={index} />
         )
       )}
     </Box>

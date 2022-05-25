@@ -8,6 +8,7 @@ const Login = lazy(() => import('@/pages/auth/Login'));
 const BecomeInstructor = lazy(() => import('@/pages/home/BecomeInstructor'));
 const Courses = lazy(() => import('@/pages/home/Courses'));
 const MyLearning = lazy(() => import('@/pages/home/MyLearning'));
+const Roadmap = lazy(() => import('@/pages/home/Roadmap'));
 
 export interface RouterProps {}
 
@@ -24,7 +25,7 @@ export default function Router(props: RouterProps) {
         // { path: 'faqs', element: <Faqs /> },
         { path: 'courses', element: <Courses /> },
         // { path: 'courses/:id', element: <CourseDetails /> },
-        // { path: 'roadmaps/:id', element: <Roadmap /> },
+        { path: 'roadmaps/:id', element: <Roadmap /> },
         // {
         // 	path: 'instructor/:id',
         // 	element: (

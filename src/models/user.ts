@@ -49,6 +49,14 @@ export interface ChangePassword {
   confirmNewPassword: string;
 }
 
+export interface AccessToken {
+  accessToken: string;
+}
+
+export interface RefreshToken {
+  refreshToken: string;
+}
+
 export interface UsersResponse {
   users: Partial<User>[];
   pagination: PaginationParams;

@@ -8,6 +8,8 @@ import {
   Login,
   LoginResponse,
   MyAccount,
+  AccessToken,
+  RefreshToken,
 } from '@/models';
 import { axios } from '@/utils';
 
@@ -29,6 +31,11 @@ const userApi = {
 
   login(data: Login): Promise<LoginResponse> {
     const url = '/api/auth/login';
+    return axios.post(url, data);
+  },
+
+  refreshToken(data: RefreshToken): Promise<AccessToken> {
+    const url = '/api/auth/refresh-token';
     return axios.post(url, data);
   },
 

@@ -1,13 +1,18 @@
-import { ListParams, Roadmap, RoadmapResponse } from '@/models';
+import {
+  ListParams,
+  Roadmap,
+  RoadmapResponse,
+  RoadmapsResponse,
+} from '@/models';
 import { axios } from '@/utils';
 
 const roadmapApi = {
-  getAll(params: ListParams): Promise<RoadmapResponse> {
+  getAll(params: ListParams): Promise<RoadmapsResponse> {
     const url = '/api/roadmaps';
     return axios.get(url, { params });
   },
 
-  get(id: string): Promise<Roadmap> {
+  get(id: string): Promise<RoadmapResponse> {
     const url = `/api/roadmaps/${id}`;
     return axios.get(url);
   },
