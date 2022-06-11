@@ -3,8 +3,8 @@ import {
   Roadmap,
   RoadmapResponse,
   RoadmapsResponse,
-} from '@/models';
-import { axios } from '@/utils';
+} from '~/models';
+import { axios } from '~/utils';
 
 const roadmapApi = {
   getAll(params: ListParams): Promise<RoadmapsResponse> {

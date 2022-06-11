@@ -1,5 +1,5 @@
-import { Application, ApplicationResponse, ListParams } from '@/models';
-import { axios } from '@/utils';
+import { Application, ApplicationResponse, ListParams } from '~/models';
+import { axios } from '~/utils';
 
 const applicationApi = {
   getAll(params: ListParams): Promise<ApplicationResponse> {

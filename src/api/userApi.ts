@@ -10,8 +10,8 @@ import {
   MyAccount,
   AccessToken,
   RefreshToken,
-} from '@/models';
-import { axios } from '@/utils';
+} from '~/models';
+import { axios } from '~/utils';
 
 const userApi = {
   getAll(params: ListParams): Promise<UsersResponse> {

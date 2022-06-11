@@ -1,7 +1,7 @@
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Paper, Typography } from '@mui/material';
-import { fData } from '@/utils';
+import { fData } from '~/utils';
 import {
   Key,
   ReactElement,

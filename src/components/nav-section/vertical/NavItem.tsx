@@ -1,12 +1,12 @@
 import { NavLink as RouterLink } from 'react-router-dom';
-import { ICON } from '@/config';
+import { ICON } from '~/config';
 // @mui
 import { Box, ListItemText, ListItemIcon } from '@mui/material';
 import { useTheme, styled } from '@mui/material/styles';
 //
 import Iconify from '../../Iconify';
 import ListItem from './ListItem';
-import { MenuItem } from '@/models';
+import { MenuItem } from '~/models';
 
 // ----------------------------------------------------------------------
 

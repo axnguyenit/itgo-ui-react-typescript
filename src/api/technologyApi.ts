@@ -1,5 +1,5 @@
-import { ListParams, Technology, TechnologyResponse } from '@/models';
-import { axios } from '@/utils';
+import { ListParams, Technology, TechnologyResponse } from '~/models';
+import { axios } from '~/utils';
 
 const technologiesApi = {
   getAll(params: ListParams): Promise<TechnologyResponse> {

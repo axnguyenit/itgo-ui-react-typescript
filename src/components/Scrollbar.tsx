@@ -1,8 +1,7 @@
-import SimpleBarReact from 'simplebar-react';
-// @mui
-import { alpha, styled } from '@mui/material/styles';
 import { Box, SxProps, Theme } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles';
 import { ReactNode } from 'react';
+import SimpleBarReact from 'simplebar-react';
 
 // ----------------------------------------------------------------------
 

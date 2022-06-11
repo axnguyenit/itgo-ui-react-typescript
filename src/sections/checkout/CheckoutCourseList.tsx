@@ -1,0 +1,87 @@
+import {
+  Box,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material';
+import Iconify from '~/components/Iconify';
+import Image from '~/components/Image';
+import { CartItem } from '~/models';
+import cloudinary from '~/utils/cloudinary';
+import { fCurrency } from '~/utils/formatNumber';
+
+// ----------------------------------------------------------------------
+
+interface CheckoutCourseListProps {
+  courses: CartItem[];
+  onDelete: (id: string) => void;
+}
+
+export default function CheckoutCourseList({
+  courses,
+  onDelete,
+}: CheckoutCourseListProps) {
+  return (
+    <TableContainer sx={{ minWidth: 720 }}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Course</TableCell>
+            <TableCell align='right'>Total Price</TableCell>
+            <TableCell align='right' />
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {courses.length > 0 &&
+            courses.map((item) => {
+              const { _id, name, price, priceSale, cover } = item?.course;
+              return (
+                <TableRow key={_id}>
+                  <TableCell>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <Image
+                        alt='course image'
+                        src={cloudinary.w100(cover)}
+                        sx={{ width: 64, height: 64, borderRadius: 1.5, mr: 2 }}
+                      />
+                      <Box>
+                        <Typography
+                          noWrap
+                          variant='subtitle2'
+                          sx={{ maxWidth: 240 }}
+                        >
+                          {name}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </TableCell>
+
+                  <TableCell align='right'>
+                    {priceSale
+                      ? fCurrency(priceSale)
+                      : fCurrency(price as number)}
+                  </TableCell>
+
+                  <TableCell align='right'>
+                    <IconButton onClick={() => onDelete(item?._id)}>
+                      <Iconify
+                        icon={'eva:trash-2-outline'}
+                        width={20}
+                        height={20}
+                      />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}

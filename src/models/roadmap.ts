@@ -29,12 +29,10 @@ export interface RoadmapsResponse {
   pagination?: PaginationParams;
 }
 
-export interface RoadmapResponse {
-  roadmap: Roadmap & {
-    technologies: RoadmapDetail[];
-  };
-}
-
 export type RoadmapType = Roadmap & {
   technologies: RoadmapDetail[];
 };
+
+export interface RoadmapResponse {
+  roadmap: RoadmapType;
+}

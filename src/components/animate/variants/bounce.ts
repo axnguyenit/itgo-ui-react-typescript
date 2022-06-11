@@ -1,4 +1,4 @@
-import { VariantType } from '@/models';
+import { VariantType } from '~/models';
 import { varTranEnter, varTranExit } from './transition';
 
 // ----------------------------------------------------------------------

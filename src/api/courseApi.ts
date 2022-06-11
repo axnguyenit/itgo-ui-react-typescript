@@ -1,5 +1,11 @@
-import { Course, CoursesResponse, ListParams, User } from '@/models';
-import { axios } from '@/utils';
+import {
+  Course,
+  CourseResponse,
+  CoursesResponse,
+  ListParams,
+  User,
+} from '~/models';
+import { axios } from '~/utils';
 
 const courseApi = {
   getAll(params: ListParams): Promise<CoursesResponse> {
@@ -7,7 +13,7 @@ const courseApi = {
     return axios.get(url, { params });
   },
 
-  get(id: string): Promise<Course> {
+  get(id: string): Promise<CourseResponse> {
     const url = `/api/courses/${id}`;
     return axios.get(url);
   },

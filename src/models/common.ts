@@ -72,3 +72,10 @@ export type Color =
   | 'success'
   | 'warning'
   | 'error';
+
+  export interface PaymentOption {
+    value: string;
+    title: string;
+    description: string;
+    icons: string[];
+  }

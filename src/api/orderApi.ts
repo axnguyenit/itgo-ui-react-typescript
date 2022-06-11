@@ -1,5 +1,5 @@
-import { ListParams, OrderResponse } from '@/models';
-import { axios } from '@/utils';
+import { ListParams, OrderResponse } from '~/models';
+import { axios } from '~/utils';
 
 const orderApi = {
   getAll(params: ListParams): Promise<OrderResponse> {

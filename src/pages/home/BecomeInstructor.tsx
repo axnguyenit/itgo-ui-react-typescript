@@ -11,11 +11,11 @@ import {
 } from '@mui/material';
 // components
 // sections
-import { useAuth } from '@/hooks';
-import { CourseHero } from '@/sections/courses';
-import Image from '@/components/Image';
-import Page from '@/components/Page';
-import { ApplyAsInstructorForm } from '@/sections/become-instructor';
+import { useAuth } from '~/hooks';
+import { CourseHero } from '~/sections/courses';
+import Image from '~/components/Image';
+import Page from '~/components/Page';
+import { ApplyAsInstructorForm } from '~/sections/become-instructor';
 
 // ----------------------------------------------------------------------
 const RootStyle = styled('div')(({ theme }) => ({

@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { CardHeader, Box } from '@mui/material';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 // components
-import Image from '@/components/Image';
+import Image from '~/components/Image';
 // paths
-import { PATH_HOME } from '@/routes/paths';
+import { PATH_HOME } from '~/routes/paths';
 // utils
-import { cloudinary } from '@/utils';
+import { cloudinary } from '~/utils';
 // api
-import { technologyApi } from '@/api';
-import { Technology } from '@/models';
+import { technologyApi } from '~/api';
+import { Technology } from '~/models';
 
 // ----------------------------------------------------------------------
 

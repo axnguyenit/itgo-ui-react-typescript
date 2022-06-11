@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { List, Box, ListSubheader } from '@mui/material';
 //
 import { NavListRoot } from './NavList';
-import { SubMenu } from '@/models';
+import { SubMenu } from '~/models';
 
 // ----------------------------------------------------------------------
 

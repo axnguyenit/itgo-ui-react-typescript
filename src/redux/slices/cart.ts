@@ -1,13 +1,14 @@
-// import { cartApi } from '@/api';
-// import { useAppDispatch } from '@/hooks';
-import { CartItem } from '@/models';
+// import { cartApi } from '~/api';
+// import { useAppDispatch } from '~/hooks';
+import { CartItem } from '~/models';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { sum, unionBy } from 'lodash';
-import { RootState } from '../store';
+import { dispatch, RootState } from '../store';
+import { cartApi } from '~/api';
 
 interface Cart {
   activeStep: number;
-  cart: Partial<CartItem>[];
+  cart: CartItem[];
   subtotal: number;
   total: number;
   discount: number;
@@ -101,14 +102,11 @@ export const {
 } = cartSlice.actions;
 export default cartSlice.reducer;
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-// const dispatch = useAppDispatch();
-
-// export async function getCartFromServer() {
-//   try {
-//     const response = await cartApi.get();
-//     dispatch(setCart(response.cartItems));
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+export async function getCartFromServer() {
+  try {
+    const response = await cartApi.get();
+    dispatch(setCart(response.cartItems));
+  } catch (error) {
+    console.error(error);
+  }
+}

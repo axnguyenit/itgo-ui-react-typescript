@@ -1,5 +1,5 @@
-import { Event, EventResponse } from '@/models';
-import { axios } from '@/utils';
+import { Event, EventResponse } from '~/models';
+import { axios } from '~/utils';
 
 const eventApi = {
   getByInstructor(): Promise<EventResponse> {

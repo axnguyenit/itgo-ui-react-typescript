@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-import { VariantType } from '@/models';
+import { VariantType } from '~/models';
 
 export const varContainer = ({ staggerIn = 0.05 }: VariantType) => {
   const delayIn = staggerIn;

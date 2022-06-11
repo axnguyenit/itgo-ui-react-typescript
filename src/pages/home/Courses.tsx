@@ -13,13 +13,13 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 // components
-import Page from '@/components/Page';
+import Page from '~/components/Page';
 // sections
-import { CourseList, CourseHero } from '@/sections/courses';
+import { CourseList, CourseHero } from '~/sections/courses';
 // api
-import { courseApi } from '@/api';
-import EmptyContent from '@/components/EmptyContent';
-import { Course, ListParams, PaginationParams } from '@/models';
+import { courseApi } from '~/api';
+import EmptyContent from '~/components/EmptyContent';
+import { Course, ListParams, PaginationParams } from '~/models';
 
 // ----------------------------------------------------------------------
 const RootStyle = styled('div')(({ theme }) => ({

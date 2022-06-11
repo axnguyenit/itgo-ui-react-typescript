@@ -4,7 +4,7 @@ import { Box, Stack } from '@mui/material';
 // components
 import MainFooter from './MainFooter';
 import MainHeader from './MainHeader';
-import { CartWidget } from '@/sections/home';
+import { CartWidget } from '~/sections/home';
 
 // ----------------------------------------------------------------------
 

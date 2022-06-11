@@ -1,5 +1,5 @@
-import { CartData, CartResponse } from '@/models';
-import { axios } from '@/utils';
+import { CartData, CartResponse } from '~/models';
+import { axios } from '~/utils';
 
 const cartApi = {
   get(): Promise<CartResponse> {

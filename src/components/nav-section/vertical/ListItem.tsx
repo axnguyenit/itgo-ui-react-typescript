@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { alpha, useTheme } from '@mui/material/styles';
 import { ListItemButton, SxProps, Theme } from '@mui/material';
 // config
-import { NAVBAR } from '@/config';
+import { NAVBAR } from '~/config';
 
 // ----------------------------------------------------------------------
 

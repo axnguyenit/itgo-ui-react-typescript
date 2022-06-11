@@ -17,13 +17,13 @@ import { Link as RouterLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 // utils
 // components
-import { CarouselArrows } from '@/components/carousel';
-import { PATH_INSTRUCTOR } from '@/routes/paths';
-import { cloudinary, cssStyles } from '@/utils';
-import Image from '@/components/Image';
-import { User } from '@/models';
-import { userApi } from '@/api';
-import SvgIconStyle from '@/components/SvgIconStyle';
+import { CarouselArrows } from '~/components/carousel';
+import { PATH_INSTRUCTOR } from '~/routes/paths';
+import { cloudinary, cssStyles } from '~/utils';
+import Image from '~/components/Image';
+import { User } from '~/models';
+import { userApi } from '~/api';
+import SvgIconStyle from '~/components/SvgIconStyle';
 
 // ----------------------------------------------------------------------
 

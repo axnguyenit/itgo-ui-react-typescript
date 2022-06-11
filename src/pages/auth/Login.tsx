@@ -11,7 +11,7 @@ import Logo from '../../components/Logo';
 import Image from '../../components/Image';
 // sections
 import { LoginForm } from '../../sections/auth';
-import { useResponsive } from '@/hooks';
+import { useResponsive } from '~/hooks';
 
 // ----------------------------------------------------------------------
 

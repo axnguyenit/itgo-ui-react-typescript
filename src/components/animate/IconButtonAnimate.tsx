@@ -2,7 +2,7 @@ import { m } from 'framer-motion';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 // @mui
 import { Box, IconButton, SxProps, Theme } from '@mui/material';
-import { ColorType } from '@/models';
+import { ColorType } from '~/models';
 
 // ----------------------------------------------------------------------
 type SizeType = 'small' | 'medium' | 'large';

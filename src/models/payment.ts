@@ -1,3 +1,4 @@
+import { CartItem } from './cart';
 import { User } from './user';
 
 export interface Payment {
@@ -8,6 +9,8 @@ export interface Payment {
   transId: string;
   message: string;
   amount: number;
+  resultCode?: string;
+  cart?: CartItem[];
 
   createdAt?: Date;
   updatedAt?: Date;

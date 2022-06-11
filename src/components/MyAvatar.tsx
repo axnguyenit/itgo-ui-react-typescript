@@ -1,6 +1,6 @@
 // hooks
-import { useAuth } from '@/hooks';
-import { cloudinary, createAvatar } from '@/utils';
+import { useAuth } from '~/hooks';
+import { cloudinary, createAvatar } from '~/utils';
 // utils
 //
 import Avatar from './Avatar';

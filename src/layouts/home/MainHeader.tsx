@@ -17,7 +17,7 @@ import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
 // import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
-import { useAuth, useResponsive, useOffSetTop } from '@/hooks';
+import { useAuth, useResponsive, useOffSetTop } from '~/hooks';
 
 // ----------------------------------------------------------------------
 

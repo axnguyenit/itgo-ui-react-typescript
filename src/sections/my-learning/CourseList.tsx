@@ -1,10 +1,10 @@
 // @mui
 import { Box } from '@mui/material';
 // components
-import { SkeletonCourseItem } from '@/components/skeleton';
+import { SkeletonCourseItem } from '~/components/skeleton';
 //
 import CourseCard from './CourseCard';
-import { OrderItem } from '@/models';
+import { OrderItem } from '~/models';
 
 // ----------------------------------------------------------------------
 

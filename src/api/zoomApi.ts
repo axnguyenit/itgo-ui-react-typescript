@@ -1,4 +1,4 @@
-import { axios } from '@/utils';
+import { axios } from '~/utils';
 
 const zoomApi = {
   getSignature(data: Partial<Event>): Promise<string> {

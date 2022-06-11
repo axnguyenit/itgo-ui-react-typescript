@@ -1,14 +1,15 @@
-import { userApi } from '@/api';
-import { PATH_AUTH } from '@/routes/paths';
-import { setSession } from '@/utils';
 import React, {
   createContext,
-  useReducer,
-  ReactNode,
   Dispatch,
+  ReactNode,
   useEffect,
+  useReducer,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userApi } from '~/api';
+import { getCartFromServer } from '~/redux/slices/cart';
+import { PATH_AUTH } from '~/routes/paths';
+import { setSession } from '~/utils';
 
 interface AuthState {
   isAuthenticated?: boolean;
@@ -112,7 +113,7 @@ function AuthProvider({ children }: AuthProviderProps) {
                 user,
               },
             });
-            // getCartApi();
+            getCartFromServer();
           }
         } else {
           dispatch({

@@ -33,3 +33,7 @@ export interface CoursesResponse {
   courses: Course[];
   pagination?: PaginationParams;
 }
+
+export interface CourseResponse {
+  course: Course;
+}

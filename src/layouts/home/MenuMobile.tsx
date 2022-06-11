@@ -12,14 +12,14 @@ import {
   ListItemButton,
 } from '@mui/material';
 // config
-import { NAVBAR } from '@/config';
+import { NAVBAR } from '~/config';
 // components
-import Logo from '@/components/Logo';
-import Iconify from '@/components/Iconify';
-import Scrollbar from '@/components/Scrollbar';
-import { IconButtonAnimate } from '@/components/animate';
-// import { NavSectionVertical } from '@/components/nav-section';
-import { Menu } from '@/models';
+import Logo from '~/components/Logo';
+import Iconify from '~/components/Iconify';
+import Scrollbar from '~/components/Scrollbar';
+import { IconButtonAnimate } from '~/components/animate';
+// import { NavSectionVertical } from '~/components/nav-section';
+import { Menu } from '~/models';
 
 // ----------------------------------------------------------------------
 

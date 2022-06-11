@@ -1,5 +1,5 @@
-import { Payment } from '@/models';
-import { axios } from '@/utils';
+import { Payment } from '~/models';
+import { axios } from '~/utils';
 
 const paymentApi = {
   add(data: Payment): Promise<any> {

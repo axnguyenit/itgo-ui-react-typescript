@@ -4,9 +4,9 @@ import axios, {
   AxiosResponse,
 } from 'axios';
 import queryString from 'query-string';
-import { HOST_API } from '@/config';
+import { HOST_API } from '~/config';
 import setSession from './session';
-import { userApi } from '@/api';
+import { userApi } from '~/api';
 
 const axiosInstance = axios.create({
   baseURL: HOST_API,

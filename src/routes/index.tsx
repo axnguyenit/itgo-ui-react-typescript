@@ -1,14 +1,16 @@
-import { BasedGuard, GuestGuard } from '@/guards';
-import { HomeLayout } from '@/layouts';
 import React, { lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
+import { BasedGuard, GuestGuard } from '~/guards';
+import { HomeLayout } from '~/layouts';
 
-const Home = lazy(() => import('@/pages/home/Home'));
-const Login = lazy(() => import('@/pages/auth/Login'));
-const BecomeInstructor = lazy(() => import('@/pages/home/BecomeInstructor'));
-const Courses = lazy(() => import('@/pages/home/Courses'));
-const MyLearning = lazy(() => import('@/pages/home/MyLearning'));
-const Roadmap = lazy(() => import('@/pages/home/Roadmap'));
+const Home = lazy(() => import('~/pages/home/Home'));
+const Login = lazy(() => import('~/pages/auth/Login'));
+const BecomeInstructor = lazy(() => import('~/pages/home/BecomeInstructor'));
+const Courses = lazy(() => import('~/pages/home/Courses'));
+const MyLearning = lazy(() => import('~/pages/home/MyLearning'));
+const Roadmap = lazy(() => import('~/pages/home/Roadmap'));
+const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
+const Checkout = lazy(() => import('~/pages/home/Checkout'));
 
 export interface RouterProps {}
 
@@ -21,10 +23,10 @@ export default function Router(props: RouterProps) {
       children: [
         { element: <Navigate to='home' replace />, index: true },
         { path: 'home', element: <Home /> },
-        // { path: 'checkout', element: <Checkout /> },
+        { path: 'checkout', element: <Checkout /> },
         // { path: 'faqs', element: <Faqs /> },
         { path: 'courses', element: <Courses /> },
-        // { path: 'courses/:id', element: <CourseDetails /> },
+        { path: 'courses/:id', element: <CourseDetails /> },
         { path: 'roadmaps/:id', element: <Roadmap /> },
         // {
         // 	path: 'instructor/:id',

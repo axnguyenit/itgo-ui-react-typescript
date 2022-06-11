@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Pagination, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Page from '@/components/Page';
-import { CourseHero } from '@/sections/courses';
-import { orderApi } from '@/api';
-import { CourseList } from '@/sections/my-learning';
-import EmptyContent from '@/components/EmptyContent';
-import { OrderItem, PaginationParams } from '@/models';
+import Page from '~/components/Page';
+import { CourseHero } from '~/sections/courses';
+import { orderApi } from '~/api';
+import { CourseList } from '~/sections/my-learning';
+import EmptyContent from '~/components/EmptyContent';
+import { OrderItem, PaginationParams } from '~/models';
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(8),

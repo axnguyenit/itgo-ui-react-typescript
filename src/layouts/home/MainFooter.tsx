@@ -4,9 +4,9 @@ import { styled } from '@mui/material/styles';
 import { Grid, Link, Typography, Stack, Container } from '@mui/material';
 // routes
 // components
-import Logo from '@/components/Logo';
-import SocialsButton from '@/components/SocialsButton';
-import { PATH_PAGE } from '@/routes/paths';
+import Logo from '~/components/Logo';
+import SocialsButton from '~/components/SocialsButton';
+import { PATH_PAGE } from '~/routes/paths';
 
 // ----------------------------------------------------------------------
 

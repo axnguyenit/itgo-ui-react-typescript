@@ -4,8 +4,8 @@ import { Card, Typography, Box, Grid, CardHeader } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PATH_HOME } from 'src/routes/paths';
-import { Roadmap } from '@/models';
-import { roadmapApi } from '@/api';
+import { Roadmap } from '~/models';
+import { roadmapApi } from '~/api';
 
 // ----------------------------------------------------------------------
 

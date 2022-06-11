@@ -8,16 +8,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, Stack, Alert, IconButton, InputAdornment } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // routes
-import { PATH_AUTH } from '@/routes/paths';
+import { PATH_AUTH } from '~/routes/paths';
 // hooks
-import { useAuth } from '@/hooks';
+import { useAuth } from '~/hooks';
 // components
-import Iconify from '@/components/Iconify';
-import { FormProvider, RHFTextField } from '@/components/hook-form';
+import Iconify from '~/components/Iconify';
+import { FormProvider, RHFTextField } from '~/components/hook-form';
 
-import { Login } from '@/models';
-import { userApi } from '@/api';
-import { handleError, setSession } from '@/utils';
+import { Login } from '~/models';
+import { userApi } from '~/api';
+import { handleError, setSession } from '~/utils';
 
 // ----------------------------------------------------------------------
 

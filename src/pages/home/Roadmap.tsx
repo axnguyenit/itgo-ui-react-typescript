@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, createSearchParams } from 'react-router-dom';
 import { Box, Button, Card, Container, Stack, Typography } from '@mui/material';
 // component
-import Image from '@/components/Image';
-import Page from '@/components/Page';
-import { SkeletonRoadmap } from '@/components/skeleton';
+import Image from '~/components/Image';
+import Page from '~/components/Page';
+import { SkeletonRoadmap } from '~/components/skeleton';
 // api
-import { roadmapApi } from '@/api';
+import { roadmapApi } from '~/api';
 // paths
-import { PATH_PAGE, PATH_HOME } from '@/routes/paths';
+import { PATH_PAGE, PATH_HOME } from '~/routes/paths';
 // utils
-import { cloudinary } from '@/utils';
-import { RoadmapDetail, RoadmapType } from '@/models';
+import { cloudinary } from '~/utils';
+import { RoadmapDetail, RoadmapType } from '~/models';
 
 function Roadmap() {
   const [roadmap, setRoadmap] = useState<RoadmapType>();

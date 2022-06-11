@@ -1,20 +1,20 @@
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
 // @mui
-import { Box, Card, Link, Typography, Stack, Button } from '@mui/material';
-// routes
-import { PATH_AUTH, PATH_HOME } from '@/routes/paths';
-// redux
-import { useAppDispatch, useAppSelector, useAuth } from '@/hooks';
-import { addToCart } from '@/redux/slices/cart';
+import { Box, Button, Card, Link, Stack, Typography } from '@mui/material';
+import { useSnackbar } from 'notistack';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // api
-import { cartApi } from '@/api';
-import { CartData, Course } from '@/models';
-// utils
-import { cloudinary, fCurrency, handleError } from '@/utils';
+import { cartApi } from '~/api';
+import Image from '~/components/Image';
 // components
-import Label from '@/components/Label';
-import Image from '@/components/Image';
+import Label from '~/components/Label';
+// redux
+import { useAppDispatch, useAppSelector, useAuth } from '~/hooks';
+import { CartData, Course } from '~/models';
+import { addToCart } from '~/redux/slices/cart';
+// routes
+import { PATH_AUTH, PATH_HOME } from '~/routes/paths';
+// utils
+import { cloudinary, fCurrency, handleError } from '~/utils';
 
 // ----------------------------------------------------------------------
 

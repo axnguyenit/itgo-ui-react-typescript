@@ -1,5 +1,5 @@
 // @mui
-import Page from '@/components/Page';
+import Page from '~/components/Page';
 import { Container, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // components

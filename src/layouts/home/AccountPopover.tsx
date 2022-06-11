@@ -10,16 +10,16 @@ import {
   PATH_AUTH,
   PATH_HOME,
   PATH_INSTRUCTOR,
-} from '@/routes/paths';
+} from '~/routes/paths';
 // hooks
 // components
 // redux
-import { useAppDispatch, useAuth, useIsMountedRef } from '@/hooks';
-import { setSession } from '@/utils';
-import { resetCart } from '@/redux/slices/cart';
-import MenuPopover from '@/components/MenuPopover';
-import { IconButtonAnimate } from '@/components/animate';
-import MyAvatar from '@/components/MyAvatar';
+import { useAppDispatch, useAuth, useIsMountedRef } from '~/hooks';
+import { setSession } from '~/utils';
+import { resetCart } from '~/redux/slices/cart';
+import MenuPopover from '~/components/MenuPopover';
+import { IconButtonAnimate } from '~/components/animate';
+import MyAvatar from '~/components/MyAvatar';
 
 // ----------------------------------------------------------------------
 

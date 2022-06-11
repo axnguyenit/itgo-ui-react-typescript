@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { List, Collapse } from '@mui/material';
 //
 import { NavItemRoot, NavItemSub } from './NavItem';
-import { MenuItem } from '@/models';
-import { getActive } from '@/utils';
+import { MenuItem } from '~/models';
+import { getActive } from '~/utils';
 
 // ----------------------------------------------------------------------
 

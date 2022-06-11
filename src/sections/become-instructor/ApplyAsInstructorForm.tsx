@@ -12,11 +12,11 @@ import {
   FormProvider,
   RHFTextField,
   RHFUploadButton,
-} from '@/components/hook-form';
-import { useAuth } from '@/hooks';
+} from '~/components/hook-form';
+import { useAuth } from '~/hooks';
 // api
-import { applicationApi } from '@/api';
-import { Application } from '@/models';
+import { applicationApi } from '~/api';
+import { Application } from '~/models';
 
 // ----------------------------------------------------------------------
 
