@@ -9,6 +9,8 @@ import { UploadAvatar, UploadSingleFile } from '../upload';
 
 interface RHFUploadAvatarProps {
   name: string;
+
+  [key: string]: any;
 }
 
 export function RHFUploadAvatar({ name, ...other }: RHFUploadAvatarProps) {

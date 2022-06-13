@@ -11,6 +11,7 @@ const MyLearning = lazy(() => import('~/pages/home/MyLearning'));
 const Roadmap = lazy(() => import('~/pages/home/Roadmap'));
 const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
 const Checkout = lazy(() => import('~/pages/home/Checkout'));
+const AccountSettings = lazy(() => import('~/pages/home/AccountSettings'));
 
 export interface RouterProps {}
 
@@ -36,14 +37,14 @@ export default function Router(props: RouterProps) {
         // 		</BasedGuard>
         // 	),
         // },
-        // {
-        // 	path: 'account-settings',
-        // 	element: (
-        // 		<BasedGuard>
-        // 			<AccountSettings />
-        // 		</BasedGuard>
-        // 	),
-        // },
+        {
+          path: 'account-settings',
+          element: (
+            <BasedGuard>
+              <AccountSettings />
+            </BasedGuard>
+          ),
+        },
         {
           path: 'my-courses',
           element: (
