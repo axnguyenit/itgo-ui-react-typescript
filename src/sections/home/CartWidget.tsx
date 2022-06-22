@@ -4,12 +4,13 @@ import { Link as RouterLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Badge } from '@mui/material';
 // redux
+import { selectCart } from '~/redux/slices/cart';
 // routes
 import { PATH_HOME } from '~/routes/paths';
 // components
 import Iconify from '~/components/Iconify';
+// hooks
 import { useAppSelector } from '~/hooks';
-import { selectCart } from '~/redux/slices/cart';
 
 // ----------------------------------------------------------------------
 

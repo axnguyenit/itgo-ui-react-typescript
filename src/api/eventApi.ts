@@ -1,6 +1,8 @@
 import { Event, EventResponse } from '~/models';
 import { axios } from '~/utils';
 
+// ----------------------------------------------------------------------
+
 const eventApi = {
   getByInstructor(): Promise<EventResponse> {
     const url = '/api/events/get-by-instructor';

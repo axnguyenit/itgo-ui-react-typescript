@@ -1,19 +1,20 @@
+import { useSnackbar } from 'notistack';
 // @mui
 import { Box, Button, Card, Link, Stack, Typography } from '@mui/material';
-import { useSnackbar } from 'notistack';
+// routes
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // api
 import { cartApi } from '~/api';
-import Image from '~/components/Image';
 // components
+import Image from '~/components/Image';
 import Label from '~/components/Label';
 // redux
-import { useAppDispatch, useAppSelector, useAuth } from '~/hooks';
-import { CartData, Course } from '~/models';
 import { addToCart } from '~/redux/slices/cart';
-// routes
+// hooks
+import { useAppDispatch, useAppSelector, useAuth } from '~/hooks';
+//
+import { CartData, Course } from '~/models';
 import { PATH_AUTH, PATH_HOME } from '~/routes/paths';
-// utils
 import { cloudinary, fCurrency, handleError } from '~/utils';
 
 // ----------------------------------------------------------------------
@@ -37,11 +38,11 @@ export default function CourseCard({ course }: CourseCardProps) {
       (cartItem) => cartItem.course?._id === course._id
     );
 
-    if (!isExisted) {
+    if (!isExisted && course?._id) {
       try {
         const data: CartData = {
           total: cart.length + 1,
-          courseId: course._id as string,
+          courseId: course._id,
         };
         const response = await cartApi.add(data);
         const cartItem = {
@@ -52,7 +53,6 @@ export default function CourseCard({ course }: CourseCardProps) {
         enqueueSnackbar('Add to cart successfully');
         dispatch(addToCart(cartItem));
       } catch (error) {
-        console.error(error);
         const err = handleError(error);
 
         isAuthenticated

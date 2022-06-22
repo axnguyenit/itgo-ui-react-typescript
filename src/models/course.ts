@@ -1,6 +1,8 @@
 import { PaginationParams } from './common';
 import { User } from './user';
 
+// ----------------------------------------------------------------------
+
 export interface CourseDetail {
   _id?: string;
   id?: string;

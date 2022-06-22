@@ -1,6 +1,8 @@
 import { Application, ApplicationResponse, ListParams } from '~/models';
 import { axios } from '~/utils';
 
+// ----------------------------------------------------------------------
+
 const applicationApi = {
   getAll(params: ListParams): Promise<ApplicationResponse> {
     const url = '/api/applications';

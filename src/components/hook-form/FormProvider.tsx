@@ -1,6 +1,7 @@
-import React from 'react';
-import { ReactNode, FormEventHandler } from 'react';
+import React, { ReactNode, FormEventHandler } from 'react';
 import { FormProvider as RHFormProvider } from 'react-hook-form';
+
+// ----------------------------------------------------------------------
 
 export interface FormProviderProps {
   children: ReactNode;

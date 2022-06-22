@@ -1,3 +1,4 @@
+// @mui
 import {
   Box,
   IconButton,
@@ -9,11 +10,12 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
+// components
 import Iconify from '~/components/Iconify';
 import Image from '~/components/Image';
 import { CartItem } from '~/models';
-import cloudinary from '~/utils/cloudinary';
-import { fCurrency } from '~/utils/formatNumber';
+// utils
+import { fCurrency, cloudinary } from '~/utils';
 
 // ----------------------------------------------------------------------
 

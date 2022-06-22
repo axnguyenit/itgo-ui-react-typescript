@@ -1,10 +1,12 @@
 // import { cartApi } from '~/api';
 // import { useAppDispatch } from '~/hooks';
-import { CartItem } from '~/models';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { sum, unionBy } from 'lodash';
-import { dispatch, RootState } from '../store';
 import { cartApi } from '~/api';
+import { CartItem } from '~/models';
+import { RootState } from '../store';
+
+// ----------------------------------------------------------------------
 
 interface Cart {
   activeStep: number;
@@ -21,6 +23,14 @@ const initialState: Cart = {
   total: 0,
   discount: 0,
 };
+
+export const getCartFromServer = createAsyncThunk<CartItem[]>(
+  'cart/getCart',
+  async () => {
+    const { cartItems } = await cartApi.get();
+    return cartItems;
+  }
+);
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -43,7 +53,7 @@ const cartSlice = createSlice({
       state.total = subtotal - discount;
     },
 
-    addToCart: (state: Cart, action: PayloadAction<CartItem>) => {
+    addToCart(state: Cart, action: PayloadAction<CartItem>) {
       const course = action.payload;
       state.cart = unionBy([...state.cart, course], '_id');
     },
@@ -86,6 +96,11 @@ const cartSlice = createSlice({
       state.total = state.subtotal - discount;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getCartFromServer.fulfilled, (state, { payload }) => {
+      state.cart = payload;
+    });
+  },
 });
 
 export const selectCart = (state: RootState) => state.cart;
@@ -101,12 +116,3 @@ export const {
   setCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;
-
-export async function getCartFromServer() {
-  try {
-    const response = await cartApi.get();
-    dispatch(setCart(response.cartItems));
-  } catch (error) {
-    console.error(error);
-  }
-}

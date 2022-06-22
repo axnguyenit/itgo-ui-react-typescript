@@ -42,9 +42,7 @@ axiosInstance.interceptors.response.use(async (response: AxiosResponse) => {
       setSession(accessToken, refreshToken);
       config.headers.Authorization = `Bearer ${accessToken}`;
       return axiosInstance(config);
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   }
 
   return response.data;

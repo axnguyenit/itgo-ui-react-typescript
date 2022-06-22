@@ -1,5 +1,7 @@
 import { PaginationParams } from './common';
 
+// ----------------------------------------------------------------------
+
 export interface User {
   _id?: string;
   id?: string;

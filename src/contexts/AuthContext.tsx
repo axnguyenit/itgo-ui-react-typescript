@@ -5,10 +5,16 @@ import React, {
   useEffect,
   useReducer,
 } from 'react';
+// router
 import { useNavigate } from 'react-router-dom';
-import { userApi } from '~/api';
-import { getCartFromServer } from '~/redux/slices/cart';
 import { PATH_AUTH } from '~/routes/paths';
+// api
+import { userApi } from '~/api';
+// hooks
+import { useAppDispatch } from '~/hooks';
+// redux
+import { getCartFromServer } from '~/redux/slices/cart';
+//
 import { setSession } from '~/utils';
 
 interface AuthState {
@@ -91,6 +97,7 @@ const AuthContext = createContext<ContextType>({
 function AuthProvider({ children }: AuthProviderProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
+  const dispatchRedux = useAppDispatch();
 
   useEffect(() => {
     const initialize = async () => {
@@ -113,7 +120,7 @@ function AuthProvider({ children }: AuthProviderProps) {
                 user,
               },
             });
-            getCartFromServer();
+            dispatchRedux(getCartFromServer());
           }
         } else {
           dispatch({
@@ -125,7 +132,6 @@ function AuthProvider({ children }: AuthProviderProps) {
           });
         }
       } catch (err) {
-        console.error(err);
         dispatch({
           type: 'INITIALIZE',
           payload: {

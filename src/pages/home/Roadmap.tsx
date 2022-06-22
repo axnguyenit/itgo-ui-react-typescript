@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, createSearchParams } from 'react-router-dom';
 import { Box, Button, Card, Container, Stack, Typography } from '@mui/material';
-// component
+// components
 import Image from '~/components/Image';
 import Page from '~/components/Page';
 import { SkeletonRoadmap } from '~/components/skeleton';
@@ -13,7 +13,9 @@ import { PATH_PAGE, PATH_HOME } from '~/routes/paths';
 import { cloudinary } from '~/utils';
 import { RoadmapDetail, RoadmapType } from '~/models';
 
-function Roadmap() {
+// ----------------------------------------------------------------------
+
+export default function Roadmap() {
   const [roadmap, setRoadmap] = useState<RoadmapType>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -27,7 +29,6 @@ function Roadmap() {
         const { roadmap } = await roadmapApi.get(id);
         setRoadmap(roadmap);
       } catch (error) {
-        console.error(error);
         navigate(PATH_PAGE.page404);
       }
       setIsLoading(false);
@@ -72,8 +73,6 @@ function Roadmap() {
     </Page>
   );
 }
-
-export default Roadmap;
 
 interface RoadmapItemProps {
   technology: RoadmapDetail;

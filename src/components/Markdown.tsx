@@ -3,9 +3,8 @@ import remarkGfm from 'remark-gfm';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Link, Typography, Divider } from '@mui/material';
-//
+// components
 import Image from './Image';
-import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 

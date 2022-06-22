@@ -1,6 +1,7 @@
 import React from 'react';
+import { useSnackbar } from 'notistack';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { fCurrency } from '~/utils/formatNumber';
+// @mui
 import {
   Box,
   Button,
@@ -9,19 +10,23 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+// components
 import Image from '~/components/Image';
 import MyAvatar from '~/components/MyAvatar';
 import Iconify from '~/components/Iconify';
-import { fDate, handleError } from '~/utils';
-import { useSnackbar } from 'notistack';
 // redux
 import { addToCart } from '~/redux/slices/cart';
+// hooks
+import { useAppDispatch, useAppSelector, useAuth } from '~/hooks';
 // api
 import cartApi from '~/api/cartApi';
-import { useAppDispatch, useAppSelector, useAuth } from '~/hooks';
-import { PATH_AUTH } from '~/routes/paths';
-import cloudinary from '~/utils/cloudinary';
 import { CartData, Course } from '~/models';
+// paths
+import { PATH_AUTH } from '~/routes/paths';
+// utils
+import { fCurrency, cloudinary, fDate, handleError } from '~/utils';
+
+// ----------------------------------------------------------------------
 
 interface CourseDetailsSummaryProps {
   course: Course;
@@ -56,7 +61,6 @@ export default function CourseDetailsSummary({
         enqueueSnackbar('Add to cart successfully');
         dispatch(addToCart(cartItem));
       } catch (error) {
-        console.error(error);
         const err = handleError(error);
         isAuthenticated
           ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' })

@@ -5,9 +5,13 @@ import {
   Action,
 } from '@reduxjs/toolkit';
 import cartReducer from './slices/cart';
+import calendarReducer from './slices/calendar';
+
+// ----------------------------------------------------------------------
 
 const rootReducer = combineReducers({
   cart: cartReducer,
+  calendar: calendarReducer,
 });
 
 export const store = configureStore({

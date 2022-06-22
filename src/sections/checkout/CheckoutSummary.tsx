@@ -8,7 +8,9 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+// components
 import Iconify from '~/components/Iconify';
+// utils
 import { fCurrency } from '~/utils';
 
 // ----------------------------------------------------------------------

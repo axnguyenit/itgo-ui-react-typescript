@@ -1,5 +1,7 @@
 import { PaginationParams } from '.';
 
+// ----------------------------------------------------------------------
+
 export interface Application {
   _id?: string;
   id?: string;

@@ -1,6 +1,8 @@
 import { CartData, CartResponse } from '~/models';
 import { axios } from '~/utils';
 
+// ----------------------------------------------------------------------
+
 const cartApi = {
   get(): Promise<CartResponse> {
     const url = '/api/cart';

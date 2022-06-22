@@ -3,9 +3,9 @@ import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Stack, Typography } from '@mui/material';
+//
 import { Menu } from '~/models';
 import { getActive } from '~/utils';
-// components
 
 // ----------------------------------------------------------------------
 

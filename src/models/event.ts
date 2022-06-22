@@ -1,12 +1,15 @@
 import { PaginationParams } from '.';
 import { Course } from './course';
 
+// ----------------------------------------------------------------------
+
 export interface Event {
   _id?: string;
   id?: string;
   title: string;
-  instructor: string;
-  course: Partial<Course>;
+  instructor?: string;
+  courseId?: string;
+  course?: Partial<Course>;
   description: string;
   textColor: string;
   start: Date;

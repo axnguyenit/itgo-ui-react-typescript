@@ -1,6 +1,8 @@
 import { ListParams, Technology, TechnologyResponse } from '~/models';
 import { axios } from '~/utils';
 
+// ----------------------------------------------------------------------
+
 const technologiesApi = {
   getAll(params: ListParams): Promise<TechnologyResponse> {
     const url = '/api/technologies';

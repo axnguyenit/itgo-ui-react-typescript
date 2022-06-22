@@ -1,9 +1,8 @@
-// @mui
-import { alpha, styled } from '@mui/material/styles';
-import { Typography, Box, IconButton } from '@mui/material';
-import Iconify from '../Iconify';
 import { IconifyIcon } from '@iconify/react';
-//
+// @mui
+import { Box, IconButton, Typography } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles';
+import Iconify from '../Iconify';
 
 // ----------------------------------------------------------------------
 

@@ -21,12 +21,16 @@ export default function IconButtonAnimate({
   children,
   size = 'medium',
   color = 'inherit',
-  sx = {},
+  sx,
   ...other
 }: IconButtonAnimateProps) {
   return (
     <AnimateWrap size={size}>
-      <IconButton size={size} {...other}>
+      <IconButton
+        size={size}
+        sx={{ backgroundColor: 'transparent', ...sx }}
+        {...other}
+      >
         {children}
       </IconButton>
     </AnimateWrap>

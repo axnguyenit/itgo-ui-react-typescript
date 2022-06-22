@@ -24,10 +24,11 @@ export default function ListItem({
   activeSub = false,
   subItem = false,
   onClick = () => {},
-  sx = {},
+  sx,
   ...other
 }: ListItemProps) {
   const theme = useTheme();
+
   return (
     <ListItemButton
       sx={{
@@ -39,7 +40,7 @@ export default function ListItem({
         paddingRight: theme.spacing(1.5),
         marginBottom: theme.spacing(0.5),
         color: theme.palette.text.secondary,
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: 1,
         // activeRoot
         ...(activeRoot && {
           ...theme.typography.subtitle2,

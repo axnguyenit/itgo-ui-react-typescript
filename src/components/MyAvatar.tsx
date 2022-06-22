@@ -1,8 +1,8 @@
 // hooks
 import { useAuth } from '~/hooks';
-import { cloudinary, createAvatar } from '~/utils';
 // utils
-//
+import { cloudinary, createAvatar } from '~/utils';
+// components
 import Avatar from './Avatar';
 
 // ----------------------------------------------------------------------

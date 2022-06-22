@@ -1,11 +1,12 @@
 import { NavLink as RouterLink } from 'react-router-dom';
-import { ICON } from '~/config';
 // @mui
 import { Box, ListItemText, ListItemIcon } from '@mui/material';
 import { useTheme, styled } from '@mui/material/styles';
-//
-import Iconify from '../../Iconify';
+// components
 import ListItem from './ListItem';
+import Iconify from '~/components/Iconify';
+//
+import { ICON } from '~/config';
 import { MenuItem } from '~/models';
 
 // ----------------------------------------------------------------------
@@ -17,6 +18,7 @@ export const ListItemIconStyle = styled(ListItemIcon)({
   alignItems: 'center',
   justifyContent: 'center',
   '& svg': { width: '100%', height: '100%' },
+  borderRadius: 1,
 });
 
 interface NavItemRootProps {
@@ -46,6 +48,7 @@ export function NavItemRoot({
         primary={title}
         sx={{
           whiteSpace: 'nowrap',
+          textDecoration: 'none',
           transition: theme.transitions.create(['width', 'opacity'], {
             duration: theme.transitions.duration.shorter,
           }),
@@ -71,7 +74,7 @@ export function NavItemRoot({
   }
 
   return (
-    <RouterLink to={path}>
+    <RouterLink to={path} style={{ textDecoration: 'none' }}>
       <ListItem activeRoot={active}>{renderContent}</ListItem>
     </RouterLink>
   );
@@ -111,7 +114,7 @@ export function NavItemSub({
   }
 
   return (
-    <RouterLink to={path}>
+    <RouterLink to={path} style={{ textDecoration: 'none' }}>
       <ListItem activeSub={active} subItem>
         {renderContent}
       </ListItem>

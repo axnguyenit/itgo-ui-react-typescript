@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
-import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 // form
+import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
@@ -13,6 +13,7 @@ import {
   RHFTextField,
   RHFUploadButton,
 } from '~/components/hook-form';
+// hooks
 import { useAuth } from '~/hooks';
 // api
 import { applicationApi } from '~/api';
@@ -59,9 +60,7 @@ export default function ApplyAsInstructorForm() {
           isAuthenticated: true,
         },
       });
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {

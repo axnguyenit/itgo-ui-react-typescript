@@ -1,13 +1,13 @@
+import { ReactNode } from 'react';
 import isString from 'lodash/isString';
 import { useDropzone } from 'react-dropzone';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, SxProps, Theme } from '@mui/material';
-//
+// components
 import Image from '../Image';
 import RejectionFiles from './RejectionFiles';
 import BlockContent from './BlockContent';
-import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 

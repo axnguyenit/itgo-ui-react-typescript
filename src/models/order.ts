@@ -2,6 +2,8 @@ import { PaginationParams } from '.';
 import { Course } from './course';
 import { Payment } from './payment';
 
+// ----------------------------------------------------------------------
+
 export interface OrderItem {
   _id?: string;
   id?: string;

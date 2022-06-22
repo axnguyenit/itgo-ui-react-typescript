@@ -1,23 +1,21 @@
-import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 // routes
-import { PATH_AUTH } from 'src/routes/paths';
+import { NavLink as RouterLink, useLocation } from 'react-router-dom';
+import { PATH_AUTH } from '~/routes/paths';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
 import { Box, Button, AppBar, Toolbar, Container } from '@mui/material';
-// hooks
-// utils
-import cssStyles from '../../utils/cssStyles';
-// config
-import { HEADER } from '../../config';
 // components
-import Logo from '../../components/Logo';
-//
-import MenuDesktop from './MenuDesktop';
-import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
-// import Searchbar from './Searchbar';
-import AccountPopover from './AccountPopover';
+import Logo from '~/components/Logo';
+import MenuMobile from './MenuMobile';
+import MenuDesktop from './MenuDesktop';
+import AccountPopover from '../components/account-popover';
+// hooks
 import { useAuth, useResponsive, useOffSetTop } from '~/hooks';
+// utils
+import cssStyles from '~/utils/cssStyles';
+// config
+import { HEADER } from '~/config';
 
 // ----------------------------------------------------------------------
 
@@ -55,7 +53,7 @@ export default function MainHeader() {
 
   const { pathname } = useLocation();
 
-  const isDesktop = useResponsive('up', 'md', '', '');
+  const isDesktop = useResponsive('up', 'md');
 
   const isHome = pathname === '/home';
 
@@ -65,11 +63,11 @@ export default function MainHeader() {
         disableGutters
         sx={{
           ...(isOffset && {
-            ...cssStyles(theme).bgBlur({}),
+            ...cssStyles(theme).bgBlur(),
             height: { md: HEADER.MAIN_DESKTOP_HEIGHT - 16 },
           }),
           ...(!isHome && {
-            ...cssStyles(theme).bgBlur({}),
+            ...cssStyles(theme).bgBlur(),
           }),
         }}
       >

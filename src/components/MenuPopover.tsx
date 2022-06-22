@@ -122,7 +122,7 @@ export default function MenuPopover({
       ...(arrow === 'right-bottom' && { ...rightStyle, bottom: 20 }),
     };
 
-    return <Box component={'span'} sx={style} />;
+    return <Box component='span' sx={style} />;
   };
 
   return (

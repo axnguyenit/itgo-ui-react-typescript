@@ -1,41 +1,46 @@
-// @mui
-// import { styled } from '@mui/material/styles';
-import { Box, Stack } from '@mui/material';
-//
-import Iconify from '../Iconify';
-import { IconButtonAnimate } from '../animate';
 import { ReactNode } from 'react';
 import { IconifyIcon } from '@iconify/react';
+// @mui
+import { styled, useTheme } from '@mui/material/styles';
+import { Box, Stack, Theme } from '@mui/material';
+// components
+import { IconButtonAnimate } from '../animate';
+import Iconify from '../Iconify';
 
 // ----------------------------------------------------------------------
 
-// const BUTTON_SIZE = 40;
+const BUTTON_SIZE = 40;
 
-// const ArrowStyle = styled(IconButtonAnimate, {
-//   shouldForwardProp: (prop) => prop !== 'filled',
-// })(({ filled, theme }) => ({
-//   width: BUTTON_SIZE,
-//   height: BUTTON_SIZE,
-//   cursor: 'pointer',
-//   borderRadius: '50%',
-//   display: 'flex',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-//   '&:hover': {
-//     color: theme.palette.text.primary,
-//   },
-//   ...(filled && {
-//     opacity: 0.48,
-//     borderRadius: Number(theme.shape.borderRadius) * 1.5,
-//     color: theme.palette.common.white,
-//     backgroundColor: theme.palette.grey[900],
-//     '&:hover': {
-//       opacity: 1,
-//       color: theme.palette.common.white,
-//       backgroundColor: theme.palette.grey[900],
-//     },
-//   }),
-// }));
+interface ArrowStyleProps {
+  filled?: boolean;
+  theme: Theme;
+}
+
+const ArrowStyle = styled(IconButtonAnimate, {
+  shouldForwardProp: (prop) => prop !== 'filled',
+})(({ filled = false, theme }: ArrowStyleProps) => ({
+  width: BUTTON_SIZE,
+  height: BUTTON_SIZE,
+  cursor: 'pointer',
+  borderRadius: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '&:hover': {
+    color: theme.palette.text.primary,
+  },
+  ...(filled && {
+    opacity: 0.48,
+    borderRadius: Number(theme.shape.borderRadius) * 1.5,
+    color: theme.palette.common.white,
+    backgroundColor: theme.palette.grey[900],
+    '&:hover': {
+      opacity: 1,
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.grey[900],
+    },
+  }),
+}));
 
 // ----------------------------------------------------------------------
 
@@ -57,6 +62,7 @@ export default function CarouselArrows({
   children,
   ...other
 }: CarouselArrowsProps) {
+  const theme = useTheme();
   const style = {
     position: 'absolute',
     mt: -2.5,
@@ -68,17 +74,17 @@ export default function CarouselArrows({
     return (
       <Box {...other}>
         <Box className='arrow left' sx={{ ...style, left: 0 }}>
-          <IconButtonAnimate onClick={onPrevious}>
+          <ArrowStyle onClick={onPrevious} filled theme={theme}>
             {leftIcon(customIcon)}
-          </IconButtonAnimate>
+          </ArrowStyle>
         </Box>
 
         {children}
 
         <Box className='arrow right' sx={{ ...style, right: 0 }}>
-          <IconButtonAnimate onClick={onNext}>
+          <ArrowStyle onClick={onNext} filled theme={theme}>
             {rightIcon(customIcon)}
-          </IconButtonAnimate>
+          </ArrowStyle>
         </Box>
       </Box>
     );
@@ -86,12 +92,17 @@ export default function CarouselArrows({
 
   return (
     <Stack direction='row' spacing={1} {...other}>
-      <IconButtonAnimate className='arrow left' onClick={onPrevious}>
+      <ArrowStyle
+        className='arrow left'
+        filled
+        onClick={onPrevious}
+        theme={theme}
+      >
         {leftIcon(customIcon)}
-      </IconButtonAnimate>
-      <IconButtonAnimate className='arrow right' onClick={onNext}>
+      </ArrowStyle>
+      <ArrowStyle className='arrow right' filled onClick={onNext} theme={theme}>
         {rightIcon(customIcon)}
-      </IconButtonAnimate>
+      </ArrowStyle>
     </Stack>
   );
 }
@@ -104,6 +115,7 @@ const leftIcon = (customIcon: IconifyIcon | string) => (
     sx={{
       width: 20,
       height: 20,
+      borderRadius: 1,
       transform: ' scaleX(-1)',
     }}
   />
@@ -115,6 +127,7 @@ const rightIcon = (customIcon: IconifyIcon | string) => (
     sx={{
       width: 20,
       height: 20,
+      borderRadius: 1,
     }}
   />
 );

@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
+// @mui
 import { Container, Pagination, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
+// components
 import Page from '~/components/Page';
-import { CourseHero } from '~/sections/courses';
-import { orderApi } from '~/api';
-import { CourseList } from '~/sections/my-learning';
 import EmptyContent from '~/components/EmptyContent';
+// sections
+import { CourseHero } from '~/sections/courses';
+import { CourseList } from '~/sections/my-learning';
+// api
+import { orderApi } from '~/api';
 import { OrderItem, PaginationParams } from '~/models';
+
+// ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(8),
@@ -35,9 +41,7 @@ function MyLearning() {
         const { orders, pagination } = await orderApi.getByUser(params);
         setEnrolledCourseList(orders);
         pagination && setPagination(pagination);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
       setIsLoading(false);
     };
 

@@ -1,19 +1,25 @@
-import { Button, Card, CardHeader, Grid, Typography } from '@mui/material';
-import { useSnackbar } from 'notistack';
 import { useEffect } from 'react';
+import { useSnackbar } from 'notistack';
+// @mui
+import { Button, Card, CardHeader, Grid, Typography } from '@mui/material';
+// router
 import { Link as RouterLink, useSearchParams } from 'react-router-dom';
-import cartApi from '~/api/cartApi';
-import paymentApi from '~/api/paymentApi';
-import EmptyContent from '~/components/EmptyContent';
+// components
 import Iconify from '~/components/Iconify';
 import Scrollbar from '~/components/Scrollbar';
+import EmptyContent from '~/components/EmptyContent';
+import CheckoutSummary from './CheckoutSummary';
+import CheckoutCourseList from './CheckoutCourseList';
+// hooks
 import { useAppDispatch, useAppSelector } from '~/hooks';
+// api
+import { cartApi, paymentApi } from '~/api';
 import { Payment } from '~/models';
+// redux
 import { deleteCart, getCartFromServer, onNextStep } from '~/redux/slices/cart';
 import { PATH_HOME } from '~/routes/paths';
+//
 import { handleError } from '~/utils';
-import CheckoutCourseList from './CheckoutCourseList';
-import CheckoutSummary from './CheckoutSummary';
 
 // ----------------------------------------------------------------------
 
@@ -37,9 +43,12 @@ export default function CheckoutCart() {
         const transId = searchParams.get('transId');
         const message = searchParams.get('message');
         const amount = searchParams.get('amount');
+
+        if (!transId || !message) return;
+
         const data: Payment = {
-          transId: transId as string,
-          message: message as string,
+          transId: transId,
+          message: message,
           amount: Number(amount),
           resultCode,
           cart,
@@ -47,10 +56,8 @@ export default function CheckoutCart() {
 
         await paymentApi.add(data);
         setSearchParams({});
-        getCartFromServer();
-      } catch (error) {
-        console.error(error);
-      }
+        dispatch(getCartFromServer());
+      } catch (error) {}
     }
   };
 

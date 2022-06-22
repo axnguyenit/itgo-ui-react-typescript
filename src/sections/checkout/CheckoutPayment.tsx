@@ -1,16 +1,22 @@
+// form
+import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+// @mui
 import { LoadingButton } from '@mui/lab';
 import { Button, Grid } from '@mui/material';
-import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
-import paymentApi from '~/api/paymentApi';
-import { FormProvider } from '~/components/hook-form';
+// components
 import Iconify from '~/components/Iconify';
-import { useAppDispatch, useAppSelector } from '~/hooks';
-import { PaymentOption } from '~/models';
-import { onBackStep, onGotoStep } from '~/redux/slices/cart';
-import CheckoutPaymentMethods from './CheckoutPaymentMethods';
+import { FormProvider } from '~/components/hook-form';
 import CheckoutSummary from './CheckoutSummary';
+import CheckoutPaymentMethods from './CheckoutPaymentMethods';
+// hooks
+import { useAppDispatch, useAppSelector } from '~/hooks';
+// redux
+import { onBackStep, onGotoStep } from '~/redux/slices/cart';
+// api
+import { paymentApi } from '~/api';
+import { PaymentOption } from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -65,9 +71,7 @@ export default function CheckoutPayment() {
     try {
       const { payUrl } = await paymentApi.getPayUrl();
       window.location.href = payUrl;
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   return (

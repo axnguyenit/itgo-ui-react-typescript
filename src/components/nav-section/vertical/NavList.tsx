@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 // @mui
 import { List, Collapse } from '@mui/material';
-//
+// components
 import { NavItemRoot, NavItemSub } from './NavItem';
+//
 import { MenuItem } from '~/models';
 import { getActive } from '~/utils';
 

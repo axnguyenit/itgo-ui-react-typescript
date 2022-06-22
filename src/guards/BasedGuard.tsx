@@ -1,8 +1,11 @@
-import LoadingScreen from '~/components/LoadingScreen';
-import { PATH_AUTH } from '~/routes/paths';
 import React, { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
+//
+import LoadingScreen from '~/components/LoadingScreen';
+import { PATH_AUTH } from '~/routes/paths';
 import { useAuth } from '~/hooks';
+
+// ----------------------------------------------------------------------
 
 export interface BasedGuardProps {
   children: ReactNode;

@@ -1,3 +1,6 @@
+// form
+import { Controller, useFormContext } from 'react-hook-form';
+// @mui
 import {
   Box,
   Card,
@@ -11,10 +14,12 @@ import {
   Typography,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Controller, useFormContext } from 'react-hook-form';
+// components
 import Iconify from '~/components/Iconify';
 import Image from '~/components/Image';
+// hooks
 import { useResponsive } from '~/hooks';
+//
 import { PaymentOption } from '~/models';
 
 // ----------------------------------------------------------------------
@@ -40,7 +45,7 @@ export default function CheckoutPaymentMethods({
 }: CheckoutPaymentMethodsProps) {
   const { control } = useFormContext();
 
-  const isDesktop = useResponsive('up', 'sm', '', '');
+  const isDesktop = useResponsive('up', 'sm');
 
   return (
     <Card sx={{ my: 3 }}>

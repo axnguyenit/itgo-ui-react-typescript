@@ -15,7 +15,7 @@ function getDirection(value = 'bottom') {
 
 export default function cssStyles(theme: Theme) {
   return {
-    bgBlur: (props: any) => {
+    bgBlur: (props?: any) => {
       const color =
         props?.color || theme?.palette.background.default || '#000000';
 
@@ -28,7 +28,7 @@ export default function cssStyles(theme: Theme) {
         backgroundColor: alpha(color, opacity),
       };
     },
-    bgGradient: (props: any) => {
+    bgGradient: (props?: any) => {
       const direction = getDirection(props?.direction);
       const startColor = props?.startColor || `${alpha('#000000', 0)} 0%`;
       const endColor = props?.endColor || '#000000 75%';
@@ -37,7 +37,7 @@ export default function cssStyles(theme: Theme) {
         background: `linear-gradient(${direction}, ${startColor}, ${endColor});`,
       };
     },
-    bgImage: (props: any) => {
+    bgImage: (props?: any) => {
       const url =
         props?.url ||
         'https://minimal-assets-api.vercel.app/assets/images/bg_gradient.jpg';

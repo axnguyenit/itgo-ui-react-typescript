@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+// ----------------------------------------------------------------------
+
 export interface VariantType {
   duration?: number;
   durationOut?: number;
@@ -73,9 +75,25 @@ export type Color =
   | 'warning'
   | 'error';
 
-  export interface PaymentOption {
-    value: string;
-    title: string;
-    description: string;
-    icons: string[];
-  }
+export interface PaymentOption {
+  value: string;
+  title: string;
+  description: string;
+  icons: string[];
+}
+
+export type CalendarView =
+  | 'dayGridMonth'
+  | 'timeGridWeek'
+  | 'timeGridDay'
+  | 'listWeek';
+
+export interface CalendarArg {
+  start: Date;
+  end: Date;
+}
+
+export interface BreadcrumbsLink {
+  name: string;
+  href?: string;
+}

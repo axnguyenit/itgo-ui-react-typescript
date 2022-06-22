@@ -1,9 +1,13 @@
-import { Box, Container, Tab, Tabs } from '@mui/material';
-import { capitalCase } from 'change-case';
 import { useEffect, useState } from 'react';
+import { capitalCase } from 'change-case';
+// @mui
+import { Box, Container, Tab, Tabs } from '@mui/material';
+// router
 import { useSearchParams } from 'react-router-dom';
+// components
 import Iconify from '~/components/Iconify';
 import Page from '~/components/Page';
+// sections
 import { AccountChangePassword, AccountGeneral } from '~/sections/my-account';
 
 // ----------------------------------------------------------------------

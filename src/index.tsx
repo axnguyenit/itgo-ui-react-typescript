@@ -2,7 +2,7 @@
 // import './utils/highlight';
 
 // scroll bar
-// import 'simplebar/src/simplebar.css';
+import 'simplebar/src/simplebar.css';
 
 // lightbox
 // import 'react-image-lightbox/style.css';
@@ -30,7 +30,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 // redux
 import { store } from './redux/store';
 // contexts
-import { AuthProvider } from './contexts';
+import { AuthProvider, CollapseDrawerProvider } from './contexts';
 
 import App from './App';
 import './index.css';
@@ -44,17 +44,19 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <ReduxProvider store={store}>
+      <ReduxProvider store={store}>
+        <AuthProvider>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <HelmetProvider>
               <Suspense fallback={<LoadingScreen />}>
-                <App />
+                <CollapseDrawerProvider>
+                  <App />
+                </CollapseDrawerProvider>
               </Suspense>
             </HelmetProvider>
           </LocalizationProvider>
-        </ReduxProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </ReduxProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

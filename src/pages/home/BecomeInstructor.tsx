@@ -9,12 +9,13 @@ import {
   Alert,
   Stack,
 } from '@mui/material';
-// components
 // sections
 import { useAuth } from '~/hooks';
-import { CourseHero } from '~/sections/courses';
+// components
 import Image from '~/components/Image';
 import Page from '~/components/Page';
+// sections
+import { CourseHero } from '~/sections/courses';
 import { ApplyAsInstructorForm } from '~/sections/become-instructor';
 
 // ----------------------------------------------------------------------

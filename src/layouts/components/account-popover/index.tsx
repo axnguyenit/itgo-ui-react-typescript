@@ -1,25 +1,33 @@
-import { useSnackbar } from 'notistack';
 import { MouseEvent, useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 // @mui
-import { alpha } from '@mui/material/styles';
-import { Box, Divider, Typography, Stack, MenuItem } from '@mui/material';
-// routes
 import {
-  PATH_DASHBOARD,
+  Box,
+  Divider,
+  MenuItem,
+  Stack,
+  Typography,
+  Theme,
+} from '@mui/material';
+import { alpha } from '@mui/material/styles';
+// router
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import {
   PATH_AUTH,
+  PATH_DASHBOARD,
   PATH_HOME,
   PATH_INSTRUCTOR,
 } from '~/routes/paths';
-// hooks
 // components
-// redux
-import { useAppDispatch, useAuth, useIsMountedRef } from '~/hooks';
-import { setSession } from '~/utils';
-import { resetCart } from '~/redux/slices/cart';
-import MenuPopover from '~/components/MenuPopover';
 import { IconButtonAnimate } from '~/components/animate';
+import MenuPopover from '~/components/MenuPopover';
 import MyAvatar from '~/components/MyAvatar';
+// hooks
+import { useAppDispatch, useAuth, useIsMountedRef } from '~/hooks';
+// redux
+import { resetCart } from '~/redux/slices/cart';
+//
+import { setSession } from '~/utils';
 
 // ----------------------------------------------------------------------
 
@@ -63,7 +71,6 @@ export default function AccountPopover() {
         handleClose();
       }
     } catch (error) {
-      console.error(error);
       enqueueSnackbar('Unable to logout!', { variant: 'error' });
     }
   };
@@ -74,17 +81,17 @@ export default function AccountPopover() {
         onClick={handleOpen}
         sx={{
           p: 0,
-          // ...(open && (
-          '&:before': {
-            zIndex: 1,
-            content: "''",
-            width: '100%',
-            height: '100%',
-            borderRadius: '50%',
-            position: 'absolute',
-            bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
-          },
-          // )),
+          ...(open && {
+            '&:before': {
+              zIndex: 1,
+              content: "''",
+              width: '100%',
+              height: '100%',
+              borderRadius: '50%',
+              position: 'absolute',
+              bgcolor: (theme: Theme) => alpha(theme.palette.grey[900], 0.8),
+            },
+          }),
         }}
       >
         <MyAvatar />

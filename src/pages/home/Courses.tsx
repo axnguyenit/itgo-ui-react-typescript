@@ -93,9 +93,7 @@ export default function Courses() {
         const { courses, pagination } = await courseApi.getAll(params);
         setCourses(courses);
         pagination && setPagination(pagination);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
       setIsLoading(false);
     };
 
@@ -109,6 +107,7 @@ export default function Courses() {
     setSearchParams({
       ...Object.fromEntries(searchParams),
       category: value,
+      page: '1',
     });
   };
 

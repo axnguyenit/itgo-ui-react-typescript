@@ -50,7 +50,6 @@ export default function CourseDetails() {
         const { course } = await courseApi.get(id);
         setCourse(course);
       } catch (error) {
-        console.error(error);
         navigate(PATH_PAGE.page404);
       }
     };

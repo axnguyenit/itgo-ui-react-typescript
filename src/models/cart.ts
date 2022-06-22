@@ -1,5 +1,7 @@
 import { Course } from './course';
 
+// ----------------------------------------------------------------------
+
 export interface Cart {
   _id: string;
   userId: string;

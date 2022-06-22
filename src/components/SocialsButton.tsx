@@ -9,7 +9,7 @@ import {
   SxProps,
   Theme,
 } from '@mui/material';
-//
+// components
 import Iconify from './Iconify';
 
 // ----------------------------------------------------------------------

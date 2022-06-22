@@ -1,8 +1,8 @@
-// routes
+// components
 import Iconify from '~/components/Iconify';
+//
 import { Menu } from '~/models';
 import { PATH_HOME } from '~/routes/paths';
-// components
 
 // ----------------------------------------------------------------------
 

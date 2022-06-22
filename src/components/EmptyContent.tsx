@@ -1,7 +1,7 @@
 // @mui
-import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
-//
+import { styled } from '@mui/material/styles';
+// components
 import Image from './Image';
 
 // ----------------------------------------------------------------------

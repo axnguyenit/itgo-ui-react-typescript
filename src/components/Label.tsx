@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
-import { ReactNode } from 'react';
+//
 import { Color } from '~/models';
 
 // ----------------------------------------------------------------------

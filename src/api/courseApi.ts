@@ -7,6 +7,8 @@ import {
 } from '~/models';
 import { axios } from '~/utils';
 
+// ----------------------------------------------------------------------
+
 const courseApi = {
   getAll(params: ListParams): Promise<CoursesResponse> {
     const url = '/api/courses';

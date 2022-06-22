@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Card, Typography, Box, Grid, CardHeader } from '@mui/material';
-import { useEffect, useState } from 'react';
+// router
 import { useNavigate } from 'react-router-dom';
-import { PATH_HOME } from 'src/routes/paths';
+import { PATH_HOME } from '~/routes/paths';
+// api
 import { Roadmap } from '~/models';
 import { roadmapApi } from '~/api';
 
@@ -34,9 +36,7 @@ export default function HomeRoadmapList() {
       try {
         const response = await roadmapApi.getAll(params);
         setRoadmapList(response.roadmaps);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
     };
 
     getAllRoadmaps();

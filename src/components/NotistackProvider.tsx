@@ -3,7 +3,7 @@ import { SnackbarKey, SnackbarProvider } from 'notistack';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, GlobalStyles } from '@mui/material';
-//
+// components
 import Iconify from './Iconify';
 import { IconButtonAnimate } from './animate';
 

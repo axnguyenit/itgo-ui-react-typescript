@@ -3,14 +3,14 @@ import { Link as RouterLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Stack, Link, Container, Typography, Card } from '@mui/material';
 // routes
-import { PATH_AUTH } from '../../routes/paths';
+import { PATH_AUTH } from '~/routes/paths';
 // hooks
 // components
-import Page from '../../components/Page';
-import Logo from '../../components/Logo';
-import Image from '../../components/Image';
+import Page from '~/components/Page';
+import Logo from '~/components/Logo';
+import Image from '~/components/Image';
 // sections
-import { LoginForm } from '../../sections/auth';
+import { LoginForm } from '~/sections/auth';
 import { useResponsive } from '~/hooks';
 
 // ----------------------------------------------------------------------
@@ -59,8 +59,8 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
-  const smUp = useResponsive('up', 'sm', '', '');
-  const mdUp = useResponsive('up', 'md', '', '');
+  const smUp = useResponsive('up', 'sm');
+  const mdUp = useResponsive('up', 'md');
 
   return (
     <Page title='Login'>

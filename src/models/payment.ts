@@ -1,6 +1,8 @@
 import { CartItem } from './cart';
 import { User } from './user';
 
+// ----------------------------------------------------------------------
+
 export interface Payment {
   _id?: string;
   id?: string;

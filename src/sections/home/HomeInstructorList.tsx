@@ -1,5 +1,6 @@
-import Slider from 'react-slick';
 import { useEffect, useRef, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import Slider from 'react-slick';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -12,18 +13,18 @@ import {
   Rating,
   Link,
 } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-// @mui
 import { styled } from '@mui/material/styles';
-// utils
 // components
-import { CarouselArrows } from '~/components/carousel';
-import { PATH_INSTRUCTOR } from '~/routes/paths';
-import { cloudinary, cssStyles } from '~/utils';
 import Image from '~/components/Image';
-import { User } from '~/models';
-import { userApi } from '~/api';
 import SvgIconStyle from '~/components/SvgIconStyle';
+import { CarouselArrows } from '~/components/carousel';
+// api
+import { userApi } from '~/api';
+import { User } from '~/models';
+// paths
+import { PATH_INSTRUCTOR } from '~/routes/paths';
+// utils
+import { cloudinary, cssStyles } from '~/utils';
 
 // ----------------------------------------------------------------------
 
@@ -41,9 +42,7 @@ export default function HomeInstructorList() {
       const response = await userApi.getAllInstructors(params);
 
       setInstructorList(response.instructors);
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -80,7 +79,7 @@ export default function HomeInstructorList() {
   };
 
   const handlePrevious = () => {
-    // carouselRef.current?.slickPrev();
+    carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {

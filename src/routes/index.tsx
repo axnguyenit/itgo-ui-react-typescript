@@ -1,7 +1,11 @@
 import React, { lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
-import { BasedGuard, GuestGuard } from '~/guards';
+import { BasedGuard, GuestGuard, InstructorGuard } from '~/guards';
 import { HomeLayout } from '~/layouts';
+import InstructorLayout from '~/layouts/instructor';
+import { PATH_INSTRUCTOR } from './paths';
+
+// ----------------------------------------------------------------------
 
 const Home = lazy(() => import('~/pages/home/Home'));
 const Login = lazy(() => import('~/pages/auth/Login'));
@@ -12,10 +16,12 @@ const Roadmap = lazy(() => import('~/pages/home/Roadmap'));
 const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
 const Checkout = lazy(() => import('~/pages/home/Checkout'));
 const AccountSettings = lazy(() => import('~/pages/home/AccountSettings'));
+const StudentCalendar = lazy(() => import('~/pages/home/Calendar'));
+const InstructorCalendar = lazy(() => import('~/pages/instructor/Calendar'));
 
-export interface RouterProps {}
+// ----------------------------------------------------------------------
 
-export default function Router(props: RouterProps) {
+export default function Router() {
   return useRoutes([
     // Home Routes
     {
@@ -53,14 +59,14 @@ export default function Router(props: RouterProps) {
             </BasedGuard>
           ),
         },
-        // {
-        // 	path: 'my-courses/:id/events',
-        // 	element: (
-        // 		<BasedGuard>
-        // 			<StudentCalendar />
-        // 		</BasedGuard>
-        // 	),
-        // },
+        {
+          path: 'my-courses/:id/events',
+          element: (
+            <BasedGuard>
+              <StudentCalendar />
+            </BasedGuard>
+          ),
+        },
         {
           path: 'become-instructor',
           element: (
@@ -69,6 +75,32 @@ export default function Router(props: RouterProps) {
             </BasedGuard>
           ),
         },
+      ],
+    },
+
+    // Instructor Routes
+    {
+      path: 'instructor',
+      element: (
+        <InstructorGuard>
+          <InstructorLayout />
+        </InstructorGuard>
+      ),
+      children: [
+        {
+          element: <Navigate to={PATH_INSTRUCTOR.calendar} replace />,
+          index: true,
+        },
+        { path: 'calendar', element: <InstructorCalendar /> },
+        // {
+        // 	path: 'courses',
+        // 	children: [
+        // 		{ element: <InstructorCourses />, index: true },
+        // 		{ path: 'create', element: <InstructorCourseCreate /> },
+        // 		{ path: ':id/students', element: <InstructorStudents /> },
+        // 		{ path: ':id/edit', element: <InstructorCourseCreate /> },
+        // 	],
+        // },
       ],
     },
 

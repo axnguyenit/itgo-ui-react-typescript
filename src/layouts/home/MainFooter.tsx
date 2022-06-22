@@ -1,11 +1,12 @@
-import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Grid, Link, Typography, Stack, Container } from '@mui/material';
 // routes
+import { Link as RouterLink } from 'react-router-dom';
 // components
 import Logo from '~/components/Logo';
 import SocialsButton from '~/components/SocialsButton';
+//
 import { PATH_PAGE } from '~/routes/paths';
 
 // ----------------------------------------------------------------------

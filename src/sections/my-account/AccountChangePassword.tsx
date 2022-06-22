@@ -1,15 +1,20 @@
+import { useState } from 'react';
+import { useSnackbar } from 'notistack';
+// form
+import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+// @mui
 import { LoadingButton } from '@mui/lab';
 import { Alert, Card, IconButton, InputAdornment, Stack } from '@mui/material';
-import { useSnackbar } from 'notistack';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
+// components
+import Iconify from '~/components/Iconify';
+import { FormProvider, RHFTextField } from '~/components/hook-form';
+// api
+import { userApi } from '~/api';
 import { ChangePassword } from '~/models';
+// utils
 import { handleError } from '~/utils';
-import userApi from '../../api/userApi';
-import { FormProvider, RHFTextField } from '../../components/hook-form';
-import Iconify from '../../components/Iconify';
 
 // ----------------------------------------------------------------------
 

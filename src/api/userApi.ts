@@ -13,6 +13,8 @@ import {
 } from '~/models';
 import { axios } from '~/utils';
 
+// ----------------------------------------------------------------------
+
 const userApi = {
   getAll(params: ListParams): Promise<UsersResponse> {
     const url = '/api/users';

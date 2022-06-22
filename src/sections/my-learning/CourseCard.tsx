@@ -1,11 +1,12 @@
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Box, Card, Link, Typography, Stack, Button } from '@mui/material';
-// routes
-import { PATH_HOME } from '~/routes/paths';
+import { Box, Button, Card, Link, Stack, Typography } from '@mui/material';
+// components
 import Image from '~/components/Image';
-import cloudinary from '~/utils/cloudinary';
+//
 import { OrderItem } from '~/models';
+import { PATH_HOME } from '~/routes/paths';
+import { cloudinary } from '~/utils';
 
 // ----------------------------------------------------------------------
 

@@ -1,19 +1,25 @@
+import { useCallback } from 'react';
+import { useSnackbar } from 'notistack';
+// form
+import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+// @mui
 import { LoadingButton } from '@mui/lab';
 import { Box, Card, Grid, Stack, Typography } from '@mui/material';
-import { useSnackbar } from 'notistack';
-import { useCallback } from 'react';
-import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
-import { userApi } from '~/api';
+// components
 import {
   FormProvider,
   RHFTextField,
   RHFUploadAvatar,
 } from '~/components/hook-form';
+// hooks
 import { useAuth } from '~/hooks';
+// api
+import { userApi } from '~/api';
 import { User } from '~/models';
-import cloudinary from '~/utils/cloudinary';
+//
+import { cloudinary } from '~/utils';
 
 // ----------------------------------------------------------------------
 
@@ -55,9 +61,7 @@ export default function AccountGeneral() {
       data.id = user._id;
       await userApi.update(data);
       enqueueSnackbar('Update success!');
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   const handleDrop = useCallback(

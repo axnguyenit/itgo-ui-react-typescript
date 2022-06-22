@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { CardHeader, Box } from '@mui/material';
-import { useNavigate, createSearchParams } from 'react-router-dom';
+// @mui
+import { Box, CardHeader } from '@mui/material';
+// router
+import { createSearchParams, useNavigate } from 'react-router-dom';
 // components
 import Image from '~/components/Image';
-// paths
-import { PATH_HOME } from '~/routes/paths';
-// utils
-import { cloudinary } from '~/utils';
 // api
 import { technologyApi } from '~/api';
 import { Technology } from '~/models';
+//
+import { PATH_HOME } from '~/routes/paths';
+import { cloudinary } from '~/utils';
 
 // ----------------------------------------------------------------------
 
@@ -26,9 +27,7 @@ export default function HomePopularTech() {
       try {
         const response = await technologyApi.getAll(params);
         setTechnologyList(response.technologies);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
     };
 
     getTechnologies();

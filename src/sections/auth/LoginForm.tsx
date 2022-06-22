@@ -1,16 +1,24 @@
+import { useState } from 'react';
+// form
+import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+// router
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+// @mui
 import { LoadingButton } from '@mui/lab';
 import { Alert, IconButton, InputAdornment, Link, Stack } from '@mui/material';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { userApi } from '~/api';
-import { FormProvider, RHFTextField } from '~/components/hook-form';
+// components
 import Iconify from '~/components/Iconify';
+import { FormProvider, RHFTextField } from '~/components/hook-form';
+// hooks
 import { useAuth } from '~/hooks';
+// api
+import { userApi } from '~/api';
 import { Login } from '~/models';
+// paths
 import { PATH_AUTH } from '~/routes/paths';
+// utils
 import { handleError, setSession } from '~/utils';
 
 // ----------------------------------------------------------------------

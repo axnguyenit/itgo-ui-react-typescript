@@ -1,10 +1,9 @@
-// @mui
+import { Box, Container, Stack, Typography } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Container, Typography, Stack, Theme } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const RootStyle = styled(Box)(({ theme }: { theme: Theme }) => ({
+const RootStyle = styled(Box)(({ theme }) => ({
   position: 'relative',
   backgroundColor: theme.palette.grey[400],
   overflow: 'hidden',
