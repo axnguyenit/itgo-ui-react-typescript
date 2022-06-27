@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Slider from 'react-slick';
 // @mui
-import { useTheme } from '@mui/material/styles';
+import { useTheme, styled } from '@mui/material/styles';
 import {
   Card,
   Avatar,
@@ -13,7 +13,6 @@ import {
   Rating,
   Link,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
 // components
 import Image from '~/components/Image';
 import SvgIconStyle from '~/components/SvgIconStyle';

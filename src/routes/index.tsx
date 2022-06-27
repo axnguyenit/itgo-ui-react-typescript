@@ -18,6 +18,11 @@ const Checkout = lazy(() => import('~/pages/home/Checkout'));
 const AccountSettings = lazy(() => import('~/pages/home/AccountSettings'));
 const StudentCalendar = lazy(() => import('~/pages/home/Calendar'));
 const InstructorCalendar = lazy(() => import('~/pages/instructor/Calendar'));
+const InstructorCourses = lazy(() => import('~/pages/instructor/Courses'));
+const InstructorCourseCreate = lazy(
+  () => import('~/pages/instructor/CourseCreate')
+);
+const InstructorStudents = lazy(() => import('~/pages/instructor/Students'));
 
 // ----------------------------------------------------------------------
 
@@ -36,12 +41,12 @@ export default function Router() {
         { path: 'courses/:id', element: <CourseDetails /> },
         { path: 'roadmaps/:id', element: <Roadmap /> },
         // {
-        // 	path: 'instructor/:id',
-        // 	element: (
-        // 		<BasedGuard>
-        // 			<InstructorProfile />
-        // 		</BasedGuard>
-        // 	),
+        //   path: 'instructor/:id',
+        //   element: (
+        //     <BasedGuard>
+        //       <InstructorProfile />
+        //     </BasedGuard>
+        //   ),
         // },
         {
           path: 'account-settings',
@@ -92,35 +97,35 @@ export default function Router() {
           index: true,
         },
         { path: 'calendar', element: <InstructorCalendar /> },
-        // {
-        // 	path: 'courses',
-        // 	children: [
-        // 		{ element: <InstructorCourses />, index: true },
-        // 		{ path: 'create', element: <InstructorCourseCreate /> },
-        // 		{ path: ':id/students', element: <InstructorStudents /> },
-        // 		{ path: ':id/edit', element: <InstructorCourseCreate /> },
-        // 	],
-        // },
+        {
+          path: 'courses',
+          children: [
+            { element: <InstructorCourses />, index: true },
+            { path: 'create', element: <InstructorCourseCreate /> },
+            { path: ':id/students', element: <InstructorStudents /> },
+            { path: ':id/edit', element: <InstructorCourseCreate /> },
+          ],
+        },
       ],
     },
 
     // Main Routes
     // {
-    // 	path: '*',
-    // 	element: <LogoOnlyLayout />,
-    // 	children: [
-    // 		{
-    // 			path: 'learning/:id',
-    // 			element: (
-    // 				<BasedGuard>
-    // 					<Learning />
-    // 				</BasedGuard>
-    // 			),
-    // 		},
-    // 		{ path: '500', element: <Page500 /> },
-    // 		{ path: '404', element: <NotFound /> },
-    // 		{ path: '*', element: <Navigate to="/404" replace /> },
-    // 	],
+    //   path: '*',
+    //   element: <LogoOnlyLayout />,
+    //   children: [
+    //     {
+    //       path: 'learning/:id',
+    //       element: (
+    //         <BasedGuard>
+    //           <Learning />
+    //         </BasedGuard>
+    //       ),
+    //     },
+    //     { path: '500', element: <Page500 /> },
+    //     { path: '404', element: <NotFound /> },
+    //     { path: '*', element: <Navigate to='/404' replace /> },
+    //   ],
     // },
     // { path: '*', element: <Navigate to='/404' replace /> },
 
@@ -136,44 +141,44 @@ export default function Router() {
           ),
         },
         // {
-        // 	path: 'register',
-        // 	element: (
-        // 		<GuestGuard>
-        // 			<Register />
-        // 		</GuestGuard>
-        // 	),
+        //   path: 'register',
+        //   element: (
+        //     <GuestGuard>
+        //       <Register />
+        //     </GuestGuard>
+        //   ),
         // },
         // {
-        // 	path: 'verify/:id/:token',
-        // 	element: (
-        // 		<GuestGuard>
-        // 			<Verify />
-        // 		</GuestGuard>
-        // 	),
+        //   path: 'verify/:id/:token',
+        //   element: (
+        //     <GuestGuard>
+        //       <Verify />
+        //     </GuestGuard>
+        //   ),
         // },
         // {
-        // 	path: 'verify',
-        // 	element: (
-        // 		<GuestGuard>
-        // 			<RequestVerify />
-        // 		</GuestGuard>
-        // 	),
+        //   path: 'verify',
+        //   element: (
+        //     <GuestGuard>
+        //       <RequestVerify />
+        //     </GuestGuard>
+        //   ),
         // },
         // {
-        // 	path: 'forgot-password',
-        // 	element: (
-        // 		<GuestGuard>
-        // 			<ForgotPassword />
-        // 		</GuestGuard>
-        // 	),
+        //   path: 'forgot-password',
+        //   element: (
+        //     <GuestGuard>
+        //       <ForgotPassword />
+        //     </GuestGuard>
+        //   ),
         // },
         // {
-        // 	path: 'reset-password/:id/:token',
-        // 	element: (
-        // 		<GuestGuard>
-        // 			<ResetPassword />
-        // 		</GuestGuard>
-        // 	),
+        //   path: 'reset-password/:id/:token',
+        //   element: (
+        //     <GuestGuard>
+        //       <ResetPassword />
+        //     </GuestGuard>
+        //   ),
         // },
       ],
     },

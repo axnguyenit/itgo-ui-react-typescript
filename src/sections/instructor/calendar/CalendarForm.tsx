@@ -125,9 +125,7 @@ export default function CalendarForm({
       onGetEvents();
       onCancel();
       reset();
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   const handleDelete = async () => {
@@ -154,7 +152,6 @@ export default function CalendarForm({
         setCourseList(courses);
         setValue('courseId', courses[0]?._id);
       } catch (error) {
-        console.error(error);
         navigate(PATH_PAGE.page500);
       }
     };
@@ -259,12 +256,7 @@ export default function CalendarForm({
           Cancel
         </Button>
 
-        <LoadingButton
-          type='submit'
-          variant='contained'
-          loading={isSubmitting}
-          loadingIndicator='Loading...'
-        >
+        <LoadingButton type='submit' variant='contained' loading={isSubmitting}>
           {event?.id ? 'Update' : 'Add'}
         </LoadingButton>
       </DialogActions>

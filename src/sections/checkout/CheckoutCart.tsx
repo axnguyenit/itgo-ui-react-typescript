@@ -47,8 +47,8 @@ export default function CheckoutCart() {
         if (!transId || !message) return;
 
         const data: Payment = {
-          transId: transId,
-          message: message,
+          transId,
+          message,
           amount: Number(amount),
           resultCode,
           cart,

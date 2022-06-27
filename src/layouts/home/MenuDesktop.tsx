@@ -40,12 +40,6 @@ export default function MenuDesktop({
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    open && handleClose();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -53,6 +47,11 @@ export default function MenuDesktop({
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    open && handleClose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <Stack direction='row'>

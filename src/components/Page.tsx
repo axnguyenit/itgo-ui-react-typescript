@@ -1,7 +1,7 @@
 import { forwardRef, ReactNode } from 'react';
-import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 
 // ----------------------------------------------------------------------
 
@@ -16,11 +16,11 @@ interface PageProps {
 const Page = forwardRef(
   ({ children, title = '', meta, ...other }: PageProps, ref) => (
     <>
+      {/* @ts-ignore */}
       <Helmet>
         <title>{`${title} | ITGO`}</title>
         {meta}
       </Helmet>
-
       <Box ref={ref} {...other}>
         {children}
       </Box>

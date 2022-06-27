@@ -28,7 +28,7 @@ const VIEW_OPTIONS: ViewOptions[] = [
   { value: 'dayGridMonth', label: 'Month', icon: 'ic:round-view-module' },
   { value: 'timeGridWeek', label: 'Week', icon: 'ic:round-view-week' },
   { value: 'timeGridDay', label: 'Day', icon: 'ic:round-view-day' },
-  { value: 'listWeek', label: 'Agenda', icon: 'ic:round-view-agenda' },
+  // { value: 'listWeek', label: 'Agenda', icon: 'ic:round-view-agenda' },
 ];
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -67,21 +67,18 @@ export default function CalendarToolbar({
     <RootStyle>
       {isDesktop && (
         <Stack direction='row' spacing={0.5}>
-          {VIEW_OPTIONS.map((viewOption) => {
-            console.log(viewOption.value === view);
-            return (
-              <Tooltip key={viewOption.value} title={viewOption.label}>
-                <ToggleButton
-                  value={view}
-                  selected={viewOption.value === view}
-                  onChange={() => onChangeView(viewOption.value)}
-                  sx={{ width: 32, height: 32, padding: 0, border: 0 }}
-                >
-                  <Iconify icon={viewOption.icon} width={20} height={20} />
-                </ToggleButton>
-              </Tooltip>
-            );
-          })}
+          {VIEW_OPTIONS.map((viewOption) => (
+            <Tooltip key={viewOption.value} title={viewOption.label}>
+              <ToggleButton
+                value={view}
+                selected={viewOption.value === view}
+                onChange={() => onChangeView(viewOption.value)}
+                sx={{ width: 32, height: 32, padding: 0, border: 0 }}
+              >
+                <Iconify icon={viewOption.icon} width={20} height={20} />
+              </ToggleButton>
+            </Tooltip>
+          ))}
         </Stack>
       )}
 

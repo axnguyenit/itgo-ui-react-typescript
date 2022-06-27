@@ -5,7 +5,6 @@ import FullCalendar, {
   DateSelectArg,
   EventClickArg,
 } from '@fullcalendar/react'; // => request placed at the top
-import listPlugin from '@fullcalendar/list';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import timelinePlugin from '@fullcalendar/timeline';
@@ -25,13 +24,16 @@ import { DialogAnimate } from '~/components/animate';
 import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
 import { CalendarStyle, CalendarToolbar } from '~/components/calendar';
 // redux
-import { selectRange } from '~/redux/slices/calendar';
+// import { selectRange } from '~/redux/slices/calendar';
 // paths
 import { PATH_HOME, PATH_INSTRUCTOR } from '~/routes/paths';
 // sections
 import { CalendarForm } from '~/sections/instructor/calendar';
 // hooks
-import { useAppDispatch, useAppSelector, useResponsive } from '~/hooks';
+import {
+  // useAppDispatch,
+  useResponsive,
+} from '~/hooks';
 // api
 import eventApi from '~/api/eventApi';
 import { CalendarView, Event, CalendarArg } from '~/models';
@@ -39,87 +41,81 @@ import { CalendarView, Event, CalendarArg } from '~/models';
 // ----------------------------------------------------------------------
 
 export default function Calendar() {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const isDesktop = useResponsive('up', 'sm');
   const calendarRef = useRef<FullCalendar>(null);
   const [date, setDate] = useState<Date>(new Date());
   const [view, setView] = useState<CalendarView>(
-    isDesktop ? 'dayGridMonth' : 'listWeek'
+    isDesktop ? 'dayGridMonth' : 'timeGridDay'
   );
   const [events, setEvents] = useState<Event[]>([]);
+  const [range, setRange] = useState<CalendarArg>({
+    start: new Date(),
+    end: new Date(),
+  });
   const [selectedEvent, setSelectedEvent] = useState<Event>();
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-
-  const { selectedRange } = useAppSelector((state) => state.calendar);
 
   const getEvents = async () => {
     try {
       const response = await eventApi.getByInstructor();
       setEvents(response.events);
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
     getEvents();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const calendarEl = calendarRef.current;
-    if (calendarEl) {
-      const calendarApi = calendarEl.getApi();
-      const newView = isDesktop ? 'dayGridMonth' : 'listWeek';
-      calendarApi.changeView(newView);
-      setView(newView);
-    }
+    if (!calendarEl) return;
+    const calendarApi = calendarEl.getApi();
+    const newView = isDesktop ? 'dayGridMonth' : 'timeGridDay';
+    calendarApi.changeView(newView);
+    setView(newView);
   }, [isDesktop]);
 
   const handleClickToday = () => {
     const calendarEl = calendarRef.current;
-    if (calendarEl) {
-      const calendarApi = calendarEl.getApi();
-      calendarApi.today();
-      setDate(calendarApi.getDate());
-    }
+    if (!calendarEl) return;
+    const calendarApi = calendarEl.getApi();
+    calendarApi.today();
+    setDate(calendarApi.getDate());
   };
 
   const handleChangeView = (newView: CalendarView) => {
     const calendarEl = calendarRef.current;
-    if (calendarEl) {
-      const calendarApi = calendarEl.getApi();
-      calendarApi.changeView(newView);
-      setView(newView);
-    }
+    if (!calendarEl) return;
+    const calendarApi = calendarEl.getApi();
+    calendarApi.changeView(newView);
+    setView(newView);
   };
 
   const handleClickDatePrev = () => {
     const calendarEl = calendarRef.current;
-    if (calendarEl) {
-      const calendarApi = calendarEl.getApi();
-      calendarApi.prev();
-      setDate(calendarApi.getDate());
-    }
+    if (!calendarEl) return;
+    const calendarApi = calendarEl.getApi();
+    calendarApi.prev();
+    setDate(calendarApi.getDate());
   };
 
   const handleClickDateNext = () => {
     const calendarEl = calendarRef.current;
-    if (calendarEl) {
-      const calendarApi = calendarEl.getApi();
-      calendarApi.next();
-      setDate(calendarApi.getDate());
-    }
+    if (!calendarEl) return;
+    const calendarApi = calendarEl.getApi();
+    calendarApi.next();
+    setDate(calendarApi.getDate());
   };
 
   // user not need
   const handleSelectRange = (arg: DateSelectArg) => {
     const calendarEl = calendarRef.current;
-    if (calendarEl) {
-      const calendarApi = calendarEl.getApi();
-      calendarApi.unselect();
-    }
-    // dispatch(selectRange(arg.start, arg.end));
+    if (!calendarEl) return;
+    const { start, end } = arg;
+    const calendarApi = calendarEl.getApi();
+    calendarApi.unselect();
+    setRange({ start, end });
     setIsOpenModal(true);
   };
 
@@ -127,35 +123,6 @@ export default function Calendar() {
     const selectedEvent = events.find((event) => event.id === arg.event.id);
     setSelectedEvent(selectedEvent);
     setIsOpenModal(true);
-  };
-
-  const handleResizeEvent = async (event: any) => {
-    try {
-      // dispatch(
-      //   updateEvent(event.id, {
-      //     allDay: event.allDay,
-      //     start: event.start,
-      //     end: event.end,
-      //   })
-      // );
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleDropEvent = async (event: any) => {
-    try {
-      // dispatch(
-      //   updateEvent(event.id, {
-      //     allDay: event.allDay,
-      //     start: event.start,
-      //     end: event.end,
-      //   })
-      // );
-      setIsOpenModal(true);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const handleCloseModal = () => {
@@ -199,12 +166,9 @@ export default function Calendar() {
               allDayMaintainDuration
               eventResizableFromStart
               select={handleSelectRange}
-              eventDrop={handleDropEvent}
               eventClick={handleSelectEvent}
-              eventResize={handleResizeEvent}
               height={isDesktop ? 720 : 'auto'}
               plugins={[
-                listPlugin,
                 dayGridPlugin,
                 timelinePlugin,
                 timeGridPlugin,
@@ -238,7 +202,7 @@ export default function Calendar() {
           </DialogTitle>
           <CalendarForm
             event={selectedEvent}
-            range={selectedRange}
+            range={range}
             onCancel={handleCloseModal}
             onGetEvents={getEvents}
           />

@@ -67,6 +67,7 @@ export default function NotistackProvider({
     <>
       <SnackbarStyles />
 
+      {/* @ts-ignore */}
       <SnackbarProvider
         ref={notistackRef}
         dense
@@ -89,7 +90,7 @@ export default function NotistackProvider({
           error: <SnackbarIcon icon={'eva:alert-circle-fill'} color='error' />,
         }}
         // With close as default
-        action={(key) => (
+        action={(key: any) => (
           <IconButtonAnimate
             size='small'
             onClick={() => onClose(key)}

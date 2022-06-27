@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 // calendar
 import FullCalendar, { EventClickArg } from '@fullcalendar/react'; // => request placed at the top
-import listPlugin from '@fullcalendar/list';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import timelinePlugin from '@fullcalendar/timeline';
@@ -20,7 +19,7 @@ import { CalendarEvent } from '~/sections/event';
 // hooks
 import { useResponsive } from '~/hooks';
 // api
-import eventApi from '~/api/eventApi';
+import { eventApi } from '~/api';
 import { CalendarView, Event } from '~/models';
 
 // ----------------------------------------------------------------------
@@ -30,7 +29,7 @@ export default function Calendar() {
   const calendarRef = useRef<FullCalendar>(null);
   const [date, setDate] = useState<Date>(new Date());
   const [view, setView] = useState<CalendarView>(
-    isDesktop ? 'dayGridMonth' : 'listWeek'
+    isDesktop ? 'dayGridMonth' : 'timeGridDay'
   );
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<Event>();
@@ -45,7 +44,6 @@ export default function Calendar() {
         const { events } = await eventApi.getByStudent(id);
         setEvents(events);
       } catch (error) {
-        console.error(error);
         navigate(PATH_PAGE.page500);
       }
     })();
@@ -56,7 +54,7 @@ export default function Calendar() {
     const calendarEl = calendarRef.current;
     if (!calendarEl) return;
     const calendarApi = calendarEl.getApi();
-    const newView = isDesktop ? 'dayGridMonth' : 'listWeek';
+    const newView = isDesktop ? 'dayGridMonth' : 'timeGridDay';
     calendarApi.changeView(newView);
     setView(newView);
   }, [isDesktop]);
@@ -66,8 +64,7 @@ export default function Calendar() {
     if (!calendarEl) return;
     const calendarApi = calendarEl.getApi();
     calendarApi.today();
-    // setDate(calendarApi.getDate());
-    console.log(calendarApi.getDate());
+    setDate(calendarApi.getDate());
   };
 
   const handleChangeView = (newView: CalendarView) => {
@@ -83,8 +80,7 @@ export default function Calendar() {
     if (!calendarEl) return;
     const calendarApi = calendarEl.getApi();
     calendarApi.prev();
-    // setDate(calendarApi.getDate());
-    console.log(calendarApi.getDate());
+    setDate(calendarApi.getDate());
   };
 
   const handleClickDateNext = () => {
@@ -92,8 +88,7 @@ export default function Calendar() {
     if (!calendarEl) return;
     const calendarApi = calendarEl.getApi();
     calendarApi.next();
-    // setDate(calendarApi.getDate());
-    console.log(calendarApi.getDate());
+    setDate(calendarApi.getDate());
   };
 
   const handleSelectEvent = (arg: EventClickArg) => {
@@ -137,7 +132,6 @@ export default function Calendar() {
               eventClick={handleSelectEvent}
               height={isDesktop ? 720 : 'auto'}
               plugins={[
-                listPlugin,
                 dayGridPlugin,
                 timelinePlugin,
                 timeGridPlugin,

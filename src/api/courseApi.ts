@@ -1,5 +1,5 @@
 import {
-  Course,
+  CourseData,
   CourseResponse,
   CoursesResponse,
   ListParams,
@@ -20,12 +20,12 @@ const courseApi = {
     return axios.get(url);
   },
 
-  add(data: Course): Promise<any> {
+  add(data: CourseData): Promise<any> {
     const url = '/api/courses';
     return axios.post(url, data);
   },
 
-  update(data: Course): Promise<any> {
+  update(data: CourseData): Promise<any> {
     const url = `/api/courses/${data.id}`;
     return axios.put(url, data);
   },

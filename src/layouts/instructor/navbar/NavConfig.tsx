@@ -26,15 +26,15 @@ const navConfig: SubMenu[] = [
     items: [
       // MANAGEMENT : USER
       // {
-      // 	title: 'student',
-      // 	path: PATH_INSTRUCTOR.user.root,
-      // 	icon: ICONS.user,
-      // 	children: [
-      // 		{ title: 'profile', path: PATH_INSTRUCTOR.user.profile },
-      // 		{ title: 'cards', path: PATH_INSTRUCTOR.user.cards },
-      // 		{ title: 'list', path: PATH_INSTRUCTOR.user.list },
-      // 		{ title: 'create', path: PATH_INSTRUCTOR.user.newUser },
-      // 	],
+      //   title: 'student',
+      //   path: PATH_INSTRUCTOR.user.root,
+      //   icon: ICONS.user,
+      //   children: [
+      //     { title: 'profile', path: PATH_INSTRUCTOR.user.profile },
+      //     { title: 'cards', path: PATH_INSTRUCTOR.user.cards },
+      //     { title: 'list', path: PATH_INSTRUCTOR.user.list },
+      //     { title: 'create', path: PATH_INSTRUCTOR.user.newUser },
+      //   ],
       // },
 
       // MANAGEMENT : CALENDAR

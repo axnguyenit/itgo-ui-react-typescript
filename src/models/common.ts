@@ -97,3 +97,9 @@ export interface BreadcrumbsLink {
   name: string;
   href?: string;
 }
+
+export interface HeaderLabel {
+  id?: string;
+  label: string;
+  alignRight: boolean;
+}

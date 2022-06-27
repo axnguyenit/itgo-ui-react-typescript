@@ -6,6 +6,7 @@ import { Box } from '@mui/material';
 export default function ErrorIcon({ ...other }) {
 	const theme = useTheme();
 	const PRIMARY_MAIN = theme.palette.primary.main;
+
 	return (
 		<Box {...other}>
 			<svg

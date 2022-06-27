@@ -1,5 +1,5 @@
 // highlight
-// import './utils/highlight';
+import './utils/highlight';
 
 // scroll bar
 import 'simplebar/src/simplebar.css';
@@ -8,7 +8,7 @@ import 'simplebar/src/simplebar.css';
 // import 'react-image-lightbox/style.css';
 
 // editor
-// import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.snow.css';
 
 // slick-carousel
 import 'slick-carousel/slick/slick.css';
@@ -20,7 +20,7 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 
 import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider as ReduxProvider } from 'react-redux';
@@ -37,16 +37,13 @@ import './index.css';
 import LoadingScreen from './components/LoadingScreen';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ReduxProvider store={store}>
         <AuthProvider>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
+            {/* @ts-ignore */}
             <HelmetProvider>
               <Suspense fallback={<LoadingScreen />}>
                 <CollapseDrawerProvider>
@@ -58,7 +55,8 @@ root.render(
         </AuthProvider>
       </ReduxProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

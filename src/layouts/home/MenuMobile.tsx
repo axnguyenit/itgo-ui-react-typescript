@@ -45,17 +45,8 @@ export default function MenuMobile({
   navConfig,
 }: MenuMobileProps) {
   const { pathname } = useLocation();
-
   const [open, setOpen] = useState(false);
-
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  useEffect(() => {
-    if (drawerOpen) {
-      handleDrawerClose();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -68,6 +59,13 @@ export default function MenuMobile({
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };
+
+  useEffect(() => {
+    if (drawerOpen) {
+      handleDrawerClose();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <>

@@ -39,3 +39,16 @@ export interface CoursesResponse {
 export interface CourseResponse {
   course: Course;
 }
+
+export interface CourseData {
+  id?: string;
+  name: string;
+  cover: string;
+  tags: string[];
+  price: number;
+  priceSale?: number;
+  minStudent: number;
+  overview: string;
+  requirements: string;
+  targetAudiences: string;
+}

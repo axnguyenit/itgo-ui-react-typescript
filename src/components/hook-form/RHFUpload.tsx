@@ -42,10 +42,14 @@ export function RHFUploadAvatar({ name, ...other }: RHFUploadAvatarProps) {
 
 interface RHFUploadSingleFileProps {
   name: string;
+  accept?: string;
+
+  [key: string]: any;
 }
 
 export function RHFUploadSingleFile({
   name,
+  accept = '',
   ...other
 }: RHFUploadSingleFileProps) {
   const { control } = useFormContext();

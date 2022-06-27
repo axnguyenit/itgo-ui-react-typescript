@@ -23,7 +23,7 @@ export default function CourseCard({ order }: CourseCardProps) {
       <Box sx={{ position: 'relative' }}>
         <Image
           alt={course?.name}
-          src={cloudinary.w300(course?.cover)}
+          src={cloudinary.w300(course?.cover as string)}
           ratio='16/9'
         />
       </Box>

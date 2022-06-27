@@ -74,25 +74,6 @@ const MarkdownStyle = styled('div')(({ theme }) => {
 
 // ----------------------------------------------------------------------
 
-interface MarkdownProps {
-  children: string;
-}
-
-export default function Markdown({ children, ...other }: MarkdownProps) {
-  return (
-    <MarkdownStyle>
-      <ReactMarkdown
-        children={children}
-        remarkPlugins={[remarkGfm]}
-        components={components}
-        {...other}
-      />
-    </MarkdownStyle>
-  );
-}
-
-// ----------------------------------------------------------------------
-
 const components = {
   h1: ({ ...props }) => <Typography variant='h1' {...props} />,
   h2: ({ ...props }) => <Typography variant='h2' {...props} />,
@@ -116,3 +97,24 @@ const components = {
       <Link {...props} />
     ),
 };
+
+// ----------------------------------------------------------------------
+
+interface MarkdownProps {
+  children: string;
+}
+
+export default function Markdown({ children, ...other }: MarkdownProps) {
+  return (
+    <MarkdownStyle>
+      <ReactMarkdown
+        children={children}
+        remarkPlugins={[remarkGfm]}
+        components={components}
+        {...other}
+      />
+    </MarkdownStyle>
+  );
+}
+
+// ----------------------------------------------------------------------

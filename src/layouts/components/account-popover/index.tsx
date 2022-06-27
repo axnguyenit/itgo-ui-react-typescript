@@ -33,8 +33,8 @@ import { setSession } from '~/utils';
 
 const MENU_OPTIONS = [
   // {
-  // 	label: 'Home',
-  // 	linkTo: '/',
+  //   label: 'Home',
+  //   linkTo: '/',
   // },
   {
     label: 'Account',
