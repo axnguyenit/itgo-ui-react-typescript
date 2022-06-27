@@ -10,6 +10,7 @@ import {
   MyAccount,
   AccessToken,
   RefreshToken,
+  Email,
 } from '~/models';
 import { axios } from '~/utils';
 
@@ -56,7 +57,7 @@ const userApi = {
     return axios.get(url, { params });
   },
 
-  requestVerifyEmail(data: { email: string }): Promise<any> {
+  requestVerifyEmail(data: Email): Promise<any> {
     const url = '/api/auth/verify';
     return axios.post(url, data);
   },

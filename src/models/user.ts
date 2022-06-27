@@ -68,3 +68,7 @@ export interface InstructorsResponse {
   instructors: Partial<User>[];
   pagination: PaginationParams;
 }
+
+export interface Email {
+  email: string;
+}

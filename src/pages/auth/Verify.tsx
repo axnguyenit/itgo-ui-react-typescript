@@ -4,7 +4,7 @@ import { Link as RouterLink, useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Container, Typography } from '@mui/material';
 // layouts
-import LogoOnlyLayout from '~/layouts/LogoOnlyLayout';
+import { LogoOnlyLayout } from '~/layouts';
 // routes
 import { PATH_AUTH } from '~/routes/paths';
 // components
@@ -53,7 +53,7 @@ export default function Verify() {
 
         <Container>
           <Box sx={{ maxWidth: 480, mx: 'auto' }}>
-            {isValid && (
+            {isValid ? (
               <Box sx={{ textAlign: 'center' }}>
                 <SuccessIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
 
@@ -71,9 +71,7 @@ export default function Verify() {
                   Login
                 </Button>
               </Box>
-            )}
-
-            {!isValid && (
+            ) : (
               <Box sx={{ textAlign: 'center' }}>
                 <ErrorIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
                 <Typography variant='h3' gutterBottom>
