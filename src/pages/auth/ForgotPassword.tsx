@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, Button, Container, Typography } from '@mui/material';
@@ -9,10 +9,10 @@ import { LogoOnlyLayout } from '~/layouts';
 import { PATH_AUTH } from '~/routes/paths';
 // components
 import Page from '~/components/Page';
-import LoadingScreen from '~/components/LoadingScreen';
+// sections
+import { ForgotPasswordForm } from '~/sections/auth';
 // assets
-import { SuccessIcon, ErrorIcon } from '~/assets';
-import { userApi } from '~/api';
+import { SentIcon } from '~/assets';
 
 // ----------------------------------------------------------------------
 
@@ -26,40 +26,54 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Verify() {
-  const { id, token } = useParams();
-  const [isValid, setIsValid] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const verifyEmail = async () => {
-      setIsLoading(true);
-			if (!id || !token) return setIsValid(false);
-      try {
-        await userApi.verifyEmail(id, token);
-        setIsValid(true);
-      } catch (error) {}
-      setIsLoading(false);
-    };
-
-    verifyEmail();
-  }, [id, token]);
-
-  if (isLoading) return <LoadingScreen />;
+export default function ForgotPassword() {
+  const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
 
   return (
-    <Page title='Verify Email' sx={{ height: 1 }}>
+    <Page title='Forgot Password' sx={{ height: 1 }}>
       <RootStyle>
         <LogoOnlyLayout />
 
         <Container>
           <Box sx={{ maxWidth: 480, mx: 'auto' }}>
-            {isValid ? (
+            {!sent ? (
+              <>
+                <Typography variant='h3' paragraph>
+                  Forgot your password?
+                </Typography>
+                <Typography sx={{ color: 'text.secondary', mb: 5 }}>
+                  Please enter the email address associated with your account
+                  and We will email you a link to reset your password.
+                </Typography>
+
+                <ForgotPasswordForm
+                  onSent={() => setSent(true)}
+                  onGetEmail={(value) => setEmail(value)}
+                />
+
+                <Button
+                  fullWidth
+                  size='large'
+                  component={RouterLink}
+                  to={PATH_AUTH.login}
+                  sx={{ mt: 2 }}
+                >
+                  Back
+                </Button>
+              </>
+            ) : (
               <Box sx={{ textAlign: 'center' }}>
-                <SuccessIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
+                <SentIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
 
                 <Typography variant='h3' gutterBottom>
-                  Verify email successfully, go to login
+                  Request sent successfully
+                </Typography>
+                <Typography>
+                  We have sent a reset password link to &nbsp;
+                  <strong>{email}</strong>
+                  <br />
+                  Please check your email.
                 </Typography>
 
                 <Button
@@ -69,24 +83,7 @@ export default function Verify() {
                   to={PATH_AUTH.login}
                   sx={{ mt: 5 }}
                 >
-                  Login
-                </Button>
-              </Box>
-            ) : (
-              <Box sx={{ textAlign: 'center' }}>
-                <ErrorIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
-                <Typography variant='h3' gutterBottom>
-                  Verify email fail
-                </Typography>
-
-                <Button
-                  size='large'
-                  variant='contained'
-                  component={RouterLink}
-                  to={PATH_AUTH.verify}
-                  sx={{ mt: 5 }}
-                >
-                  Go back
+                  Back
                 </Button>
               </Box>
             )}

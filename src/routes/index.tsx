@@ -12,6 +12,8 @@ const Login = lazy(() => import('~/pages/auth/Login'));
 const Register = lazy(() => import('~/pages/auth/Register'));
 const Verify = lazy(() => import('~/pages/auth/Verify'));
 const RequestVerify = lazy(() => import('~/pages/auth/RequestVerify'));
+const ForgotPassword = lazy(() => import('~/pages/auth/ForgotPassword'));
+const ResetPassword = lazy(() => import('~/pages/auth/ResetPassword'));
 const BecomeInstructor = lazy(() => import('~/pages/home/BecomeInstructor'));
 const Courses = lazy(() => import('~/pages/home/Courses'));
 const MyLearning = lazy(() => import('~/pages/home/MyLearning'));
@@ -167,22 +169,22 @@ export default function Router() {
             </GuestGuard>
           ),
         },
-        // {
-        //   path: 'forgot-password',
-        //   element: (
-        //     <GuestGuard>
-        //       <ForgotPassword />
-        //     </GuestGuard>
-        //   ),
-        // },
-        // {
-        //   path: 'reset-password/:id/:token',
-        //   element: (
-        //     <GuestGuard>
-        //       <ResetPassword />
-        //     </GuestGuard>
-        //   ),
-        // },
+        {
+          path: 'forgot-password',
+          element: (
+            <GuestGuard>
+              <ForgotPassword />
+            </GuestGuard>
+          ),
+        },
+        {
+          path: 'reset-password/:id/:token',
+          element: (
+            <GuestGuard>
+              <ResetPassword />
+            </GuestGuard>
+          ),
+        },
       ],
     },
   ]);

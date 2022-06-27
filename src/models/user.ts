@@ -72,3 +72,8 @@ export interface InstructorsResponse {
 export interface Email {
   email: string;
 }
+
+export interface ResetPassword {
+  password: string;
+  confirmPassword: string;
+}

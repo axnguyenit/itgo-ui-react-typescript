@@ -11,6 +11,7 @@ import {
   AccessToken,
   RefreshToken,
   Email,
+  ResetPassword,
 } from '~/models';
 import { axios } from '~/utils';
 
@@ -82,11 +83,7 @@ const userApi = {
     return axios.get(url);
   },
 
-  resetPassword(
-    data: { email: string },
-    id: string,
-    token: string
-  ): Promise<any> {
+  resetPassword(data: ResetPassword, id: string, token: string): Promise<any> {
     const url = `/api/auth/reset-password/${id}/${token}`;
     return axios.post(url, data);
   },
