@@ -12,7 +12,7 @@ import { Alert, IconButton, InputAdornment, Link, Stack } from '@mui/material';
 import Iconify from '~/components/Iconify';
 import { FormProvider, RHFTextField } from '~/components/hook-form';
 // hooks
-import { useAuth } from '~/hooks';
+import { useAppDispatch, useAuth } from '~/hooks';
 // api
 import { userApi } from '~/api';
 import { Login } from '~/models';
@@ -20,14 +20,16 @@ import { Login } from '~/models';
 import { PATH_AUTH } from '~/routes/paths';
 // utils
 import { handleError, setSession } from '~/utils';
+import { getCartFromServer } from '~/redux/slices/cart';
 
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const { dispatch } = useAuth();
+  const dispatchRedux = useAppDispatch();
   const navigate = useNavigate();
-
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -49,9 +51,8 @@ export default function LoginForm() {
 
   const {
     reset,
-    setError,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = methods;
 
   const onSubmit = async (data: Login) => {
@@ -61,7 +62,7 @@ export default function LoginForm() {
       if (!user.emailVerified) navigate(PATH_AUTH.verify, { replace: true });
       if (user.emailVerified) {
         setSession(accessToken, refreshToken);
-        // getCartApi();
+        dispatchRedux(getCartFromServer());
         dispatch({
           type: 'LOGIN',
           payload: {
@@ -73,20 +74,14 @@ export default function LoginForm() {
       reset();
     } catch (error) {
       const err = handleError(error);
-
-      setError('email', {
-        type: 'validate',
-        message: err.errors[0].msg,
-      });
+      setError(err.errors[0].msg);
     }
   };
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        {!!errors.email && (
-          <Alert severity='error'>{errors.email.message}</Alert>
-        )}
+        {!!error && <Alert severity='error'>{error}</Alert>}
 
         <RHFTextField name='email' label='Email address' />
 

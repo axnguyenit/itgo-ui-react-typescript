@@ -9,6 +9,7 @@ import { PATH_INSTRUCTOR } from './paths';
 
 const Home = lazy(() => import('~/pages/home/Home'));
 const Login = lazy(() => import('~/pages/auth/Login'));
+const Register = lazy(() => import('~/pages/auth/Register'));
 const BecomeInstructor = lazy(() => import('~/pages/home/BecomeInstructor'));
 const Courses = lazy(() => import('~/pages/home/Courses'));
 const MyLearning = lazy(() => import('~/pages/home/MyLearning'));
@@ -140,14 +141,14 @@ export default function Router() {
             </GuestGuard>
           ),
         },
-        // {
-        //   path: 'register',
-        //   element: (
-        //     <GuestGuard>
-        //       <Register />
-        //     </GuestGuard>
-        //   ),
-        // },
+        {
+          path: 'register',
+          element: (
+            <GuestGuard>
+              <Register />
+            </GuestGuard>
+          ),
+        },
         // {
         //   path: 'verify/:id/:token',
         //   element: (
