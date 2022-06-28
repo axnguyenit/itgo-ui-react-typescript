@@ -80,9 +80,7 @@ export default function Courses() {
     try {
       await courseApi.remove(courseId);
       getAllCourses();
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   const emptyRows = page > 0 ? Math.max(0, rowsPerPage - courseList.length) : 0;

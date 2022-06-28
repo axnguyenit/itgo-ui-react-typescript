@@ -42,6 +42,7 @@ export interface CourseResponse {
 
 export interface CourseData {
   id?: string;
+  instructor?: string;
   name: string;
   cover: string;
   tags: string[];

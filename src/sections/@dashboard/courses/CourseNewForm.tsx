@@ -1,13 +1,15 @@
-import {useSnackbar} from 'notistack';
-import {useCallback, useEffect, useMemo} from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 // form
 import * as Yup from 'yup';
-import {useForm, Controller} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
-import {styled} from '@mui/material/styles';
-import {LoadingButton} from '@mui/lab';
+import { styled } from '@mui/material/styles';
+import { LoadingButton } from '@mui/lab';
 import {
+  Box,
   Card,
   Chip,
   Grid,
@@ -16,21 +18,19 @@ import {
   Typography,
   Autocomplete,
   InputAdornment,
-  Box,
 } from '@mui/material';
-// routes
-import {useNavigate} from 'react-router-dom';
 // components
 import {
-  FormProvider,
+  RHFSelect,
   RHFEditor,
+  FormProvider,
   RHFTextField,
   RHFUploadSingleFile,
 } from '~/components/hook-form';
-import {courseApi} from '~/api';
-import {PATH_INSTRUCTOR} from '~/routes/paths';
-import {cloudinary} from '~/utils';
-import {Course, CourseData} from '~/models';
+import { courseApi, userApi } from '~/api';
+import { PATH_DASHBOARD } from '~/routes/paths';
+import { cloudinary } from '~/utils';
+import { Course, CourseData, User } from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -55,7 +55,7 @@ const TAGS_OPTION = [
   'Angular',
 ];
 
-const LabelStyle = styled(Typography)(({theme}) => ({
+const LabelStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
   color: theme.palette.text.secondary,
   marginBottom: theme.spacing(1),
@@ -65,7 +65,7 @@ const LabelStyle = styled(Typography)(({theme}) => ({
 
 interface CourseNewFormProps {
   isEdit: boolean;
-  currentCourse: Course;
+  currentCourse?: Course;
 }
 
 export default function CourseNewForm({
@@ -73,9 +73,11 @@ export default function CourseNewForm({
   currentCourse,
 }: CourseNewFormProps) {
   const navigate = useNavigate();
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
+  const [instructorList, setInstructorList] = useState<Partial<User>[]>([]);
 
   const NewCourseSchema = Yup.object().shape({
+    instructor: Yup.string().required('Instructor is required'),
     name: Yup.string().required('Name is required'),
     cover: Yup.string().required('Cover is required'),
     price: Yup.number()
@@ -108,6 +110,7 @@ export default function CourseNewForm({
 
   const defaultValues: CourseData = useMemo(
     () => ({
+      instructor: currentCourse?.instructor?._id || '',
       name: currentCourse?.name || '',
       cover: currentCourse?.cover || '',
       price: currentCourse?.price || 0,
@@ -135,14 +138,23 @@ export default function CourseNewForm({
     formState: { isSubmitting },
   } = methods;
 
+  const getAllInstructors = async () => {
+    try {
+      const { instructors } = await userApi.getAllInstructors({});
+      setInstructorList(instructors);
+      if (!isEdit) setValue('instructor', instructors[0]?._id as string);
+    } catch (error) {}
+  };
+
   useEffect(() => {
+    getAllInstructors();
     if (isEdit && currentCourse) {
       reset(defaultValues);
       setValue('cover', cloudinary.w700(currentCourse?.cover));
+      setValue('instructor', currentCourse?.instructor._id as string);
     }
-    if (!isEdit) {
-      reset(defaultValues);
-    }
+    if (!isEdit) reset(defaultValues);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEdit, currentCourse]);
 
@@ -156,19 +168,19 @@ export default function CourseNewForm({
       }
       reset();
       enqueueSnackbar(isEdit ? 'Update success!' : 'Create success!');
-      navigate(PATH_INSTRUCTOR.courses.root);
+      navigate(PATH_DASHBOARD.courses.root);
     } catch (error) {}
   };
 
   const handleDrop = useCallback(
-    (acceptedFiles: any[]) => {
+    (acceptedFiles) => {
       const file = acceptedFiles[0];
 
       if (!file) return;
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => setValue('cover', reader.result as string);
-      reader.onerror = (error) => {};
+      reader.onerror = (error) => console.error(error);
     },
     [setValue]
   );
@@ -177,7 +189,7 @@ export default function CourseNewForm({
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
-          <Card sx={{p: 3}}>
+          <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
               <RHFTextField name='name' label='Course Name' />
 
@@ -209,12 +221,24 @@ export default function CourseNewForm({
 
         <Grid item xs={12} md={4}>
           <Stack spacing={3}>
-            <Card sx={{p: 3}}>
+            <Card sx={{ p: 3 }}>
               <Stack spacing={3} mt={2}>
+                <RHFSelect
+                  name='instructor'
+                  label='Instructor'
+                  InputLabelProps={{ shrink: true }}
+                >
+                  {!!instructorList.length &&
+                    instructorList.map((instructor) => (
+                      <option key={instructor?._id} value={instructor?._id}>
+                        {instructor?.email}
+                      </option>
+                    ))}
+                </RHFSelect>
                 <Controller
                   name='tags'
                   control={control}
-                  render={({field}) => (
+                  render={({ field }) => (
                     <Autocomplete
                       {...field}
                       multiple
@@ -224,7 +248,7 @@ export default function CourseNewForm({
                       renderTags={(value, getTagProps) =>
                         value.map((option, index) => (
                           <Chip
-                            {...getTagProps({index})}
+                            {...getTagProps({ index })}
                             key={option}
                             size='small'
                             label={option}
@@ -248,8 +272,8 @@ export default function CourseNewForm({
                   onChange={(event) =>
                     setValue('minStudent', Number(event.target.value))
                   }
-                  InputLabelProps={{shrink: true}}
-                  InputProps={{type: 'number'}}
+                  InputLabelProps={{ shrink: true }}
+                  InputProps={{ type: 'number' }}
                 />
 
                 <RHFTextField
@@ -262,7 +286,7 @@ export default function CourseNewForm({
                   onChange={(event) =>
                     setValue('price', Number(event.target.value))
                   }
-                  InputLabelProps={{shrink: true}}
+                  InputLabelProps={{ shrink: true }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>$</InputAdornment>
@@ -281,7 +305,7 @@ export default function CourseNewForm({
                   onChange={(event) =>
                     setValue('priceSale', Number(event.target.value))
                   }
-                  InputLabelProps={{shrink: true}}
+                  InputLabelProps={{ shrink: true }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position='start'>$</InputAdornment>
