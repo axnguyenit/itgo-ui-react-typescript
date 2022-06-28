@@ -39,6 +39,7 @@ const InstructorCourseCreate = lazy(
 );
 // Dashboard Routes
 const Users = lazy(() => import('~/pages/dashboard/Users'));
+const DashboardCourses = lazy(() => import('~/pages/dashboard/Courses'));
 // Other Routes
 const Page500 = lazy(() => import('~/pages/Page500'));
 const Page404 = lazy(() => import('~/pages/Page404'));
@@ -144,14 +145,14 @@ export default function Router() {
           path: 'users',
           element: <Users />,
         },
-        //     {
-        //       path: 'courses',
-        //       children: [
-        //         { element: <DashboardCourses />, index: true },
-        //         { path: 'create', element: <CourseCreate /> },
-        //         { path: ':id/edit', element: <CourseCreate /> },
-        //       ],
-        //     },
+        {
+          path: 'courses',
+          children: [
+            { element: <DashboardCourses />, index: true },
+            // { path: 'create', element: <CourseCreate /> },
+            // { path: ':id/edit', element: <CourseCreate /> },
+          ],
+        },
         //     {
         //       path: 'roadmaps',
         //       children: [

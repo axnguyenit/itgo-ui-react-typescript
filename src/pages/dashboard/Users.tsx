@@ -41,11 +41,11 @@ const TABLE_HEAD: HeaderLabel[] = [
 // ----------------------------------------------------------------------
 
 export default function Users() {
-  const [userList, setUserList] = useState<Partial<User>[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [pagination, setPagination] = useState<PaginationParams>();
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [userList, setUserList] = useState<Partial<User>[]>([]);
+  const [pagination, setPagination] = useState<PaginationParams>();
 
   const getAllUsers = async () => {
     setIsLoading(true);
@@ -85,10 +85,10 @@ export default function Users() {
           ]}
         />
 
-        <Card>
+        <Card sx={{ position: 'relative' }}>
           {isLoading && <Loading />}
           <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
+            <TableContainer sx={{ minWidth: 800, position: 'relative' }}>
               <Table>
                 <TableListHead headLabel={TABLE_HEAD} />
                 <TableBody>

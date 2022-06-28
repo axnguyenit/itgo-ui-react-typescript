@@ -15,32 +15,23 @@ const RootStyle = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
 }));
 
-const MainContent = styled('div')(({ theme }) => ({
-  display: 'grid',
-  justifyItems: 'center',
-  alignItems: 'center',
-  perspective: 120,
-}));
-
 export default function Loading() {
   return (
     <RootStyle>
-      <MainContent>
-        <Box
-          sx={{ width: 28, height: 28, bgcolor: 'primary.main' }}
-          component={m.div}
-          initial={{ rotate: 0 }}
-          animate={{
-            rotateX: [180, 0, 0, 0],
-            rotateY: [0, 0, 0, 180],
-          }}
-          transition={{
-            duration: 0.75,
-            repeatDelay: 0.5,
-            repeat: Infinity,
-          }}
-        />
-      </MainContent>
+      <Box
+        sx={{ width: 28, height: 28, bgcolor: 'primary.main' }}
+        component={m.div}
+        initial={{ rotate: 0 }}
+        animate={{
+          rotateX: [180, 0, 0, 0],
+          rotateY: [0, 0, 0, 180],
+        }}
+        transition={{
+          duration: 0.75,
+          repeatDelay: 0.5,
+          repeat: Infinity,
+        }}
+      />
     </RootStyle>
   );
 }

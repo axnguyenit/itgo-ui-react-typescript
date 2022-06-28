@@ -12,45 +12,41 @@ import {
   TablePagination,
   Button,
 } from '@mui/material';
+// routes
 import { useNavigate } from 'react-router-dom';
+import { PATH_DASHBOARD } from '~/routes/paths';
 // utils
-import { fDate, fCurrency } from '~/utils/';
+import { fDate, fCurrency, cloudinary } from '~/utils';
 // components
 import Page from '~/components/Page';
 import Image from '~/components/Image';
 import Iconify from '~/components/Iconify';
-import Loading from '~/components/Loading';
 import Scrollbar from '~/components/Scrollbar';
 import TableListHead from '~/components/TableListHead';
 import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
 // sections
-import { CourseMoreMenu } from '~/sections/instructor/courses';
+import { CourseMoreMenu } from '~/sections/@dashboard/courses/course-list';
 // api
 import { courseApi } from '~/api';
-// routes
-import { PATH_INSTRUCTOR, PATH_PAGE } from '~/routes/paths';
-// hooks
-import { useAuth } from '~/hooks';
-import { cloudinary } from '~/utils';
 import { Course, HeaderLabel, ListParams, PaginationParams } from '~/models';
+import Loading from '~/components/Loading';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD: HeaderLabel[] = [
   { id: 'name', label: 'Course', alignRight: false },
+  { id: 'instructor', label: 'Instructor', alignRight: false },
   { id: 'createdAt', label: 'Create at', alignRight: false },
   { id: 'price', label: 'Price', alignRight: true },
-  { id: 'priceSale', label: 'Price Sale', alignRight: true },
   { id: '', label: '', alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function Courses() {
-  const { user } = useAuth();
   const [page, setPage] = useState<number>(1);
-  const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [courseList, setCourseList] = useState<Course[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>();
   const navigate = useNavigate();
@@ -60,16 +56,13 @@ export default function Courses() {
     const params: ListParams = {
       _page: page,
       _limit: rowsPerPage,
-      _instructor: user._id,
     };
 
     try {
       const { courses, pagination } = await courseApi.getAll(params);
       setCourseList(courses);
-      setPagination(pagination);
-    } catch (error) {
-      navigate(PATH_PAGE.page500);
-    }
+      pagination && setPagination(pagination);
+    } catch (error) {}
     setIsLoading(false);
   };
 
@@ -87,7 +80,9 @@ export default function Courses() {
     try {
       await courseApi.remove(courseId);
       getAllCourses();
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const emptyRows = page > 0 ? Math.max(0, rowsPerPage - courseList.length) : 0;
@@ -98,7 +93,7 @@ export default function Courses() {
         <HeaderBreadcrumbs
           heading='Courses'
           links={[
-            { name: 'Instructor', href: PATH_INSTRUCTOR.root },
+            { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'Courses',
             },
@@ -107,14 +102,15 @@ export default function Courses() {
             <Button
               variant='contained'
               startIcon={
-                <Iconify icon='eva:plus-fill' width={20} height={20} />
+                <Iconify icon={'eva:plus-fill'} width={20} height={20} />
               }
-              onClick={() => navigate(PATH_INSTRUCTOR.courses.create)}
+              onClick={() => navigate(PATH_DASHBOARD.courses.create)}
             >
               New Course
             </Button>
           }
         />
+
         <Card sx={{ position: 'relative' }}>
           {isLoading && <Loading />}
           <Scrollbar>
@@ -122,9 +118,9 @@ export default function Courses() {
               <Table>
                 <TableListHead headLabel={TABLE_HEAD} />
                 <TableBody>
-                  {!!courseList.length &&
+                  {courseList.length > 0 &&
                     courseList.map((course) => {
-                      const { _id, name, cover, price, priceSale, createdAt } =
+                      const { _id, name, cover, price, createdAt, instructor } =
                         course;
 
                       return (
@@ -147,14 +143,14 @@ export default function Courses() {
                               {name}
                             </Typography>
                           </TableCell>
+                          <TableCell>
+                            {instructor?.firstName} {instructor?.lastName}
+                          </TableCell>
                           <TableCell style={{ minWidth: 160 }}>
                             {fDate(createdAt as Date)}
                           </TableCell>
                           <TableCell align='right'>
                             {fCurrency(price)}
-                          </TableCell>
-                          <TableCell align='right'>
-                            {fCurrency(priceSale)}
                           </TableCell>
                           <TableCell align='right'>
                             <CourseMoreMenu
@@ -190,5 +186,3 @@ export default function Courses() {
     </Page>
   );
 }
-
-// ----------------------------------------------------------------------
