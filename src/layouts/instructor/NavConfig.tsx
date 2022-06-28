@@ -1,5 +1,4 @@
 import { SubMenu } from '~/models';
-// import Label from '~/components/Label';
 import SvgIconStyle from '~/components/SvgIconStyle';
 import { PATH_INSTRUCTOR } from '~/routes/paths';
 

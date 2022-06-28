@@ -31,7 +31,7 @@ import { PATH_INSTRUCTOR, PATH_PAGE } from '~/routes/paths';
 // hooks
 import { useAuth } from '~/hooks';
 import { cloudinary } from '~/utils';
-import { Course, HeaderLabel, PaginationParams } from '~/models';
+import { Course, HeaderLabel, ListParams, PaginationParams } from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ export default function Courses() {
   const navigate = useNavigate();
 
   const getAllCourses = async () => {
-    const params = {
+    const params: ListParams = {
       _page: page,
       _limit: rowsPerPage,
       _instructor: user._id,

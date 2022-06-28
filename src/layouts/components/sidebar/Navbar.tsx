@@ -12,10 +12,11 @@ import CollapseButton from './CollapseButton';
 // hooks
 import { useCollapseDrawer, useResponsive } from '~/hooks';
 // config
-import navConfig from './NavConfig';
+// import navConfig from '../../../instructor/NavConfig';
 import { NAVBAR } from '~/config';
 //
 import { cssStyles } from '~/utils';
+import { SubMenu } from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -30,15 +31,17 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-interface NavbarVerticalProps {
+interface NavbarProps {
   isOpenSidebar: boolean;
+  navConfig: SubMenu[];
   onCloseSidebar: () => void;
 }
 
-export default function NavbarVertical({
+export default function Navbar({
   isOpenSidebar,
+  navConfig,
   onCloseSidebar,
-}: NavbarVerticalProps) {
+}: NavbarProps) {
   const theme = useTheme();
 
   const { pathname } = useLocation();

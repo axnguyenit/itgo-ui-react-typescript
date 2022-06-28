@@ -1,19 +1,24 @@
 import React, { lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
-import { BasedGuard, GuestGuard, InstructorGuard } from '~/guards';
-import { HomeLayout, LogoOnlyLayout, InstructorLayout } from '~/layouts';
-import { PATH_INSTRUCTOR } from './paths';
+import { AuthGuard, BasedGuard, GuestGuard, InstructorGuard } from '~/guards';
+import {
+  HomeLayout,
+  LogoOnlyLayout,
+  InstructorLayout,
+  DashboardLayout,
+} from '~/layouts';
+import { PATH_DASHBOARD, PATH_INSTRUCTOR } from './paths';
 
 // ----------------------------------------------------------------------
 
-// Auth routes
+// Auth Routes
 const Login = lazy(() => import('~/pages/auth/Login'));
 const Verify = lazy(() => import('~/pages/auth/Verify'));
 const Register = lazy(() => import('~/pages/auth/Register'));
 const RequestVerify = lazy(() => import('~/pages/auth/RequestVerify'));
 const ResetPassword = lazy(() => import('~/pages/auth/ResetPassword'));
 const ForgotPassword = lazy(() => import('~/pages/auth/ForgotPassword'));
-// Home routes
+// Home Routes
 const Home = lazy(() => import('~/pages/home/Home'));
 const Courses = lazy(() => import('~/pages/home/Courses'));
 const Roadmap = lazy(() => import('~/pages/home/Roadmap'));
@@ -25,14 +30,16 @@ const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
 const AccountSettings = lazy(() => import('~/pages/home/AccountSettings'));
 const BecomeInstructor = lazy(() => import('~/pages/home/BecomeInstructor'));
 const InstructorProfile = lazy(() => import('~/pages/home/InstructorProfile'));
-// Instructor routes
+// Instructor Routes
 const InstructorCourses = lazy(() => import('~/pages/instructor/Courses'));
 const InstructorCalendar = lazy(() => import('~/pages/instructor/Calendar'));
 const InstructorStudents = lazy(() => import('~/pages/instructor/Students'));
 const InstructorCourseCreate = lazy(
   () => import('~/pages/instructor/CourseCreate')
 );
-// Other routes
+// Dashboard Routes
+const Users = lazy(() => import('~/pages/dashboard/Users'));
+// Other Routes
 const Page500 = lazy(() => import('~/pages/Page500'));
 const Page404 = lazy(() => import('~/pages/Page404'));
 
@@ -120,6 +127,68 @@ export default function Router() {
       ],
     },
 
+    // Dashboard Routes
+    {
+      path: 'dashboard',
+      element: (
+        <AuthGuard>
+          <DashboardLayout />
+        </AuthGuard>
+      ),
+      children: [
+        {
+          element: <Navigate to={PATH_DASHBOARD.users.root} replace />,
+          index: true,
+        },
+        {
+          path: 'users',
+          element: <Users />,
+        },
+        //     {
+        //       path: 'courses',
+        //       children: [
+        //         { element: <DashboardCourses />, index: true },
+        //         { path: 'create', element: <CourseCreate /> },
+        //         { path: ':id/edit', element: <CourseCreate /> },
+        //       ],
+        //     },
+        //     {
+        //       path: 'roadmaps',
+        //       children: [
+        //         { element: <Roadmaps />, index: true },
+        //         { path: 'create', element: <RoadmapCreate /> },
+        //         { path: ':id/edit', element: <RoadmapCreate /> },
+        //       ],
+        //     },
+        //     {
+        //       path: 'instructors',
+        //       children: [
+        //         { element: <Instructors />, index: true },
+        //         { path: ':id/courses', element: <DashboardInstructorCourses /> },
+        //         {
+        //           path: 'courses/:id/students',
+        //           element: <DashboardInstructorStudents />,
+        //         },
+        //       ],
+        //     },
+        //     {
+        //       path: 'applications',
+        //       children: [
+        //         { element: <Applications />, index: true },
+        //         { path: ':id/cv', element: <PDFViewer /> },
+        //       ],
+        //     },
+        //     {
+        //       path: 'technologies',
+        //       children: [
+        //         { element: <Technologies />, index: true },
+        //         { path: 'create', element: <TechnologyCreate /> },
+        //         { path: ':id/edit', element: <TechnologyCreate /> },
+        //       ],
+        //     },
+      ],
+    },
+
     // Main Routes
     {
       path: '*',
@@ -140,6 +209,7 @@ export default function Router() {
     },
     { path: '*', element: <Navigate to='/404' replace /> },
 
+    // Auth Routes
     {
       path: 'auth',
       children: [
