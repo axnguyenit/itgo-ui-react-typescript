@@ -45,7 +45,11 @@ export default function Users() {
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userList, setUserList] = useState<Partial<User>[]>([]);
-  const [pagination, setPagination] = useState<PaginationParams>();
+  const [pagination, setPagination] = useState<PaginationParams>({
+    _limit: 5,
+    _page: page,
+    _totalRows: rowsPerPage,
+  });
 
   const getAllUsers = async () => {
     setIsLoading(true);
@@ -158,7 +162,7 @@ export default function Users() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component='div'
-            count={pagination?._totalRows as number}
+            count={pagination._totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}
             onPageChange={(event, value) => setPage(value + 1)}

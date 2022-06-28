@@ -48,7 +48,11 @@ export default function Courses() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [courseList, setCourseList] = useState<Course[]>([]);
-  const [pagination, setPagination] = useState<PaginationParams>();
+  const [pagination, setPagination] = useState<PaginationParams>({
+    _limit: 5,
+    _page: page,
+    _totalRows: rowsPerPage,
+  });
   const navigate = useNavigate();
 
   const getAllCourses = async () => {
@@ -173,7 +177,7 @@ export default function Courses() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component='div'
-            count={pagination?._totalRows as number} //total courses
+            count={pagination._totalRows} //total courses
             rowsPerPage={rowsPerPage}
             page={page - 1}
             onPageChange={(event, value) => setPage(value + 1)}
