@@ -59,6 +59,10 @@ export interface RefreshToken {
   refreshToken: string;
 }
 
+export interface UserResponse {
+  user: Partial<User>;
+}
+
 export interface UsersResponse {
   users: Partial<User>[];
   pagination: PaginationParams;

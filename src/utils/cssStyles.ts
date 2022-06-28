@@ -13,12 +13,27 @@ function getDirection(value = 'bottom') {
 
 // ----------------------------------------------------------------------
 
+interface BgBlurProps {
+  color?: string;
+  blur?: number;
+  opacity?: number;
+}
+
+interface BgGradientProps {
+  direction?: string;
+  startColor?: string;
+  endColor?: string;
+}
+
+type BgImageProps = BgGradientProps & {
+  url?: string;
+};
+
 export default function cssStyles(theme: Theme) {
   return {
-    bgBlur: (props?: any) => {
+    bgBlur: (props?: BgBlurProps) => {
       const color =
         props?.color || theme?.palette.background.default || '#000000';
-
       const blur = props?.blur || 6;
       const opacity = props?.opacity || 0.8;
 
@@ -28,7 +43,7 @@ export default function cssStyles(theme: Theme) {
         backgroundColor: alpha(color, opacity),
       };
     },
-    bgGradient: (props?: any) => {
+    bgGradient: (props?: BgGradientProps) => {
       const direction = getDirection(props?.direction);
       const startColor = props?.startColor || `${alpha('#000000', 0)} 0%`;
       const endColor = props?.endColor || '#000000 75%';
@@ -37,7 +52,7 @@ export default function cssStyles(theme: Theme) {
         background: `linear-gradient(${direction}, ${startColor}, ${endColor});`,
       };
     },
-    bgImage: (props?: any) => {
+    bgImage: (props?: BgImageProps) => {
       const url =
         props?.url ||
         'https://minimal-assets-api.vercel.app/assets/images/bg_gradient.jpg';

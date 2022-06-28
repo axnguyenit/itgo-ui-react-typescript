@@ -7,27 +7,31 @@ import { PATH_INSTRUCTOR } from './paths';
 
 // ----------------------------------------------------------------------
 
-const Home = lazy(() => import('~/pages/home/Home'));
+// Auth routes
 const Login = lazy(() => import('~/pages/auth/Login'));
-const Register = lazy(() => import('~/pages/auth/Register'));
 const Verify = lazy(() => import('~/pages/auth/Verify'));
+const Register = lazy(() => import('~/pages/auth/Register'));
 const RequestVerify = lazy(() => import('~/pages/auth/RequestVerify'));
-const ForgotPassword = lazy(() => import('~/pages/auth/ForgotPassword'));
 const ResetPassword = lazy(() => import('~/pages/auth/ResetPassword'));
-const BecomeInstructor = lazy(() => import('~/pages/home/BecomeInstructor'));
+const ForgotPassword = lazy(() => import('~/pages/auth/ForgotPassword'));
+// Home routes
+const Home = lazy(() => import('~/pages/home/Home'));
 const Courses = lazy(() => import('~/pages/home/Courses'));
-const MyLearning = lazy(() => import('~/pages/home/MyLearning'));
 const Roadmap = lazy(() => import('~/pages/home/Roadmap'));
-const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
 const Checkout = lazy(() => import('~/pages/home/Checkout'));
-const AccountSettings = lazy(() => import('~/pages/home/AccountSettings'));
+const MyLearning = lazy(() => import('~/pages/home/MyLearning'));
 const StudentCalendar = lazy(() => import('~/pages/home/Calendar'));
-const InstructorCalendar = lazy(() => import('~/pages/instructor/Calendar'));
+const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
+const AccountSettings = lazy(() => import('~/pages/home/AccountSettings'));
+const BecomeInstructor = lazy(() => import('~/pages/home/BecomeInstructor'));
+const InstructorProfile = lazy(() => import('~/pages/home/InstructorProfile'));
+// Instructor routes
 const InstructorCourses = lazy(() => import('~/pages/instructor/Courses'));
+const InstructorCalendar = lazy(() => import('~/pages/instructor/Calendar'));
+const InstructorStudents = lazy(() => import('~/pages/instructor/Students'));
 const InstructorCourseCreate = lazy(
   () => import('~/pages/instructor/CourseCreate')
 );
-const InstructorStudents = lazy(() => import('~/pages/instructor/Students'));
 
 // ----------------------------------------------------------------------
 
@@ -41,18 +45,17 @@ export default function Router() {
         { element: <Navigate to='home' replace />, index: true },
         { path: 'home', element: <Home /> },
         { path: 'checkout', element: <Checkout /> },
-        // { path: 'faqs', element: <Faqs /> },
         { path: 'courses', element: <Courses /> },
         { path: 'courses/:id', element: <CourseDetails /> },
         { path: 'roadmaps/:id', element: <Roadmap /> },
-        // {
-        //   path: 'instructor/:id',
-        //   element: (
-        //     <BasedGuard>
-        //       <InstructorProfile />
-        //     </BasedGuard>
-        //   ),
-        // },
+        {
+          path: 'instructor/:id',
+          element: (
+            <BasedGuard>
+              <InstructorProfile />
+            </BasedGuard>
+          ),
+        },
         {
           path: 'account-settings',
           element: (

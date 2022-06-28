@@ -12,6 +12,7 @@ import {
   RefreshToken,
   Email,
   ResetPassword,
+  UserResponse,
 } from '~/models';
 import { axios } from '~/utils';
 
@@ -23,7 +24,7 @@ const userApi = {
     return axios.get(url, { params });
   },
 
-  get(id: string): Promise<User> {
+  get(id: string): Promise<UserResponse> {
     const url = `/api/users/user/${id}`;
     return axios.get(url);
   },

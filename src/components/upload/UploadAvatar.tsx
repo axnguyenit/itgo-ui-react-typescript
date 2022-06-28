@@ -57,7 +57,6 @@ const PlaceholderStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-// file: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 interface UploadAvatarProps {
   error: boolean;
   file: any;
