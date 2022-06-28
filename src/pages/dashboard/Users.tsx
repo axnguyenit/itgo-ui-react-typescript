@@ -21,6 +21,7 @@ import Label from '~/components/Label';
 import Scrollbar from '~/components/Scrollbar';
 import TableListHead from '~/components/TableListHead';
 import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
+import Loading from '~/components/Loading';
 // sections
 import { userApi } from '~/api';
 import { cloudinary } from '~/utils';
@@ -44,8 +45,10 @@ export default function Users() {
   const [page, setPage] = useState<number>(1);
   const [pagination, setPagination] = useState<PaginationParams>();
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getAllUsers = async () => {
+    setIsLoading(true);
     const params: ListParams = {
       _page: page,
       _limit: rowsPerPage,
@@ -56,6 +59,7 @@ export default function Users() {
       setUserList(users);
       setPagination(pagination);
     } catch (error) {}
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -82,6 +86,7 @@ export default function Users() {
         />
 
         <Card>
+          {isLoading && <Loading />}
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>

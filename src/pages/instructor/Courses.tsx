@@ -19,6 +19,7 @@ import { fDate, fCurrency } from '~/utils/';
 import Page from '~/components/Page';
 import Image from '~/components/Image';
 import Iconify from '~/components/Iconify';
+import Loading from '~/components/Loading';
 import Scrollbar from '~/components/Scrollbar';
 import TableListHead from '~/components/TableListHead';
 import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
@@ -51,9 +52,11 @@ export default function Courses() {
   const [page, setPage] = useState<number>(1);
   const [pagination, setPagination] = useState<PaginationParams>();
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
   const getAllCourses = async () => {
+    setIsLoading(true);
     const params: ListParams = {
       _page: page,
       _limit: rowsPerPage,
@@ -67,6 +70,7 @@ export default function Courses() {
     } catch (error) {
       navigate(PATH_PAGE.page500);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -112,7 +116,8 @@ export default function Courses() {
           }
         />
         <Card>
-          <Scrollbar>
+          {isLoading && <Loading />}
+          <Scrollbar sx={{ position: 'relative' }}>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
                 <TableListHead headLabel={TABLE_HEAD} />
