@@ -30,3 +30,12 @@ export interface EventResponse {
   events: Event[];
   pagination?: PaginationParams;
 }
+
+export interface Signature {
+  signature: string;
+}
+
+export interface SignatureData {
+  meetingNumber: string;
+  role: number;
+}

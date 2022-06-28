@@ -81,7 +81,6 @@ export default function InstructorProfile() {
         setCourses(courses);
         pagination && setPagination(pagination);
       } catch (error) {
-        console.error(error);
         navigate(PATH_PAGE.page404);
       }
       setIsLoading(false);

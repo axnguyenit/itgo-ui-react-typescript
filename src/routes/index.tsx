@@ -1,8 +1,7 @@
 import React, { lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import { BasedGuard, GuestGuard, InstructorGuard } from '~/guards';
-import { HomeLayout } from '~/layouts';
-import InstructorLayout from '~/layouts/instructor';
+import { HomeLayout, LogoOnlyLayout, InstructorLayout } from '~/layouts';
 import { PATH_INSTRUCTOR } from './paths';
 
 // ----------------------------------------------------------------------
@@ -19,6 +18,7 @@ const Home = lazy(() => import('~/pages/home/Home'));
 const Courses = lazy(() => import('~/pages/home/Courses'));
 const Roadmap = lazy(() => import('~/pages/home/Roadmap'));
 const Checkout = lazy(() => import('~/pages/home/Checkout'));
+const Learning = lazy(() => import('~/pages/home/Learning'));
 const MyLearning = lazy(() => import('~/pages/home/MyLearning'));
 const StudentCalendar = lazy(() => import('~/pages/home/Calendar'));
 const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
@@ -118,24 +118,24 @@ export default function Router() {
     },
 
     // Main Routes
-    // {
-    //   path: '*',
-    //   element: <LogoOnlyLayout />,
-    //   children: [
-    //     {
-    //       path: 'learning/:id',
-    //       element: (
-    //         <BasedGuard>
-    //           <Learning />
-    //         </BasedGuard>
-    //       ),
-    //     },
-    //     { path: '500', element: <Page500 /> },
-    //     { path: '404', element: <NotFound /> },
-    //     { path: '*', element: <Navigate to='/404' replace /> },
-    //   ],
-    // },
-    // { path: '*', element: <Navigate to='/404' replace /> },
+    {
+      path: '*',
+      element: <LogoOnlyLayout />,
+      children: [
+        {
+          path: 'learning/:id',
+          element: (
+            <BasedGuard>
+              <Learning />
+            </BasedGuard>
+          ),
+        },
+        // { path: '500', element: <Page500 /> },
+        // { path: '404', element: <NotFound /> },
+        // { path: '*', element: <Navigate to='/404' replace /> },
+      ],
+    },
+    { path: '*', element: <Navigate to='/404' replace /> },
 
     {
       path: 'auth',

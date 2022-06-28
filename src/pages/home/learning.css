@@ -1,0 +1,117 @@
+/* custom style zoom sdk ver 2.2.0 */
+#zmmtg-root {
+	display: none;
+	font-family: 'Public Sans', sans-serif !important;
+}
+
+#zmmtg-root .joinWindowBtn,
+#zmmtg-root .zmu-btn--danger,
+#zmmtg-root .join-audio-by-voip button,
+#zmmtg-root .leave-meeting-options__btn--danger {
+	border-radius: 8px !important;
+	font-size: 14px !important;
+	outline: 0 !important;
+	border: 0 !important;
+	margin: 0 !important;
+	box-shadow: 0 8px 16px 0 rgb(252 165 36 / 24%) !important;
+	font-family: 'Public Sans', sans-serif !important;
+	font-weight: 700 !important;
+}
+
+#zmmtg-root .zmu-btn--danger {
+	background-color: #b78103 !important;
+}
+
+#zmmtg-root .joinWindowBtn,
+#zmmtg-root .join-audio-by-voip button {
+	background-color: #fca524 !important;
+}
+
+#zmmtg-root .joinWindowBtn:hover,
+#zmmtg-root .zmu-btn--danger:hover,
+#zmmtg-root .join-audio-by-voip button:hover,
+#zmmtg-root .participants-item__buttons button:hover,
+#zmmtg-root .leave-meeting-options__btn--danger:hover {
+	box-shadow: none !important;
+	background-color: #d29c4b !important;
+}
+#zmmtg-root .join-meeting,
+#zmmtg-root .meeting-title {
+	font-size: 30px !important;
+	font-weight: 700 !important;
+	font-family: 'Public Sans', sans-serif !important;
+}
+
+.chat-container #chatReceiverMenu {
+	border-radius: 8px !important;
+	padding: 0 6px !important;
+	outline: 0 !important;
+	border: 0 !important;
+	margin: 0 !important;
+	box-shadow: 0 8px 16px 0 rgb(252 165 36 / 24%) !important;
+	font-family: 'Public Sans', sans-serif !important;
+	font-weight: 600 !important;
+	background-color: #fca524 !important;
+}
+
+.ReactModal__Content,
+#zmmtg-root .disclaimer__button-text,
+#zmmtg-root .chat-receiver-list__to-text {
+	font-family: 'Public Sans', sans-serif !important;
+}
+
+#zmmtg-root .participants-item__buttons button {
+	font-family: 'Public Sans', sans-serif !important;
+	background-color: #fca524 !important;
+	font-weight: 600 !important;
+	border: none !important;
+	outline: none !important;
+}
+
+#zmmtg-root .loading-img {
+	margin: 0 auto !important;
+}
+
+#zmmtg-root .participants-section-container__participants-footer-bottom button:nth-child(1),
+#zmmtg-root .participants-section-container__participants-footer-bottom button:nth-child(2) {
+	display: none !important;
+}
+
+.chat-container .chat-box__chat-textarea {
+	font-family: 'Public Sans', sans-serif !important;
+	width: 100% !important;
+	outline: none !important;
+	border-radius: 4px !important;
+	border: 1px solid #212b36 !important;
+	padding: 10px 8px !important;
+}
+
+.chat-container .chat-box__chat-textarea:focus {
+	border: 1px solid #fca524 !important;
+}
+
+.chat-container .ReactVirtualized__List.chat-virtualized-list {
+	outline: none !important;
+	border: none !important;
+	padding: 4px !important;
+}
+
+.ReactModal__Content .ReactVirtualized__List.chat-virtualized-list,
+.chat-container .ReactVirtualized__List.chat-virtualized-list {
+	outline: none !important;
+	border: none !important;
+}
+
+/* outgoing message */
+.chat-container .chat-message__text-box--self {
+	background-color: #f4f6f8 !important;
+	color: #212b36 !important;
+	border-radius: 8px !important;
+}
+
+/* incoming message */
+.chat-container .chat-message__text-box--others {
+	background-color: #c8facd !important;
+	color: #212b36 !important;
+	border-radius: 8px !important;
+}

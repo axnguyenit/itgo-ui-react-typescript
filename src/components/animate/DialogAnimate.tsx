@@ -8,7 +8,7 @@ import { varFade } from './variants';
 
 interface DialogAnimateProps {
   children: ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
   open: boolean;
   sx?: SxProps<Theme>;
   variants?: VariantType;
@@ -17,7 +17,7 @@ interface DialogAnimateProps {
 export default function DialogAnimate({
   open = false,
   variants = {},
-  onClose,
+  onClose = () => {},
   children,
   sx,
   ...other
