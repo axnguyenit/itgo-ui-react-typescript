@@ -32,6 +32,9 @@ const InstructorStudents = lazy(() => import('~/pages/instructor/Students'));
 const InstructorCourseCreate = lazy(
   () => import('~/pages/instructor/CourseCreate')
 );
+// Other routes
+const Page500 = lazy(() => import('~/pages/Page500'));
+const Page404 = lazy(() => import('~/pages/Page404'));
 
 // ----------------------------------------------------------------------
 
@@ -130,9 +133,9 @@ export default function Router() {
             </BasedGuard>
           ),
         },
-        // { path: '500', element: <Page500 /> },
-        // { path: '404', element: <NotFound /> },
-        // { path: '*', element: <Navigate to='/404' replace /> },
+        { path: '500', element: <Page500 /> },
+        { path: '404', element: <Page404 /> },
+        { path: '*', element: <Navigate to='/404' replace /> },
       ],
     },
     { path: '*', element: <Navigate to='/404' replace /> },
