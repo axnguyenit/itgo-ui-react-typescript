@@ -1,10 +1,4 @@
-import {
-  CourseData,
-  CourseResponse,
-  CoursesResponse,
-  ListParams,
-  User,
-} from '~/models';
+import { CourseData, CourseResponse, CoursesResponse, ListParams, StudentsResponse, User } from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------
@@ -35,7 +29,7 @@ const courseApi = {
     return axios.delete(url);
   },
 
-  getStudents(id: string): Promise<{ students: Partial<User>[] }> {
+  getStudents(id: string): Promise<StudentsResponse> {
     const url = `/api/classes/${id}`;
     return axios.get(url);
   },

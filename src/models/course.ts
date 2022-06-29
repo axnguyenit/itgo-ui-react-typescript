@@ -53,3 +53,7 @@ export interface CourseData {
   requirements: string;
   targetAudiences: string;
 }
+
+export interface StudentsResponse {
+  students: Partial<User>[];
+}
