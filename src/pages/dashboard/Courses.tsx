@@ -45,8 +45,8 @@ const TABLE_HEAD: HeaderLabel[] = [
 
 export default function Courses() {
   const [page, setPage] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [courseList, setCourseList] = useState<Course[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
     _limit: 5,
@@ -81,10 +81,12 @@ export default function Courses() {
   };
 
   const handleDeleteCourse = async (courseId: string) => {
+    setIsLoading(true);
     try {
       await courseApi.remove(courseId);
       getAllCourses();
     } catch (error) {}
+    setIsLoading(false);
   };
 
   const emptyRows = page > 0 ? Math.max(0, rowsPerPage - courseList.length) : 0;

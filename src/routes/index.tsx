@@ -49,6 +49,7 @@ const RoadmapCreate = lazy(() => import('~/pages/dashboard/RoadmapCreate'));
 const Instructors = lazy(() => import('~/pages/dashboard/Instructors'));
 const DashboardInstructorCourses = lazy(() => import('~/pages/dashboard/InstructorCourses'));
 const DashboardInstructorStudents = lazy(() => import('~/pages/dashboard/Students'));
+const Applications = lazy(() => import('~/pages/dashboard/Applications'));
 
 // Other Routes
 const Page500 = lazy(() => import('~/pages/Page500'));
@@ -182,13 +183,13 @@ export default function Router() {
             },
           ],
         },
-        //     {
-        //       path: 'applications',
-        //       children: [
-        //         { element: <Applications />, index: true },
-        //         { path: ':id/cv', element: <PDFViewer /> },
-        //       ],
-        //     },
+        {
+          path: 'applications',
+          children: [
+            { element: <Applications />, index: true },
+            // { path: ':id/cv', element: <PDFViewer /> },
+          ],
+        },
         //     {
         //       path: 'technologies',
         //       children: [

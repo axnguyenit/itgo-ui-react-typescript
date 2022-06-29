@@ -1,4 +1,5 @@
 import { PaginationParams } from '.';
+import { User } from '.';
 
 // ----------------------------------------------------------------------
 
@@ -13,7 +14,11 @@ export interface Application {
   updatedAt?: Date;
 }
 
+export type ApplicationDetails = Application & {
+  user: Partial<User>;
+};
+
 export interface ApplicationResponse {
-  applications: Application[];
+  applications: ApplicationDetails[];
   pagination?: PaginationParams;
 }

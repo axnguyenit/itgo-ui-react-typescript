@@ -65,10 +65,12 @@ export default function Roadmaps() {
   };
 
   const handleDeleteRoadmap = async (roadmapId: string) => {
+		setIsLoading(true);
     try {
       await roadmapApi.remove(roadmapId);
       getRoadmaps();
     } catch (error) {}
+    setIsLoading(false);
   };
 
   useEffect(() => {
