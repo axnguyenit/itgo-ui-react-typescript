@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, IconButton, Stack } from '@mui/material';
 import Image from '~/components/Image';
