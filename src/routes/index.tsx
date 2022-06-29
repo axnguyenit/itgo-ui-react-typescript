@@ -18,6 +18,7 @@ const Register = lazy(() => import('~/pages/auth/Register'));
 const RequestVerify = lazy(() => import('~/pages/auth/RequestVerify'));
 const ResetPassword = lazy(() => import('~/pages/auth/ResetPassword'));
 const ForgotPassword = lazy(() => import('~/pages/auth/ForgotPassword'));
+
 // Home Routes
 const Home = lazy(() => import('~/pages/home/Home'));
 const Courses = lazy(() => import('~/pages/home/Courses'));
@@ -30,6 +31,7 @@ const CourseDetails = lazy(() => import('~/pages/home/CourseDetails'));
 const AccountSettings = lazy(() => import('~/pages/home/AccountSettings'));
 const BecomeInstructor = lazy(() => import('~/pages/home/BecomeInstructor'));
 const InstructorProfile = lazy(() => import('~/pages/home/InstructorProfile'));
+
 // Instructor Routes
 const InstructorCourses = lazy(() => import('~/pages/instructor/Courses'));
 const InstructorCalendar = lazy(() => import('~/pages/instructor/Calendar'));
@@ -37,11 +39,14 @@ const InstructorStudents = lazy(() => import('~/pages/instructor/Students'));
 const InstructorCourseCreate = lazy(
   () => import('~/pages/instructor/CourseCreate')
 );
+
 // Dashboard Routes
 const Users = lazy(() => import('~/pages/dashboard/Users'));
 const DashboardCourses = lazy(() => import('~/pages/dashboard/Courses'));
 const CourseCreate = lazy(() => import('~/pages/dashboard/CourseCreate'));
 const Roadmaps = lazy(() => import('~/pages/dashboard/Roadmaps'));
+const RoadmapCreate = lazy(() => import('~/pages/dashboard/RoadmapCreate'));
+
 // Other Routes
 const Page500 = lazy(() => import('~/pages/Page500'));
 const Page404 = lazy(() => import('~/pages/Page404'));
@@ -159,8 +164,8 @@ export default function Router() {
           path: 'roadmaps',
           children: [
             { element: <Roadmaps />, index: true },
-            // { path: 'create', element: <RoadmapCreate /> },
-            // { path: ':id/edit', element: <RoadmapCreate /> },
+            { path: 'create', element: <RoadmapCreate /> },
+            { path: ':id/edit', element: <RoadmapCreate /> },
           ],
         },
         //     {

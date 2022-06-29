@@ -5,7 +5,7 @@ import { PaginationParams } from '.';
 export interface RoadmapDetail {
   _id?: string;
   id?: string;
-  roadmapId: string;
+  roadmapId?: string;
   technology: string;
   description: string;
   image: string;

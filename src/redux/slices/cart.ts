@@ -1,5 +1,3 @@
-// import { cartApi } from '~/api';
-// import { useAppDispatch } from '~/hooks';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { sum, unionBy } from 'lodash';
 import { cartApi } from '~/api';
@@ -24,13 +22,10 @@ const initialState: Cart = {
   discount: 0,
 };
 
-export const getCartFromServer = createAsyncThunk<CartItem[]>(
-  'cart/getCart',
-  async () => {
-    const { cartItems } = await cartApi.get();
-    return cartItems;
-  }
-);
+export const getCartFromServer = createAsyncThunk<CartItem[]>('cart/getCart', async () => {
+  const { cartItems } = await cartApi.get();
+  return cartItems;
+});
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -40,11 +35,7 @@ const cartSlice = createSlice({
     getCart(state: Cart, action: PayloadAction<CartItem[]>) {
       const cart = action.payload;
 
-      const subtotal = sum(
-        cart.map(
-          (cartItem) => cartItem.course.priceSale || cartItem.course.price
-        )
-      );
+      const subtotal = sum(cart.map((cartItem) => cartItem.course.priceSale || cartItem.course.price));
       const discount = cart.length === 0 ? 0 : state.discount;
 
       state.cart = cart;
@@ -63,9 +54,7 @@ const cartSlice = createSlice({
     },
 
     deleteCart(state: Cart, action: PayloadAction<string>) {
-      const updateCart = state.cart.filter(
-        (item) => item._id !== action.payload
-      );
+      const updateCart = state.cart.filter((item) => item._id !== action.payload);
       state.cart = updateCart;
     },
 
@@ -104,15 +93,6 @@ const cartSlice = createSlice({
 });
 
 export const selectCart = (state: RootState) => state.cart;
-export const {
-  addToCart,
-  getCart,
-  applyDiscount,
-  deleteCart,
-  onBackStep,
-  onGotoStep,
-  onNextStep,
-  resetCart,
-  setCart,
-} = cartSlice.actions;
+export const { addToCart, getCart, applyDiscount, deleteCart, onBackStep, onGotoStep, onNextStep, resetCart, setCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

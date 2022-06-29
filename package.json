@@ -13,6 +13,7 @@
     "@fullcalendar/timeline": "^5.11.0",
     "@hookform/resolvers": "^2.8.8",
     "@iconify/react": "^3.2.1",
+    "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.82",
     "@mui/material": "^5.6.4",
     "@mui/x-data-grid": "^5.10.0",
