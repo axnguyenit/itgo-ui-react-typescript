@@ -59,7 +59,7 @@ export default function Editor({
   sx,
   ...other
 }: EditorProps) {
-  const quillEl = useRef<ReactQuill>(null);
+  const quillRef = useRef<ReactQuill>(null);
   // const isMountedRef = useIsMountedRef();
   // const modules = {
   //   toolbar: {
@@ -95,7 +95,7 @@ export default function Editor({
     },
   };
 
-  // quillEl.current?.e
+  // quillRef.current?.e
 
   return (
     <div>
@@ -111,7 +111,7 @@ export default function Editor({
         {/* {isMountedRef.current && ( */}
         <ReactQuill
           modules={modules}
-          ref={quillEl}
+          ref={quillRef}
           value={value}
           onChange={onChange}
           formats={formats}

@@ -7,33 +7,20 @@ import FullCalendar, {
 } from '@fullcalendar/react'; // => request placed at the top
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import timelinePlugin from '@fullcalendar/timeline';
 import interactionPlugin from '@fullcalendar/interaction';
 // @mui
-import {
-  Button,
-  Card,
-  Container,
-  DialogTitle,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Button, Card, Container, DialogTitle, Stack, Typography } from '@mui/material';
 // components
 import Page from '~/components/Page';
 import { DialogAnimate } from '~/components/animate';
 import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
 import { CalendarStyle, CalendarToolbar } from '~/components/calendar';
-// redux
-// import { selectRange } from '~/redux/slices/calendar';
 // paths
 import { PATH_HOME, PATH_INSTRUCTOR } from '~/routes/paths';
 // sections
 import { CalendarForm } from '~/sections/instructor/calendar';
 // hooks
-import {
-  // useAppDispatch,
-  useResponsive,
-} from '~/hooks';
+import { useResponsive } from '~/hooks';
 // api
 import eventApi from '~/api/eventApi';
 import { CalendarView, Event, CalendarArg } from '~/models';
@@ -45,9 +32,7 @@ export default function Calendar() {
   const isDesktop = useResponsive('up', 'sm');
   const calendarRef = useRef<FullCalendar>(null);
   const [date, setDate] = useState<Date>(new Date());
-  const [view, setView] = useState<CalendarView>(
-    isDesktop ? 'dayGridMonth' : 'timeGridDay'
-  );
+  const [view, setView] = useState<CalendarView>(isDesktop ? 'dayGridMonth' : 'timeGridDay');
   const [events, setEvents] = useState<Event[]>([]);
   const [range, setRange] = useState<CalendarArg>({
     start: new Date(),
@@ -135,10 +120,7 @@ export default function Calendar() {
       <Container maxWidth='xl'>
         <HeaderBreadcrumbs
           heading='Calendar'
-          links={[
-            { name: 'Instructor', href: PATH_INSTRUCTOR.root },
-            { name: 'Calendar' },
-          ]}
+          links={[{ name: 'Instructor', href: PATH_INSTRUCTOR.root }, { name: 'Calendar' }]}
         />
 
         <Card>
@@ -168,26 +150,15 @@ export default function Calendar() {
               select={handleSelectRange}
               eventClick={handleSelectEvent}
               height={isDesktop ? 720 : 'auto'}
-              plugins={[
-                dayGridPlugin,
-                timelinePlugin,
-                timeGridPlugin,
-                interactionPlugin,
-              ]}
+              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             />
           </CalendarStyle>
         </Card>
 
         <DialogAnimate open={isOpenModal} onClose={handleCloseModal}>
           <DialogTitle>
-            <Stack
-              direction='row'
-              alignItems='center'
-              justifyContent='space-between'
-            >
-              <Typography variant='subtitle1'>
-                {selectedEvent ? 'Edit Event' : 'Add Event'}
-              </Typography>
+            <Stack direction='row' alignItems='center' justifyContent='space-between'>
+              <Typography variant='subtitle1'>{selectedEvent ? 'Edit Event' : 'Add Event'}</Typography>
               {selectedEvent && (
                 <Button
                   variant='contained'
@@ -200,12 +171,7 @@ export default function Calendar() {
               )}
             </Stack>
           </DialogTitle>
-          <CalendarForm
-            event={selectedEvent}
-            range={range}
-            onCancel={handleCloseModal}
-            onGetEvents={getEvents}
-          />
+          <CalendarForm event={selectedEvent} range={range} onCancel={handleCloseModal} onGetEvents={getEvents} />
         </DialogAnimate>
       </Container>
     </Page>

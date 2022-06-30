@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react';
 import FullCalendar, { EventClickArg } from '@fullcalendar/react'; // => request placed at the top
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import timelinePlugin from '@fullcalendar/timeline';
 import interactionPlugin from '@fullcalendar/interaction';
 // router
 import { useParams, useNavigate } from 'react-router-dom';
@@ -28,9 +27,7 @@ export default function Calendar() {
   const isDesktop = useResponsive('up', 'sm');
   const calendarRef = useRef<FullCalendar>(null);
   const [date, setDate] = useState<Date>(new Date());
-  const [view, setView] = useState<CalendarView>(
-    isDesktop ? 'dayGridMonth' : 'timeGridDay'
-  );
+  const [view, setView] = useState<CalendarView>(isDesktop ? 'dayGridMonth' : 'timeGridDay');
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<Event>();
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -131,12 +128,7 @@ export default function Calendar() {
               eventResizableFromStart
               eventClick={handleSelectEvent}
               height={isDesktop ? 720 : 'auto'}
-              plugins={[
-                dayGridPlugin,
-                timelinePlugin,
-                timeGridPlugin,
-                interactionPlugin,
-              ]}
+              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             />
           </CalendarStyle>
         </Card>

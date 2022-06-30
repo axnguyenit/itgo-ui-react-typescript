@@ -50,6 +50,8 @@ const Instructors = lazy(() => import('~/pages/dashboard/Instructors'));
 const DashboardInstructorCourses = lazy(() => import('~/pages/dashboard/InstructorCourses'));
 const DashboardInstructorStudents = lazy(() => import('~/pages/dashboard/Students'));
 const Applications = lazy(() => import('~/pages/dashboard/Applications'));
+// const PDFViewer = lazy(() => import('~/pages/dashboard/PDFViewer'));
+const Technologies = lazy(() => import('~/pages/dashboard/Technologies'));
 
 // Other Routes
 const Page500 = lazy(() => import('~/pages/Page500'));
@@ -190,14 +192,14 @@ export default function Router() {
             // { path: ':id/cv', element: <PDFViewer /> },
           ],
         },
-        //     {
-        //       path: 'technologies',
-        //       children: [
-        //         { element: <Technologies />, index: true },
-        //         { path: 'create', element: <TechnologyCreate /> },
-        //         { path: ':id/edit', element: <TechnologyCreate /> },
-        //       ],
-        //     },
+        {
+          path: 'technologies',
+          children: [
+            { element: <Technologies />, index: true },
+            // { path: 'create', element: <TechnologyCreate /> },
+            // { path: ':id/edit', element: <TechnologyCreate /> },
+          ],
+        },
       ],
     },
 

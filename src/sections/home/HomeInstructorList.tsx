@@ -111,14 +111,10 @@ export default function HomeInstructorList() {
               onPrevious={handlePrevious}
               sx={{ '& .arrow': { width: 28, height: 28, p: 0 } }}
             >
+              {/* @ts-ignore */}
               <Slider ref={carouselRef} {...settings}>
                 {instructorList.length > 0 &&
-                  instructorList.map((instructor) => (
-                    <InstructorCard
-                      key={instructor._id}
-                      instructor={instructor}
-                    />
-                  ))}
+                  instructorList.map((instructor) => <InstructorCard key={instructor._id} instructor={instructor} />)}
               </Slider>
             </CarouselArrows>
           </Box>

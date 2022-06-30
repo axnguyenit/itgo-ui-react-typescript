@@ -28,10 +28,10 @@ export default function RHFUploadButton({
   ...other
 }: RHFUploadButtonProps) {
   const { control } = useFormContext();
-  const textFieldEl = useRef<HTMLInputElement>(null);
+  const textFieldRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
-    textFieldEl.current?.click();
+    textFieldRef.current?.click();
   };
 
   return (
@@ -39,11 +39,7 @@ export default function RHFUploadButton({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <Stack
-          direction='row'
-          alignItems='center'
-          justifyContent='space-between'
-        >
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Box>
             <FormHelperText error sx={{ mx: 2 }}>
               {error?.message}
@@ -56,15 +52,13 @@ export default function RHFUploadButton({
           <Box>
             <Button
               variant='contained'
-              startIcon={
-                <Iconify icon='fa-solid:file-upload' width={20} height={20} />
-              }
+              startIcon={<Iconify icon='fa-solid:file-upload' width={20} height={20} />}
               onClick={handleClick}
             >
               {label}
             </Button>
             <TextField
-              inputRef={textFieldEl}
+              inputRef={textFieldRef}
               fullWidth
               error={!!error}
               helperText={error?.message}

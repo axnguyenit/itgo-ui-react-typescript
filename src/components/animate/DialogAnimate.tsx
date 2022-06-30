@@ -1,4 +1,4 @@
-import { Box, Dialog, Paper, SxProps, Theme } from '@mui/material';
+import { Box, Dialog, DialogProps, Paper, SxProps, Theme } from '@mui/material';
 import { AnimatePresence, m } from 'framer-motion';
 import { ReactNode } from 'react';
 import { VariantType } from '~/models';
@@ -6,7 +6,7 @@ import { varFade } from './variants';
 
 // ----------------------------------------------------------------------
 
-interface DialogAnimateProps {
+interface DialogAnimateProps extends DialogProps {
   children: ReactNode;
   onClose?: () => void;
   open: boolean;
@@ -48,10 +48,7 @@ export default function DialogAnimate({
                 justifyContent: 'center',
               }}
             >
-              <Box
-                onClick={onClose}
-                sx={{ width: '100%', height: '100%', position: 'fixed' }}
-              />
+              <Box onClick={onClose} sx={{ width: '100%', height: '100%', position: 'fixed' }} />
               <Paper sx={sx} {...props}>
                 {props.children}
               </Paper>

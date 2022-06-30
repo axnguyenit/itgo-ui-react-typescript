@@ -20,11 +20,11 @@ interface UploadButtonProps {
 }
 
 export default function UploadButton({ onChange, required = false, value }: UploadButtonProps) {
-  const selectFileEl = useRef<HTMLInputElement>(null);
+  const selectFileRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string>('');
 
   const handleSelectFile = () => {
-    selectFileEl.current?.click();
+    selectFileRef.current?.click();
   };
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function UploadButton({ onChange, required = false, value }: Uplo
         )}
       </Box>
       <Input
-        ref={selectFileEl}
+        ref={selectFileRef}
         accept='image/*'
         id='icon-button-file'
         type='file'
