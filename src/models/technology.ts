@@ -13,7 +13,11 @@ export interface Technology {
   updatedAt?: Date;
 }
 
-export interface TechnologyResponse {
+export interface TechnologiesResponse {
   technologies: Technology[];
   pagination?: PaginationParams;
+}
+
+export interface TechnologyResponse {
+  technology: Technology;
 }

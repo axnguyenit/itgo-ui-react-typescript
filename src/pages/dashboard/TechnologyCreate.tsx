@@ -7,53 +7,53 @@ import { PATH_DASHBOARD, PATH_PAGE } from '~/routes/paths';
 import Page from '~/components/Page';
 import LoadingScreen from '~/components/LoadingScreen';
 import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
-import { RoadmapSchemaForm } from '~/sections/@dashboard/roadmaps';
+import { TechnologyNewForm } from '~/sections/@dashboard/technologies';
 // api
-import { roadmapApi } from '~/api';
-import { RoadmapType } from '~/models';
+import technologyApi from '~/api/technologyApi';
+import { Technology } from '~/models';
 
-function RoadmapCreate() {
+function TechnologyCreate() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isEdit = pathname.includes('edit');
-  const [formData, setFormData] = useState<RoadmapType>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [technology, setTechnology] = useState<Technology>();
 
   useEffect(() => {
-    const getRoadmap = async () => {
+    const getTechnology = async () => {
       if (!isEdit || !id) return;
       setIsLoading(true);
       try {
-        const { roadmap } = await roadmapApi.get(id);
-        setFormData(roadmap);
+        const { technology } = await technologyApi.get(id);
+        setTechnology(technology);
       } catch (error) {
         navigate(PATH_PAGE.page404);
       }
       setIsLoading(false);
     };
 
-    isEdit ? getRoadmap() : setFormData(undefined);
+    isEdit ? getTechnology() : setTechnology(undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEdit, id]);
 
   return (
-    <Page title={!isEdit ? 'New roadmap' : 'Edit roadmap'}>
+    <Page title={!isEdit ? 'New technology' : 'Edit technology'}>
       {isLoading && <LoadingScreen />}
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading={!isEdit ? 'New roadmap' : 'Edit roadmap'}
+          heading={!isEdit ? 'New technology' : 'Edit technology'}
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Roadmaps', href: PATH_DASHBOARD.roadmaps.root },
-            { name: !isEdit ? 'New roadmap' : 'Edit roadmap' },
+            { name: 'Technologies', href: PATH_DASHBOARD.technologies.root },
+            { name: !isEdit ? 'New technology' : 'Edit technology' },
           ]}
         />
 
-        {(formData || !isEdit) && <RoadmapSchemaForm isEdit={isEdit} formData={formData as RoadmapType} />}
+        {(technology || !isEdit) && <TechnologyNewForm isEdit={isEdit} currentTechnology={technology as Technology} />}
       </Container>
     </Page>
   );
 }
 
-export default RoadmapCreate;
+export default TechnologyCreate;

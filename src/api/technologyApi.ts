@@ -1,15 +1,15 @@
-import { ListParams, Technology, TechnologyResponse } from '~/models';
+import { ListParams, TechnologiesResponse, Technology, TechnologyResponse } from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------
 
 const technologiesApi = {
-  getAll(params: ListParams): Promise<TechnologyResponse> {
+  getAll(params: ListParams): Promise<TechnologiesResponse> {
     const url = '/api/technologies';
     return axios.get(url, { params });
   },
 
-  get(id: string): Promise<Technology> {
+  get(id: string): Promise<TechnologyResponse> {
     const url = `/api/technologies/${id}`;
     return axios.get(url);
   },

@@ -52,6 +52,7 @@ const DashboardInstructorStudents = lazy(() => import('~/pages/dashboard/Student
 const Applications = lazy(() => import('~/pages/dashboard/Applications'));
 // const PDFViewer = lazy(() => import('~/pages/dashboard/PDFViewer'));
 const Technologies = lazy(() => import('~/pages/dashboard/Technologies'));
+const TechnologyCreate = lazy(() => import('~/pages/dashboard/TechnologyCreate'));
 
 // Other Routes
 const Page500 = lazy(() => import('~/pages/Page500'));
@@ -196,8 +197,8 @@ export default function Router() {
           path: 'technologies',
           children: [
             { element: <Technologies />, index: true },
-            // { path: 'create', element: <TechnologyCreate /> },
-            // { path: ':id/edit', element: <TechnologyCreate /> },
+            { path: 'create', element: <TechnologyCreate /> },
+            { path: ':id/edit', element: <TechnologyCreate /> },
           ],
         },
       ],

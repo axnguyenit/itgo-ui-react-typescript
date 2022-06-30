@@ -30,7 +30,7 @@ export default function TechnologyMoreMenu({ technologyId, technologyName, onDel
   };
 
   const handleDelete = () => {
-    onDelete();
+		onDelete();
     setIsOpenModal(false);
   };
 
