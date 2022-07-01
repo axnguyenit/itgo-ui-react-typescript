@@ -1,5 +1,4 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-// import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import {
   Card,
@@ -132,6 +131,7 @@ export default function Applications() {
                             name={`${application?.user?.firstName} ${application?.user?.lastName}`}
                             onDeny={() => handleDeny(application?._id as string)}
                             onApprove={() => handleApprove(application?._id as string)}
+                            cv={application.cv}
                           />
                         </TableCell>
                       </TableRow>

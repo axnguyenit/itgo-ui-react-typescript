@@ -1,6 +1,4 @@
 import { MouseEventHandler, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-// import ReactPDF, { Canvas, usePDF, PDFViewer, Document } from '@react-pdf/renderer';
 // @mui
 import {
   MenuItem,
@@ -11,15 +9,14 @@ import {
   Button,
   Stack,
   Typography,
-  Box,
-  Tooltip,
+  Link,
 } from '@mui/material';
-// routes
-import { PATH_DASHBOARD } from '~/routes/paths';
 // components
 import Iconify from '~/components/Iconify';
 import MenuPopover from '~/components/MenuPopover';
 import { DialogAnimate } from '~/components/animate';
+//
+import { cloudinary } from '~/utils';
 
 // ----------------------------------------------------------------------
 
@@ -28,13 +25,13 @@ interface ApplicationMoreMenuProps {
   name: string;
   onDeny: () => void;
   onApprove: () => void;
+  cv: string;
 }
 
-export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApprove }: ApplicationMoreMenuProps) {
+export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApprove, cv }: ApplicationMoreMenuProps) {
   const [open, setOpen] = useState<HTMLButtonElement>();
   const [isOpenModalDeny, setIsOpenModalDeny] = useState<boolean>(false);
   const [isOpenModalApprove, setIsOpenModalApprove] = useState<boolean>(false);
-  const [isOpenModalPDFView, setIsOpenModalPDFView] = useState<boolean>(false);
 
   const handleOpen: MouseEventHandler<HTMLButtonElement> = (event) => {
     setOpen(event.currentTarget);
@@ -83,11 +80,7 @@ export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApp
           <Iconify icon='icon-park-outline:doc-success' sx={{ ...ICON }} />
           Approve
         </MenuItem>
-        <MenuItem
-          component={RouterLink}
-          to={`${PATH_DASHBOARD.applications.root}/${applicationId}/cv`}
-          sx={{ color: 'info.main' }}
-        >
+        <MenuItem component={Link} href={cloudinary.pdf(cv)} sx={{ color: 'info.main' }} target='_blank'>
           <Iconify icon='fluent:document-pdf-20-regular' sx={{ ...ICON }} />
           View CV
         </MenuItem>
@@ -141,52 +134,6 @@ export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApp
             Approve
           </Button>
         </DialogActions>
-      </DialogAnimate>
-
-      {/* Modal View CV */}
-      <DialogAnimate fullScreen open={isOpenModalPDFView} onClose={() => setIsOpenModalPDFView(false)}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-          <DialogActions
-            sx={{
-              zIndex: 9,
-              padding: '12px !important',
-              boxShadow: (theme) => theme.customShadows.z8,
-            }}
-          >
-            <Tooltip title='Close'>
-              <IconButton color='inherit' onClick={() => setIsOpenModalPDFView(false)}>
-                <Iconify icon={'eva:close-fill'} />
-              </IconButton>
-            </Tooltip>
-          </DialogActions>
-          <Box sx={{ flexGrow: 1, height: '100%', overflow: 'hidden' }}>
-            {/* <PDFViewer width='100%' height='100%' style={{ border: 'none' }}> */}
-            {/* <InvoicePDF invoice={invoice} /> */}
-            {/* <Document> */}
-            <div></div>
-            {/* </Document> */}
-            {/* </PDFViewer> */}
-          </Box>
-        </Box>
-        {/* <DialogTitle>Approve user</DialogTitle>
-        <Divider sx={{ borderStyle: 'dashed', mt: 2 }} />
-
-        <Stack spacing={3} sx={{ px: 3, py: 2 }}>
-          <Typography>
-            Are you sure to want to grant permission to this user&nbsp;
-            <strong>{`${name}`}</strong>?
-          </Typography>
-        </Stack>
-
-        <DialogActions>
-          <Button variant='outlined' color='inherit' onClick={() => setIsOpenModalPDFView(false)}>
-            Cancel
-          </Button>
-
-          <Button onClick={handleApprove} variant='contained' color='success'>
-            Approve
-          </Button>
-        </DialogActions> */}
       </DialogAnimate>
     </>
   );
