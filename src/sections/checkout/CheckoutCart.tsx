@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 // @mui
 import { Button, Card, CardHeader, Grid, Typography } from '@mui/material';
@@ -13,10 +13,10 @@ import CheckoutCourseList from './CheckoutCourseList';
 // hooks
 import { useAppDispatch, useAppSelector } from '~/hooks';
 // api
-import { cartApi, paymentApi } from '~/api';
+import { paymentApi } from '~/api';
 import { Payment } from '~/models';
 // redux
-import { deleteCart, getCartFromServer, onNextStep } from '~/redux/slices/cart';
+import { getCartFromServer, onNextStep, removeCartItem } from '~/redux/slices/cart';
 import { PATH_HOME } from '~/routes/paths';
 //
 import { handleError } from '~/utils';
@@ -26,19 +26,18 @@ import { handleError } from '~/utils';
 export default function CheckoutCart() {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { cart, total, discount, subtotal } = useAppSelector(
-    (state) => state.cart
-  );
+  const { cart, total, subtotal } = useAppSelector((state) => state.cart);
   const totalItems = cart.length;
   const isEmptyCart = cart.length === 0;
-
   const resultCode = searchParams.get('resultCode');
 
   // transId, amount, orderId
 
   const storeTransaction = async () => {
     if (resultCode && Number(resultCode) >= 0 && cart.length) {
+      setIsLoading(true);
       try {
         const transId = searchParams.get('transId');
         const message = searchParams.get('message');
@@ -58,6 +57,7 @@ export default function CheckoutCart() {
         setSearchParams({});
         dispatch(getCartFromServer());
       } catch (error) {}
+      setIsLoading(false);
     }
   };
 
@@ -67,13 +67,14 @@ export default function CheckoutCart() {
   }, [resultCode, cart]);
 
   const handleDeleteCart = async (cartItemId: string) => {
+    setIsLoading(true);
     try {
-      await cartApi.removeItem(cartItemId);
-      dispatch(deleteCart(cartItemId));
+      await dispatch(removeCartItem(cartItemId)).unwrap();
     } catch (error) {
       const err = handleError(error);
       enqueueSnackbar(err.errors[0].msg, { variant: 'warning' });
     }
+    setIsLoading(false);
   };
 
   const handleNextStep = () => {
@@ -98,7 +99,7 @@ export default function CheckoutCart() {
 
           {!isEmptyCart ? (
             <Scrollbar>
-              <CheckoutCourseList courses={cart} onDelete={handleDeleteCart} />
+              <CheckoutCourseList courses={cart} onDelete={handleDeleteCart} isLoading={isLoading} />
             </Scrollbar>
           ) : (
             <EmptyContent
@@ -120,11 +121,7 @@ export default function CheckoutCart() {
       </Grid>
 
       <Grid item xs={12} md={4}>
-        <CheckoutSummary
-          total={total}
-          discount={discount}
-          subtotal={subtotal}
-        />
+        <CheckoutSummary total={total} subtotal={subtotal} />
         <Button
           fullWidth
           size='large'

@@ -17,9 +17,10 @@ import {
 import Image from '~/components/Image';
 import SvgIconStyle from '~/components/SvgIconStyle';
 import { CarouselArrows } from '~/components/carousel';
+import LoadingScreen from '~/components/LoadingScreen';
 // api
 import { userApi } from '~/api';
-import { User } from '~/models';
+import { ListParams, User } from '~/models';
 // paths
 import { PATH_INSTRUCTOR } from '~/routes/paths';
 // utils
@@ -30,18 +31,20 @@ import { cloudinary, cssStyles } from '~/utils';
 export default function HomeInstructorList() {
   const theme = useTheme();
   const carouselRef = useRef<Slider>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [instructorList, setInstructorList] = useState<Partial<User>[]>([]);
 
   const getAllInstructors = async () => {
-    const params = {
+    setIsLoading(true);
+    const params: ListParams = {
       _page: 1,
       _limit: 8,
     };
     try {
       const response = await userApi.getAllInstructors(params);
-
       setInstructorList(response.instructors);
     } catch (error) {}
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -84,6 +87,8 @@ export default function HomeInstructorList() {
   const handleNext = () => {
     carouselRef.current?.slickNext();
   };
+
+  if (isLoading) return <LoadingScreen />;
 
   return (
     <Box sx={{ textAlign: 'center' }}>

@@ -1,5 +1,5 @@
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Link, Typography, Divider } from '@mui/material';
@@ -74,6 +74,20 @@ const MarkdownStyle = styled('div')(({ theme }) => {
 
 // ----------------------------------------------------------------------
 
+interface MarkdownProps {
+  children: string;
+}
+
+export default function Markdown({ children, ...other }: MarkdownProps) {
+  return (
+    <MarkdownStyle>
+      <ReactMarkdown children={children} rehypePlugins={[rehypeRaw]} components={components} {...other} />
+    </MarkdownStyle>
+  );
+}
+
+// ----------------------------------------------------------------------
+
 const components = {
   h1: ({ ...props }) => <Typography variant='h1' {...props} />,
   h2: ({ ...props }) => <Typography variant='h2' {...props} />,
@@ -82,39 +96,7 @@ const components = {
   h5: ({ ...props }) => <Typography variant='h5' {...props} />,
   h6: ({ ...props }) => <Typography variant='h6' {...props} />,
   hr: ({ ...props }) => <Divider sx={{ my: 3 }} {...props} />,
-  img: ({ ...props }) => (
-    <Image
-      alt={props.alt}
-      ratio='16/9'
-      sx={{ borderRadius: 2, my: 5 }}
-      {...props}
-    />
-  ),
+  img: ({ ...props }) => <Image alt={props.alt} ratio='16/9' sx={{ borderRadius: 2, my: 5 }} {...props} />,
   a: ({ ...props }) =>
-    props.href.includes('http') ? (
-      <Link target='_blank' rel='noopener' {...props} />
-    ) : (
-      <Link {...props} />
-    ),
+    props.href.includes('http') ? <Link target='_blank' rel='noopener' {...props} /> : <Link {...props} />,
 };
-
-// ----------------------------------------------------------------------
-
-interface MarkdownProps {
-  children: string;
-}
-
-export default function Markdown({ children, ...other }: MarkdownProps) {
-  return (
-    <MarkdownStyle>
-      <ReactMarkdown
-        children={children}
-        remarkPlugins={[remarkGfm]}
-        components={components}
-        {...other}
-      />
-    </MarkdownStyle>
-  );
-}
-
-// ----------------------------------------------------------------------

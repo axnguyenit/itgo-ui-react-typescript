@@ -3,8 +3,6 @@ import { useSnackbar } from 'notistack';
 import { Box, Button, Card, Link, Stack, Typography } from '@mui/material';
 // routes
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-// api
-import { cartApi } from '~/api';
 // components
 import Image from '~/components/Image';
 import Label from '~/components/Label';
@@ -34,9 +32,7 @@ export default function CourseCard({ course }: CourseCardProps) {
   const linkTo = `${PATH_HOME.courses.root}/${_id}`;
 
   const handleAddCart = async (course: Course) => {
-    const isExisted = cart.find(
-      (cartItem) => cartItem.course?._id === course._id
-    );
+    const isExisted = cart.find((cartItem) => cartItem.course?._id === course._id);
 
     if (!isExisted && course?._id) {
       try {
@@ -44,20 +40,12 @@ export default function CourseCard({ course }: CourseCardProps) {
           total: cart.length + 1,
           courseId: course._id,
         };
-        const response = await cartApi.add(data);
-        const cartItem = {
-          _id: response.data.cartItem._id,
-          cartId: response.data.cartItem.cartId,
-          course,
-        };
+        await dispatch(addToCart({ data, course })).unwrap();
         enqueueSnackbar('Add to cart successfully');
-        dispatch(addToCart(cartItem));
       } catch (error) {
         const err = handleError(error);
 
-        isAuthenticated
-          ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' })
-          : navigate(PATH_AUTH.login);
+        isAuthenticated ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' }) : navigate(PATH_AUTH.login);
       }
     } else {
       enqueueSnackbar('This course already exists in your cart', {
@@ -101,32 +89,19 @@ export default function CourseCard({ course }: CourseCardProps) {
           </Box>
         </Box>
 
-        <Stack
-          direction='row'
-          alignItems='flex-end'
-          justifyContent='space-between'
-        >
+        <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
           <Stack direction='row' alignItems='flex-end' spacing={0.5}>
             {!!priceSale && (
-              <Typography
-                variant='body2'
-                sx={{ color: 'text.disabled', textDecoration: 'line-through' }}
-              >
+              <Typography variant='body2' sx={{ color: 'text.disabled', textDecoration: 'line-through' }}>
                 {fCurrency(price)}
               </Typography>
             )}
-            <Typography variant='subtitle1'>
-              {fCurrency(priceSale || price)}
-            </Typography>
+            <Typography variant='subtitle1'>{fCurrency(priceSale || price)}</Typography>
           </Stack>
           {/* <Rating value={4.5} size="small" precision={0.1} readOnly /> */}
 
           <Box sx={{ flexGrow: 1 }} />
-          <Button
-            variant='contained'
-            onClick={() => handleAddCart(course)}
-            size='small'
-          >
+          <Button variant='contained' onClick={() => handleAddCart(course)} size='small'>
             Add to cart
           </Button>
         </Stack>

@@ -24,7 +24,7 @@ import { CheckoutCart, CheckoutPayment } from '~/sections/checkout';
 
 const STEPS = ['Shopping Cart', 'Payment'];
 
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
+const Connector = styled(StepConnector)(({ theme }) => ({
   top: 10,
   left: 'calc(-50% + 20px)',
   right: 'calc(50% + 20px)',
@@ -55,15 +55,11 @@ export default function Checkout() {
       <Container maxWidth={'lg'} sx={{ mt: 11 }}>
         <Grid container justifyContent={'flex-start'}>
           <Grid item xs={12} md={8} sx={{ mb: 5 }}>
-            <Stepper
-              alternativeLabel
-              activeStep={activeStep}
-              connector={<QontoConnector />}
-            >
+            <Stepper alternativeLabel activeStep={activeStep} connector={<Connector />}>
               {STEPS.map((label) => (
                 <Step key={label}>
                   <StepLabel
-                    StepIconComponent={QontoStepIcon}
+                    StepIconComponent={StepIcon}
                     sx={{
                       '& .MuiStepLabel-label': {
                         typography: 'subtitle2',
@@ -86,12 +82,12 @@ export default function Checkout() {
   );
 }
 
-interface QontoStepIconProps {
+interface StepIconProps {
   active: boolean;
   completed: boolean;
 }
 
-function QontoStepIcon({ active, completed }: QontoStepIconProps) {
+function StepIcon({ active, completed }: StepIconProps) {
   return (
     <Box
       sx={{

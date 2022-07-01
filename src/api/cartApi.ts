@@ -1,4 +1,4 @@
-import { CartData, CartResponse } from '~/models';
+import { AddToCartResponse, CartData, CartResponse } from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------
@@ -9,7 +9,7 @@ const cartApi = {
     return axios.get(url);
   },
 
-  add(data: CartData): Promise<any> {
+  add(data: CartData): Promise<AddToCartResponse> {
     const url = '/api/cart';
     return axios.post(url, data);
   },

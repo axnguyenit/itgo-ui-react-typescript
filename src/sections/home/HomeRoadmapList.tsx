@@ -5,8 +5,10 @@ import { Card, Typography, Box, Grid, CardHeader } from '@mui/material';
 // router
 import { useNavigate } from 'react-router-dom';
 import { PATH_HOME } from '~/routes/paths';
+// components
+import LoadingScreen from '~/components/LoadingScreen';
 // api
-import { Roadmap } from '~/models';
+import { ListParams, Roadmap } from '~/models';
 import { roadmapApi } from '~/api';
 
 // ----------------------------------------------------------------------
@@ -24,12 +26,14 @@ const RootStyle = styled(Card)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeRoadmapList() {
-  const [roadmapList, setRoadmapList] = useState<Roadmap[]>([]);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [roadmapList, setRoadmapList] = useState<Roadmap[]>([]);
 
   useEffect(() => {
     const getAllRoadmaps = async () => {
-      const params = {
+      setIsLoading(true);
+      const params: ListParams = {
         _page: 1,
         _limit: 8,
       };
@@ -37,10 +41,13 @@ export default function HomeRoadmapList() {
         const response = await roadmapApi.getAll(params);
         setRoadmapList(response.roadmaps);
       } catch (error) {}
+      setIsLoading(false);
     };
 
     getAllRoadmaps();
   }, []);
+
+  if (isLoading) return <LoadingScreen />;
 
   return (
     <Box>
@@ -65,17 +72,10 @@ export default function HomeRoadmapList() {
             {roadmapList.length > 0 &&
               roadmapList.map((roadmap) => (
                 <Grid key={roadmap._id} item xs={12} sm={6} md={4}>
-                  <RootStyle
-                    onClick={() =>
-                      navigate(`${PATH_HOME.roadmaps.root}/${roadmap._id}`)
-                    }
-                  >
+                  <RootStyle onClick={() => navigate(`${PATH_HOME.roadmaps.root}/${roadmap._id}`)}>
                     <Box>
                       <Typography variant='h4'>{roadmap.name}</Typography>
-                      <Typography
-                        variant='subtitle2'
-                        sx={{ color: 'text.secondary' }}
-                      >
+                      <Typography variant='subtitle2' sx={{ color: 'text.secondary' }}>
                         {roadmap.slogan} in {new Date().getFullYear()}
                       </Typography>
                     </Box>

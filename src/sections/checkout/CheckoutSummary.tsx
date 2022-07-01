@@ -17,7 +17,6 @@ import { fCurrency } from '~/utils';
 
 interface CheckoutSummaryProps {
   total: number;
-  discount: number;
   subtotal: number;
   onEdit?: () => void;
   enableEdit?: boolean;
@@ -26,7 +25,6 @@ interface CheckoutSummaryProps {
 export default function CheckoutSummary({
   total,
   onEdit = () => {},
-  discount,
   subtotal,
   enableEdit = false,
 }: CheckoutSummaryProps) {
@@ -36,11 +34,7 @@ export default function CheckoutSummary({
         title='Order Summary'
         action={
           enableEdit && (
-            <Button
-              size='small'
-              onClick={onEdit}
-              startIcon={<Iconify icon={'eva:edit-fill'} />}
-            >
+            <Button size='small' onClick={onEdit} startIcon={<Iconify icon={'eva:edit-fill'} />}>
               Edit
             </Button>
           )
@@ -60,9 +54,7 @@ export default function CheckoutSummary({
             <Typography variant='body2' sx={{ color: 'text.secondary' }}>
               Discount
             </Typography>
-            <Typography variant='subtitle2'>
-              {discount ? fCurrency(-discount) : fCurrency(0)}
-            </Typography>
+            <Typography variant='subtitle2'>0</Typography>
           </Stack>
 
           <Divider />

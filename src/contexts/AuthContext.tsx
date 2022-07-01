@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  Dispatch,
-  ReactNode,
-  useEffect,
-  useReducer,
-} from 'react';
+import React, { createContext, Dispatch, ReactNode, useEffect, useReducer, useState } from 'react';
 // router
 import { useNavigate } from 'react-router-dom';
 import { PATH_AUTH } from '~/routes/paths';
@@ -16,6 +10,7 @@ import { useAppDispatch } from '~/hooks';
 import { getCartFromServer } from '~/redux/slices/cart';
 //
 import { setSession } from '~/utils';
+import LoadingScreen from '~/components/LoadingScreen';
 
 interface AuthState {
   isAuthenticated?: boolean;
@@ -43,10 +38,7 @@ const initialState: AuthState = {
 };
 
 const handlers: HandlerState = {
-  INITIALIZE: (
-    state: AuthState,
-    action: PayloadAction<AuthState>
-  ): AuthState => {
+  INITIALIZE: (state: AuthState, action: PayloadAction<AuthState>): AuthState => {
     const { isAuthenticated, user } = action.payload;
 
     return {
@@ -95,12 +87,14 @@ const AuthContext = createContext<ContextType>({
 });
 
 function AuthProvider({ children }: AuthProviderProps) {
-  const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
   const dispatchRedux = useAppDispatch();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const initialize = async () => {
+      setIsLoading(true);
       try {
         const accessToken = window.localStorage.getItem('accessToken');
         const refreshToken = window.localStorage.getItem('refreshToken');
@@ -110,8 +104,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
           const { user } = await userApi.myAccount();
 
-          if (!user.emailVerified)
-            navigate(PATH_AUTH.verify, { replace: true });
+          if (!user.emailVerified) navigate(PATH_AUTH.verify, { replace: true });
           if (user.emailVerified) {
             dispatch({
               type: 'INITIALIZE',
@@ -140,6 +133,7 @@ function AuthProvider({ children }: AuthProviderProps) {
           },
         });
       }
+      setIsLoading(false);
     };
 
     initialize();
@@ -151,11 +145,9 @@ function AuthProvider({ children }: AuthProviderProps) {
     dispatch({ type: 'LOGOUT', payload: { user: null } });
   };
 
-  return (
-    <AuthContext.Provider value={{ ...state, logout, dispatch }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  if (isLoading) return <LoadingScreen />;
+
+  return <AuthContext.Provider value={{ ...state, logout, dispatch }}>{children}</AuthContext.Provider>;
 }
 
 export { AuthContext, AuthProvider };

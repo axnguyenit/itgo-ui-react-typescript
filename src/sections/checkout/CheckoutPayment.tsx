@@ -33,7 +33,7 @@ const PAYMENT_OPTIONS: PaymentOption[] = [
 export default function CheckoutPayment() {
   const dispatch = useAppDispatch();
 
-  const { total, discount, subtotal } = useAppSelector((state) => state.cart);
+  const { total, subtotal } = useAppSelector((state) => state.cart);
 
   const handleBackStep = () => {
     dispatch(onBackStep());
@@ -90,20 +90,8 @@ export default function CheckoutPayment() {
         </Grid>
 
         <Grid item xs={12} md={4}>
-          <CheckoutSummary
-            enableEdit
-            total={total}
-            subtotal={subtotal}
-            discount={discount}
-            onEdit={() => handleGotoStep(0)}
-          />
-          <LoadingButton
-            fullWidth
-            size='large'
-            type='submit'
-            variant='contained'
-            loading={isSubmitting}
-          >
+          <CheckoutSummary enableEdit total={total} subtotal={subtotal} onEdit={() => handleGotoStep(0)} />
+          <LoadingButton fullWidth size='large' type='submit' variant='contained' loading={isSubmitting}>
             Complete Order
           </LoadingButton>
         </Grid>

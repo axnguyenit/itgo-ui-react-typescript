@@ -57,7 +57,6 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.1",
     "simplebar": "^5.3.6",
     "simplebar-react": "^2.3.7",
     "slick-carousel": "^1.8.1",

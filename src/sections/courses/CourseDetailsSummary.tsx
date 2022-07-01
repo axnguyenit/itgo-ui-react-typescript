@@ -18,13 +18,11 @@ import Iconify from '~/components/Iconify';
 import { addToCart } from '~/redux/slices/cart';
 // hooks
 import { useAppDispatch, useAppSelector, useAuth } from '~/hooks';
-// api
-import cartApi from '~/api/cartApi';
-import { CartData, Course } from '~/models';
 // paths
 import { PATH_AUTH } from '~/routes/paths';
 // utils
 import { fCurrency, cloudinary, fDate, handleError } from '~/utils';
+import { CartData, Course } from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -32,9 +30,7 @@ interface CourseDetailsSummaryProps {
   course: Course;
 }
 
-export default function CourseDetailsSummary({
-  course,
-}: CourseDetailsSummaryProps) {
+export default function CourseDetailsSummary({ course }: CourseDetailsSummaryProps) {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cart);
@@ -42,9 +38,7 @@ export default function CourseDetailsSummary({
   const { isAuthenticated } = useAuth();
 
   const handleAddCart = async (course: Course) => {
-    const isExisted = cart.find(
-      (cartItem) => cartItem.course?._id === course._id
-    );
+    const isExisted = cart.find((cartItem) => cartItem.course?._id === course._id);
 
     if (!isExisted && course._id) {
       try {
@@ -52,19 +46,11 @@ export default function CourseDetailsSummary({
           total: cart.length + 1,
           courseId: course._id,
         };
-        const response = await cartApi.add(data);
-        const cartItem = {
-          _id: response.data.cartItem._id,
-          cartId: response.data.cartItem.cartId,
-          course,
-        };
+        await dispatch(addToCart({ data, course })).unwrap();
         enqueueSnackbar('Add to cart successfully');
-        dispatch(addToCart(cartItem));
       } catch (error) {
         const err = handleError(error);
-        isAuthenticated
-          ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' })
-          : navigate(PATH_AUTH.login);
+        isAuthenticated ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' }) : navigate(PATH_AUTH.login);
       }
     } else {
       enqueueSnackbar('This course already exists in your cart', {
@@ -80,30 +66,19 @@ export default function CourseDetailsSummary({
         disableTypography
         avatar={<MyAvatar />}
         title={
-          <Link
-            to='#'
-            variant='subtitle2'
-            color='text.primary'
-            component={RouterLink}
-          >
+          <Link to='#' variant='subtitle2' color='text.primary' component={RouterLink}>
             {`${course?.instructor?.firstName} ${course?.instructor?.lastName}`}
           </Link>
         }
         subheader={
-          <Typography
-            variant='caption'
-            sx={{ display: 'block', color: 'text.secondary' }}
-          >
+          <Typography variant='caption' sx={{ display: 'block', color: 'text.secondary' }}>
             {fDate(course?.createdAt as Date)}
           </Typography>
         }
         action={
           <Stack direction='row' spacing={2} sx={{ mr: 1 }}>
             <Typography variant='h4'>
-              <Box
-                component='span'
-                sx={{ color: 'text.disabled', textDecoration: 'line-through' }}
-              >
+              <Box component='span' sx={{ color: 'text.disabled', textDecoration: 'line-through' }}>
                 {course?.priceSale && fCurrency(course?.price)}
               </Box>
               &nbsp; {fCurrency(course?.priceSale || course?.price)}
@@ -125,12 +100,7 @@ export default function CourseDetailsSummary({
         }}
       />
 
-      <Image
-        alt='post media'
-        src={cloudinary.w1200(course?.cover)}
-        ratio='21/9'
-        sx={{ borderRadius: 1 }}
-      />
+      <Image alt='post media' src={cloudinary.w1200(course?.cover)} ratio='21/9' sx={{ borderRadius: 1 }} />
     </Stack>
   );
 }

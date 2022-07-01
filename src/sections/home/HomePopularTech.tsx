@@ -5,9 +5,10 @@ import { Box, CardHeader } from '@mui/material';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 // components
 import Image from '~/components/Image';
+import LoadingScreen from '~/components/LoadingScreen';
 // api
 import { technologyApi } from '~/api';
-import { Technology } from '~/models';
+import { ListParams, Technology } from '~/models';
 //
 import { PATH_HOME } from '~/routes/paths';
 import { cloudinary } from '~/utils';
@@ -16,18 +17,21 @@ import { cloudinary } from '~/utils';
 
 export default function HomePopularTech() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [technologyList, setTechnologyList] = useState<Technology[]>([]);
 
   useEffect(() => {
     const getTechnologies = async () => {
-      const params = {
+      const params: ListParams = {
         _page: 1,
         _limit: 8,
       };
+      setIsLoading(true);
       try {
         const response = await technologyApi.getAll(params);
         setTechnologyList(response.technologies);
       } catch (error) {}
+      setIsLoading(false);
     };
 
     getTechnologies();
@@ -39,6 +43,8 @@ export default function HomePopularTech() {
       search: createSearchParams({ category: tag }).toString(),
     });
   };
+
+  if (isLoading) return <LoadingScreen />;
 
   return (
     <Box sx={{ textAlign: 'center' }}>

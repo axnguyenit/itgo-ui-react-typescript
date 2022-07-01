@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { sum, unionBy } from 'lodash';
 import { cartApi } from '~/api';
-import { CartItem } from '~/models';
+import { CartData, CartItem, Course } from '~/models';
 import { RootState } from '../store';
 
 // ----------------------------------------------------------------------
@@ -11,7 +11,11 @@ interface Cart {
   cart: CartItem[];
   subtotal: number;
   total: number;
-  discount: number;
+}
+
+interface AddToCartProps {
+  data: CartData;
+  course: Course;
 }
 
 const initialState: Cart = {
@@ -19,12 +23,26 @@ const initialState: Cart = {
   cart: [],
   subtotal: 0,
   total: 0,
-  discount: 0,
 };
 
-export const getCartFromServer = createAsyncThunk<CartItem[]>('cart/getCart', async () => {
+export const getCartFromServer = createAsyncThunk('cart/getCart', async () => {
   const { cartItems } = await cartApi.get();
   return cartItems;
+});
+
+export const addToCart = createAsyncThunk('cart/addToCart', async (param: AddToCartProps) => {
+  const { data, course } = param;
+  const { cartItem } = await cartApi.add(data);
+  return {
+    _id: cartItem._id,
+    cartId: cartItem.cartId,
+    course,
+  };
+});
+
+export const removeCartItem = createAsyncThunk('cart/removeCartItem', async (id: string) => {
+  await cartApi.removeItem(id);
+  return id;
 });
 
 const cartSlice = createSlice({
@@ -34,28 +52,11 @@ const cartSlice = createSlice({
     // CHECKOUT
     getCart(state: Cart, action: PayloadAction<CartItem[]>) {
       const cart = action.payload;
-
       const subtotal = sum(cart.map((cartItem) => cartItem.course.priceSale || cartItem.course.price));
-      const discount = cart.length === 0 ? 0 : state.discount;
 
       state.cart = cart;
-      state.discount = discount;
       state.subtotal = subtotal;
-      state.total = subtotal - discount;
-    },
-
-    addToCart(state: Cart, action: PayloadAction<CartItem>) {
-      const course = action.payload;
-      state.cart = unionBy([...state.cart, course], '_id');
-    },
-
-    setCart(state: Cart, action: PayloadAction<CartItem[]>) {
-      state.cart = action.payload;
-    },
-
-    deleteCart(state: Cart, action: PayloadAction<string>) {
-      const updateCart = state.cart.filter((item) => item._id !== action.payload);
-      state.cart = updateCart;
+      state.total = subtotal;
     },
 
     resetCart(state: Cart) {
@@ -63,7 +64,6 @@ const cartSlice = createSlice({
       state.cart = [];
       state.total = 0;
       state.subtotal = 0;
-      state.discount = 0;
     },
 
     onBackStep(state: Cart) {
@@ -78,21 +78,23 @@ const cartSlice = createSlice({
       const goToStep = action.payload;
       state.activeStep = goToStep;
     },
-
-    applyDiscount(state: Cart, action: PayloadAction<number>) {
-      const discount = action.payload;
-      state.discount = discount;
-      state.total = state.subtotal - discount;
-    },
   },
   extraReducers: (builder) => {
-    builder.addCase(getCartFromServer.fulfilled, (state, { payload }) => {
-      state.cart = payload;
-    });
+    builder
+      .addCase(getCartFromServer.fulfilled, (state, { payload }) => {
+        state.cart = payload;
+      })
+      .addCase(removeCartItem.fulfilled, (state, { payload }) => {
+        const updateCart = state.cart.filter((item) => item._id !== payload);
+        state.cart = updateCart;
+      })
+      .addCase(addToCart.fulfilled, (state, { payload }) => {
+        const course = payload;
+        state.cart = unionBy([...state.cart, course], '_id');
+      });
   },
 });
 
 export const selectCart = (state: RootState) => state.cart;
-export const { addToCart, getCart, applyDiscount, deleteCart, onBackStep, onGotoStep, onNextStep, resetCart, setCart } =
-  cartSlice.actions;
+export const { getCart, onBackStep, onGotoStep, onNextStep, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;

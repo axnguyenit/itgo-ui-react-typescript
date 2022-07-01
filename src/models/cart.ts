@@ -23,3 +23,15 @@ export interface CartResponse {
   cart: Cart;
   cartItems: CartItem[];
 }
+
+export interface AddToCartResponse {
+  cartItem: {
+    cartId: string;
+    course: string;
+    _id: string;
+
+    createdAt: Date;
+    updatedAt: Date;
+  };
+  msg: string;
+}
