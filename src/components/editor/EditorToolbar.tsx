@@ -1,6 +1,6 @@
 import { Quill } from 'react-quill';
+// import Iconify from '../Iconify';
 // components
-import Iconify from '../Iconify';
 import EditorToolbarStyle from './EditorToolbarStyle';
 
 // ----------------------------------------------------------------------
@@ -24,20 +24,15 @@ const FONT_SIZE = [
   '98px',
 ];
 
-const HEADINGS = [
-  'Heading 1',
-  'Heading 2',
-  'Heading 3',
-  'Heading 4',
-  'Heading 5',
-  'Heading 55',
-];
+const HEADINGS = ['Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'Heading 5', 'Heading 55'];
 
 export function undoChange() {
-  // this.quill.history.undo();
+  // @ts-ignore
+  this.quill.history.undo();
 }
 export function redoChange() {
-  // this.quill.history.redo();
+  // @ts-ignore
+  this.quill.history.redo();
 }
 
 const Size = Quill.import('attributors/style/size');
@@ -76,40 +71,23 @@ export const formats = [
 
 interface EditorToolbarProps {
   id: string;
-  isSimple: boolean;
 
   [key: string]: any;
 }
 
-export default function EditorToolbar({
-  id,
-  isSimple,
-  ...other
-}: EditorToolbarProps) {
+export default function EditorToolbar({ id, ...other }: EditorToolbarProps) {
   return (
     <EditorToolbarStyle {...other}>
       <div id={id}>
         <div className='ql-formats'>
-          {!isSimple && (
-            <select className='ql-font' defaultValue=''>
-              <option value=''>Font</option>
-              {FONT_FAMILY.map((font) => (
-                <option key={font} value={font}>
-                  {font}
-                </option>
-              ))}
-            </select>
-          )}
-
-          {!isSimple && (
-            <select className='ql-size' defaultValue='16px'>
-              {FONT_SIZE.map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-          )}
+          {/* <select className='ql-font' defaultValue=''>
+            <option value=''>Font</option>
+            {FONT_FAMILY.map((font) => (
+              <option key={font} value={font}>
+                {font}
+              </option>
+            ))}
+          </select> */}
 
           <select className='ql-header' defaultValue=''>
             {HEADINGS.map((heading, index) => (
@@ -128,64 +106,44 @@ export default function EditorToolbar({
           <button type='button' className='ql-strike' />
         </div>
 
-        {!isSimple && (
-          <div className='ql-formats'>
-            <select className='ql-color' />
-            <select className='ql-background' />
-          </div>
-        )}
-
         <div className='ql-formats'>
           <button type='button' className='ql-list' value='ordered' />
           <button type='button' className='ql-list' value='bullet' />
-          {!isSimple && (
-            <button type='button' className='ql-indent' value='-1' />
-          )}
-          {!isSimple && (
-            <button type='button' className='ql-indent' value='+1' />
-          )}
         </div>
 
-        {!isSimple && (
-          <div className='ql-formats'>
-            <button type='button' className='ql-script' value='super' />
-            <button type='button' className='ql-script' value='sub' />
-          </div>
-        )}
-
-        {!isSimple && (
-          <div className='ql-formats'>
-            <button type='button' className='ql-code-block' />
-            <button type='button' className='ql-blockquote' />
-          </div>
-        )}
+        <div className='ql-formats'>
+          <button type='button' className='ql-script' value='super' />
+          <button type='button' className='ql-script' value='sub' />
+        </div>
 
         <div className='ql-formats'>
-          <button type='button' className='ql-direction' value='rtl' />
+          <button type='button' className='ql-code-block' />
+          <button type='button' className='ql-blockquote' />
+        </div>
+
+        <div className='ql-formats'>
+          {/* <button type='button' className='ql-direction' value='rtl' /> */}
           <select className='ql-align' />
         </div>
 
         <div className='ql-formats'>
           <button type='button' className='ql-link' />
-          <button type='button' className='ql-image' />
-          <button type='button' className='ql-video' />
+          {/* <button type='button' className='ql-image' /> */}
+          {/* <button type='button' className='ql-video' /> */}
         </div>
 
         <div className='ql-formats'>
-          {!isSimple && <button type='button' className='ql-formula' />}
           <button type='button' className='ql-clean' />
         </div>
 
-        {!isSimple && (
-          <div className='ql-formats'>
+        {/* <div className='ql-formats'>
             <button type='button' className='ql-undo'>
               <Iconify icon={'ic:round-undo'} width={18} height={18} />
             </button>
             <button type='button' className='ql-redo'>
               <Iconify icon={'ic:round-redo'} width={18} height={18} />
             </button>
-          </div>
-        )}
+          </div> */}
       </div>
     </EditorToolbarStyle>
   );

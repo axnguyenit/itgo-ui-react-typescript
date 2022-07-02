@@ -1,14 +1,10 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
 import ReactQuill from 'react-quill';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, SxProps, Theme } from '@mui/material';
 //
-import EditorToolbar, {
-  formats,
-  //  redoChange, undoChange
-} from './EditorToolbar';
-// import {useIsMountedRef} from '~/hooks';
+import EditorToolbar, { formats, redoChange, undoChange } from './EditorToolbar';
 
 // ----------------------------------------------------------------------
 
@@ -43,7 +39,6 @@ interface EditorProps {
   onChange: () => void;
   error: boolean;
   helperText: ReactNode;
-  simple?: boolean;
   sx?: SxProps<Theme>;
 
   [key: string]: any;
@@ -54,35 +49,17 @@ export default function Editor({
   error,
   value,
   onChange,
-  simple = false,
   helperText,
   sx,
   ...other
 }: EditorProps) {
-  const quillRef = useRef<ReactQuill>(null);
-  // const isMountedRef = useIsMountedRef();
-  // const modules = {
-  //   toolbar: {
-  //     container: `#${id}`,
-  //     handlers: {
-  //       // undo: undoChange,
-  //       // redo: redoChange,
-  //     },
-  //   },
-  //   history: {
-  //     delay: 500,
-  //     maxStack: 100,
-  //     userOnly: true,
-  //   },
-  //   syntax: true,
-  //   clipboard: {
-  //     matchVisual: false,
-  //   },
-  // };
-
   const modules = {
     toolbar: {
       container: `#${id}`,
+      handlers: {
+        undo: undoChange,
+        redo: redoChange,
+      },
     },
     history: {
       delay: 500,
@@ -95,8 +72,6 @@ export default function Editor({
     },
   };
 
-  // quillRef.current?.e
-
   return (
     <div>
       <RootStyle
@@ -107,21 +82,15 @@ export default function Editor({
           ...sx,
         }}
       >
-        <EditorToolbar id={id} isSimple={simple} />
-        {/* {isMountedRef.current && ( */}
+        <EditorToolbar id={id} />
         <ReactQuill
           modules={modules}
-          ref={quillRef}
           value={value}
           onChange={onChange}
           formats={formats}
           placeholder='Write something awesome...'
-          // onKeyUp={this.onKeyUp}
-          // onFocus={this.onFocus}
-          // onBlur={this.onBlur}
-          // {...other}
+          {...other}
         />
-        {/* )} */}
       </RootStyle>
 
       {helperText && helperText}

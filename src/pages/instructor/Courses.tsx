@@ -48,6 +48,7 @@ const TABLE_HEAD: HeaderLabel[] = [
 
 export default function Courses() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -57,7 +58,6 @@ export default function Courses() {
     _page: page,
     _totalRows: rowsPerPage,
   });
-  const navigate = useNavigate();
 
   const getAllCourses = async () => {
     setIsLoading(true);
