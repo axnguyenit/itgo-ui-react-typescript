@@ -10,7 +10,11 @@ import { LoadingButton } from '@mui/lab';
 import { styled } from '@mui/material/styles';
 import { Card, Grid, Stack, Typography } from '@mui/material';
 // components
-import { FormProvider, RHFTextField, RHFUploadSingleFile } from '~/components/hook-form';
+import {
+  FormProvider,
+  RHFTextField,
+  RHFUploadSingleFile,
+} from '~/components/hook-form';
 import { technologyApi } from '~/api';
 import { PATH_DASHBOARD } from '~/routes/paths';
 import { cloudinary } from '~/utils';
@@ -31,7 +35,10 @@ interface TechnologyNewFormProps {
   currentTechnology: Technology;
 }
 
-export default function TechnologyNewForm({ isEdit, currentTechnology }: TechnologyNewFormProps) {
+export default function TechnologyNewForm({
+  isEdit,
+  currentTechnology,
+}: TechnologyNewFormProps) {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -47,7 +54,7 @@ export default function TechnologyNewForm({ isEdit, currentTechnology }: Technol
       name: currentTechnology?.name || '',
       image: currentTechnology?.image || '',
     }),
-    [currentTechnology]
+    [currentTechnology],
   );
 
   const methods = useForm<Technology>({
@@ -101,7 +108,7 @@ export default function TechnologyNewForm({ isEdit, currentTechnology }: Technol
         };
       }
     },
-    [setValue]
+    [setValue],
   );
 
   return (
@@ -111,7 +118,12 @@ export default function TechnologyNewForm({ isEdit, currentTechnology }: Technol
           <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
               <LabelStyle>Image</LabelStyle>
-              <RHFUploadSingleFile name='image' accept='image/*' maxSize={3145728} onDrop={handleDrop} />
+              <RHFUploadSingleFile
+                name="image"
+                accept="image/*"
+                maxSize={3145728}
+                onDrop={handleDrop}
+              />
             </Stack>
           </Card>
         </Grid>
@@ -120,12 +132,17 @@ export default function TechnologyNewForm({ isEdit, currentTechnology }: Technol
           <Stack spacing={3}>
             <Card sx={{ p: 3 }}>
               <Stack spacing={3} mt={2}>
-                <RHFTextField name='name' label='Technology Name' />
-                <RHFTextField name='tag' label='Tag' />
+                <RHFTextField name="name" label="Technology Name" />
+                <RHFTextField name="tag" label="Tag" />
               </Stack>
             </Card>
 
-            <LoadingButton type='submit' variant='contained' size='large' loading={isSubmitting}>
+            <LoadingButton
+              type="submit"
+              variant="contained"
+              size="large"
+              loading={isSubmitting}
+            >
               {!isEdit ? 'Create Technology' : 'Save Changes'}
             </LoadingButton>
           </Stack>

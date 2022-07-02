@@ -163,28 +163,28 @@ export default function CalendarForm({
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3} sx={{ p: 3 }}>
-        <RHFTextField name='title' label='Title' />
+        <RHFTextField name="title" label="Title" />
         <RHFTextField
-          name='description'
-          label='Description'
+          name="description"
+          label="Description"
           multiline
           rows={4}
         />
         <Grid container>
           <Grid item xs={12} md={6}>
             <Stack sx={{ mb: 3, mr: { md: 1 } }}>
-              <RHFTextField name='meetingNumber' label='Zoom meeting number' />
+              <RHFTextField name="meetingNumber" label="Zoom meeting number" />
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
             <Stack sx={{ ml: { md: 1 } }}>
-              <RHFTextField name='passwordMeeting' label='Password meeting' />
+              <RHFTextField name="passwordMeeting" label="Password meeting" />
             </Stack>
           </Grid>
         </Grid>
         <RHFSelect
-          name='courseId'
-          label='Course'
+          name="courseId"
+          label="Course"
           InputLabelProps={{ shrink: true }}
         >
           {!!courseList.length &&
@@ -195,26 +195,26 @@ export default function CalendarForm({
             ))}
         </RHFSelect>
         <Controller
-          name='start'
+          name="start"
           control={control}
           render={({ field }) => (
             <MobileDateTimePicker
               {...field}
-              label='Start date'
-              inputFormat='dd/MM/yyyy hh:mm a'
+              label="Start date"
+              inputFormat="dd/MM/yyyy hh:mm a"
               renderInput={(params) => <TextField {...params} fullWidth />}
             />
           )}
         />
 
         <Controller
-          name='end'
+          name="end"
           control={control}
           render={({ field }) => (
             <MobileDateTimePicker
               {...field}
-              label='End date'
-              inputFormat='dd/MM/yyyy hh:mm a'
+              label="End date"
+              inputFormat="dd/MM/yyyy hh:mm a"
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -230,7 +230,7 @@ export default function CalendarForm({
         />
 
         <Controller
-          name='textColor'
+          name="textColor"
           control={control}
           render={({ field }) => (
             <ColorSinglePicker
@@ -244,19 +244,19 @@ export default function CalendarForm({
 
       <DialogActions>
         {!isCreating && (
-          <Tooltip title='Delete Event'>
+          <Tooltip title="Delete Event">
             <IconButton onClick={handleDelete}>
-              <Iconify icon='eva:trash-2-outline' width={20} height={20} />
+              <Iconify icon="eva:trash-2-outline" width={20} height={20} />
             </IconButton>
           </Tooltip>
         )}
         <Box sx={{ flexGrow: 1 }} />
 
-        <Button variant='outlined' color='inherit' onClick={onCancel}>
+        <Button variant="outlined" color="inherit" onClick={onCancel}>
           Cancel
         </Button>
 
-        <LoadingButton type='submit' variant='contained' loading={isSubmitting}>
+        <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
           {event?.id ? 'Update' : 'Add'}
         </LoadingButton>
       </DialogActions>

@@ -47,12 +47,12 @@ export default function Roadmap() {
 
   return (
     <Page>
-      <Container maxWidth='lg' sx={{ mt: 15, mb: 10 }}>
+      <Container maxWidth="lg" sx={{ mt: 15, mb: 10 }}>
         <Box sx={{ mb: 4 }}>
-          <Typography variant='h2' sx={{ mb: 2 }}>
+          <Typography variant="h2" sx={{ mb: 2 }}>
             {roadmap?.name}
           </Typography>
-          <Typography variant='body1'>{roadmap?.description}</Typography>
+          <Typography variant="body1">{roadmap?.description}</Typography>
         </Box>
         <Stack spacing={4}>
           {!isLoading ? (
@@ -83,18 +83,18 @@ interface RoadmapItemProps {
 function RoadmapItem({ technology, onClick, no }: RoadmapItemProps) {
   return (
     <Stack spacing={2}>
-      <Typography variant='h3'>{`${no}. ${technology?.technology}`}</Typography>
-      <Typography variant='body1'>{technology?.description}</Typography>
+      <Typography variant="h3">{`${no}. ${technology?.technology}`}</Typography>
+      <Typography variant="body1">{technology?.description}</Typography>
 
       <Card>
         <Stack
           spacing={2}
           sx={{ p: { xs: 2, md: 4 } }}
-          direction='row'
-          alignItems='center'
+          direction="row"
+          alignItems="center"
         >
           <Image
-            alt='name'
+            alt="name"
             src={cloudinary.w300(technology?.image)}
             sx={{
               width: { xs: 200, md: 300 },
@@ -103,10 +103,10 @@ function RoadmapItem({ technology, onClick, no }: RoadmapItemProps) {
             }}
           />
           <Box>
-            <Typography variant='h4'>Related Courses</Typography>
+            <Typography variant="h4">Related Courses</Typography>
             <Button
               onClick={() => onClick(technology?.tag)}
-              variant='contained'
+              variant="contained"
               sx={{ mt: 1 }}
             >
               Learn now

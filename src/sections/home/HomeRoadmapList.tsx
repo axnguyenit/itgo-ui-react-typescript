@@ -55,8 +55,8 @@ export default function HomeRoadmapList() {
         <Box>
           <Box sx={{ textAlign: 'center', mb: 5 }}>
             <CardHeader
-              title='Roadmaps'
-              subheader='Foot in the door, you should focus on one roadmap'
+              title="Roadmaps"
+              subheader="Foot in the door, you should focus on one roadmap"
               sx={{
                 '& .MuiCardHeader-action': {
                   alignSelf: 'center',
@@ -72,10 +72,17 @@ export default function HomeRoadmapList() {
             {roadmapList.length > 0 &&
               roadmapList.map((roadmap) => (
                 <Grid key={roadmap._id} item xs={12} sm={6} md={4}>
-                  <RootStyle onClick={() => navigate(`${PATH_HOME.roadmaps.root}/${roadmap._id}`)}>
+                  <RootStyle
+                    onClick={() =>
+                      navigate(`${PATH_HOME.roadmaps.root}/${roadmap._id}`)
+                    }
+                  >
                     <Box>
-                      <Typography variant='h4'>{roadmap.name}</Typography>
-                      <Typography variant='subtitle2' sx={{ color: 'text.secondary' }}>
+                      <Typography variant="h4">{roadmap.name}</Typography>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ color: 'text.secondary' }}
+                      >
                         {roadmap.slogan} in {new Date().getFullYear()}
                       </Typography>
                     </Box>

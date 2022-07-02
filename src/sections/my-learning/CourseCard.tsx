@@ -24,33 +24,33 @@ export default function CourseCard({ order }: CourseCardProps) {
         <Image
           alt={course?.name}
           src={cloudinary.w300(course?.cover as string)}
-          ratio='16/9'
+          ratio="16/9"
         />
       </Box>
 
       <Stack spacing={2} sx={{ p: 2 }}>
         <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-          <Link to={linkTo} color='inherit' component={RouterLink}>
-            <Typography variant='subtitle2' noWrap>
+          <Link to={linkTo} color="inherit" component={RouterLink}>
+            <Typography variant="subtitle2" noWrap>
               {course?.name}
             </Typography>
           </Link>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant='body2' sx={{ color: 'text.secondary' }} noWrap>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
               {course?.instructor?.firstName} {course?.instructor?.lastName}
             </Typography>
           </Box>
         </Box>
 
         <Stack
-          direction='row'
-          alignItems='flex-end'
-          justifyContent='space-between'
+          direction="row"
+          alignItems="flex-end"
+          justifyContent="space-between"
         >
           <Box sx={{ flexGrow: 1 }} />
           <Button
-            variant='contained'
-            size='small'
+            variant="contained"
+            size="small"
             to={linkTo}
             component={RouterLink}
           >

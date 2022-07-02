@@ -81,24 +81,24 @@ export default function RegisterForm() {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        {!!error && <Alert severity='error'>{error}</Alert>}
+        {!!error && <Alert severity="error">{error}</Alert>}
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-          <RHFTextField name='firstName' label='First name' />
-          <RHFTextField name='lastName' label='Last name' />
+          <RHFTextField name="firstName" label="First name" />
+          <RHFTextField name="lastName" label="Last name" />
         </Stack>
 
-        <RHFTextField name='email' label='Email address' />
+        <RHFTextField name="email" label="Email address" />
 
         <RHFTextField
-          name='password'
-          label='Password'
+          name="password"
+          label="Password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              <InputAdornment position='end'>
+              <InputAdornment position="end">
                 <IconButton
-                  edge='end'
+                  edge="end"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   <Iconify
@@ -111,14 +111,14 @@ export default function RegisterForm() {
         />
 
         <RHFTextField
-          name='confirmPassword'
-          label='Confirm password'
+          name="confirmPassword"
+          label="Confirm password"
           type={showConfirmPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              <InputAdornment position='end'>
+              <InputAdornment position="end">
                 <IconButton
-                  edge='end'
+                  edge="end"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   <Iconify
@@ -134,9 +134,9 @@ export default function RegisterForm() {
 
         <LoadingButton
           fullWidth
-          size='large'
-          type='submit'
-          variant='contained'
+          size="large"
+          type="submit"
+          variant="contained"
           loading={isSubmitting}
         >
           Register

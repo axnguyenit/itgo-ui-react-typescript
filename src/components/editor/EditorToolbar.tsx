@@ -24,7 +24,14 @@ const FONT_SIZE = [
   '98px',
 ];
 
-const HEADINGS = ['Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'Heading 5', 'Heading 55'];
+const HEADINGS = [
+  'Heading 1',
+  'Heading 2',
+  'Heading 3',
+  'Heading 4',
+  'Heading 5',
+  'Heading 55',
+];
 
 export function undoChange() {
   // @ts-ignore
@@ -79,7 +86,7 @@ export default function EditorToolbar({ id, ...other }: EditorToolbarProps) {
   return (
     <EditorToolbarStyle {...other}>
       <div id={id}>
-        <div className='ql-formats'>
+        <div className="ql-formats">
           {/* <select className='ql-font' defaultValue=''>
             <option value=''>Font</option>
             {FONT_FAMILY.map((font) => (
@@ -89,51 +96,51 @@ export default function EditorToolbar({ id, ...other }: EditorToolbarProps) {
             ))}
           </select> */}
 
-          <select className='ql-header' defaultValue=''>
+          <select className="ql-header" defaultValue="">
             {HEADINGS.map((heading, index) => (
               <option key={heading} value={index + 1}>
                 {heading}
               </option>
             ))}
-            <option value=''>Normal</option>
+            <option value="">Normal</option>
           </select>
         </div>
 
-        <div className='ql-formats'>
-          <button type='button' className='ql-bold' />
-          <button type='button' className='ql-italic' />
-          <button type='button' className='ql-underline' />
-          <button type='button' className='ql-strike' />
+        <div className="ql-formats">
+          <button type="button" className="ql-bold" />
+          <button type="button" className="ql-italic" />
+          <button type="button" className="ql-underline" />
+          <button type="button" className="ql-strike" />
         </div>
 
-        <div className='ql-formats'>
-          <button type='button' className='ql-list' value='ordered' />
-          <button type='button' className='ql-list' value='bullet' />
+        <div className="ql-formats">
+          <button type="button" className="ql-list" value="ordered" />
+          <button type="button" className="ql-list" value="bullet" />
         </div>
 
-        <div className='ql-formats'>
-          <button type='button' className='ql-script' value='super' />
-          <button type='button' className='ql-script' value='sub' />
+        <div className="ql-formats">
+          <button type="button" className="ql-script" value="super" />
+          <button type="button" className="ql-script" value="sub" />
         </div>
 
-        <div className='ql-formats'>
-          <button type='button' className='ql-code-block' />
-          <button type='button' className='ql-blockquote' />
+        <div className="ql-formats">
+          <button type="button" className="ql-code-block" />
+          <button type="button" className="ql-blockquote" />
         </div>
 
-        <div className='ql-formats'>
+        <div className="ql-formats">
           {/* <button type='button' className='ql-direction' value='rtl' /> */}
-          <select className='ql-align' />
+          <select className="ql-align" />
         </div>
 
-        <div className='ql-formats'>
-          <button type='button' className='ql-link' />
+        <div className="ql-formats">
+          <button type="button" className="ql-link" />
           {/* <button type='button' className='ql-image' /> */}
           {/* <button type='button' className='ql-video' /> */}
         </div>
 
-        <div className='ql-formats'>
-          <button type='button' className='ql-clean' />
+        <div className="ql-formats">
+          <button type="button" className="ql-clean" />
         </div>
 
         {/* <div className='ql-formats'>

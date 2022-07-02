@@ -25,9 +25,9 @@ export default function ColorManyPicker({
         return (
           <Checkbox
             key={color}
-            size='small'
+            size="small"
             value={color}
-            color='default'
+            color="default"
             onChange={() => onChangeColor(color)}
             icon={
               <IconColor

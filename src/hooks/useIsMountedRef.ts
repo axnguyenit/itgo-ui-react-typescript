@@ -9,7 +9,7 @@ export function useIsMountedRef() {
     () => () => {
       isMounted.current = false;
     },
-    []
+    [],
   );
 
   return isMounted;

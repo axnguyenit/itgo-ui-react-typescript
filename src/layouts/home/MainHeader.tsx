@@ -94,7 +94,7 @@ export default function MainHeader() {
             <AccountPopover />
           ) : (
             <Button
-              variant='contained'
+              variant="contained"
               to={PATH_AUTH.login}
               component={RouterLink}
             >

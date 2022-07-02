@@ -49,10 +49,10 @@ export default function CheckoutPaymentMethods({
 
   return (
     <Card sx={{ my: 3 }}>
-      <CardHeader title='Payment options' />
+      <CardHeader title="Payment options" />
       <CardContent>
         <Controller
-          name='payment'
+          name="payment"
           control={control}
           render={({ field, fieldState: { error } }) => (
             <>
@@ -83,11 +83,11 @@ export default function CheckoutPaymentMethods({
                           }
                           label={
                             <Box sx={{ ml: 1 }}>
-                              <Typography variant='subtitle2'>
+                              <Typography variant="subtitle2">
                                 {title}
                               </Typography>
                               <Typography
-                                variant='body2'
+                                variant="body2"
                                 sx={{ color: 'text.secondary' }}
                               >
                                 {description}
@@ -100,11 +100,11 @@ export default function CheckoutPaymentMethods({
                         <Box sx={{ flexGrow: 1 }} />
 
                         {isDesktop && (
-                          <Stack direction='row' spacing={1} flexShrink={0}>
+                          <Stack direction="row" spacing={1} flexShrink={0}>
                             {icons.map((icon) => (
                               <Image
                                 key={icon}
-                                alt='logo card'
+                                alt="logo card"
                                 src={icon}
                                 sx={{ height: 28 }}
                               />

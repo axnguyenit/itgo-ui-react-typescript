@@ -35,7 +35,7 @@ export default function Image({
   if (ratio) {
     return (
       <Box
-        component='span'
+        component="span"
         sx={{
           width: 1,
           lineHeight: 0,
@@ -57,10 +57,10 @@ export default function Image({
         {...other}
       >
         <LazyLoadImage
-          wrapperClassName='wrapper'
+          wrapperClassName="wrapper"
           effect={disabledEffect ? undefined : effect}
           src={src}
-          placeholderSrc='https://zone-assets-api.vercel.app/assets/img_placeholder.svg'
+          placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </Box>
@@ -69,7 +69,7 @@ export default function Image({
 
   return (
     <Box
-      component='span'
+      component="span"
       sx={{
         lineHeight: 0,
         display: 'block',
@@ -84,10 +84,10 @@ export default function Image({
       {...other}
     >
       <LazyLoadImage
-        wrapperClassName='wrapper'
+        wrapperClassName="wrapper"
         effect={disabledEffect ? undefined : effect}
         src={src}
-        placeholderSrc='https://zone-assets-api.vercel.app/assets/img_placeholder.svg'
+        placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
     </Box>

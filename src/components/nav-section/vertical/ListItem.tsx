@@ -47,7 +47,7 @@ export default function ListItem({
           color: theme.palette.primary.main,
           backgroundColor: alpha(
             theme.palette.primary.main,
-            theme.palette.action.selectedOpacity
+            theme.palette.action.selectedOpacity,
           ),
         }),
         // activeSub

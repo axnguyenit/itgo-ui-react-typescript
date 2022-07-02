@@ -69,14 +69,14 @@ export default function ResetPasswordForm({
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         <RHFTextField
-          name='password'
-          label='Password'
+          name="password"
+          label="Password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              <InputAdornment position='end'>
+              <InputAdornment position="end">
                 <IconButton
-                  edge='end'
+                  edge="end"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   <Iconify
@@ -89,14 +89,14 @@ export default function ResetPasswordForm({
         />
 
         <RHFTextField
-          name='confirmPassword'
-          label='Confirm password'
+          name="confirmPassword"
+          label="Confirm password"
           type={showConfirmPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              <InputAdornment position='end'>
+              <InputAdornment position="end">
                 <IconButton
-                  edge='end'
+                  edge="end"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   <Iconify
@@ -112,9 +112,9 @@ export default function ResetPasswordForm({
 
         <LoadingButton
           fullWidth
-          size='large'
-          type='submit'
-          variant='contained'
+          size="large"
+          type="submit"
+          variant="contained"
           loading={isSubmitting}
         >
           Reset Password

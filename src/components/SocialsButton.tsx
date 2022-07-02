@@ -57,14 +57,14 @@ export default function SocialsButton({
   ];
 
   return (
-    <Stack direction='row' flexWrap='wrap' alignItems='center'>
+    <Stack direction="row" flexWrap="wrap" alignItems="center">
       {SOCIALS.map((social) => {
         const { name, icon, path, socialColor } = social;
         return simple ? (
           <Link key={name} href={path}>
-            <Tooltip title={name} placement='top'>
+            <Tooltip title={name} placement="top">
               <IconButton
-                color='inherit'
+                color="inherit"
                 sx={{
                   ...(initialColor && {
                     color: socialColor,
@@ -84,9 +84,9 @@ export default function SocialsButton({
           <Button
             key={name}
             href={path}
-            color='inherit'
-            variant='outlined'
-            size='small'
+            color="inherit"
+            variant="outlined"
+            size="small"
             startIcon={<Iconify icon={icon} />}
             sx={{
               m: 0.5,

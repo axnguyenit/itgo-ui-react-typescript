@@ -21,7 +21,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 export default function Home() {
   return (
-    <Page title='Home'>
+    <Page title="Home">
       <HomeHero />
       <ContentStyle>
         <Container sx={{ mt: 15 }}>

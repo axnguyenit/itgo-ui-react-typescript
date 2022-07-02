@@ -7,17 +7,17 @@ export default function SkeletonRoadmap() {
   return (
     <Stack spacing={3}>
       <Box>
-        <Skeleton variant='text' height={70} sx={{ width: 0.6 }} />
-        <Skeleton variant='text' height={30} sx={{ width: 1 }} />
-        <Skeleton variant='text' height={30} sx={{ width: 1 }} />
-        <Skeleton variant='text' height={30} sx={{ width: 1 }} />
-        <Skeleton variant='text' height={30} sx={{ width: 1 }} />
+        <Skeleton variant="text" height={70} sx={{ width: 0.6 }} />
+        <Skeleton variant="text" height={30} sx={{ width: 1 }} />
+        <Skeleton variant="text" height={30} sx={{ width: 1 }} />
+        <Skeleton variant="text" height={30} sx={{ width: 1 }} />
+        <Skeleton variant="text" height={30} sx={{ width: 1 }} />
       </Box>
 
       <Box>
-        <Skeleton variant='text' height={70} sx={{ width: 0.4 }} />
-        <Skeleton variant='text' height={30} sx={{ width: 1 }} />
-        <Skeleton variant='text' height={30} sx={{ width: 1 }} />
+        <Skeleton variant="text" height={70} sx={{ width: 0.4 }} />
+        <Skeleton variant="text" height={30} sx={{ width: 1 }} />
+        <Skeleton variant="text" height={30} sx={{ width: 1 }} />
       </Box>
 
       <Stack spacing={3}>
@@ -31,7 +31,7 @@ export default function SkeletonRoadmap() {
                 sx={{ overflow: 'hidden', borderRadius: 1 }}
               >
                 <Skeleton
-                  variant='rectangular'
+                  variant="rectangular"
                   sx={{
                     width: { xs: 200, md: 300 },
                     height: { xs: 120, md: 170 },
@@ -42,12 +42,12 @@ export default function SkeletonRoadmap() {
 
               <Grid item xs={6} md={8}>
                 <Skeleton
-                  variant='text'
+                  variant="text"
                   height={60}
                   sx={{ width: { xs: 1, md: 0.4 } }}
                 />
                 <Skeleton
-                  variant='text'
+                  variant="text"
                   height={50}
                   sx={{ width: { xs: 0.7, md: 0.3 } }}
                 />

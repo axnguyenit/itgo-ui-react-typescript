@@ -92,7 +92,7 @@ export default function CourseNewForm({
       })
       .lessThan(
         Yup.ref('price'),
-        'Price sale must be less than price and more than 1000'
+        'Price sale must be less than price and more than 1000',
       ),
     minStudent: Yup.number()
       .integer('Minimum student must be a integer')
@@ -121,7 +121,7 @@ export default function CourseNewForm({
       requirements: currentCourse?.details.requirements || '',
       targetAudiences: currentCourse?.details.targetAudiences || '',
     }),
-    [currentCourse]
+    [currentCourse],
   );
 
   const methods = useForm<CourseData>({
@@ -182,7 +182,7 @@ export default function CourseNewForm({
       reader.onloadend = () => setValue('cover', reader.result as string);
       reader.onerror = (error) => console.error(error);
     },
-    [setValue]
+    [setValue],
   );
 
   return (
@@ -191,26 +191,26 @@ export default function CourseNewForm({
         <Grid item xs={12} md={8}>
           <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
-              <RHFTextField name='name' label='Course Name' />
+              <RHFTextField name="name" label="Course Name" />
 
               <Box>
                 <LabelStyle>Overview</LabelStyle>
-                <RHFEditor simple name='overview' />
+                <RHFEditor simple name="overview" />
               </Box>
               <Box>
                 <LabelStyle>Requirements</LabelStyle>
-                <RHFEditor simple name='requirements' />
+                <RHFEditor simple name="requirements" />
               </Box>
               <Box>
                 <LabelStyle>Target Audiences</LabelStyle>
-                <RHFEditor simple name='targetAudiences' />
+                <RHFEditor simple name="targetAudiences" />
               </Box>
 
               <Box>
                 <LabelStyle>Cover</LabelStyle>
                 <RHFUploadSingleFile
-                  name='cover'
-                  accept='image/*'
+                  name="cover"
+                  accept="image/*"
                   maxSize={3145728}
                   onDrop={handleDrop}
                 />
@@ -224,8 +224,8 @@ export default function CourseNewForm({
             <Card sx={{ p: 3 }}>
               <Stack spacing={3} mt={2}>
                 <RHFSelect
-                  name='instructor'
-                  label='Instructor'
+                  name="instructor"
+                  label="Instructor"
                   InputLabelProps={{ shrink: true }}
                 >
                   {!!instructorList.length &&
@@ -236,7 +236,7 @@ export default function CourseNewForm({
                     ))}
                 </RHFSelect>
                 <Controller
-                  name='tags'
+                  name="tags"
                   control={control}
                   render={({ field }) => (
                     <Autocomplete
@@ -250,22 +250,22 @@ export default function CourseNewForm({
                           <Chip
                             {...getTagProps({ index })}
                             key={option}
-                            size='small'
+                            size="small"
                             label={option}
                           />
                         ))
                       }
                       renderInput={(params) => (
-                        <TextField label='Tags' {...params} />
+                        <TextField label="Tags" {...params} />
                       )}
                     />
                   )}
                 />
 
                 <RHFTextField
-                  name='minStudent'
-                  label='Minimum student'
-                  placeholder='0.00'
+                  name="minStudent"
+                  label="Minimum student"
+                  placeholder="0.00"
                   defaultValue={
                     getValues('minStudent') === 0 ? '' : getValues('minStudent')
                   }
@@ -277,9 +277,9 @@ export default function CourseNewForm({
                 />
 
                 <RHFTextField
-                  name='price'
-                  label='Regular Price'
-                  placeholder='0.00'
+                  name="price"
+                  label="Regular Price"
+                  placeholder="0.00"
                   defaultValue={
                     getValues('price') === 0 ? '' : getValues('price')
                   }
@@ -289,16 +289,16 @@ export default function CourseNewForm({
                   InputLabelProps={{ shrink: true }}
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position='start'>$</InputAdornment>
+                      <InputAdornment position="start">$</InputAdornment>
                     ),
                     type: 'number',
                   }}
                 />
 
                 <RHFTextField
-                  name='priceSale'
-                  label='Sale Price'
-                  placeholder='0.00'
+                  name="priceSale"
+                  label="Sale Price"
+                  placeholder="0.00"
                   defaultValue={
                     getValues('priceSale') === 0 ? '' : getValues('priceSale')
                   }
@@ -308,7 +308,7 @@ export default function CourseNewForm({
                   InputLabelProps={{ shrink: true }}
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position='start'>$</InputAdornment>
+                      <InputAdornment position="start">$</InputAdornment>
                     ),
                     type: 'number',
                   }}
@@ -317,9 +317,9 @@ export default function CourseNewForm({
             </Card>
 
             <LoadingButton
-              type='submit'
-              variant='contained'
-              size='large'
+              type="submit"
+              variant="contained"
+              size="large"
               loading={isSubmitting}
             >
               {!isEdit ? 'Create Course' : 'Save Changes'}

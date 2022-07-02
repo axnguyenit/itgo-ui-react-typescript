@@ -12,13 +12,30 @@ export default function UploadIllustration({ ...other }) {
 
   return (
     <Box {...other}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 480 360">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        viewBox="0 0 480 360"
+      >
         <defs>
-          <linearGradient id="BG" x1="19.496%" x2="77.479%" y1="71.822%" y2="16.69%">
+          <linearGradient
+            id="BG"
+            x1="19.496%"
+            x2="77.479%"
+            y1="71.822%"
+            y2="16.69%"
+          >
             <stop offset="0%" stopColor={PRIMARY_MAIN} />
             <stop offset="100%" stopColor={PRIMARY_MAIN} stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="linearGradient-2" x1="30.113%" x2="30.113%" y1="0%" y2="100%">
+          <linearGradient
+            id="linearGradient-2"
+            x1="30.113%"
+            x2="30.113%"
+            y1="0%"
+            y2="100%"
+          >
             <stop offset="0%" stopOpacity="0" />
             <stop offset="100%" />
           </linearGradient>
@@ -208,13 +225,29 @@ export default function UploadIllustration({ ...other }) {
             fillRule="nonzero"
             d="M394.956 258.102s-7.125-.43-6.279 4.565a1.218 1.218 0 00.631 1.283s.015-.371.733-.245c.255.042.515.054.774.036.349-.023.681-.159.945-.389.264-.23 2.003-.828 2.783-4.102 0 0 .577-.714.553-.897l-1.196.511s.41.87.087 1.591c0 0-.039-1.558-.269-1.522-.048 0-.625.299-.625.299s.706 1.495.173 2.61c0 0 .204-1.862-.394-2.502l-.846.496s.825 1.561.266 2.834c0 0 .143-1.955-.446-2.714l-.765.598s.774 1.539.299 2.595c0 0-.063-2.275-.469-2.446a4.75 4.75 0 00-.775.834s.532 1.118.204 1.707c0 0-.204-1.515-.368-1.521 0 0-.67 1.001-.739 1.689a3.671 3.671 0 01.577-1.794 2.007 2.007 0 00-1.025.532s.104-.711 1.196-.771c0 0 .553-.763.699-.81 0 0-1.079-.09-1.734.2 0 0 .577-.67 1.932-.365l.759-.619s-1.423-.194-2.024.021c0 0 .694-.598 2.227-.161l.826-.494a7.445 7.445 0 00-1.935-.164s.763-.413 2.174.033l.598-.263s-.897-.177-1.148-.203c-.252-.027-.275-.099-.275-.099a3.078 3.078 0 011.668.185s1.232-.46 1.208-.538z"
           />
-          <ellipse cx="390.052" cy="264.383" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" rx="5.044" ry="1" />
+          <ellipse
+            cx="390.052"
+            cy="264.383"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+            rx="5.044"
+            ry="1"
+          />
           <path
             fill={PRIMARY_MAIN}
             fillRule="nonzero"
             d="M352.896 262.437s-8.604-.52-7.588 5.51a1.47 1.47 0 00.763 1.549s0-.449.897-.299c.309.052.623.067.935.045a1.923 1.923 0 001.142-.473c.318-.279 2.419-.998 3.361-4.951 0 0 .697-.861.667-1.085l-1.468.622s.496 1.046.104 1.916c0 0-.048-1.877-.326-1.835-.056 0-.753.364-.753.364s.852 1.824.209 3.152c0 0 .245-2.249-.475-3.02l-1.023.598s.996 1.886.32 3.423c0 0 .174-2.359-.535-3.289l-.927.724s.939 1.857.365 3.133c0 0-.072-2.747-.565-2.954 0 0-.81.715-.933 1.008 0 0 .64 1.348.242 2.06 0 0-.245-1.83-.445-1.839 0 0-.804 1.214-.897 2.042.04-.768.28-1.512.697-2.159a2.427 2.427 0 00-1.235.643s.125-.858 1.435-.933c0 0 .667-.92.846-.974 0 0-1.303-.111-2.093.239 0 0 .694-.807 2.329-.44l.915-.747s-1.713-.233-2.442.024c0 0 .837-.715 2.69-.191l.996-.598s-1.462-.314-2.335-.201c0 0 .921-.496 2.625.042l.711-.32s-1.07-.209-1.384-.242c-.314-.033-.329-.119-.329-.119a3.69 3.69 0 012.012.221s1.519-.553 1.492-.646z"
           />
-          <ellipse cx="346.97" cy="270.022" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" rx="6.09" ry="1.028" />
+          <ellipse
+            cx="346.97"
+            cy="270.022"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+            rx="6.09"
+            ry="1.028"
+          />
           <rect
             width="51.026"
             height="91.312"
@@ -225,7 +258,14 @@ export default function UploadIllustration({ ...other }) {
             rx="4.737"
             transform="rotate(-71.99 329.44 114.867)"
           />
-          <circle cx="303.613" cy="103.507" r="9.376" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.2" />
+          <circle
+            cx="303.613"
+            cy="103.507"
+            r="9.376"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.2"
+          />
           <path
             fill={PRIMARY_MAIN}
             fillRule="nonzero"
@@ -336,10 +376,42 @@ export default function UploadIllustration({ ...other }) {
             d="M269.277 168.76l-45.767.493a3.127 3.127 0 00-3.094 3.125v3.782a3.127 3.127 0 01-3.05 3.124l-33.024.792a3.124 3.124 0 01-3.095-2.308l-1.551-5.701a3.124 3.124 0 00-3.053-2.308l-44.113.475a3.125 3.125 0 00-3.05 3.648l17.747 104.449a3.129 3.129 0 003.071 2.604l139.363.598a3.129 3.129 0 003.082-3.714l-20.366-106.521a3.125 3.125 0 00-3.1-2.538z"
             opacity="0.32"
           />
-          <ellipse cx="119.593" cy="258.664" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" rx="4.846" ry="1" />
-          <ellipse cx="101.03" cy="260.545" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" rx="4.846" ry="1" />
-          <ellipse cx="108.459" cy="265.905" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" rx="3.444" ry="1" />
-          <ellipse cx="89.193" cy="265.433" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" rx="3.444" ry="1" />
+          <ellipse
+            cx="119.593"
+            cy="258.664"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+            rx="4.846"
+            ry="1"
+          />
+          <ellipse
+            cx="101.03"
+            cy="260.545"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+            rx="4.846"
+            ry="1"
+          />
+          <ellipse
+            cx="108.459"
+            cy="265.905"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+            rx="3.444"
+            ry="1"
+          />
+          <ellipse
+            cx="89.193"
+            cy="265.433"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+            rx="3.444"
+            ry="1"
+          />
           <path
             fill={PRIMARY_MAIN}
             fillRule="nonzero"
@@ -362,10 +434,30 @@ export default function UploadIllustration({ ...other }) {
             strokeWidth="0.5"
             d="M91.113 247.808s8.353 12.115 9.968 12.647"
           />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M90.344 249.701L92.293 249.701" />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M92.68 254.132L95.738 254.263" />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M94.542 250.586L94.21 252.179" />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M97.792 255.432L97.732 256.879" />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M90.344 249.701L92.293 249.701"
+          />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M92.68 254.132L95.738 254.263"
+          />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M94.542 250.586L94.21 252.179"
+          />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M97.792 255.432L97.732 256.879"
+          />
           <path
             fill={PRIMARY_MAIN}
             fillRule="nonzero"
@@ -377,19 +469,67 @@ export default function UploadIllustration({ ...other }) {
             strokeWidth="0.5"
             d="M111.051 247.808s-8.371 12.115-9.97 12.647"
           />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M111.82 249.701L109.871 249.701" />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M109.485 254.132L106.426 254.263" />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M107.622 250.586L107.954 252.179" />
-          <path stroke={PRIMARY_DARKER} strokeLinecap="round" strokeWidth="0.5" d="M104.372 255.432L104.432 256.879" />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M111.82 249.701L109.871 249.701"
+          />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M109.485 254.132L106.426 254.263"
+          />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M107.622 250.586L107.954 252.179"
+          />
+          <path
+            stroke={PRIMARY_DARKER}
+            strokeLinecap="round"
+            strokeWidth="0.5"
+            d="M104.372 255.432L104.432 256.879"
+          />
           <path
             fill={PRIMARY_MAIN}
             fillRule="nonzero"
             d="M87.295 264.357a1.375 1.375 0 01-.452-.685.599.599 0 01.317-.697c.3-.11.598.09.837.299.24.21.512.431.81.38a1.237 1.237 0 01-.382-1.16.47.47 0 01.105-.236c.161-.174.454-.099.648.039.598.43.787 1.264.79 2.018.03-.277.03-.555 0-.831a.853.853 0 01.334-.727.938.938 0 01.476-.114.988.988 0 01.774.222.767.767 0 01-.03.947c-.229.257-.5.474-.801.64a1.805 1.805 0 00-.571.547.399.399 0 00-.042.096h-1.74a4.826 4.826 0 01-1.073-.738zM117.626 257.833a1.355 1.355 0 01-.452-.682.599.599 0 01.314-.696c.299-.111.598.089.837.299.239.209.509.436.817.391a1.236 1.236 0 01-.386-1.157.472.472 0 01.107-.236c.162-.173.455-.099.649.036.613.433.787 1.268.79 2.021a4.008 4.008 0 000-.834.852.852 0 01.299-.736.955.955 0 01.475-.11.998.998 0 01.774.218.768.768 0 01-.033.951 2.996 2.996 0 01-.798.64 1.767 1.767 0 00-.571.544.499.499 0 00-.042.098h-1.701a4.78 4.78 0 01-1.079-.747zM107.518 264.357a1.406 1.406 0 01-.455-.685.6.6 0 01.317-.697c.299-.11.598.09.837.299.239.21.505.437.816.395a1.247 1.247 0 01-.385-1.16.472.472 0 01.107-.236c.162-.174.455-.099.649.039.613.43.783 1.264.789 2.018.03-.277.03-.555 0-.832a.855.855 0 01.314-.735.93.93 0 01.476-.114.988.988 0 01.774.222.764.764 0 01-.033.947 3.028 3.028 0 01-.798.64 1.798 1.798 0 00-.571.547.411.411 0 00-.042.096h-1.734c-.385-.2-.742-.45-1.061-.744z"
           />
-          <circle cx="84.467" cy="87.003" r="6.467" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" />
-          <circle cx="395.425" cy="138.681" r="6.467" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" />
-          <circle cx="279.178" cy="66.467" r="6.467" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" />
-          <circle cx="97.4" cy="122.68" r="10.838" fill={PRIMARY_MAIN} fillRule="nonzero" opacity="0.1" />
+          <circle
+            cx="84.467"
+            cy="87.003"
+            r="6.467"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+          />
+          <circle
+            cx="395.425"
+            cy="138.681"
+            r="6.467"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+          />
+          <circle
+            cx="279.178"
+            cy="66.467"
+            r="6.467"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+          />
+          <circle
+            cx="97.4"
+            cy="122.68"
+            r="10.838"
+            fill={PRIMARY_MAIN}
+            fillRule="nonzero"
+            opacity="0.1"
+          />
           <path
             fill={PRIMARY_DARK}
             fillRule="nonzero"

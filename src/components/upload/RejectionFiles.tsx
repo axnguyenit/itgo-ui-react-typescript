@@ -22,7 +22,7 @@ export default function RejectionFiles({
 }: RejectionFilesProps) {
   return (
     <Paper
-      variant='outlined'
+      variant="outlined"
       sx={{
         py: 1,
         px: 2,
@@ -36,7 +36,7 @@ export default function RejectionFiles({
 
         return (
           <Box key={path} sx={{ my: 1 }}>
-            <Typography variant='subtitle2' noWrap>
+            <Typography variant="subtitle2" noWrap>
               {path} - {fData(size)}
             </Typography>
 
@@ -53,10 +53,10 @@ export default function RejectionFiles({
                   | null
                   | undefined;
               }) => (
-                <Typography key={error.code} variant='caption' component='p'>
+                <Typography key={error.code} variant="caption" component="p">
                   - {error.message}
                 </Typography>
-              )
+              ),
             )}
           </Box>
         );

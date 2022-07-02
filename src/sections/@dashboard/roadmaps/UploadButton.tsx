@@ -19,7 +19,11 @@ interface UploadButtonProps {
   value: string;
 }
 
-export default function UploadButton({ onChange, required = false, value }: UploadButtonProps) {
+export default function UploadButton({
+  onChange,
+  required = false,
+  value,
+}: UploadButtonProps) {
   const selectFileRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string>('');
 
@@ -45,27 +49,34 @@ export default function UploadButton({ onChange, required = false, value }: Uplo
     reader.onerror = (error) => {};
   };
   return (
-    <Stack direction='row' alignItems='center' spacing={2}>
+    <Stack direction="row" alignItems="center" spacing={2}>
       <Box>
         {preview && (
           <Image
-            src={preview.startsWith('data:') ? preview : cloudinary.w300(preview)}
-            ratio='16/9'
+            src={
+              preview.startsWith('data:') ? preview : cloudinary.w300(preview)
+            }
+            ratio="16/9"
             sx={{ width: 250, borderRadius: 1 }}
           />
         )}
       </Box>
       <Input
         ref={selectFileRef}
-        accept='image/*'
-        id='icon-button-file'
-        type='file'
+        accept="image/*"
+        id="icon-button-file"
+        type="file"
         onChange={handleChange}
         required={required}
       />
-      <IconButton color='primary' aria-label='upload picture' component='span' onClick={handleSelectFile}>
+      <IconButton
+        color="primary"
+        aria-label="upload picture"
+        component="span"
+        onClick={handleSelectFile}
+      >
         {/* <PhotoCamera /> */}
-        <Iconify icon='bxs:camera' />
+        <Iconify icon="bxs:camera" />
       </IconButton>
     </Stack>
   );

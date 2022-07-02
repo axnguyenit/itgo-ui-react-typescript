@@ -65,7 +65,7 @@ export default function CourseMoreMenu({
         onClose={handleClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        arrow='right-top'
+        arrow="right-top"
         sx={{
           mt: -1,
           width: 160,
@@ -115,14 +115,14 @@ export default function CourseMoreMenu({
 
         <DialogActions>
           <Button
-            variant='outlined'
-            color='inherit'
+            variant="outlined"
+            color="inherit"
             onClick={() => setIsOpenModal(false)}
           >
             Cancel
           </Button>
 
-          <Button onClick={handleDelete} variant='contained' color='error'>
+          <Button onClick={handleDelete} variant="contained" color="error">
             Delete
           </Button>
         </DialogActions>

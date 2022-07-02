@@ -25,33 +25,33 @@ export default function CalendarEvent({ event, onCancel }: CalendarEventProps) {
 
       <Stack spacing={3} sx={{ p: 3 }}>
         <Box>
-          <Typography variant='h6' sx={{ color: 'text.disabled' }}>
+          <Typography variant="h6" sx={{ color: 'text.disabled' }}>
             Title
           </Typography>
-          <Typography variant='body2'>{event?.title}</Typography>
+          <Typography variant="body2">{event?.title}</Typography>
         </Box>
 
         <Box>
-          <Typography variant='h6' sx={{ color: 'text.disabled' }}>
+          <Typography variant="h6" sx={{ color: 'text.disabled' }}>
             Description
           </Typography>
-          <Typography variant='body2'>{event?.description}</Typography>
+          <Typography variant="body2">{event?.description}</Typography>
         </Box>
 
         <Box>
-          <Typography variant='h6' sx={{ color: 'text.disabled' }}>
+          <Typography variant="h6" sx={{ color: 'text.disabled' }}>
             Start
           </Typography>
-          <Typography variant='body2'>
+          <Typography variant="body2">
             {fDateTime(event?.start as Date)}
           </Typography>
         </Box>
 
         <Box>
-          <Typography variant='h6' sx={{ color: 'text.disabled' }}>
+          <Typography variant="h6" sx={{ color: 'text.disabled' }}>
             End
           </Typography>
-          <Typography variant='body2'>
+          <Typography variant="body2">
             {fDateTime(event?.end as Date)}
           </Typography>
         </Box>
@@ -59,12 +59,12 @@ export default function CalendarEvent({ event, onCancel }: CalendarEventProps) {
 
       <DialogActions>
         <Box sx={{ flexGrow: 1 }} />
-        <Button variant='outlined' color='inherit' onClick={onCancel}>
+        <Button variant="outlined" color="inherit" onClick={onCancel}>
           Cancel
         </Button>
 
         <Button
-          variant='contained'
+          variant="contained"
           to={`${PATH_HOME.learning.root}/${event?.id}`}
           component={RouterLink}
           sx={{ ml: 1.5 }}

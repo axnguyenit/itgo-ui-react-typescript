@@ -104,8 +104,8 @@ export default function InstructorProfile() {
   ];
 
   return (
-    <Page title='User: Profile'>
-      <Container maxWidth='lg' sx={{ mt: 15, mb: 10 }}>
+    <Page title="User: Profile">
+      <Container maxWidth="lg" sx={{ mt: 15, mb: 10 }}>
         <Card
           sx={{
             mb: 4,
@@ -118,8 +118,8 @@ export default function InstructorProfile() {
           <TabsWrapperStyle>
             <Tabs
               value={currentTab}
-              scrollButtons='auto'
-              variant='scrollable'
+              scrollButtons="auto"
+              variant="scrollable"
               allowScrollButtonsMobile
               onChange={(e, value) => handleChangeTab(value)}
             >
@@ -143,17 +143,17 @@ export default function InstructorProfile() {
 
         {currentTab === 'courses' && pagination._totalRows > LIMIT_COURSE && (
           <Stack
-            direction='row'
-            justifyContent='center'
-            alignItems='center'
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
             sx={{ my: 3 }}
           >
             <Pagination
               count={Math.ceil(pagination._totalRows / LIMIT_COURSE)}
               onChange={(event, value) => setPage(value)}
-              color='primary'
-              variant='outlined'
-              shape='rounded'
+              color="primary"
+              variant="outlined"
+              shape="rounded"
             />
           </Stack>
         )}

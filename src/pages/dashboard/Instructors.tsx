@@ -60,7 +60,9 @@ export default function Instructors() {
     };
 
     try {
-      const { instructors, pagination } = await userApi.getAllInstructors(params);
+      const { instructors, pagination } = await userApi.getAllInstructors(
+        params,
+      );
       setInstructorList(instructors);
       setPagination(pagination);
     } catch (error) {}
@@ -80,11 +82,14 @@ export default function Instructors() {
   const emptyRows = page > 0 ? Math.max(0, rowsPerPage - userList.length) : 0;
 
   return (
-    <Page title='Instructors'>
+    <Page title="Instructors">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Instructors'
-          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Instructors' }]}
+          heading="Instructors"
+          links={[
+            { name: 'Dashboard', href: PATH_DASHBOARD.root },
+            { name: 'Instructors' },
+          ]}
         />
 
         <Card sx={{ position: 'relative' }}>
@@ -96,26 +101,48 @@ export default function Instructors() {
                 <TableBody>
                   {!!userList.length &&
                     userList.map((user) => {
-                      const { _id, firstName, lastName, email, emailVerified, avatar, position, isBanned } = user;
+                      const {
+                        _id,
+                        firstName,
+                        lastName,
+                        email,
+                        emailVerified,
+                        avatar,
+                        position,
+                        isBanned,
+                      } = user;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role='checkbox'>
-                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Avatar alt={firstName} src={cloudinary.w100(avatar)} sx={{ mr: 2 }} />
-                            <Typography variant='subtitle2' noWrap>
+                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
+                          <TableCell
+                            sx={{ display: 'flex', alignItems: 'center' }}
+                          >
+                            <Avatar
+                              alt={firstName}
+                              src={cloudinary.w100(avatar)}
+                              sx={{ mr: 2 }}
+                            />
+                            <Typography variant="subtitle2" noWrap>
                               {firstName} {lastName}
                             </Typography>
                           </TableCell>
-                          <TableCell align='left'>{email}</TableCell>
-                          <TableCell align='left'>{position ? position : '#'}</TableCell>
-                          <TableCell align='left'>{emailVerified ? 'Yes' : 'No'}</TableCell>
-                          <TableCell align='left'>
-                            <Label variant={'ghost'} color={isBanned ? 'error' : 'success'}>
+                          <TableCell align="left">{email}</TableCell>
+                          <TableCell align="left">
+                            {position ? position : '#'}
+                          </TableCell>
+                          <TableCell align="left">
+                            {emailVerified ? 'Yes' : 'No'}
+                          </TableCell>
+                          <TableCell align="left">
+                            <Label
+                              variant={'ghost'}
+                              color={isBanned ? 'error' : 'success'}
+                            >
                               {sentenceCase(isBanned ? 'banned' : 'active')}
                             </Label>
                           </TableCell>
 
-                          <TableCell align='right'>
+                          <TableCell align="right">
                             <InstructorMoreMenu userId={_id as string} />
                           </TableCell>
                         </TableRow>
@@ -133,7 +160,7 @@ export default function Instructors() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={pagination._totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}

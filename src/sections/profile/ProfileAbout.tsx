@@ -26,24 +26,24 @@ export default function ProfileAbout({ profile }: ProfileAboutProps) {
 
   return (
     <Card>
-      <CardHeader title='About' />
+      <CardHeader title="About" />
 
       <Stack spacing={2} sx={{ p: 3 }}>
         {/* <Typography variant='body2'>quote</Typography> */}
 
-        <Stack direction='row'>
+        <Stack direction="row">
           <IconStyle icon={'eva:pin-fill'} />
-          <Typography variant='body2'>
+          <Typography variant="body2">
             Live at &nbsp;
-            <Link component='span' variant='subtitle2' color='text.primary'>
+            <Link component="span" variant="subtitle2" color="text.primary">
               {address}
             </Link>
           </Typography>
         </Stack>
 
-        <Stack direction='row'>
+        <Stack direction="row">
           <IconStyle icon={'ic:round-business-center'} />
-          <Typography variant='body2'>{position}</Typography>
+          <Typography variant="body2">{position}</Typography>
         </Stack>
 
         {/* <Stack direction='row'>

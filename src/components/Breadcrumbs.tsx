@@ -34,7 +34,7 @@ export default function Breadcrumbs({
         <LinkItem link={link} />
       ) : (
         <Typography
-          variant='body2'
+          variant="body2"
           sx={{
             maxWidth: 260,
             overflow: 'hidden',
@@ -53,7 +53,7 @@ export default function Breadcrumbs({
     <MUIBreadcrumbs
       separator={
         <Box
-          component='span'
+          component="span"
           sx={{
             width: 4,
             height: 4,
@@ -80,7 +80,7 @@ function LinkItem({ link }: LinkItemProps) {
   return (
     <Link
       key={name}
-      variant='body2'
+      variant="body2"
       component={RouterLink}
       to={href || '#'}
       sx={{

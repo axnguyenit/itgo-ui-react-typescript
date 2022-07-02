@@ -27,7 +27,9 @@ export default function Calendar() {
   const isDesktop = useResponsive('up', 'sm');
   const calendarRef = useRef<FullCalendar>(null);
   const [date, setDate] = useState<Date>(new Date());
-  const [view, setView] = useState<CalendarView>(isDesktop ? 'dayGridMonth' : 'timeGridDay');
+  const [view, setView] = useState<CalendarView>(
+    isDesktop ? 'dayGridMonth' : 'timeGridDay',
+  );
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<Event>();
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -101,8 +103,8 @@ export default function Calendar() {
   };
 
   return (
-    <Page title='Calendar'>
-      <Container maxWidth='lg' sx={{ mt: 15, mb: 10 }}>
+    <Page title="Calendar">
+      <Container maxWidth="lg" sx={{ mt: 15, mb: 10 }}>
         <Card>
           <CalendarStyle>
             <CalendarToolbar
@@ -122,7 +124,7 @@ export default function Calendar() {
               initialDate={date}
               initialView={view}
               dayMaxEventRows={3}
-              eventDisplay='block'
+              eventDisplay="block"
               headerToolbar={false}
               allDayMaintainDuration
               eventResizableFromStart

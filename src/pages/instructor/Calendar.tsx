@@ -9,7 +9,14 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 // @mui
-import { Button, Card, Container, DialogTitle, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  Container,
+  DialogTitle,
+  Stack,
+  Typography,
+} from '@mui/material';
 // components
 import Page from '~/components/Page';
 import { DialogAnimate } from '~/components/animate';
@@ -32,7 +39,9 @@ export default function Calendar() {
   const isDesktop = useResponsive('up', 'sm');
   const calendarRef = useRef<FullCalendar>(null);
   const [date, setDate] = useState<Date>(new Date());
-  const [view, setView] = useState<CalendarView>(isDesktop ? 'dayGridMonth' : 'timeGridDay');
+  const [view, setView] = useState<CalendarView>(
+    isDesktop ? 'dayGridMonth' : 'timeGridDay',
+  );
   const [events, setEvents] = useState<Event[]>([]);
   const [range, setRange] = useState<CalendarArg>({
     start: new Date(),
@@ -116,11 +125,14 @@ export default function Calendar() {
   };
 
   return (
-    <Page title='Calendar'>
-      <Container maxWidth='xl'>
+    <Page title="Calendar">
+      <Container maxWidth="xl">
         <HeaderBreadcrumbs
-          heading='Calendar'
-          links={[{ name: 'Instructor', href: PATH_INSTRUCTOR.root }, { name: 'Calendar' }]}
+          heading="Calendar"
+          links={[
+            { name: 'Instructor', href: PATH_INSTRUCTOR.root },
+            { name: 'Calendar' },
+          ]}
         />
 
         <Card>
@@ -143,7 +155,7 @@ export default function Calendar() {
               initialDate={date}
               initialView={view}
               dayMaxEventRows={3}
-              eventDisplay='block'
+              eventDisplay="block"
               headerToolbar={false}
               allDayMaintainDuration
               eventResizableFromStart
@@ -157,11 +169,17 @@ export default function Calendar() {
 
         <DialogAnimate open={isOpenModal} onClose={handleCloseModal}>
           <DialogTitle>
-            <Stack direction='row' alignItems='center' justifyContent='space-between'>
-              <Typography variant='subtitle1'>{selectedEvent ? 'Edit Event' : 'Add Event'}</Typography>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Typography variant="subtitle1">
+                {selectedEvent ? 'Edit Event' : 'Add Event'}
+              </Typography>
               {selectedEvent && (
                 <Button
-                  variant='contained'
+                  variant="contained"
                   to={`${PATH_HOME.learning.root}/${selectedEvent?.id}`}
                   component={RouterLink}
                   sx={{ ml: 1.5 }}
@@ -171,7 +189,12 @@ export default function Calendar() {
               )}
             </Stack>
           </DialogTitle>
-          <CalendarForm event={selectedEvent} range={range} onCancel={handleCloseModal} onGetEvents={getEvents} />
+          <CalendarForm
+            event={selectedEvent}
+            range={range}
+            onCancel={handleCloseModal}
+            onGetEvents={getEvents}
+          />
         </DialogAnimate>
       </Container>
     </Page>

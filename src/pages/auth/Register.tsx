@@ -20,15 +20,15 @@ export default function Register() {
   const mdUp = useResponsive('up', 'md');
 
   return (
-    <Page title='Register'>
+    <Page title="Register">
       <RootStyle>
         <HeaderStyle>
           <Logo />
           {smUp && (
-            <Typography variant='body2' sx={{ mt: { lg: 1, md: -2 } }}>
+            <Typography variant="body2" sx={{ mt: { lg: 1, md: -2 } }}>
               Already have an account?&nbsp;
               <Link
-                variant='subtitle2'
+                variant="subtitle2"
                 component={RouterLink}
                 to={PATH_AUTH.login}
               >
@@ -40,11 +40,11 @@ export default function Register() {
 
         {mdUp && (
           <SectionStyle>
-            <Typography variant='h3' sx={{ px: 5, mt: 10, mb: 5 }}>
+            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Start learning programing with ITGO
             </Typography>
             <Image
-              alt='register'
+              alt="register"
               src={`${window.location.origin}/assets/images/register.png`}
             />
           </SectionStyle>
@@ -54,7 +54,7 @@ export default function Register() {
           <ContentStyle>
             <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
               <Box sx={{ flexGrow: 1 }}>
-                <Typography variant='h4' gutterBottom>
+                <Typography variant="h4" gutterBottom>
                   Register to ITGO
                 </Typography>
               </Box>
@@ -67,26 +67,26 @@ export default function Register() {
             <RegisterForm />
 
             <Typography
-              variant='body2'
-              align='center'
+              variant="body2"
+              align="center"
               sx={{ color: 'text.secondary', mt: 3 }}
             >
               By registering, I agree to Minimal&nbsp;
-              <Link underline='always' color='text.primary' href='#'>
+              <Link underline="always" color="text.primary" href="#">
                 Terms of Service&nbsp;
               </Link>
               and&nbsp;
-              <Link underline='always' color='text.primary' href='#'>
+              <Link underline="always" color="text.primary" href="#">
                 Privacy Policy
               </Link>
               .
             </Typography>
 
             {!smUp && (
-              <Typography variant='body2' sx={{ mt: 3, textAlign: 'center' }}>
+              <Typography variant="body2" sx={{ mt: 3, textAlign: 'center' }}>
                 Already have an account?{' '}
                 <Link
-                  variant='subtitle2'
+                  variant="subtitle2"
                   to={PATH_AUTH.login}
                   component={RouterLink}
                 >

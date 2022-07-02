@@ -22,27 +22,21 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function Page404() {
   const navigate = useNavigate();
   return (
-    <Page title='404 Page Not Found' sx={{ height: 1 }}>
+    <Page title="404 Page Not Found" sx={{ height: 1 }}>
       <RootStyle>
         <Container>
           <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
-            <Typography variant='h3' paragraph>
+            <Typography variant="h3" paragraph>
               Sorry, page not found!
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
-              Sorry, we couldn’t find the page you’re looking for. Perhaps
-              you’ve mistyped the URL? Be sure to check your spelling.
+              Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL?
+              Be sure to check your spelling.
             </Typography>
 
-            <PageNotFoundIllustration
-              sx={{ height: 260, my: { xs: 5, sm: 10 } }}
-            />
+            <PageNotFoundIllustration sx={{ height: 260, my: { xs: 5, sm: 10 } }} />
 
-            <Button
-              onClick={() => navigate(-2)}
-              size='large'
-              variant='contained'
-            >
+            <Button onClick={() => navigate(-2)} size="large" variant="contained">
               Go back
             </Button>
           </Box>

@@ -35,13 +35,13 @@ export default function ColorPreview({
   const moreColor = colors.length - limit;
 
   return (
-    <RootStyle component='span' sx={sx}>
+    <RootStyle component="span" sx={sx}>
       {showColor.map((color, index) => (
         <IconStyle key={color + index} sx={{ bgcolor: color }} />
       ))}
 
       {colors.length > limit && (
-        <Typography variant='subtitle2'>{`+${moreColor}`}</Typography>
+        <Typography variant="subtitle2">{`+${moreColor}`}</Typography>
       )}
     </RootStyle>
   );

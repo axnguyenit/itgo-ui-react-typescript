@@ -25,7 +25,7 @@ const Page = forwardRef(
         {children}
       </Box>
     </>
-  )
+  ),
 );
 
 export default Page;

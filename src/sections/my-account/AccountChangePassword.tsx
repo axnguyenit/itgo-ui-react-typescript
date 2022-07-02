@@ -71,20 +71,20 @@ export default function AccountChangePassword() {
   return (
     <Card sx={{ p: 3 }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={3} alignItems='flex-end'>
+        <Stack spacing={3} alignItems="flex-end">
           {!!errors.oldPassword && (
-            <Alert severity='error'>{errors.oldPassword.message}</Alert>
+            <Alert severity="error">{errors.oldPassword.message}</Alert>
           )}
           <RHFTextField
-            name='oldPassword'
-            label='Old Password'
+            name="oldPassword"
+            label="Old Password"
             type={showOldPassword ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
                     onClick={() => setShowOldPassword(!showOldPassword)}
-                    edge='end'
+                    edge="end"
                   >
                     <Iconify
                       icon={
@@ -98,15 +98,15 @@ export default function AccountChangePassword() {
           />
 
           <RHFTextField
-            name='newPassword'
-            label='New Password'
+            name="newPassword"
+            label="New Password"
             type={showNewPassword ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
                     onClick={() => setShowNewPassword(!showNewPassword)}
-                    edge='end'
+                    edge="end"
                   >
                     <Iconify
                       icon={
@@ -120,17 +120,17 @@ export default function AccountChangePassword() {
           />
 
           <RHFTextField
-            name='confirmNewPassword'
-            label='Confirm New Password'
+            name="confirmNewPassword"
+            label="Confirm New Password"
             type={showConfirmNewPassword ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
                     onClick={() =>
                       setShowConfirmNewPassword(!showConfirmNewPassword)
                     }
-                    edge='end'
+                    edge="end"
                   >
                     <Iconify
                       icon={
@@ -146,8 +146,8 @@ export default function AccountChangePassword() {
           />
 
           <LoadingButton
-            type='submit'
-            variant='contained'
+            type="submit"
+            variant="contained"
             loading={isSubmitting}
           >
             Save Changes

@@ -74,17 +74,28 @@ export default function NotistackProvider({
         maxSnack={5}
         preventDuplicate
         autoHideDuration={3000}
-        variant='success' // Set default variant
+        variant="success" // Set default variant
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         iconVariant={{
-          info: <SnackbarIcon icon={'eva:info-fill'} color='info' />,
-          success: <SnackbarIcon icon={'eva:checkmark-circle-2-fill'} color='success' />,
-          warning: <SnackbarIcon icon={'eva:alert-triangle-fill'} color='warning' />,
-          error: <SnackbarIcon icon={'eva:alert-circle-fill'} color='error' />,
+          info: <SnackbarIcon icon={'eva:info-fill'} color="info" />,
+          success: (
+            <SnackbarIcon
+              icon={'eva:checkmark-circle-2-fill'}
+              color="success"
+            />
+          ),
+          warning: (
+            <SnackbarIcon icon={'eva:alert-triangle-fill'} color="warning" />
+          ),
+          error: <SnackbarIcon icon={'eva:alert-circle-fill'} color="error" />,
         }}
         // With close as default
         action={(key: any) => (
-          <IconButtonAnimate size='small' onClick={() => onClose(key)} sx={{ p: 0.5 }}>
+          <IconButtonAnimate
+            size="small"
+            onClick={() => onClose(key)}
+            sx={{ p: 0.5 }}
+          >
             <Iconify icon={'eva:close-fill'} />
           </IconButtonAnimate>
         )}
@@ -107,7 +118,7 @@ interface SnackbarIconProps {
 function SnackbarIcon({ icon, color }: SnackbarIconProps) {
   return (
     <Box
-      component='span'
+      component="span"
       sx={{
         mr: 1.5,
         width: 40,

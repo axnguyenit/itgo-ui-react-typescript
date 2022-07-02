@@ -32,7 +32,9 @@ export default function CourseCard({ course }: CourseCardProps) {
   const linkTo = `${PATH_HOME.courses.root}/${_id}`;
 
   const handleAddCart = async (course: Course) => {
-    const isExisted = cart.find((cartItem) => cartItem.course?._id === course._id);
+    const isExisted = cart.find(
+      (cartItem) => cartItem.course?._id === course._id,
+    );
 
     if (!isExisted && course?._id) {
       try {
@@ -45,7 +47,9 @@ export default function CourseCard({ course }: CourseCardProps) {
       } catch (error) {
         const err = handleError(error);
 
-        isAuthenticated ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' }) : navigate(PATH_AUTH.login);
+        isAuthenticated
+          ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' })
+          : navigate(PATH_AUTH.login);
       }
     } else {
       enqueueSnackbar('This course already exists in your cart', {
@@ -59,8 +63,8 @@ export default function CourseCard({ course }: CourseCardProps) {
       <Box sx={{ position: 'relative' }}>
         {!!priceSale && (
           <Label
-            variant='filled'
-            color='error'
+            variant="filled"
+            color="error"
             sx={{
               top: 16,
               right: 16,
@@ -72,36 +76,49 @@ export default function CourseCard({ course }: CourseCardProps) {
             Sale
           </Label>
         )}
-        <Image alt={name} src={cloudinary.w300(cover)} ratio='16/9' />
+        <Image alt={name} src={cloudinary.w300(cover)} ratio="16/9" />
       </Box>
 
       <Stack spacing={2} sx={{ p: 2 }}>
         <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-          <Link to={linkTo} color='inherit' component={RouterLink}>
-            <Typography variant='subtitle2' noWrap>
+          <Link to={linkTo} color="inherit" component={RouterLink}>
+            <Typography variant="subtitle2" noWrap>
               {name}
             </Typography>
           </Link>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant='body2' sx={{ color: 'text.secondary' }} noWrap>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
               {instructor?.firstName} {instructor?.lastName}
             </Typography>
           </Box>
         </Box>
 
-        <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
-          <Stack direction='row' alignItems='flex-end' spacing={0.5}>
+        <Stack
+          direction="row"
+          alignItems="flex-end"
+          justifyContent="space-between"
+        >
+          <Stack direction="row" alignItems="flex-end" spacing={0.5}>
             {!!priceSale && (
-              <Typography variant='body2' sx={{ color: 'text.disabled', textDecoration: 'line-through' }}>
+              <Typography
+                variant="body2"
+                sx={{ color: 'text.disabled', textDecoration: 'line-through' }}
+              >
                 {fCurrency(price)}
               </Typography>
             )}
-            <Typography variant='subtitle1'>{fCurrency(priceSale || price)}</Typography>
+            <Typography variant="subtitle1">
+              {fCurrency(priceSale || price)}
+            </Typography>
           </Stack>
           {/* <Rating value={4.5} size="small" precision={0.1} readOnly /> */}
 
           <Box sx={{ flexGrow: 1 }} />
-          <Button variant='contained' onClick={() => handleAddCart(course)} size='small'>
+          <Button
+            variant="contained"
+            onClick={() => handleAddCart(course)}
+            size="small"
+          >
             Add to cart
           </Button>
         </Stack>

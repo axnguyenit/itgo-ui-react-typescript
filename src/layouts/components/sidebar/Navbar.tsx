@@ -86,9 +86,9 @@ export default function Navbar({
         }}
       >
         <Stack
-          direction='row'
-          alignItems='center'
-          justifyContent='space-between'
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
         >
           <Logo />
 
@@ -133,7 +133,7 @@ export default function Navbar({
       {isDesktop && (
         <Drawer
           open
-          variant='persistent'
+          variant="persistent"
           onMouseEnter={onHoverEnter}
           onMouseLeave={onHoverLeave}
           PaperProps={{

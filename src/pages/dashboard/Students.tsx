@@ -70,13 +70,14 @@ export default function Students() {
     setPage(0);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, rowsPerPage - studentList.length) : 0;
+  const emptyRows =
+    page > 0 ? Math.max(0, rowsPerPage - studentList.length) : 0;
 
   return (
-    <Page title='Students'>
+    <Page title="Students">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Students'
+          heading="Students"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Instructors', href: PATH_DASHBOARD.instructors.root },
@@ -93,21 +94,43 @@ export default function Students() {
                 <TableBody>
                   {!!studentList.length &&
                     studentList.map((user) => {
-                      const { _id, firstName, lastName, email, isInstructor, avatar, position, isBanned } = user;
+                      const {
+                        _id,
+                        firstName,
+                        lastName,
+                        email,
+                        isInstructor,
+                        avatar,
+                        position,
+                        isBanned,
+                      } = user;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role='checkbox'>
-                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Avatar alt={firstName} src={cloudinary.w100(avatar)} sx={{ mr: 2 }} />
-                            <Typography variant='subtitle2' noWrap>
+                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
+                          <TableCell
+                            sx={{ display: 'flex', alignItems: 'center' }}
+                          >
+                            <Avatar
+                              alt={firstName}
+                              src={cloudinary.w100(avatar)}
+                              sx={{ mr: 2 }}
+                            />
+                            <Typography variant="subtitle2" noWrap>
                               {firstName} {lastName}
                             </Typography>
                           </TableCell>
-                          <TableCell align='left'>{email}</TableCell>
-                          <TableCell align='left'>{position ? position : '#'}</TableCell>
-                          <TableCell align='left'>{isInstructor ? 'Instructor' : 'Student'}</TableCell>
-                          <TableCell align='left'>
-                            <Label variant={'ghost'} color={isBanned ? 'error' : 'success'}>
+                          <TableCell align="left">{email}</TableCell>
+                          <TableCell align="left">
+                            {position ? position : '#'}
+                          </TableCell>
+                          <TableCell align="left">
+                            {isInstructor ? 'Instructor' : 'Student'}
+                          </TableCell>
+                          <TableCell align="left">
+                            <Label
+                              variant={'ghost'}
+                              color={isBanned ? 'error' : 'success'}
+                            >
                               {sentenceCase(isBanned ? 'banned' : 'active')}
                             </Label>
                           </TableCell>
@@ -115,7 +138,12 @@ export default function Students() {
                       );
                     })}
                   {(emptyRows > 0 || !studentList.length) && (
-                    <TableRow style={{ height: 72 * (!studentList.length ? rowsPerPage : emptyRows) }}>
+                    <TableRow
+                      style={{
+                        height:
+                          72 * (!studentList.length ? rowsPerPage : emptyRows),
+                      }}
+                    >
                       <TableCell colSpan={5} />
                     </TableRow>
                   )}
@@ -126,7 +154,7 @@ export default function Students() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={studentList.length}
             rowsPerPage={rowsPerPage}
             page={page}

@@ -42,7 +42,7 @@ function CartWidget() {
 
   return (
     <RootStyle to={PATH_HOME.checkout}>
-      <Badge showZero badgeContent={cart.length} color='error' max={99}>
+      <Badge showZero badgeContent={cart.length} color="error" max={99}>
         <Iconify icon={'eva:shopping-cart-fill'} width={24} height={24} />
       </Badge>
     </RootStyle>

@@ -43,7 +43,7 @@ export default function UserMoreMenu({ userId }: UserMoreMenuProps) {
         onClose={handleClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        arrow='right-top'
+        arrow="right-top"
         sx={{
           mt: -1,
           width: 160,

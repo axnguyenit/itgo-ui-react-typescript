@@ -10,7 +10,7 @@ export interface GuestGuardProps {
 
 export default function GuestGuard({ children }: GuestGuardProps) {
   const { isAuthenticated } = useAuth();
-  if (isAuthenticated) return <Navigate to='/' />;
+  if (isAuthenticated) return <Navigate to="/" />;
 
   return <>{children}</>;
 }

@@ -24,7 +24,12 @@ import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
 import { ApplicationMoreMenu } from '~/sections/@dashboard/applications';
 import { cloudinary } from '~/utils';
 import { applicationApi } from '~/api';
-import { ApplicationDetails, HeaderLabel, ListParams, PaginationParams } from '~/models';
+import {
+  ApplicationDetails,
+  HeaderLabel,
+  ListParams,
+  PaginationParams,
+} from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -92,14 +97,18 @@ export default function Applications() {
     setIsLoading(false);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, rowsPerPage - applicationList?.length) : 0;
+  const emptyRows =
+    page > 0 ? Math.max(0, rowsPerPage - applicationList?.length) : 0;
 
   return (
-    <Page title='Applications'>
+    <Page title="Applications">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Applications'
-          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Applications' }]}
+          heading="Applications"
+          links={[
+            { name: 'Dashboard', href: PATH_DASHBOARD.root },
+            { name: 'Applications' },
+          ]}
         />
 
         <Card sx={{ position: 'relative' }}>
@@ -111,26 +120,38 @@ export default function Applications() {
                 <TableBody>
                   {!!applicationList?.length &&
                     applicationList?.map((application) => (
-                      <TableRow hover key={application?._id} tabIndex={-1} role='checkbox'>
-                        <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
+                      <TableRow
+                        hover
+                        key={application?._id}
+                        tabIndex={-1}
+                        role="checkbox"
+                      >
+                        <TableCell
+                          sx={{ display: 'flex', alignItems: 'center' }}
+                        >
                           <Avatar
                             alt={application?.user?.firstName}
                             src={cloudinary.w100(application?.user?.avatar)}
                             sx={{ mr: 2 }}
                           />
-                          <Typography variant='subtitle2' noWrap>
-                            {application?.user?.firstName} {application?.user?.lastName}
+                          <Typography variant="subtitle2" noWrap>
+                            {application?.user?.firstName}{' '}
+                            {application?.user?.lastName}
                           </Typography>
                         </TableCell>
                         <TableCell>{application?.user?.email}</TableCell>
                         <TableCell>{application?.position}</TableCell>
-                        <TableCell align='left'>{application?.cv}</TableCell>
-                        <TableCell align='right'>
+                        <TableCell align="left">{application?.cv}</TableCell>
+                        <TableCell align="right">
                           <ApplicationMoreMenu
                             applicationId={application?._id as string}
                             name={`${application?.user?.firstName} ${application?.user?.lastName}`}
-                            onDeny={() => handleDeny(application?._id as string)}
-                            onApprove={() => handleApprove(application?._id as string)}
+                            onDeny={() =>
+                              handleDeny(application?._id as string)
+                            }
+                            onApprove={() =>
+                              handleApprove(application?._id as string)
+                            }
                             cv={application.cv}
                           />
                         </TableCell>
@@ -148,7 +169,7 @@ export default function Applications() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={pagination._totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}

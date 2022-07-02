@@ -14,7 +14,9 @@ interface InstructorMoreMenuProps {
   userId: string;
 }
 
-export default function InstructorMoreMenu({ userId }: InstructorMoreMenuProps) {
+export default function InstructorMoreMenu({
+  userId,
+}: InstructorMoreMenuProps) {
   const [open, setOpen] = useState<HTMLButtonElement>();
 
   const handleOpen: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -43,15 +45,22 @@ export default function InstructorMoreMenu({ userId }: InstructorMoreMenuProps) 
         onClose={handleClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        arrow='right-top'
+        arrow="right-top"
         sx={{
           mt: -1,
           width: 160,
-          '& .MuiMenuItem-root': { px: 1, typography: 'body2', borderRadius: 0.75 },
+          '& .MuiMenuItem-root': {
+            px: 1,
+            typography: 'body2',
+            borderRadius: 0.75,
+          },
         }}
       >
-        <MenuItem component={RouterLink} to={`${PATH_DASHBOARD.instructors.root}/${userId}/courses`}>
-          <Iconify icon='el:book' sx={{ ...ICON }} />
+        <MenuItem
+          component={RouterLink}
+          to={`${PATH_DASHBOARD.instructors.root}/${userId}/courses`}
+        >
+          <Iconify icon="el:book" sx={{ ...ICON }} />
           Courses
         </MenuItem>
       </MenuPopover>

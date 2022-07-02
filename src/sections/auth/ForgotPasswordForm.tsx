@@ -64,14 +64,14 @@ export default function ForgotPasswordForm({
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        {!!error && <Alert severity='error'>{error}</Alert>}
-        <RHFTextField name='email' label='Email address' />
+        {!!error && <Alert severity="error">{error}</Alert>}
+        <RHFTextField name="email" label="Email address" />
 
         <LoadingButton
           fullWidth
-          size='large'
-          type='submit'
-          variant='contained'
+          size="large"
+          type="submit"
+          variant="contained"
           loading={isSubmitting}
         >
           Reset Password

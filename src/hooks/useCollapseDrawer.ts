@@ -8,7 +8,7 @@ export function useCollapseDrawer() {
 
   if (!context)
     throw new Error(
-      'CollapseDrawer context must be inside CollapseDrawerProvider'
+      'CollapseDrawer context must be inside CollapseDrawerProvider',
     );
 
   return context;

@@ -65,7 +65,7 @@ export default function Roadmaps() {
   };
 
   const handleDeleteRoadmap = async (roadmapId: string) => {
-		setIsLoading(true);
+    setIsLoading(true);
     try {
       await roadmapApi.remove(roadmapId);
       getRoadmaps();
@@ -87,17 +87,17 @@ export default function Roadmaps() {
     page > 0 ? Math.max(0, rowsPerPage - roadmapList.length) : 0;
 
   return (
-    <Page title='Roadmaps'>
+    <Page title="Roadmaps">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Roadmaps'
+          heading="Roadmaps"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Roadmaps' },
           ]}
           action={
             <Button
-              variant='contained'
+              variant="contained"
               component={RouterLink}
               to={PATH_DASHBOARD.roadmaps.create}
               startIcon={<Iconify icon={'eva:plus-fill'} />}
@@ -119,11 +119,11 @@ export default function Roadmaps() {
                       const { _id, name, slogan, description } = roadmap;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role='checkbox'>
+                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
                           <TableCell>{name}</TableCell>
-                          <TableCell align='left'>{slogan}</TableCell>
-                          <TableCell align='left'>{description}</TableCell>
-                          <TableCell align='right'>
+                          <TableCell align="left">{slogan}</TableCell>
+                          <TableCell align="left">{description}</TableCell>
+                          <TableCell align="right">
                             <RoadmapMoreMenu
                               roadmapId={_id as string}
                               roadmapName={name}
@@ -147,7 +147,7 @@ export default function Roadmaps() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={pagination._totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}

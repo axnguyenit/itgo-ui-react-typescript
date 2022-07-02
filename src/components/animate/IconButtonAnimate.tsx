@@ -7,7 +7,6 @@ import { ColorType } from '~/models';
 // ----------------------------------------------------------------------
 type SizeType = 'small' | 'medium' | 'large';
 
-
 type IconButtonAnimateProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   size?: SizeType;
@@ -66,8 +65,8 @@ function AnimateWrap({ size = 'medium', children }: AnimateWrapProps) {
   return (
     <Box
       component={m.div}
-      whileTap='tap'
-      whileHover='hover'
+      whileTap="tap"
+      whileHover="hover"
       variants={(isSmall && varSmall) || (isLarge && varLarge) || varMedium}
       sx={{
         display: 'inline-flex',

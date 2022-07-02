@@ -47,15 +47,15 @@ export default function CarouselArrowIndex({
 }: CarouselArrowIndexProps) {
   return (
     <RootStyle {...other}>
-      <ArrowStyle size='small' onClick={onPrevious}>
+      <ArrowStyle size="small" onClick={onPrevious}>
         {leftIcon(customIcon)}
       </ArrowStyle>
 
-      <Typography variant='subtitle2'>
+      <Typography variant="subtitle2">
         {index + 1}/{total}
       </Typography>
 
-      <ArrowStyle size='small' onClick={onNext}>
+      <ArrowStyle size="small" onClick={onNext}>
         {rightIcon(customIcon)}
       </ArrowStyle>
     </RootStyle>

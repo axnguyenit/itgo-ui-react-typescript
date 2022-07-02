@@ -70,9 +70,12 @@ export default function CourseDetails() {
   if (isLoading) return <LoadingScreen />;
 
   return (
-    <Page title='Course Details'>
+    <Page title="Course Details">
       <RootStyle>
-        <CourseHero label='Course Details' src={`${window.location.origin}/assets/images/courses-hero.jpg`} />
+        <CourseHero
+          label="Course Details"
+          src={`${window.location.origin}/assets/images/courses-hero.jpg`}
+        />
 
         <Container sx={{ mt: 15, mb: 10 }}>
           {/* <Grid container spacing={4}> */}
@@ -83,28 +86,39 @@ export default function CourseDetails() {
             <TabContext value={currentTab}>
               <TabList onChange={(e, value) => handleChangeTab(value)}>
                 {TAB_LIST.map((tab) => (
-                  <Tab key={tab} disableRipple value={tab} label={capitalCase(tab)} />
+                  <Tab
+                    key={tab}
+                    disableRipple
+                    value={tab}
+                    label={capitalCase(tab)}
+                  />
                 ))}
               </TabList>
 
               <Divider />
 
-              <TabPanel value='overview'>
+              <TabPanel value="overview">
                 <Box sx={{ py: 4 }}>
                   <Markdown children={course?.details.overview as string} />
                 </Box>
               </TabPanel>
-              <TabPanel value='requirements'>
+              <TabPanel value="requirements">
                 <Box sx={{ py: 4 }}>
-                  <Markdown children={course?.details?.requirements as string} />
+                  <Markdown
+                    children={course?.details?.requirements as string}
+                  />
                 </Box>
               </TabPanel>
-              <TabPanel value='target-audiences'>
+              <TabPanel value="target-audiences">
                 <Box sx={{ py: 4 }}>
-                  <Markdown children={course?.details?.targetAudiences as string} />
+                  <Markdown
+                    children={course?.details?.targetAudiences as string}
+                  />
                 </Box>
               </TabPanel>
-              <TabPanel value='reviews'>Tab 4{/* <CourseDetailsReview product={product} /> */}</TabPanel>
+              <TabPanel value="reviews">
+                Tab 4{/* <CourseDetailsReview product={product} /> */}
+              </TabPanel>
             </TabContext>
           </Stack>
           {/* </Grid> */}

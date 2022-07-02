@@ -41,7 +41,7 @@ export default function RequestVerify() {
   }, [status, _email]);
 
   return (
-    <Page title='Verify Email' sx={{ height: 1 }}>
+    <Page title="Verify Email" sx={{ height: 1 }}>
       <RootStyle>
         <LogoOnlyLayout />
 
@@ -49,7 +49,7 @@ export default function RequestVerify() {
           <Box sx={{ maxWidth: 480, mx: 'auto' }}>
             {!isSent ? (
               <>
-                <Typography variant='h3' paragraph>
+                <Typography variant="h3" paragraph>
                   Verify your email address
                 </Typography>
                 <Typography sx={{ color: 'text.secondary', mb: 5 }}>
@@ -64,7 +64,7 @@ export default function RequestVerify() {
 
                 <Button
                   fullWidth
-                  size='large'
+                  size="large"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 2 }}
@@ -76,7 +76,7 @@ export default function RequestVerify() {
               <Box sx={{ textAlign: 'center' }}>
                 <SentIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
 
-                <Typography variant='h3' gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   Request sent successfully
                 </Typography>
                 <Typography>
@@ -87,8 +87,8 @@ export default function RequestVerify() {
                 </Typography>
 
                 <Button
-                  size='large'
-                  variant='contained'
+                  size="large"
+                  variant="contained"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 5 }}

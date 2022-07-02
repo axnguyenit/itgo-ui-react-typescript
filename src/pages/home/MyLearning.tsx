@@ -49,10 +49,10 @@ function MyLearning() {
   }, [page]);
 
   return (
-    <Page title='My Learning'>
+    <Page title="My Learning">
       <RootStyle>
         <CourseHero
-          label='My Learning'
+          label="My Learning"
           src={`${window.location.origin}/assets/images/my-learning.jpg`}
         />
         <Container sx={{ mt: 15, mb: 10 }}>
@@ -60,24 +60,24 @@ function MyLearning() {
 
           {!enrolledCourseList.length && !isLoading && (
             <EmptyContent
-              title='Orders is empty'
+              title="Orders is empty"
               description="Look like you haven't purchased any courses yet"
             />
           )}
 
           {pagination._totalRows > LIMIT_COURSE && (
             <Stack
-              direction='row'
-              justifyContent='center'
-              alignItems='center'
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
               sx={{ my: 3 }}
             >
               <Pagination
                 count={Math.ceil(pagination._totalRows / LIMIT_COURSE)}
                 onChange={(event, value) => setPage(value)}
-                color='primary'
-                variant='outlined'
-                shape='rounded'
+                color="primary"
+                variant="outlined"
+                shape="rounded"
               />
             </Stack>
           )}

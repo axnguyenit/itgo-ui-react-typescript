@@ -4,7 +4,11 @@ import ReactQuill from 'react-quill';
 import { styled } from '@mui/material/styles';
 import { Box, SxProps, Theme } from '@mui/material';
 //
-import EditorToolbar, { formats, redoChange, undoChange } from './EditorToolbar';
+import EditorToolbar, {
+  formats,
+  redoChange,
+  undoChange,
+} from './EditorToolbar';
 
 // ----------------------------------------------------------------------
 
@@ -88,7 +92,7 @@ export default function Editor({
           value={value}
           onChange={onChange}
           formats={formats}
-          placeholder='Write something awesome...'
+          placeholder="Write something awesome..."
           {...other}
         />
       </RootStyle>

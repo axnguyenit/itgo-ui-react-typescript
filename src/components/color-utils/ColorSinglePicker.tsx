@@ -22,7 +22,7 @@ export default function ColorSinglePicker({
           <Radio
             key={color}
             value={color}
-            color='default'
+            color="default"
             icon={
               <IconColor
                 sx={{

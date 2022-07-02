@@ -19,15 +19,15 @@ export default function Login() {
   const mdUp = useResponsive('up', 'md');
 
   return (
-    <Page title='Login'>
+    <Page title="Login">
       <RootStyle>
         <HeaderStyle>
           <Logo />
           {smUp && (
-            <Typography variant='body2' sx={{ mt: { lg: 1, md: -2 } }}>
+            <Typography variant="body2" sx={{ mt: { lg: 1, md: -2 } }}>
               Don’t have an account?&nbsp;
               <Link
-                variant='subtitle2'
+                variant="subtitle2"
                 component={RouterLink}
                 to={PATH_AUTH.register}
               >
@@ -39,21 +39,21 @@ export default function Login() {
 
         {mdUp && (
           <SectionStyle>
-            <Typography variant='h3' sx={{ px: 5, mt: 10, mb: 5 }}>
+            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Hi, Welcome Back
             </Typography>
             <Image
-              alt='login'
+              alt="login"
               src={`${window.location.origin}/assets/images/login.png`}
             />
           </SectionStyle>
         )}
 
-        <Container maxWidth='sm'>
+        <Container maxWidth="sm">
           <ContentStyle>
-            <Stack direction='row' alignItems='center' sx={{ mb: 5 }}>
+            <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
               <Box sx={{ flexGrow: 1 }}>
-                <Typography variant='h4' gutterBottom>
+                <Typography variant="h4" gutterBottom>
                   Login to ITGO
                 </Typography>
               </Box>
@@ -68,10 +68,10 @@ export default function Login() {
             <LoginForm />
 
             {!smUp && (
-              <Typography variant='body2' align='center' sx={{ mt: 3 }}>
+              <Typography variant="body2" align="center" sx={{ mt: 3 }}>
                 Don’t have an account?{' '}
                 <Link
-                  variant='subtitle2'
+                  variant="subtitle2"
                   component={RouterLink}
                   to={PATH_AUTH.register}
                 >

@@ -16,7 +16,7 @@ export default function FormProvider({
 }: FormProviderProps) {
   return (
     <RHFormProvider {...methods}>
-      <form onSubmit={onSubmit} encType='multipart/form-data'>
+      <form onSubmit={onSubmit} encType="multipart/form-data">
         {children}
       </form>
     </RHFormProvider>

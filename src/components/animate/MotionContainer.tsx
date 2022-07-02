@@ -38,9 +38,9 @@ export default function MotionContainer({
   return (
     <Box
       component={m.div}
-      initial='initial'
-      animate='animate'
-      exit='exit'
+      initial="initial"
+      animate="animate"
+      exit="exit"
       variants={varContainer({ staggerIn: 0.05 })}
       {...other}
     >

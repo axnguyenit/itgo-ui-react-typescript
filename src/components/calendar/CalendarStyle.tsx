@@ -121,10 +121,11 @@ const CalendarStyle = styled('div')(({ theme }) => ({
   '& .fc .fc-daygrid-event': {
     marginTop: 4,
   },
-  '& .fc .fc-daygrid-event.fc-event-start, & .fc .fc-daygrid-event.fc-event-end': {
-    marginLeft: 4,
-    marginRight: 4,
-  },
+  '& .fc .fc-daygrid-event.fc-event-start, & .fc .fc-daygrid-event.fc-event-end':
+    {
+      marginLeft: 4,
+      marginRight: 4,
+    },
   '& .fc .fc-daygrid-more-link': {
     ...theme.typography.caption,
     color: theme.palette.text.secondary,

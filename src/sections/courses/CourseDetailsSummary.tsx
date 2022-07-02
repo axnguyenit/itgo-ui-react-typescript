@@ -30,7 +30,9 @@ interface CourseDetailsSummaryProps {
   course: Course;
 }
 
-export default function CourseDetailsSummary({ course }: CourseDetailsSummaryProps) {
+export default function CourseDetailsSummary({
+  course,
+}: CourseDetailsSummaryProps) {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cart);
@@ -38,7 +40,9 @@ export default function CourseDetailsSummary({ course }: CourseDetailsSummaryPro
   const { isAuthenticated } = useAuth();
 
   const handleAddCart = async (course: Course) => {
-    const isExisted = cart.find((cartItem) => cartItem.course?._id === course._id);
+    const isExisted = cart.find(
+      (cartItem) => cartItem.course?._id === course._id,
+    );
 
     if (!isExisted && course._id) {
       try {
@@ -50,7 +54,9 @@ export default function CourseDetailsSummary({ course }: CourseDetailsSummaryPro
         enqueueSnackbar('Add to cart successfully');
       } catch (error) {
         const err = handleError(error);
-        isAuthenticated ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' }) : navigate(PATH_AUTH.login);
+        isAuthenticated
+          ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' })
+          : navigate(PATH_AUTH.login);
       }
     } else {
       enqueueSnackbar('This course already exists in your cart', {
@@ -61,24 +67,35 @@ export default function CourseDetailsSummary({ course }: CourseDetailsSummaryPro
 
   return (
     <Stack spacing={4}>
-      <Typography variant='h3'>{course?.name}</Typography>
+      <Typography variant="h3">{course?.name}</Typography>
       <CardHeader
         disableTypography
         avatar={<MyAvatar />}
         title={
-          <Link to='#' variant='subtitle2' color='text.primary' component={RouterLink}>
+          <Link
+            to="#"
+            variant="subtitle2"
+            color="text.primary"
+            component={RouterLink}
+          >
             {`${course?.instructor?.firstName} ${course?.instructor?.lastName}`}
           </Link>
         }
         subheader={
-          <Typography variant='caption' sx={{ display: 'block', color: 'text.secondary' }}>
+          <Typography
+            variant="caption"
+            sx={{ display: 'block', color: 'text.secondary' }}
+          >
             {fDate(course?.createdAt as Date)}
           </Typography>
         }
         action={
-          <Stack direction='row' spacing={2} sx={{ mr: 1 }}>
-            <Typography variant='h4'>
-              <Box component='span' sx={{ color: 'text.disabled', textDecoration: 'line-through' }}>
+          <Stack direction="row" spacing={2} sx={{ mr: 1 }}>
+            <Typography variant="h4">
+              <Box
+                component="span"
+                sx={{ color: 'text.disabled', textDecoration: 'line-through' }}
+              >
                 {course?.priceSale && fCurrency(course?.price)}
               </Box>
               &nbsp; {fCurrency(course?.priceSale || course?.price)}
@@ -86,7 +103,7 @@ export default function CourseDetailsSummary({ course }: CourseDetailsSummaryPro
 
             <Button
               startIcon={<Iconify icon={'ic:round-add-shopping-cart'} />}
-              variant='contained'
+              variant="contained"
               onClick={() => handleAddCart(course)}
             >
               Add to cart
@@ -100,7 +117,12 @@ export default function CourseDetailsSummary({ course }: CourseDetailsSummaryPro
         }}
       />
 
-      <Image alt='post media' src={cloudinary.w1200(course?.cover)} ratio='21/9' sx={{ borderRadius: 1 }} />
+      <Image
+        alt="post media"
+        src={cloudinary.w1200(course?.cover)}
+        ratio="21/9"
+        sx={{ borderRadius: 1 }}
+      />
     </Stack>
   );
 }

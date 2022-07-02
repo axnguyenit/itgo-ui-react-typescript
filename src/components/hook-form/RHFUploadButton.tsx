@@ -39,20 +39,26 @@ export default function RHFUploadButton({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <Box>
             <FormHelperText error sx={{ mx: 2 }}>
               {error?.message}
             </FormHelperText>
 
-            <Typography variant='subtitle2' noWrap sx={{ width: 100 }}>
+            <Typography variant="subtitle2" noWrap sx={{ width: 100 }}>
               {field.value?.name}
             </Typography>
           </Box>
           <Box>
             <Button
-              variant='contained'
-              startIcon={<Iconify icon='fa-solid:file-upload' width={20} height={20} />}
+              variant="contained"
+              startIcon={
+                <Iconify icon="fa-solid:file-upload" width={20} height={20} />
+              }
               onClick={handleClick}
             >
               {label}
@@ -62,7 +68,7 @@ export default function RHFUploadButton({
               fullWidth
               error={!!error}
               helperText={error?.message}
-              type='file'
+              type="file"
               sx={{ display: 'none' }}
               onChange={onChange}
               {...other}

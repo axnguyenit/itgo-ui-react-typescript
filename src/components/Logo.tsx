@@ -13,9 +13,9 @@ export default function Logo({ disabledLink = false, sx }: LogoProps) {
   const logo = (
     <Stack sx={{ width: 45, height: 45, ...sx }}>
       <Avatar
-        src='/assets/images/logo.png'
+        src="/assets/images/logo.png"
         sx={{ width: 'inherit', height: 'inherit' }}
-        alt='ITGO'
+        alt="ITGO"
       />
     </Stack>
   );
@@ -24,5 +24,5 @@ export default function Logo({ disabledLink = false, sx }: LogoProps) {
     return <>{logo}</>;
   }
 
-  return <RouterLink to='/'>{logo}</RouterLink>;
+  return <RouterLink to="/">{logo}</RouterLink>;
 }

@@ -32,7 +32,7 @@ export default function AuthGuard({ children }: AuthGuardProps) {
     return <Navigate to={requestedLocation} />;
   }
 
-  if (!user?.isAdmin) return <Navigate to='/' replace />;
+  if (!user?.isAdmin) return <Navigate to="/" replace />;
 
   return <>{children}</>;
 }

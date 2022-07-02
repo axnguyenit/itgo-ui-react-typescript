@@ -81,20 +81,20 @@ export default function LoginForm() {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        {!!error && <Alert severity='error'>{error}</Alert>}
+        {!!error && <Alert severity="error">{error}</Alert>}
 
-        <RHFTextField name='email' label='Email address' />
+        <RHFTextField name="email" label="Email address" />
 
         <RHFTextField
-          name='password'
-          label='Password'
+          name="password"
+          label="Password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              <InputAdornment position='end'>
+              <InputAdornment position="end">
                 <IconButton
                   onClick={() => setShowPassword(!showPassword)}
-                  edge='end'
+                  edge="end"
                 >
                   <Iconify
                     icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'}
@@ -107,15 +107,15 @@ export default function LoginForm() {
       </Stack>
 
       <Stack
-        direction='row'
-        alignItems='center'
-        justifyContent='space-between'
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
         sx={{ my: 2 }}
       >
         {/* <RHFCheckbox name='remember' label='Remember me' /> */}
         <Link
           component={RouterLink}
-          variant='subtitle2'
+          variant="subtitle2"
           to={PATH_AUTH.forgotPassword}
         >
           Forgot password?
@@ -124,9 +124,9 @@ export default function LoginForm() {
 
       <LoadingButton
         fullWidth
-        size='large'
-        type='submit'
-        variant='contained'
+        size="large"
+        type="submit"
+        variant="contained"
         loading={isSubmitting}
       >
         Login

@@ -51,8 +51,8 @@ export default function HomePopularTech() {
       {technologyList.length > 0 && (
         <Box>
           <CardHeader
-            title='Popular Technologies'
-            subheader='Most popular technologies right now'
+            title="Popular Technologies"
+            subheader="Most popular technologies right now"
             sx={{
               '& .MuiCardHeader-title': {
                 fontSize: 28,

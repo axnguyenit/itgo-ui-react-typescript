@@ -68,13 +68,22 @@ const defaultValue = {
 function validate(formData, errors) {
   if (!formData.name) errors.name?.addError('Roadmap name is required');
   if (!formData.slogan) errors.slogan?.addError('Slogan is required');
-  if (!formData.description) errors.description?.addError('Description is required');
+  if (!formData.description)
+    errors.description?.addError('Description is required');
   if (formData.technologies.length > 0) {
     formData.technologies.forEach((technology, index) => {
-      if (!technology.technology) errors.technologies[index].technology?.addError('Technology name is required');
-      if (!technology.description) errors.technologies[index].description?.addError('Description is required');
-      if (!technology.tag) errors.technologies[index].tag?.addError('Tag is required');
-      if (!technology.image) errors.technologies[index].image?.addError('Image is required');
+      if (!technology.technology)
+        errors.technologies[index].technology?.addError(
+          'Technology name is required',
+        );
+      if (!technology.description)
+        errors.technologies[index].description?.addError(
+          'Description is required',
+        );
+      if (!technology.tag)
+        errors.technologies[index].tag?.addError('Tag is required');
+      if (!technology.image)
+        errors.technologies[index].image?.addError('Image is required');
     });
   } else {
     errors.technologies?.addError('Technologies must be at least 1 item');
@@ -114,7 +123,8 @@ export default function RoadmapSchemaForm({ formData, isEdit }) {
   const handleChange = (data) => {
     if (data.formData.technologies.length > 0) {
       data.formData.technologies.forEach((technology, index) => {
-        if (Object.keys(technology).length === 0) data.formData.technologies[index] = defaultValue.technologies[0];
+        if (Object.keys(technology).length === 0)
+          data.formData.technologies[index] = defaultValue.technologies[0];
       });
     }
     setCurrentFormData(data.formData);
@@ -132,7 +142,12 @@ export default function RoadmapSchemaForm({ formData, isEdit }) {
         onChange={handleChange}
         onSubmit={handleSubmit}
       >
-        <LoadingButton type='submit' variant='contained' loading={isSubmitting} sx={{ mt: 2 }}>
+        <LoadingButton
+          type="submit"
+          variant="contained"
+          loading={isSubmitting}
+          sx={{ mt: 2 }}
+        >
           {isEdit ? 'Save Changes' : 'Create Roadmap'}
         </LoadingButton>
       </Form>

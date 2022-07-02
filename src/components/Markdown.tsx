@@ -81,7 +81,12 @@ interface MarkdownProps {
 export default function Markdown({ children, ...other }: MarkdownProps) {
   return (
     <MarkdownStyle>
-      <ReactMarkdown children={children} rehypePlugins={[rehypeRaw]} components={components} {...other} />
+      <ReactMarkdown
+        children={children}
+        rehypePlugins={[rehypeRaw]}
+        components={components}
+        {...other}
+      />
     </MarkdownStyle>
   );
 }
@@ -89,14 +94,25 @@ export default function Markdown({ children, ...other }: MarkdownProps) {
 // ----------------------------------------------------------------------
 
 const components = {
-  h1: ({ ...props }) => <Typography variant='h1' {...props} />,
-  h2: ({ ...props }) => <Typography variant='h2' {...props} />,
-  h3: ({ ...props }) => <Typography variant='h3' {...props} />,
-  h4: ({ ...props }) => <Typography variant='h4' {...props} />,
-  h5: ({ ...props }) => <Typography variant='h5' {...props} />,
-  h6: ({ ...props }) => <Typography variant='h6' {...props} />,
+  h1: ({ ...props }) => <Typography variant="h1" {...props} />,
+  h2: ({ ...props }) => <Typography variant="h2" {...props} />,
+  h3: ({ ...props }) => <Typography variant="h3" {...props} />,
+  h4: ({ ...props }) => <Typography variant="h4" {...props} />,
+  h5: ({ ...props }) => <Typography variant="h5" {...props} />,
+  h6: ({ ...props }) => <Typography variant="h6" {...props} />,
   hr: ({ ...props }) => <Divider sx={{ my: 3 }} {...props} />,
-  img: ({ ...props }) => <Image alt={props.alt} ratio='16/9' sx={{ borderRadius: 2, my: 5 }} {...props} />,
+  img: ({ ...props }) => (
+    <Image
+      alt={props.alt}
+      ratio="16/9"
+      sx={{ borderRadius: 2, my: 5 }}
+      {...props}
+    />
+  ),
   a: ({ ...props }) =>
-    props.href.includes('http') ? <Link target='_blank' rel='noopener' {...props} /> : <Link {...props} />,
+    props.href.includes('http') ? (
+      <Link target="_blank" rel="noopener" {...props} />
+    ) : (
+      <Link {...props} />
+    ),
 };

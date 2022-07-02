@@ -51,11 +51,15 @@ export default function Checkout() {
   }, [dispatch, isMountedRef, cart]);
 
   return (
-    <Page title='Checkout'>
+    <Page title="Checkout">
       <Container maxWidth={'lg'} sx={{ mt: 11 }}>
         <Grid container justifyContent={'flex-start'}>
           <Grid item xs={12} md={8} sx={{ mb: 5 }}>
-            <Stepper alternativeLabel activeStep={activeStep} connector={<Connector />}>
+            <Stepper
+              alternativeLabel
+              activeStep={activeStep}
+              connector={<Connector />}
+            >
               {STEPS.map((label) => (
                 <Step key={label}>
                   <StepLabel
@@ -101,7 +105,10 @@ function StepIcon({ active, completed }: StepIconProps) {
       }}
     >
       {completed ? (
-        <Iconify icon={'eva:checkmark-fill'} sx={{ zIndex: 1, width: 20, height: 20, color: 'primary.main' }} />
+        <Iconify
+          icon={'eva:checkmark-fill'}
+          sx={{ zIndex: 1, width: 20, height: 20, color: 'primary.main' }}
+        />
       ) : (
         <Box
           sx={{

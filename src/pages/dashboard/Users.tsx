@@ -79,10 +79,10 @@ export default function Users() {
   const emptyRows = page > 0 ? Math.max(0, rowsPerPage - userList.length) : 0;
 
   return (
-    <Page title='Users'>
+    <Page title="Users">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Users'
+          heading="Users"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Users' },
@@ -111,7 +111,7 @@ export default function Users() {
                       } = user;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role='checkbox'>
+                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
                           <TableCell
                             sx={{ display: 'flex', alignItems: 'center' }}
                           >
@@ -120,21 +120,21 @@ export default function Users() {
                               src={cloudinary.w100(avatar)}
                               sx={{ mr: 2 }}
                             />
-                            <Typography variant='subtitle2' noWrap>
+                            <Typography variant="subtitle2" noWrap>
                               {firstName} {lastName}
                             </Typography>
                           </TableCell>
-                          <TableCell align='left'>{email}</TableCell>
-                          <TableCell align='left'>
+                          <TableCell align="left">{email}</TableCell>
+                          <TableCell align="left">
                             {position ? position : '#'}
                           </TableCell>
-                          <TableCell align='left'>
+                          <TableCell align="left">
                             {isInstructor ? 'Instructor' : 'Student'}
                           </TableCell>
-                          <TableCell align='left'>
+                          <TableCell align="left">
                             {emailVerified ? 'Yes' : 'No'}
                           </TableCell>
-                          <TableCell align='left'>
+                          <TableCell align="left">
                             <Label
                               variant={'ghost'}
                               color={isBanned ? 'error' : 'success'}
@@ -161,7 +161,7 @@ export default function Users() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={pagination._totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}

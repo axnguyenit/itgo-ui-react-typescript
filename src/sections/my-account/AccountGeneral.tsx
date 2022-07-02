@@ -75,7 +75,7 @@ export default function AccountGeneral() {
         reader.onerror = (error) => console.error(error);
       }
     },
-    [setValue]
+    [setValue],
   );
 
   return (
@@ -84,13 +84,13 @@ export default function AccountGeneral() {
         <Grid item xs={12} md={4}>
           <Card sx={{ py: 9.125, px: 3, textAlign: 'center' }}>
             <RHFUploadAvatar
-              name='avatar'
-              accept='image/*'
+              name="avatar"
+              accept="image/*"
               maxSize={3145728}
               onDrop={handleDrop}
               helperText={
                 <Typography
-                  variant='caption'
+                  variant="caption"
                   sx={{
                     mt: 2,
                     mx: 'auto',
@@ -119,18 +119,18 @@ export default function AccountGeneral() {
                 },
               }}
             >
-              <RHFTextField name='firstName' label='First name' />
-              <RHFTextField name='lastName' label='Last name' />
-              <RHFTextField name='email' label='Email Address' />
-              <RHFTextField name='phoneNumber' label='Phone Number' />
-              <RHFTextField name='address' label='Address' />
-              <RHFTextField name='region' label='Region' />
+              <RHFTextField name="firstName" label="First name" />
+              <RHFTextField name="lastName" label="Last name" />
+              <RHFTextField name="email" label="Email Address" />
+              <RHFTextField name="phoneNumber" label="Phone Number" />
+              <RHFTextField name="address" label="Address" />
+              <RHFTextField name="region" label="Region" />
             </Box>
 
-            <Stack spacing={3} alignItems='flex-end' sx={{ mt: 3 }}>
+            <Stack spacing={3} alignItems="flex-end" sx={{ mt: 3 }}>
               <LoadingButton
-                type='submit'
-                variant='contained'
+                type="submit"
+                variant="contained"
                 loading={isSubmitting}
               >
                 Save Changes

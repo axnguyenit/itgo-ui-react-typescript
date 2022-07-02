@@ -43,12 +43,12 @@ export default function AccountSettings() {
   };
 
   return (
-    <Page title='Account Settings'>
+    <Page title="Account Settings">
       <Container maxWidth={'lg'} sx={{ mt: 15, mb: 10 }}>
         <Tabs
           value={currentTab}
-          scrollButtons='auto'
-          variant='scrollable'
+          scrollButtons="auto"
+          variant="scrollable"
           allowScrollButtonsMobile
           onChange={(e, value) => handleChangeTab(value)}
         >

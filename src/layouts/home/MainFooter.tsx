@@ -59,14 +59,14 @@ export default function MainFooter() {
             />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant='body2' sx={{ pr: { md: 5 } }}>
+            <Typography variant="body2" sx={{ pr: { md: 5 } }}>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               Molestias aut, repellat ipsum facere voluptate dicta obcaecati
               deserunt nobis suscipit eaque?
             </Typography>
 
             <Stack
-              direction='row'
+              direction="row"
               justifyContent={{ xs: 'center', md: 'flex-start' }}
               sx={{ mt: 5, mb: { xs: 5, md: 0 } }}
             >
@@ -78,19 +78,19 @@ export default function MainFooter() {
             <Stack
               spacing={5}
               direction={{ xs: 'column', md: 'row' }}
-              justifyContent='space-between'
+              justifyContent="space-between"
             >
               {LINKS.map((list) => (
                 <Stack key={list.headline} spacing={2}>
-                  <Typography component='p' variant='overline'>
+                  <Typography component="p" variant="overline">
                     {list.headline}
                   </Typography>
                   {list.children.map((link) => (
                     <Link
                       to={link.href}
                       key={link.name}
-                      color='inherit'
-                      variant='body2'
+                      color="inherit"
+                      variant="body2"
                       component={RouterLink}
                       sx={{ display: 'block' }}
                     >
@@ -103,8 +103,8 @@ export default function MainFooter() {
           </Grid>
           <Grid item xs={12}>
             <Typography
-              component='p'
-              variant='body2'
+              component="p"
+              variant="body2"
               sx={{
                 mt: 5,
                 pb: 5,

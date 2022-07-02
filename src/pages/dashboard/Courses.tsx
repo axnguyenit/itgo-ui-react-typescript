@@ -92,10 +92,10 @@ export default function Courses() {
   const emptyRows = page > 0 ? Math.max(0, rowsPerPage - courseList.length) : 0;
 
   return (
-    <Page title='Courses'>
+    <Page title="Courses">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Courses'
+          heading="Courses"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
@@ -104,7 +104,7 @@ export default function Courses() {
           ]}
           action={
             <Button
-              variant='contained'
+              variant="contained"
               startIcon={
                 <Iconify icon={'eva:plus-fill'} width={20} height={20} />
               }
@@ -128,7 +128,7 @@ export default function Courses() {
                         course;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role='checkbox'>
+                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
                           <TableCell
                             sx={{ display: 'flex', alignItems: 'center' }}
                           >
@@ -143,7 +143,7 @@ export default function Courses() {
                                 mr: 2,
                               }}
                             />
-                            <Typography variant='subtitle2' noWrap>
+                            <Typography variant="subtitle2" noWrap>
                               {name}
                             </Typography>
                           </TableCell>
@@ -153,10 +153,10 @@ export default function Courses() {
                           <TableCell style={{ minWidth: 160 }}>
                             {fDate(createdAt as Date)}
                           </TableCell>
-                          <TableCell align='right'>
+                          <TableCell align="right">
                             {fCurrency(price)}
                           </TableCell>
-                          <TableCell align='right'>
+                          <TableCell align="right">
                             <CourseMoreMenu
                               courseId={_id as string}
                               courseName={name}
@@ -178,7 +178,7 @@ export default function Courses() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={pagination._totalRows} //total courses
             rowsPerPage={rowsPerPage}
             page={page - 1}

@@ -75,7 +75,7 @@ export default function ProfileCover({ profile }: ProfileCoverProps) {
             textAlign: { xs: 'center', md: 'left' },
           }}
         >
-          <Typography variant='h4'>
+          <Typography variant="h4">
             {profile?.firstName} {profile?.lastName}
           </Typography>
           <Typography sx={{ opacity: 0.72 }}>
@@ -84,7 +84,7 @@ export default function ProfileCover({ profile }: ProfileCoverProps) {
         </Box>
       </InfoStyle>
       <Image
-        alt='profile cover'
+        alt="profile cover"
         src={cloudinary.w900(profile?.avatar)}
         sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
       />

@@ -55,7 +55,9 @@ export default function CourseCreate() {
             { name: !isEdit ? 'New course' : 'Edit course' },
           ]}
         />
-        {(course || !isEdit) && <CourseNewForm isEdit={isEdit} currentCourse={course} />}
+        {(course || !isEdit) && (
+          <CourseNewForm isEdit={isEdit} currentCourse={course} />
+        )}
       </Container>
     </Page>
   );

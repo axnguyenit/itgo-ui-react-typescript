@@ -16,7 +16,11 @@ import { useAppDispatch, useAppSelector } from '~/hooks';
 import { paymentApi } from '~/api';
 import { Payment } from '~/models';
 // redux
-import { getCartFromServer, onNextStep, removeCartItem } from '~/redux/slices/cart';
+import {
+  getCartFromServer,
+  onNextStep,
+  removeCartItem,
+} from '~/redux/slices/cart';
 import { PATH_HOME } from '~/routes/paths';
 //
 import { handleError } from '~/utils';
@@ -87,9 +91,9 @@ export default function CheckoutCart() {
         <Card sx={{ mb: 3 }}>
           <CardHeader
             title={
-              <Typography variant='h6'>
+              <Typography variant="h6">
                 Shopping Cart
-                <Typography component='span' sx={{ color: 'text.secondary' }}>
+                <Typography component="span" sx={{ color: 'text.secondary' }}>
                   &nbsp;({totalItems} courses)
                 </Typography>
               </Typography>
@@ -99,19 +103,23 @@ export default function CheckoutCart() {
 
           {!isEmptyCart ? (
             <Scrollbar>
-              <CheckoutCourseList courses={cart} onDelete={handleDeleteCart} isLoading={isLoading} />
+              <CheckoutCourseList
+                courses={cart}
+                onDelete={handleDeleteCart}
+                isLoading={isLoading}
+              />
             </Scrollbar>
           ) : (
             <EmptyContent
-              title='Cart is empty'
-              description='Look like you have no items in your shopping cart.'
+              title="Cart is empty"
+              description="Look like you have no items in your shopping cart."
               img={`${window.location.origin}/assets/images/illustration_empty_cart.svg`}
             />
           )}
         </Card>
 
         <Button
-          color='inherit'
+          color="inherit"
           component={RouterLink}
           to={PATH_HOME.courses.root}
           startIcon={<Iconify icon={'eva:arrow-ios-back-fill'} />}
@@ -124,9 +132,9 @@ export default function CheckoutCart() {
         <CheckoutSummary total={total} subtotal={subtotal} />
         <Button
           fullWidth
-          size='large'
-          type='submit'
-          variant='contained'
+          size="large"
+          type="submit"
+          variant="contained"
           disabled={cart.length === 0}
           onClick={handleNextStep}
         >

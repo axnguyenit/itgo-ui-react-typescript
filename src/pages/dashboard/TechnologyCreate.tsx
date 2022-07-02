@@ -50,7 +50,12 @@ function TechnologyCreate() {
           ]}
         />
 
-        {(technology || !isEdit) && <TechnologyNewForm isEdit={isEdit} currentTechnology={technology as Technology} />}
+        {(technology || !isEdit) && (
+          <TechnologyNewForm
+            isEdit={isEdit}
+            currentTechnology={technology as Technology}
+          />
+        )}
       </Container>
     </Page>
   );

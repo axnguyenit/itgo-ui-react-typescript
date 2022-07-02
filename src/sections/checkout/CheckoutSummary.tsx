@@ -31,10 +31,14 @@ export default function CheckoutSummary({
   return (
     <Card sx={{ mb: 3 }}>
       <CardHeader
-        title='Order Summary'
+        title="Order Summary"
         action={
           enableEdit && (
-            <Button size='small' onClick={onEdit} startIcon={<Iconify icon={'eva:edit-fill'} />}>
+            <Button
+              size="small"
+              onClick={onEdit}
+              startIcon={<Iconify icon={'eva:edit-fill'} />}
+            >
               Edit
             </Button>
           )
@@ -43,26 +47,26 @@ export default function CheckoutSummary({
 
       <CardContent>
         <Stack spacing={2}>
-          <Stack direction='row' justifyContent='space-between'>
-            <Typography variant='body2' sx={{ color: 'text.secondary' }}>
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               Sub Total
             </Typography>
-            <Typography variant='subtitle2'>{fCurrency(subtotal)}</Typography>
+            <Typography variant="subtitle2">{fCurrency(subtotal)}</Typography>
           </Stack>
 
-          <Stack direction='row' justifyContent='space-between'>
-            <Typography variant='body2' sx={{ color: 'text.secondary' }}>
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               Discount
             </Typography>
-            <Typography variant='subtitle2'>0</Typography>
+            <Typography variant="subtitle2">0</Typography>
           </Stack>
 
           <Divider />
 
-          <Stack direction='row' justifyContent='space-between'>
-            <Typography variant='subtitle1'>Total</Typography>
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="subtitle1">Total</Typography>
             <Box sx={{ textAlign: 'right' }}>
-              <Typography variant='subtitle1' sx={{ color: 'error.main' }}>
+              <Typography variant="subtitle1" sx={{ color: 'error.main' }}>
                 {fCurrency(total)}
               </Typography>
             </Box>

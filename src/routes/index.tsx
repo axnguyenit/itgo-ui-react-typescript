@@ -37,7 +37,7 @@ const InstructorCourses = lazy(() => import('~/pages/instructor/Courses'));
 const InstructorCalendar = lazy(() => import('~/pages/instructor/Calendar'));
 const InstructorStudents = lazy(() => import('~/pages/instructor/Students'));
 const InstructorCourseCreate = lazy(
-  () => import('~/pages/instructor/CourseCreate')
+  () => import('~/pages/instructor/CourseCreate'),
 );
 
 // Dashboard Routes
@@ -47,12 +47,18 @@ const CourseCreate = lazy(() => import('~/pages/dashboard/CourseCreate'));
 const Roadmaps = lazy(() => import('~/pages/dashboard/Roadmaps'));
 const RoadmapCreate = lazy(() => import('~/pages/dashboard/RoadmapCreate'));
 const Instructors = lazy(() => import('~/pages/dashboard/Instructors'));
-const DashboardInstructorCourses = lazy(() => import('~/pages/dashboard/InstructorCourses'));
-const DashboardInstructorStudents = lazy(() => import('~/pages/dashboard/Students'));
+const DashboardInstructorCourses = lazy(
+  () => import('~/pages/dashboard/InstructorCourses'),
+);
+const DashboardInstructorStudents = lazy(
+  () => import('~/pages/dashboard/Students'),
+);
 const Applications = lazy(() => import('~/pages/dashboard/Applications'));
 // const PDFViewer = lazy(() => import('~/pages/dashboard/PDFViewer'));
 const Technologies = lazy(() => import('~/pages/dashboard/Technologies'));
-const TechnologyCreate = lazy(() => import('~/pages/dashboard/TechnologyCreate'));
+const TechnologyCreate = lazy(
+  () => import('~/pages/dashboard/TechnologyCreate'),
+);
 
 // Other Routes
 const Page500 = lazy(() => import('~/pages/Page500'));
@@ -67,7 +73,7 @@ export default function Router() {
       path: '',
       element: <HomeLayout />,
       children: [
-        { element: <Navigate to='home' replace />, index: true },
+        { element: <Navigate to="home" replace />, index: true },
         { path: 'home', element: <Home /> },
         { path: 'checkout', element: <Checkout /> },
         { path: 'courses', element: <Courses /> },
@@ -219,10 +225,10 @@ export default function Router() {
         },
         { path: '500', element: <Page500 /> },
         { path: '404', element: <Page404 /> },
-        { path: '*', element: <Navigate to='/404' replace /> },
+        { path: '*', element: <Navigate to="/404" replace /> },
       ],
     },
-    { path: '*', element: <Navigate to='/404' replace /> },
+    { path: '*', element: <Navigate to="/404" replace /> },
 
     // Auth Routes
     {

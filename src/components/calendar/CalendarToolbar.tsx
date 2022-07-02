@@ -66,7 +66,7 @@ export default function CalendarToolbar({
   return (
     <RootStyle>
       {isDesktop && (
-        <Stack direction='row' spacing={0.5}>
+        <Stack direction="row" spacing={0.5}>
           {VIEW_OPTIONS.map((viewOption) => (
             <Tooltip key={viewOption.value} title={viewOption.label}>
               <ToggleButton
@@ -82,23 +82,23 @@ export default function CalendarToolbar({
         </Stack>
       )}
 
-      <Stack direction='row' alignItems='center' spacing={2}>
+      <Stack direction="row" alignItems="center" spacing={2}>
         <IconButton onClick={onPrevDate}>
-          <Iconify icon='eva:arrow-ios-back-fill' width={20} height={20} />
+          <Iconify icon="eva:arrow-ios-back-fill" width={20} height={20} />
         </IconButton>
 
-        <Typography variant='h5'>{fDate(date)}</Typography>
+        <Typography variant="h5">{fDate(date)}</Typography>
 
         <IconButton onClick={onNextDate}>
-          <Iconify icon='eva:arrow-ios-forward-fill' width={20} height={20} />
+          <Iconify icon="eva:arrow-ios-forward-fill" width={20} height={20} />
         </IconButton>
       </Stack>
 
       {isDesktop && (
         <Button
-          size='small'
-          color='error'
-          variant='contained'
+          size="small"
+          color="error"
+          variant="contained"
           onClick={onToday}
         >
           Today

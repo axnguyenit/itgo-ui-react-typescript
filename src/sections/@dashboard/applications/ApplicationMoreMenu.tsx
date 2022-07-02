@@ -28,7 +28,13 @@ interface ApplicationMoreMenuProps {
   cv: string;
 }
 
-export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApprove, cv }: ApplicationMoreMenuProps) {
+export default function ApplicationMoreMenu({
+  applicationId,
+  name,
+  onDeny,
+  onApprove,
+  cv,
+}: ApplicationMoreMenuProps) {
   const [open, setOpen] = useState<HTMLButtonElement>();
   const [isOpenModalDeny, setIsOpenModalDeny] = useState<boolean>(false);
   const [isOpenModalApprove, setIsOpenModalApprove] = useState<boolean>(false);
@@ -69,29 +75,47 @@ export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApp
         onClose={handleClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        arrow='right-top'
+        arrow="right-top"
         sx={{
           mt: -1,
           width: 160,
-          '& .MuiMenuItem-root': { px: 1, typography: 'body2', borderRadius: 0.75 },
+          '& .MuiMenuItem-root': {
+            px: 1,
+            typography: 'body2',
+            borderRadius: 0.75,
+          },
         }}
       >
-        <MenuItem onClick={() => setIsOpenModalApprove(true)} sx={{ color: 'success.main' }}>
-          <Iconify icon='icon-park-outline:doc-success' sx={{ ...ICON }} />
+        <MenuItem
+          onClick={() => setIsOpenModalApprove(true)}
+          sx={{ color: 'success.main' }}
+        >
+          <Iconify icon="icon-park-outline:doc-success" sx={{ ...ICON }} />
           Approve
         </MenuItem>
-        <MenuItem component={Link} href={cloudinary.pdf(cv)} sx={{ color: 'info.main' }} target='_blank'>
-          <Iconify icon='fluent:document-pdf-20-regular' sx={{ ...ICON }} />
+        <MenuItem
+          component={Link}
+          href={cloudinary.pdf(cv)}
+          sx={{ color: 'info.main' }}
+          target="_blank"
+        >
+          <Iconify icon="fluent:document-pdf-20-regular" sx={{ ...ICON }} />
           View CV
         </MenuItem>
-        <MenuItem onClick={() => setIsOpenModalDeny(true)} sx={{ color: 'error.main' }}>
-          <Iconify icon='eva:close-circle-outline' sx={{ ...ICON }} />
+        <MenuItem
+          onClick={() => setIsOpenModalDeny(true)}
+          sx={{ color: 'error.main' }}
+        >
+          <Iconify icon="eva:close-circle-outline" sx={{ ...ICON }} />
           Deny
         </MenuItem>
       </MenuPopover>
 
       {/* Modal Deny CV */}
-      <DialogAnimate open={isOpenModalDeny} onClose={() => setIsOpenModalDeny(false)}>
+      <DialogAnimate
+        open={isOpenModalDeny}
+        onClose={() => setIsOpenModalDeny(false)}
+      >
         <DialogTitle>Approve user</DialogTitle>
         <Divider sx={{ borderStyle: 'dashed', mt: 2 }} />
 
@@ -103,18 +127,25 @@ export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApp
         </Stack>
 
         <DialogActions>
-          <Button variant='outlined' color='inherit' onClick={() => setIsOpenModalDeny(false)}>
+          <Button
+            variant="outlined"
+            color="inherit"
+            onClick={() => setIsOpenModalDeny(false)}
+          >
             Cancel
           </Button>
 
-          <Button onClick={handleDelete} variant='contained' color='error'>
+          <Button onClick={handleDelete} variant="contained" color="error">
             Deny
           </Button>
         </DialogActions>
       </DialogAnimate>
 
       {/* Modal Approve CV */}
-      <DialogAnimate open={isOpenModalApprove} onClose={() => setIsOpenModalApprove(false)}>
+      <DialogAnimate
+        open={isOpenModalApprove}
+        onClose={() => setIsOpenModalApprove(false)}
+      >
         <DialogTitle>Approve user</DialogTitle>
         <Divider sx={{ borderStyle: 'dashed', mt: 2 }} />
 
@@ -126,11 +157,15 @@ export default function ApplicationMoreMenu({ applicationId, name, onDeny, onApp
         </Stack>
 
         <DialogActions>
-          <Button variant='outlined' color='inherit' onClick={() => setIsOpenModalApprove(false)}>
+          <Button
+            variant="outlined"
+            color="inherit"
+            onClick={() => setIsOpenModalApprove(false)}
+          >
             Cancel
           </Button>
 
-          <Button onClick={handleApprove} variant='contained' color='success'>
+          <Button onClick={handleApprove} variant="contained" color="success">
             Approve
           </Button>
         </DialogActions>

@@ -95,8 +95,8 @@ export default function HomeInstructorList() {
       {instructorList.length > 0 && (
         <Box>
           <CardHeader
-            title='Instructors'
-            subheader='Top 8 experienced Instructors'
+            title="Instructors"
+            subheader="Top 8 experienced Instructors"
             sx={{
               '& .MuiCardHeader-action': {
                 alignSelf: 'center',
@@ -119,7 +119,12 @@ export default function HomeInstructorList() {
               {/* @ts-ignore */}
               <Slider ref={carouselRef} {...settings}>
                 {instructorList.length > 0 &&
-                  instructorList.map((instructor) => <InstructorCard key={instructor._id} instructor={instructor} />)}
+                  instructorList.map((instructor) => (
+                    <InstructorCard
+                      key={instructor._id}
+                      instructor={instructor}
+                    />
+                  ))}
               </Slider>
             </CarouselArrows>
           </Box>
@@ -155,7 +160,7 @@ function InstructorCard({ instructor }: InstructorCardProps) {
     <Card sx={{ textAlign: 'center', my: 3, mx: 1.5 }}>
       <Box sx={{ position: 'relative' }}>
         <SvgIconStyle
-          src='/assets/icons/shape-avatar.svg'
+          src="/assets/icons/shape-avatar.svg"
           sx={{
             width: 144,
             height: 62,
@@ -183,27 +188,27 @@ function InstructorCard({ instructor }: InstructorCardProps) {
           }}
         />
         <OverlayStyle />
-        <Image src={cloudinary.w300(avatar)} alt={firstName} ratio='16/9' />
+        <Image src={cloudinary.w300(avatar)} alt={firstName} ratio="16/9" />
       </Box>
 
       <Box sx={{ mt: 6 }}>
         <Link
           to={`${PATH_INSTRUCTOR.root}/${_id}`}
           //
-          color='inherit'
+          color="inherit"
           component={RouterLink}
         >
-          <Typography variant='subtitle2' noWrap>
+          <Typography variant="subtitle2" noWrap>
             {firstName} {lastName}
           </Typography>
         </Link>
-        <Typography variant='body2' sx={{ color: 'text.secondary', my: 1.5 }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary', my: 1.5 }}>
           {position ? position : '#'}
         </Typography>
       </Box>
 
       <Divider sx={{ borderStyle: 'dashed', marginBottom: 1 }} />
-      <Rating size='small' value={4.5} precision={0.1} readOnly />
+      <Rating size="small" value={4.5} precision={0.1} readOnly />
     </Card>
   );
 }

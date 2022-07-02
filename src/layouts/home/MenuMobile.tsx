@@ -71,7 +71,7 @@ export default function MenuMobile({
     <>
       <IconButtonAnimate onClick={handleDrawerOpen} sx={{ ml: 1 }}>
         <Iconify
-          icon='eva:menu-2-fill'
+          icon="eva:menu-2-fill"
           sx={{
             ...(isHome && { color: 'common.white' }),
             ...(isOffset && { color: 'text.primary' }),
@@ -154,7 +154,7 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
         backgroundColor: isActive
           ? alpha(
               theme.palette.primary.main,
-              theme.palette.action.selectedOpacity
+              theme.palette.action.selectedOpacity,
             )
           : theme.palette.background.default,
       })}
@@ -167,7 +167,7 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
             bgcolor: (theme) =>
               alpha(
                 theme.palette.primary.main,
-                theme.palette.action.selectedOpacity
+                theme.palette.action.selectedOpacity,
               ),
           },
         }}

@@ -18,7 +18,7 @@ export default function Pagination(theme: Theme) {
             '&:hover, &.Mui-focusVisible': {
               backgroundColor: `${alpha(
                 theme.palette.primary.main,
-                0.24
+                0.24,
               )} !important`,
             },
           },

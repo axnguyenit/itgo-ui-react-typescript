@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react';
-import {useParams, useLocation, useNavigate} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 // @mui
-import {Container} from '@mui/material';
+import { Container } from '@mui/material';
 // routes
-import {PATH_INSTRUCTOR, PATH_PAGE} from '~/routes/paths';
+import { PATH_INSTRUCTOR, PATH_PAGE } from '~/routes/paths';
 // components
 import Page from '~/components/Page';
 import LoadingScreen from '~/components/LoadingScreen';
@@ -56,7 +56,9 @@ export default function CourseCreate() {
             { name: !isEdit ? 'New course' : 'Edit course' },
           ]}
         />
-        {(course || !isEdit) && <CourseNewForm isEdit={isEdit} currentCourse={course as Course} />}
+        {(course || !isEdit) && (
+          <CourseNewForm isEdit={isEdit} currentCourse={course as Course} />
+        )}
       </Container>
     </Page>
   );

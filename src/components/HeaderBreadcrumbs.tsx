@@ -28,7 +28,7 @@ export default function HeaderBreadcrumbs({
     <Box sx={{ mb: 5, ...sx }}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Box sx={{ flexGrow: 1 }}>
-          <Typography variant='h4' gutterBottom>
+          <Typography variant="h4" gutterBottom>
             {heading}
           </Typography>
           <Breadcrumbs links={links} {...other} />
@@ -38,7 +38,7 @@ export default function HeaderBreadcrumbs({
       </Box>
 
       <Box sx={{ mt: 2 }}>
-        <Link href={moreLink} target='_blank' rel='noopener' variant='body2'>
+        <Link href={moreLink} target="_blank" rel="noopener" variant="body2">
           {moreLink}
         </Link>
       </Box>

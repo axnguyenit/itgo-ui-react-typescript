@@ -26,7 +26,12 @@ import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
 import { TechnologyMoreMenu } from '~/sections/@dashboard/technologies';
 import { cloudinary } from '~/utils';
 import { technologyApi } from '~/api';
-import { HeaderLabel, ListParams, PaginationParams, Technology } from '~/models';
+import {
+  HeaderLabel,
+  ListParams,
+  PaginationParams,
+  Technology,
+} from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -84,17 +89,21 @@ export default function Technologies() {
     setPage(1);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, rowsPerPage - technologyList.length) : 0;
+  const emptyRows =
+    page > 0 ? Math.max(0, rowsPerPage - technologyList.length) : 0;
 
   return (
-    <Page title='Technologies'>
+    <Page title="Technologies">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Technologies'
-          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Technologies' }]}
+          heading="Technologies"
+          links={[
+            { name: 'Dashboard', href: PATH_DASHBOARD.root },
+            { name: 'Technologies' },
+          ]}
           action={
             <Button
-              variant='contained'
+              variant="contained"
               component={RouterLink}
               to={PATH_DASHBOARD.technologies.create}
               startIcon={<Iconify icon={'eva:plus-fill'} />}
@@ -116,23 +125,32 @@ export default function Technologies() {
                       const { _id, name, tag, image } = technology;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role='checkbox'>
-                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
+                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
+                          <TableCell
+                            sx={{ display: 'flex', alignItems: 'center' }}
+                          >
                             <Image
                               disabledEffect
                               alt={name}
                               src={cloudinary.w150(image)}
-                              sx={{ borderRadius: 0.5, width: 90, height: 48, mr: 2 }}
+                              sx={{
+                                borderRadius: 0.5,
+                                width: 90,
+                                height: 48,
+                                mr: 2,
+                              }}
                             />
                           </TableCell>
                           <TableCell>{name}</TableCell>
-                          <TableCell align='left'>{tag}</TableCell>
+                          <TableCell align="left">{tag}</TableCell>
 
-                          <TableCell align='right'>
+                          <TableCell align="right">
                             <TechnologyMoreMenu
                               technologyId={_id as string}
                               technologyName={name}
-                              onDelete={() => handleDeleteTechnology(_id as string)}
+                              onDelete={() =>
+                                handleDeleteTechnology(_id as string)
+                              }
                             />
                           </TableCell>
                         </TableRow>
@@ -150,7 +168,7 @@ export default function Technologies() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={pagination._totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}

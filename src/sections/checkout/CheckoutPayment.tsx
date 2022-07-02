@@ -80,8 +80,8 @@ export default function CheckoutPayment() {
         <Grid item xs={12} md={8}>
           <CheckoutPaymentMethods paymentOptions={PAYMENT_OPTIONS} />
           <Button
-            size='small'
-            color='inherit'
+            size="small"
+            color="inherit"
             onClick={handleBackStep}
             startIcon={<Iconify icon={'eva:arrow-ios-back-fill'} />}
           >
@@ -90,8 +90,19 @@ export default function CheckoutPayment() {
         </Grid>
 
         <Grid item xs={12} md={4}>
-          <CheckoutSummary enableEdit total={total} subtotal={subtotal} onEdit={() => handleGotoStep(0)} />
-          <LoadingButton fullWidth size='large' type='submit' variant='contained' loading={isSubmitting}>
+          <CheckoutSummary
+            enableEdit
+            total={total}
+            subtotal={subtotal}
+            onEdit={() => handleGotoStep(0)}
+          />
+          <LoadingButton
+            fullWidth
+            size="large"
+            type="submit"
+            variant="contained"
+            loading={isSubmitting}
+          >
             Complete Order
           </LoadingButton>
         </Grid>

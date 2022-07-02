@@ -37,7 +37,7 @@ export default function EmptyContent({
       <Image
         disabledEffect
         visibleByDefault
-        alt='empty content'
+        alt="empty content"
         src={
           img ||
           `${window.location.origin}/assets/images/illustration_empty_content.svg`
@@ -45,12 +45,12 @@ export default function EmptyContent({
         sx={{ height: 240, mb: 3 }}
       />
 
-      <Typography variant='h5' gutterBottom>
+      <Typography variant="h5" gutterBottom>
         {title}
       </Typography>
 
       {description && (
-        <Typography variant='body2' sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {description}
         </Typography>
       )}

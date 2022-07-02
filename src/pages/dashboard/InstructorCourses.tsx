@@ -93,10 +93,10 @@ export default function InstructorCourses() {
   const emptyRows = page > 0 ? Math.max(0, rowsPerPage - courseList.length) : 0;
 
   return (
-    <Page title='Courses'>
+    <Page title="Courses">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
-          heading='Courses'
+          heading="Courses"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Instructors', href: PATH_DASHBOARD.instructors.root },
@@ -114,28 +114,49 @@ export default function InstructorCourses() {
                 <TableBody>
                   {courseList.length > 0 &&
                     courseList.map((course) => {
-                      const { _id, name, cover, price, priceSale, createdAt, instructor } = course;
+                      const {
+                        _id,
+                        name,
+                        cover,
+                        price,
+                        priceSale,
+                        createdAt,
+                        instructor,
+                      } = course;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role='checkbox'>
-                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
+                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
+                          <TableCell
+                            sx={{ display: 'flex', alignItems: 'center' }}
+                          >
                             <Image
                               disabledEffect
                               alt={name}
                               src={cloudinary.w100(cover)}
-                              sx={{ borderRadius: 1.5, width: 48, height: 48, mr: 2 }}
+                              sx={{
+                                borderRadius: 1.5,
+                                width: 48,
+                                height: 48,
+                                mr: 2,
+                              }}
                             />
-                            <Typography variant='subtitle2' noWrap>
+                            <Typography variant="subtitle2" noWrap>
                               {name}
                             </Typography>
                           </TableCell>
                           <TableCell>
                             {instructor?.firstName} {instructor?.lastName}
                           </TableCell>
-                          <TableCell style={{ minWidth: 160 }}>{fDate(createdAt as Date)}</TableCell>
-                          <TableCell align='right'>{fCurrency(price)}</TableCell>
-                          <TableCell align='right'>{fCurrency(priceSale)}</TableCell>
-                          <TableCell align='right'>
+                          <TableCell style={{ minWidth: 160 }}>
+                            {fDate(createdAt as Date)}
+                          </TableCell>
+                          <TableCell align="right">
+                            {fCurrency(price)}
+                          </TableCell>
+                          <TableCell align="right">
+                            {fCurrency(priceSale)}
+                          </TableCell>
+                          <TableCell align="right">
                             <CourseMoreMenu
                               courseId={_id as string}
                               courseName={name}
@@ -157,7 +178,7 @@ export default function InstructorCourses() {
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
-            component='div'
+            component="div"
             count={pagination._totalRows} //total courses
             rowsPerPage={rowsPerPage}
             page={page - 1}

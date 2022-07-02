@@ -54,7 +54,7 @@ export default function MenuDesktop({
   }, [pathname]);
 
   return (
-    <Stack direction='row'>
+    <Stack direction="row">
       {navConfig.map((link) => (
         <MenuDesktopItem
           key={link.title}

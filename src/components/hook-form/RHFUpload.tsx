@@ -63,7 +63,7 @@ export function RHFUploadSingleFile({
 
         return (
           <UploadSingleFile
-            accept='image/*'
+            accept="image/*"
             file={field.value}
             error={checkError}
             helperText={

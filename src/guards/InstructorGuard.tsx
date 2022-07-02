@@ -27,7 +27,7 @@ export default function InstructorGuard({ children }: InstructorGuardProps) {
     return <Navigate to={requestedLocation} />;
   }
 
-  if (!user?.isInstructor) return <Navigate to='/' />;
+  if (!user?.isInstructor) return <Navigate to="/" />;
 
   return <>{children}</>;
 }

@@ -87,19 +87,19 @@ export default function ApplyAsInstructorForm() {
         <Stack spacing={3}>
           <Card sx={{ p: 3 }}>
             <Stack spacing={3} mt={2}>
-              <RHFTextField name='position' label='Working position' />
+              <RHFTextField name="position" label="Working position" />
               <RHFUploadButton
-                name='cv'
-                label='Upload CV'
+                name="cv"
+                label="Upload CV"
                 onChange={handleFileChange}
               />
             </Stack>
           </Card>
 
           <LoadingButton
-            type='submit'
-            variant='contained'
-            size='large'
+            type="submit"
+            variant="contained"
+            size="large"
             loading={isSubmitting}
           >
             Apply

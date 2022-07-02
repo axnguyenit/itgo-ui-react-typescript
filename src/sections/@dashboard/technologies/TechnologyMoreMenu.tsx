@@ -1,7 +1,16 @@
 import { MouseEventHandler, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { MenuItem, IconButton, DialogTitle, Divider, DialogActions, Button, Stack, Typography } from '@mui/material';
+import {
+  MenuItem,
+  IconButton,
+  DialogTitle,
+  Divider,
+  DialogActions,
+  Button,
+  Stack,
+  Typography,
+} from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '~/routes/paths';
 // components
@@ -17,7 +26,11 @@ interface TechnologyMoreMenuProps {
   onDelete: () => void;
 }
 
-export default function TechnologyMoreMenu({ technologyId, technologyName, onDelete }: TechnologyMoreMenuProps) {
+export default function TechnologyMoreMenu({
+  technologyId,
+  technologyName,
+  onDelete,
+}: TechnologyMoreMenuProps) {
   const [open, setOpen] = useState<HTMLButtonElement>();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -30,7 +43,7 @@ export default function TechnologyMoreMenu({ technologyId, technologyName, onDel
   };
 
   const handleDelete = () => {
-		onDelete();
+    onDelete();
     setIsOpenModal(false);
   };
 
@@ -52,18 +65,28 @@ export default function TechnologyMoreMenu({ technologyId, technologyName, onDel
         onClose={handleClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        arrow='right-top'
+        arrow="right-top"
         sx={{
           mt: -1,
           width: 160,
-          '& .MuiMenuItem-root': { px: 1, typography: 'body2', borderRadius: 0.75 },
+          '& .MuiMenuItem-root': {
+            px: 1,
+            typography: 'body2',
+            borderRadius: 0.75,
+          },
         }}
       >
-        <MenuItem component={RouterLink} to={`${PATH_DASHBOARD.technologies.root}/${technologyId}/edit`}>
+        <MenuItem
+          component={RouterLink}
+          to={`${PATH_DASHBOARD.technologies.root}/${technologyId}/edit`}
+        >
           <Iconify icon={'eva:edit-fill'} sx={{ ...ICON }} />
           Edit
         </MenuItem>
-        <MenuItem onClick={() => setIsOpenModal(true)} sx={{ color: 'error.main' }}>
+        <MenuItem
+          onClick={() => setIsOpenModal(true)}
+          sx={{ color: 'error.main' }}
+        >
           <Iconify icon={'eva:trash-2-outline'} sx={{ ...ICON }} />
           Delete
         </MenuItem>
@@ -81,11 +104,15 @@ export default function TechnologyMoreMenu({ technologyId, technologyName, onDel
         </Stack>
 
         <DialogActions>
-          <Button variant='outlined' color='inherit' onClick={() => setIsOpenModal(false)}>
+          <Button
+            variant="outlined"
+            color="inherit"
+            onClick={() => setIsOpenModal(false)}
+          >
             Cancel
           </Button>
 
-          <Button onClick={handleDelete} variant='contained' color='error'>
+          <Button onClick={handleDelete} variant="contained" color="error">
             Delete
           </Button>
         </DialogActions>

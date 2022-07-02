@@ -132,7 +132,7 @@ export function DotIcon({ active }: DotIconProps) {
   return (
     <ListItemIconStyle>
       <Box
-        component='span'
+        component="span"
         sx={{
           width: 4,
           height: 4,

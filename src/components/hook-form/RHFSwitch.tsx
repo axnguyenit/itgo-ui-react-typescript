@@ -16,7 +16,7 @@ export default function RHFSwitch({ name, ...other }: RHFSwitchProps) {
 
   return (
     <FormControlLabel
-      label=''
+      label=""
       control={
         <Controller
           name={name}

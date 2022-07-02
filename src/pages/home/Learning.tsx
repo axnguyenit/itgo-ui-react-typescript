@@ -146,7 +146,7 @@ function Learning() {
   if (isLoading) return <LoadingScreen />;
 
   return (
-    <Page title='Learning'>
+    <Page title="Learning">
       <RootStyle>
         <HeaderStyle>
           <Logo />
@@ -157,7 +157,7 @@ function Learning() {
               <Grid item xs={12} md={5}>
                 <SectionStyle>
                   <Image
-                    alt='join meeting'
+                    alt="join meeting"
                     src={`${window.location.origin}/assets/images/education-online.png`}
                   />
                 </SectionStyle>
@@ -167,19 +167,19 @@ function Learning() {
             <Grid item xs={12} md={7}>
               <ContentStyle>
                 <Image
-                  alt='js'
-                  ratio='21/9'
+                  alt="js"
+                  ratio="21/9"
                   sx={{ borderRadius: 1 }}
                   src={cloudinary.w700(meetingInfo?.cover)}
                 />
-                <Typography variant='h3' sx={{ my: 5 }}>
+                <Typography variant="h3" sx={{ my: 5 }}>
                   Join Meeting
                 </Typography>
 
                 <Button
-                  variant='contained'
+                  variant="contained"
                   fullWidth
-                  size='large'
+                  size="large"
                   onClick={getSignature}
                 >
                   Join Meeting
@@ -192,13 +192,13 @@ function Learning() {
         <DialogAnimate open={!meetingInfo}>
           <Box sx={{ textAlign: 'center', p: 3 }}>
             <ErrorIcon sx={{ mb: 5, mx: 'auto', height: 120 }} />
-            <Typography variant='h3' gutterBottom>
+            <Typography variant="h3" gutterBottom>
               You do not have permission to join this meeting
             </Typography>
 
             <Button
-              size='large'
-              variant='contained'
+              size="large"
+              variant="contained"
               onClick={() => navigate(-1)}
               sx={{ mt: 5 }}
             >

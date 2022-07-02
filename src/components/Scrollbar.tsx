@@ -48,7 +48,7 @@ export default function Scrollbar({ children, sx, ...other }: ScrollbarProps) {
 
   const isMobile =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      userAgent
+      userAgent,
     );
 
   if (isMobile) {

@@ -32,7 +32,7 @@ export default function CourseList({ orders, loading }: CourseListProps) {
           <CourseCard key={order?._id} order={order} />
         ) : (
           <SkeletonCourseItem key={index} />
-        )
+        ),
       )}
     </Box>
   );

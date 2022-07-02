@@ -104,14 +104,14 @@ export default function UploadAvatar({
 
           {file && (
             <Image
-              alt='avatar'
+              alt="avatar"
               src={isString(file) ? file : file.preview}
               sx={{ zIndex: 8 }}
             />
           )}
 
           <PlaceholderStyle
-            className='placeholder'
+            className="placeholder"
             sx={{
               ...(file && {
                 opacity: 0,
@@ -128,7 +128,7 @@ export default function UploadAvatar({
               icon={'ic:round-add-a-photo'}
               sx={{ width: 24, height: 24, mb: 1 }}
             />
-            <Typography variant='caption'>
+            <Typography variant="caption">
               {file ? 'Update photo' : 'Upload photo'}
             </Typography>
           </PlaceholderStyle>

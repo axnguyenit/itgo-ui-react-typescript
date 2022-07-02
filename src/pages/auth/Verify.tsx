@@ -34,7 +34,7 @@ export default function Verify() {
   useEffect(() => {
     const verifyEmail = async () => {
       setIsLoading(true);
-			if (!id || !token) return setIsValid(false);
+      if (!id || !token) return setIsValid(false);
       try {
         await userApi.verifyEmail(id, token);
         setIsValid(true);
@@ -48,7 +48,7 @@ export default function Verify() {
   if (isLoading) return <LoadingScreen />;
 
   return (
-    <Page title='Verify Email' sx={{ height: 1 }}>
+    <Page title="Verify Email" sx={{ height: 1 }}>
       <RootStyle>
         <LogoOnlyLayout />
 
@@ -58,13 +58,13 @@ export default function Verify() {
               <Box sx={{ textAlign: 'center' }}>
                 <SuccessIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
 
-                <Typography variant='h3' gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   Verify email successfully, go to login
                 </Typography>
 
                 <Button
-                  size='large'
-                  variant='contained'
+                  size="large"
+                  variant="contained"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 5 }}
@@ -75,13 +75,13 @@ export default function Verify() {
             ) : (
               <Box sx={{ textAlign: 'center' }}>
                 <ErrorIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
-                <Typography variant='h3' gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   Verify email fail
                 </Typography>
 
                 <Button
-                  size='large'
-                  variant='contained'
+                  size="large"
+                  variant="contained"
                   component={RouterLink}
                   to={PATH_AUTH.verify}
                   sx={{ mt: 5 }}

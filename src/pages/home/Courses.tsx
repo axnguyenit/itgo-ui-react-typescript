@@ -76,7 +76,7 @@ export default function Courses() {
 
     if (_category) {
       const newCategory = TAGS_OPTION.find((option) =>
-        option.toLocaleLowerCase().includes(_category.toLocaleLowerCase())
+        option.toLocaleLowerCase().includes(_category.toLocaleLowerCase()),
       );
       setCategory(newCategory as string);
     }
@@ -120,26 +120,26 @@ export default function Courses() {
   };
 
   return (
-    <Page title='Courses'>
+    <Page title="Courses">
       <RootStyle>
         <CourseHero
-          label='Courses'
+          label="Courses"
           src={`${window.location.origin}/assets/images/courses-hero.jpg`}
         />
         <Container maxWidth={'lg'} sx={{ mt: 15, mb: 10 }}>
           <Stack
             spacing={2}
-            direction='row'
-            alignItems='center'
-            justifyContent='flex-end'
+            direction="row"
+            alignItems="center"
+            justifyContent="flex-end"
             sx={{ mb: 4 }}
           >
             <FormControl sx={{ width: { xs: '50%', md: '25%' } }}>
               <InputLabel>Category</InputLabel>
               <Select
-                size='small'
+                size="small"
                 value={category}
-                label='Category'
+                label="Category"
                 onChange={handleChangeCategory}
               >
                 {TAGS_OPTION.map((option) => (
@@ -154,22 +154,22 @@ export default function Courses() {
           <CourseList courses={courses} loading={isLoading} />
 
           {!courses.length && !isLoading && (
-            <EmptyContent title='No matching courses' />
+            <EmptyContent title="No matching courses" />
           )}
           {pagination._totalRows > LIMIT_COURSE && (
             <Stack
-              direction='row'
-              justifyContent='center'
-              alignItems='center'
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
               sx={{ my: 3 }}
             >
               <Pagination
                 count={Math.ceil(pagination._totalRows / LIMIT_COURSE)}
                 defaultPage={page}
                 onChange={(event, value) => handleChangePage(value)}
-                color='primary'
-                variant='outlined'
-                shape='rounded'
+                color="primary"
+                variant="outlined"
+                shape="rounded"
               />
             </Stack>
           )}

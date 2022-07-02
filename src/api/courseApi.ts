@@ -1,4 +1,10 @@
-import { CourseData, CourseResponse, CoursesResponse, ListParams, StudentsResponse } from '~/models';
+import {
+  CourseData,
+  CourseResponse,
+  CoursesResponse,
+  ListParams,
+  StudentsResponse,
+} from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------

@@ -51,7 +51,7 @@ export default function ForgotPassword() {
   if (isLoading) return <LoadingScreen />;
 
   return (
-    <Page title='Reset Password' sx={{ height: 1 }}>
+    <Page title="Reset Password" sx={{ height: 1 }}>
       <RootStyle>
         <LogoOnlyLayout />
 
@@ -59,7 +59,7 @@ export default function ForgotPassword() {
           <Box sx={{ maxWidth: 480, mx: 'auto' }}>
             {!isSent && isValid && (
               <>
-                <Typography variant='h3' paragraph>
+                <Typography variant="h3" paragraph>
                   Create new password
                 </Typography>
 
@@ -71,7 +71,7 @@ export default function ForgotPassword() {
 
                 <Button
                   fullWidth
-                  size='large'
+                  size="large"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 2 }}
@@ -85,13 +85,13 @@ export default function ForgotPassword() {
               <Box sx={{ textAlign: 'center' }}>
                 <SuccessIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
 
-                <Typography variant='h3' gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   Reset password successfully
                 </Typography>
 
                 <Button
-                  size='large'
-                  variant='contained'
+                  size="large"
+                  variant="contained"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 5 }}
@@ -104,13 +104,13 @@ export default function ForgotPassword() {
             {!isValid && (
               <Box sx={{ textAlign: 'center' }}>
                 <ErrorIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
-                <Typography variant='h3' gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   Link reset password is invalid
                 </Typography>
 
                 <Button
-                  size='large'
-                  variant='contained'
+                  size="large"
+                  variant="contained"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 5 }}

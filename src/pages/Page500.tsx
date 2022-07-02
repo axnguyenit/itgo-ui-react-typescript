@@ -22,11 +22,11 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function Page500() {
   const navigate = useNavigate();
   return (
-    <Page title='500 Internal Server Error' sx={{ height: 1 }}>
+    <Page title="500 Internal Server Error" sx={{ height: 1 }}>
       <RootStyle>
         <Container>
           <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
-            <Typography variant='h3' paragraph>
+            <Typography variant="h3" paragraph>
               500 Internal Server Error
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
@@ -39,8 +39,8 @@ export default function Page500() {
 
             <Button
               onClick={() => navigate(-2)}
-              size='large'
-              variant='contained'
+              size="large"
+              variant="contained"
             >
               Go back
             </Button>

@@ -1,4 +1,9 @@
-import { ListParams, TechnologiesResponse, Technology, TechnologyResponse } from '~/models';
+import {
+  ListParams,
+  TechnologiesResponse,
+  Technology,
+  TechnologyResponse,
+} from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------

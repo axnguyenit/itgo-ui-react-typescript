@@ -17,7 +17,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  async (config: AxiosRequestConfig) => config
+  async (config: AxiosRequestConfig) => config,
 );
 
 type AxiosConfig = AxiosRequestConfig & {

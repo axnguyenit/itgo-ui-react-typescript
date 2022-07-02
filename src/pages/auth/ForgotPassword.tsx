@@ -31,7 +31,7 @@ export default function ForgotPassword() {
   const [sent, setSent] = useState(false);
 
   return (
-    <Page title='Forgot Password' sx={{ height: 1 }}>
+    <Page title="Forgot Password" sx={{ height: 1 }}>
       <RootStyle>
         <LogoOnlyLayout />
 
@@ -39,7 +39,7 @@ export default function ForgotPassword() {
           <Box sx={{ maxWidth: 480, mx: 'auto' }}>
             {!sent ? (
               <>
-                <Typography variant='h3' paragraph>
+                <Typography variant="h3" paragraph>
                   Forgot your password?
                 </Typography>
                 <Typography sx={{ color: 'text.secondary', mb: 5 }}>
@@ -54,7 +54,7 @@ export default function ForgotPassword() {
 
                 <Button
                   fullWidth
-                  size='large'
+                  size="large"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 2 }}
@@ -66,7 +66,7 @@ export default function ForgotPassword() {
               <Box sx={{ textAlign: 'center' }}>
                 <SentIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
 
-                <Typography variant='h3' gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   Request sent successfully
                 </Typography>
                 <Typography>
@@ -77,8 +77,8 @@ export default function ForgotPassword() {
                 </Typography>
 
                 <Button
-                  size='large'
-                  variant='contained'
+                  size="large"
+                  variant="contained"
                   component={RouterLink}
                   to={PATH_AUTH.login}
                   sx={{ mt: 5 }}

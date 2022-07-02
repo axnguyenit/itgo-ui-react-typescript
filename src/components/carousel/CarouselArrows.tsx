@@ -73,7 +73,7 @@ export default function CarouselArrows({
   if (children) {
     return (
       <Box {...other}>
-        <Box className='arrow left' sx={{ ...style, left: 0 }}>
+        <Box className="arrow left" sx={{ ...style, left: 0 }}>
           <ArrowStyle onClick={onPrevious} filled theme={theme}>
             {leftIcon(customIcon)}
           </ArrowStyle>
@@ -81,7 +81,7 @@ export default function CarouselArrows({
 
         {children}
 
-        <Box className='arrow right' sx={{ ...style, right: 0 }}>
+        <Box className="arrow right" sx={{ ...style, right: 0 }}>
           <ArrowStyle onClick={onNext} filled theme={theme}>
             {rightIcon(customIcon)}
           </ArrowStyle>
@@ -91,16 +91,16 @@ export default function CarouselArrows({
   }
 
   return (
-    <Stack direction='row' spacing={1} {...other}>
+    <Stack direction="row" spacing={1} {...other}>
       <ArrowStyle
-        className='arrow left'
+        className="arrow left"
         filled
         onClick={onPrevious}
         theme={theme}
       >
         {leftIcon(customIcon)}
       </ArrowStyle>
-      <ArrowStyle className='arrow right' filled onClick={onNext} theme={theme}>
+      <ArrowStyle className="arrow right" filled onClick={onNext} theme={theme}>
         {rightIcon(customIcon)}
       </ArrowStyle>
     </Stack>

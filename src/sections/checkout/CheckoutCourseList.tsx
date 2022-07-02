@@ -26,7 +26,11 @@ interface CheckoutCourseListProps {
   isLoading: boolean;
 }
 
-export default function CheckoutCourseList({ courses, onDelete, isLoading }: CheckoutCourseListProps) {
+export default function CheckoutCourseList({
+  courses,
+  onDelete,
+  isLoading,
+}: CheckoutCourseListProps) {
   return (
     <Box sx={{ position: 'relative' }}>
       {isLoading && <Loading />}
@@ -35,8 +39,8 @@ export default function CheckoutCourseList({ courses, onDelete, isLoading }: Che
           <TableHead>
             <TableRow>
               <TableCell>Course</TableCell>
-              <TableCell align='right'>Total Price</TableCell>
-              <TableCell align='right' />
+              <TableCell align="right">Total Price</TableCell>
+              <TableCell align="right" />
             </TableRow>
           </TableHead>
 
@@ -49,23 +53,40 @@ export default function CheckoutCourseList({ courses, onDelete, isLoading }: Che
                     <TableCell>
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Image
-                          alt='course image'
+                          alt="course image"
                           src={cloudinary.w100(cover)}
-                          sx={{ width: 64, height: 64, borderRadius: 1.5, mr: 2 }}
+                          sx={{
+                            width: 64,
+                            height: 64,
+                            borderRadius: 1.5,
+                            mr: 2,
+                          }}
                         />
                         <Box>
-                          <Typography noWrap variant='subtitle2' sx={{ maxWidth: 240 }}>
+                          <Typography
+                            noWrap
+                            variant="subtitle2"
+                            sx={{ maxWidth: 240 }}
+                          >
                             {name}
                           </Typography>
                         </Box>
                       </Box>
                     </TableCell>
 
-                    <TableCell align='right'>{priceSale ? fCurrency(priceSale) : fCurrency(price as number)}</TableCell>
+                    <TableCell align="right">
+                      {priceSale
+                        ? fCurrency(priceSale)
+                        : fCurrency(price as number)}
+                    </TableCell>
 
-                    <TableCell align='right'>
+                    <TableCell align="right">
                       <IconButton onClick={() => onDelete(item?._id)}>
-                        <Iconify icon={'eva:trash-2-outline'} width={20} height={20} />
+                        <Iconify
+                          icon={'eva:trash-2-outline'}
+                          width={20}
+                          height={20}
+                        />
                       </IconButton>
                     </TableCell>
                   </TableRow>

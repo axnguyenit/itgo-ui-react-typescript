@@ -30,20 +30,26 @@ export const getCartFromServer = createAsyncThunk('cart/getCart', async () => {
   return cartItems;
 });
 
-export const addToCart = createAsyncThunk('cart/addToCart', async (param: AddToCartProps) => {
-  const { data, course } = param;
-  const { cartItem } = await cartApi.add(data);
-  return {
-    _id: cartItem._id,
-    cartId: cartItem.cartId,
-    course,
-  };
-});
+export const addToCart = createAsyncThunk(
+  'cart/addToCart',
+  async (param: AddToCartProps) => {
+    const { data, course } = param;
+    const { cartItem } = await cartApi.add(data);
+    return {
+      _id: cartItem._id,
+      cartId: cartItem.cartId,
+      course,
+    };
+  },
+);
 
-export const removeCartItem = createAsyncThunk('cart/removeCartItem', async (id: string) => {
-  await cartApi.removeItem(id);
-  return id;
-});
+export const removeCartItem = createAsyncThunk(
+  'cart/removeCartItem',
+  async (id: string) => {
+    await cartApi.removeItem(id);
+    return id;
+  },
+);
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -52,7 +58,11 @@ const cartSlice = createSlice({
     // CHECKOUT
     getCart(state: Cart, action: PayloadAction<CartItem[]>) {
       const cart = action.payload;
-      const subtotal = sum(cart.map((cartItem) => cartItem.course.priceSale || cartItem.course.price));
+      const subtotal = sum(
+        cart.map(
+          (cartItem) => cartItem.course.priceSale || cartItem.course.price,
+        ),
+      );
 
       state.cart = cart;
       state.subtotal = subtotal;
@@ -96,5 +106,6 @@ const cartSlice = createSlice({
 });
 
 export const selectCart = (state: RootState) => state.cart;
-export const { getCart, onBackStep, onGotoStep, onNextStep, resetCart } = cartSlice.actions;
+export const { getCart, onBackStep, onGotoStep, onNextStep, resetCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

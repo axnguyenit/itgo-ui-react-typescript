@@ -31,17 +31,17 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function BecomeInstructor() {
   const { user } = useAuth();
   return (
-    <Page title='Become An Instructor'>
+    <Page title="Become An Instructor">
       <RootStyle>
         <CourseHero
-          label='Become An Instructor'
+          label="Become An Instructor"
           src={`${window.location.origin}/assets/images/my-learning.jpg`}
         />
-        <Container maxWidth='lg' sx={{ mt: 12, mb: 10 }}>
+        <Container maxWidth="lg" sx={{ mt: 12, mb: 10 }}>
           <Box sx={{ textAlign: 'center' }}>
             <CardHeader
-              title='Apply As Instructor'
-              subheader='Share your knowledge with everyone'
+              title="Apply As Instructor"
+              subheader="Share your knowledge with everyone"
               sx={{
                 '& .MuiCardHeader-action': {
                   alignSelf: 'center',
@@ -52,9 +52,9 @@ export default function BecomeInstructor() {
                 mb: 2,
               }}
             />
-            <Stack direction='row' alignItems='center' justifyContent='center'>
+            <Stack direction="row" alignItems="center" justifyContent="center">
               <Typography
-                variant='body2'
+                variant="body2"
                 sx={{ mb: 4, width: { xs: '100%', md: '80%' } }}
               >
                 ITGO needs talented human resources like you, let's create
@@ -70,8 +70,8 @@ export default function BecomeInstructor() {
             <Grid item xs={12} md={8}>
               <Box>
                 <Image
-                  src='/assets/images/become-instructor.png'
-                  ratio='16/9'
+                  src="/assets/images/become-instructor.png"
+                  ratio="16/9"
                 />
               </Box>
             </Grid>

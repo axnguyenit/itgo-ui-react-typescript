@@ -49,12 +49,12 @@ export default function HomeHero() {
     <Box>
       <RootStyle>
         <HeroOverlayStyle
-          alt='overlay'
+          alt="overlay"
           src={`${window.location.origin}/assets/images/overlay.svg`}
         />
 
         <HeroImgStyle
-          alt='hero'
+          alt="hero"
           src={`${window.location.origin}/assets/images/home-hero.png`}
         />
 
@@ -75,12 +75,12 @@ export default function HomeHero() {
               },
             }}
           >
-            <Typography variant='h1' sx={{ color: 'common.white' }}>
+            <Typography variant="h1" sx={{ color: 'common.white' }}>
               Start learning <br />
               programming <br /> with
               <Typography
-                component='span'
-                variant='h1'
+                component="span"
+                variant="h1"
                 sx={{ color: 'primary.main' }}
               >
                 &nbsp;ITGO

@@ -1,4 +1,11 @@
-import React, { createContext, Dispatch, ReactNode, useEffect, useReducer, useState } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 // router
 import { useNavigate } from 'react-router-dom';
 import { PATH_AUTH } from '~/routes/paths';
@@ -38,7 +45,10 @@ const initialState: AuthState = {
 };
 
 const handlers: HandlerState = {
-  INITIALIZE: (state: AuthState, action: PayloadAction<AuthState>): AuthState => {
+  INITIALIZE: (
+    state: AuthState,
+    action: PayloadAction<AuthState>,
+  ): AuthState => {
     const { isAuthenticated, user } = action.payload;
 
     return {
@@ -104,7 +114,8 @@ function AuthProvider({ children }: AuthProviderProps) {
 
           const { user } = await userApi.myAccount();
 
-          if (!user.emailVerified) navigate(PATH_AUTH.verify, { replace: true });
+          if (!user.emailVerified)
+            navigate(PATH_AUTH.verify, { replace: true });
           if (user.emailVerified) {
             dispatch({
               type: 'INITIALIZE',
@@ -147,7 +158,11 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   if (isLoading) return <LoadingScreen />;
 
-  return <AuthContext.Provider value={{ ...state, logout, dispatch }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ ...state, logout, dispatch }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export { AuthContext, AuthProvider };
