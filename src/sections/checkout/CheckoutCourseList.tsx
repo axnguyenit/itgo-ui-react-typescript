@@ -75,7 +75,7 @@ export default function CheckoutCourseList({
                     </TableCell>
 
                     <TableCell align="right">
-                      <IconButton onClick={() => onDelete(item?.id)}>
+                      <IconButton onClick={() => onDelete(item.id)}>
                         <Iconify icon={'eva:trash-2-outline'} width={20} height={20} />
                       </IconButton>
                     </TableCell>

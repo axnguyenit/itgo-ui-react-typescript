@@ -146,7 +146,7 @@ export default function CalendarForm({
     const getAllCourses = async () => {
       try {
         const params = {
-          _instructor: user?.id,
+          instructor: user?.id,
         };
         const { courses } = await courseApi.getAll(params);
         setCourseList(courses);

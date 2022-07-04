@@ -37,8 +37,6 @@ export default function CheckoutCart() {
   const isEmptyCart = cart.length === 0;
   const resultCode = searchParams.get('resultCode');
 
-  // transId, amount, orderId
-
   const storeTransaction = async () => {
     if (resultCode && Number(resultCode) >= 0 && cart.length) {
       setIsLoading(true);

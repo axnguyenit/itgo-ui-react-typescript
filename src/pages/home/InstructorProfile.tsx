@@ -69,7 +69,7 @@ export default function InstructorProfile() {
       const params = {
         page,
         limit: LIMIT_COURSE,
-        _instructor: id,
+        instructor: id,
       };
 
       if (!id) return;

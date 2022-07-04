@@ -23,7 +23,7 @@ import { IconButtonAnimate } from '~/components/animate';
 import MenuPopover from '~/components/MenuPopover';
 import MyAvatar from '~/components/MyAvatar';
 // hooks
-import { useAppDispatch, useAuth, useIsMountedRef } from '~/hooks';
+import { useAppDispatch, useAuth } from '~/hooks';
 // redux
 import { resetCart } from '~/redux/slices/cart';
 //
@@ -48,7 +48,6 @@ export default function AccountPopover() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user, dispatch: authDispatch } = useAuth();
-  const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState<HTMLButtonElement | null>(null);
 
@@ -66,10 +65,7 @@ export default function AccountPopover() {
       authDispatch({ type: 'LOGOUT', payload: { user: null } });
       dispatch(resetCart());
       navigate(PATH_AUTH.login, { replace: true });
-
-      if (isMountedRef.current) {
-        handleClose();
-      }
+      handleClose();
     } catch (error) {
       enqueueSnackbar('Unable to logout!', { variant: 'error' });
     }

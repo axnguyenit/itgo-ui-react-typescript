@@ -86,7 +86,7 @@ export default function Courses() {
       const params: ListParams = {
         page: Number(_page) || 1,
         limit: LIMIT_COURSE,
-        _tags: _category && _category !== 'All' ? _category : '',
+        tags: _category && _category !== 'All' ? _category : '',
       };
 
       try {

@@ -40,26 +40,26 @@ export default function CourseDetailsSummary({
   const { isAuthenticated } = useAuth();
 
   const handleAddCart = async (course: Course) => {
-    const isExisted = cart.find((cartItem) => cartItem.course?.id === course.id);
+    const isExisted = cart.find((cartItem) => cartItem.course?._id === course.id);
 
-    if (!isExisted && course.id) {
-      try {
-        const data: CartData = {
-          total: cart.length + 1,
-          courseId: course.id,
-        };
-        await dispatch(addToCart({ data, course })).unwrap();
-        enqueueSnackbar('Add to cart successfully');
-      } catch (error) {
-        const err = handleError(error);
-        isAuthenticated
-          ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' })
-          : navigate(PATH_AUTH.login);
-      }
-    } else {
-      enqueueSnackbar('This course already exists in your cart', {
+    if (isExisted)
+      return enqueueSnackbar('This course already exists in your cart', {
         variant: 'info',
       });
+
+    try {
+      const data: CartData = {
+        total: cart.length + 1,
+        courseId: course.id as string,
+      };
+      course._id = course.id;
+      await dispatch(addToCart({ data, course })).unwrap();
+      enqueueSnackbar('Add to cart successfully');
+    } catch (error) {
+      const err = handleError(error);
+      isAuthenticated
+        ? enqueueSnackbar(err?.errors[0]?.msg, { variant: 'warning' })
+        : navigate(PATH_AUTH.login);
     }
   };
 

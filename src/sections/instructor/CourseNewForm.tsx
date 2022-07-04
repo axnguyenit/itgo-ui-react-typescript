@@ -114,11 +114,11 @@ export default function CourseNewForm({
       priceSale: currentCourse?.priceSale || 0,
       minStudent: currentCourse?.minStudent || 5,
       tags: currentCourse?.tags || [TAGS_OPTION[0]],
-      overview: currentCourse?.details.overview || '',
-      requirements: currentCourse?.details.requirements || '',
-      targetAudiences: currentCourse?.details.targetAudiences || '',
+      overview: currentCourse?.details?.overview || '',
+      requirements: currentCourse?.details?.requirements || '',
+      targetAudiences: currentCourse?.details?.targetAudiences || '',
     }),
-    [currentCourse],
+    [currentCourse]
   );
 
   const methods = useForm<CourseData>({

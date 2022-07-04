@@ -13,7 +13,7 @@ import {
 // redux
 import { getCart } from '~/redux/slices/cart';
 // hooks
-import { useAppDispatch, useAppSelector, useIsMountedRef } from '~/hooks';
+import { useAppDispatch, useAppSelector } from '~/hooks';
 // components
 import Page from '~/components/Page';
 import Iconify from '~/components/Iconify';
@@ -41,14 +41,11 @@ const Connector = styled(StepConnector)(({ theme }) => ({
 
 export default function Checkout() {
   const dispatch = useAppDispatch();
-  const isMountedRef = useIsMountedRef();
   const { cart, activeStep } = useAppSelector((state) => state.cart);
 
   useEffect(() => {
-    if (isMountedRef.current) {
-      dispatch(getCart(cart));
-    }
-  }, [dispatch, isMountedRef, cart]);
+    dispatch(getCart(cart));
+  }, [dispatch, cart]);
 
   return (
     <Page title="Checkout">

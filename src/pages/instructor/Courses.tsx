@@ -64,7 +64,7 @@ export default function Courses() {
     const params: ListParams = {
       page,
       limit: rowsPerPage,
-      _instructor: user.id,
+      instructor: user.id,
     };
 
     try {

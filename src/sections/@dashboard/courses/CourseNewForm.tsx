@@ -117,9 +117,9 @@ export default function CourseNewForm({
       priceSale: currentCourse?.priceSale || 0,
       minStudent: currentCourse?.minStudent || 5,
       tags: currentCourse?.tags || [TAGS_OPTION[0]],
-      overview: currentCourse?.details.overview || '',
-      requirements: currentCourse?.details.requirements || '',
-      targetAudiences: currentCourse?.details.targetAudiences || '',
+      overview: currentCourse?.details?.overview || '',
+      requirements: currentCourse?.details?.requirements || '',
+      targetAudiences: currentCourse?.details?.targetAudiences || '',
     }),
     [currentCourse]
   );
@@ -151,7 +151,7 @@ export default function CourseNewForm({
     if (isEdit && currentCourse) {
       reset(defaultValues);
       setValue('cover', cloudinary.w700(currentCourse?.cover));
-      setValue('instructor', currentCourse?.instructor.id as string);
+      setValue('instructor', currentCourse?.instructor?.id as string);
     }
     if (!isEdit) reset(defaultValues);
 

@@ -5,8 +5,6 @@ import { useForm } from 'react-hook-form';
 // @mui
 import { Stack, Alert } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-// hooks
-import { useIsMountedRef } from '~/hooks';
 // components
 import { FormProvider, RHFTextField } from '~/components/hook-form';
 import { userApi } from '~/api';
@@ -25,7 +23,6 @@ export default function ForgotPasswordForm({
   onSent,
   onGetEmail,
 }: ForgotPasswordFormProps) {
-  const isMountedRef = useIsMountedRef();
   const [error, setError] = useState<string>('');
 
   const ForgotPasswordSchema = Yup.object().shape({
@@ -51,10 +48,8 @@ export default function ForgotPasswordForm({
   const onSubmit = async (data: Email) => {
     try {
       await userApi.forgotPassword(data);
-      if (isMountedRef.current) {
-        onSent();
-        onGetEmail(data.email);
-      }
+      onSent();
+      onGetEmail(data.email);
     } catch (error) {
       const err = handleError(error);
       setError(err.errors[0].msg);

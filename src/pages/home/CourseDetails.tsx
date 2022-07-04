@@ -86,12 +86,7 @@ export default function CourseDetails() {
             <TabContext value={currentTab}>
               <TabList onChange={(e, value) => handleChangeTab(value)}>
                 {TAB_LIST.map((tab) => (
-                  <Tab
-                    key={tab}
-                    disableRipple
-                    value={tab}
-                    label={capitalCase(tab)}
-                  />
+                  <Tab key={tab} disableRipple value={tab} label={capitalCase(tab)} />
                 ))}
               </TabList>
 
@@ -99,21 +94,17 @@ export default function CourseDetails() {
 
               <TabPanel value="overview">
                 <Box sx={{ py: 4 }}>
-                  <Markdown children={course?.details.overview as string} />
+                  <Markdown children={course?.details?.overview as string} />
                 </Box>
               </TabPanel>
               <TabPanel value="requirements">
                 <Box sx={{ py: 4 }}>
-                  <Markdown
-                    children={course?.details?.requirements as string}
-                  />
+                  <Markdown children={course?.details?.requirements as string} />
                 </Box>
               </TabPanel>
               <TabPanel value="target-audiences">
                 <Box sx={{ py: 4 }}>
-                  <Markdown
-                    children={course?.details?.targetAudiences as string}
-                  />
+                  <Markdown children={course?.details?.targetAudiences as string} />
                 </Box>
               </TabPanel>
               <TabPanel value="reviews">

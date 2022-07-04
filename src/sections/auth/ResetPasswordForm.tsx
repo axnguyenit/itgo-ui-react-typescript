@@ -6,8 +6,6 @@ import { useForm } from 'react-hook-form';
 // @mui
 import { IconButton, InputAdornment, Stack } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-// hooks
-import { useIsMountedRef } from '~/hooks';
 // components
 import { FormProvider, RHFTextField } from '~/components/hook-form';
 import Iconify from '~/components/Iconify';
@@ -22,15 +20,9 @@ interface ResetPasswordFormProps {
   token: string;
 }
 
-export default function ResetPasswordForm({
-  onSent,
-  id,
-  token,
-}: ResetPasswordFormProps) {
-  const isMountedRef = useIsMountedRef();
+export default function ResetPasswordForm({ onSent, id, token }: ResetPasswordFormProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
   const ResetPasswordSchema = Yup.object().shape({
     password: Yup.string()
@@ -58,10 +50,8 @@ export default function ResetPasswordForm({
 
   const onSubmit = async (data: ResetPassword) => {
     try {
-      if (isMountedRef.current) {
-        await userApi.resetPassword(data, id, token);
-        onSent();
-      }
+      await userApi.resetPassword(data, id, token);
+      onSent();
     } catch (error) {}
   };
 
@@ -75,13 +65,8 @@ export default function ResetPasswordForm({
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton
-                  edge="end"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  <Iconify
-                    icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'}
-                  />
+                <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
+                  <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
                 </IconButton>
               </InputAdornment>
             ),
@@ -100,9 +85,7 @@ export default function ResetPasswordForm({
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   <Iconify
-                    icon={
-                      showConfirmPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'
-                    }
+                    icon={showConfirmPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'}
                   />
                 </IconButton>
               </InputAdornment>

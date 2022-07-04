@@ -16,14 +16,15 @@ export interface CourseDetail {
 
 export interface Course {
   id?: string;
-  instructor: Partial<User>;
+  _id?: string;
+  instructor?: Partial<User>;
   name: string;
   cover: string;
   price: number;
   priceSale: number;
-  minStudent: number;
-  tags: string[];
-  details: Partial<CourseDetail>;
+  minStudent?: number;
+  tags?: string[];
+  details?: Partial<CourseDetail>;
 
   createdAt?: Date;
   updatedAt?: Date;

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { sum, unionBy } from 'lodash';
 import { cartApi } from '~/api';
 import { CartData, CartItem, Course } from '~/models';
 import { RootState } from '../store';
@@ -43,12 +42,9 @@ export const addToCart = createAsyncThunk(
     try {
       const { data, course } = params;
       const { cartItem } = await cartApi.add(data);
+      const { cartId, id } = cartItem;
 
-      return {
-        id: cartItem.id,
-        cartId: cartItem.cartId,
-        course,
-      };
+      return { id, cartId, course };
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -70,8 +66,12 @@ const cartSlice = createSlice({
     // CHECKOUT
     getCart(state: Cart, action: PayloadAction<CartItem[]>) {
       const cart = action.payload;
-      const subtotal = sum(
-        cart.map((cartItem) => cartItem.course.priceSale || cartItem.course.price)
+
+      const subtotal = cart.reduce(
+        (total, cartItem) =>
+          total +
+          (cartItem.course.priceSale ? cartItem.course.priceSale : cartItem.course.price),
+        0
       );
 
       state.cart = cart;
@@ -110,7 +110,7 @@ const cartSlice = createSlice({
       })
       .addCase(addToCart.fulfilled, (state, { payload }) => {
         const course = payload;
-        state.cart = unionBy([...state.cart, course], 'id');
+        state.cart = [...state.cart, course];
       });
   },
 });

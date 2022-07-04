@@ -13,7 +13,7 @@ export interface Cart {
 export interface CartItem {
   id: string;
   cartId: string;
-  course: Partial<Course>;
+  course: Course;
 
   createdAt?: Date;
   updatedAt?: Date;

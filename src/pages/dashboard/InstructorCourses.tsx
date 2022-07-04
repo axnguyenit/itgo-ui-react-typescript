@@ -61,7 +61,7 @@ export default function InstructorCourses() {
     const params: ListParams = {
       page,
       limit: rowsPerPage,
-      _instructor: id,
+      instructor: id,
     };
     try {
       const { courses, pagination } = await courseApi.getAll(params);
