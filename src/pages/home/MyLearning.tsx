@@ -28,16 +28,16 @@ function MyLearning() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [enrolledCourseList, setEnrolledCourseList] = useState<OrderItem[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: 1,
-    _page: 1,
-    _totalRows: 1,
+    limit: 1,
+    page: 1,
+    totalRows: 1,
   });
 
   useEffect(() => {
     const getEnrolledCourses = async () => {
       setIsLoading(true);
       try {
-        const params = { _page: page, _limit: LIMIT_COURSE };
+        const params = { page, limit: LIMIT_COURSE };
         const { orders, pagination } = await orderApi.getByUser(params);
         setEnrolledCourseList(orders);
         pagination && setPagination(pagination);
@@ -65,7 +65,7 @@ function MyLearning() {
             />
           )}
 
-          {pagination._totalRows > LIMIT_COURSE && (
+          {pagination.totalRows > LIMIT_COURSE && (
             <Stack
               direction="row"
               justifyContent="center"
@@ -73,7 +73,7 @@ function MyLearning() {
               sx={{ my: 3 }}
             >
               <Pagination
-                count={Math.ceil(pagination._totalRows / LIMIT_COURSE)}
+                count={Math.ceil(pagination.totalRows / LIMIT_COURSE)}
                 onChange={(event, value) => setPage(value)}
                 color="primary"
                 variant="outlined"

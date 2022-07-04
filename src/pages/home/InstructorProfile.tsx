@@ -52,9 +52,9 @@ export default function InstructorProfile() {
   const [user, setUser] = useState<Partial<User>>();
   const [courses, setCourses] = useState<Course[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: LIMIT_COURSE,
-    _page: 1,
-    _totalRows: 1,
+    limit: LIMIT_COURSE,
+    page: 1,
+    totalRows: 1,
   });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentTab, setCurrentTab] = useState<string>('courses');
@@ -67,8 +67,8 @@ export default function InstructorProfile() {
     const getData = async () => {
       setIsLoading(true);
       const params = {
-        _page: page,
-        _limit: LIMIT_COURSE,
+        page,
+        limit: LIMIT_COURSE,
         _instructor: id,
       };
 
@@ -141,7 +141,7 @@ export default function InstructorProfile() {
           return isMatched && <Box key={tab.value}>{tab.component}</Box>;
         })}
 
-        {currentTab === 'courses' && pagination._totalRows > LIMIT_COURSE && (
+        {currentTab === 'courses' && pagination.totalRows > LIMIT_COURSE && (
           <Stack
             direction="row"
             justifyContent="center"
@@ -149,7 +149,7 @@ export default function InstructorProfile() {
             sx={{ my: 3 }}
           >
             <Pagination
-              count={Math.ceil(pagination._totalRows / LIMIT_COURSE)}
+              count={Math.ceil(pagination.totalRows / LIMIT_COURSE)}
               onChange={(event, value) => setPage(value)}
               color="primary"
               variant="outlined"

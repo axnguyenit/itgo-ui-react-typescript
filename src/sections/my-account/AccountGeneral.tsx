@@ -58,7 +58,7 @@ export default function AccountGeneral() {
 
   const onSubmit = async (data: Partial<User>) => {
     try {
-      data.id = user._id;
+      data.id = user.id;
       await userApi.update(data);
       enqueueSnackbar('Update success!');
     } catch (error) {}

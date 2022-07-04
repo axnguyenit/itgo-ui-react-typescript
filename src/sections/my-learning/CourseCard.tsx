@@ -16,7 +16,7 @@ interface CourseCardProps {
 
 export default function CourseCard({ order }: CourseCardProps) {
   const { course } = order;
-  const linkTo = `${PATH_HOME.myLearning.root}/${course._id}/events`;
+  const linkTo = `${PATH_HOME.myLearning.root}/${course.id}/events`;
 
   return (
     <Card>

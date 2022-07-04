@@ -54,17 +54,17 @@ export default function Courses() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [courseList, setCourseList] = useState<Course[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: 5,
-    _page: page,
-    _totalRows: rowsPerPage,
+    limit: 5,
+    page,
+    totalRows: rowsPerPage,
   });
 
   const getAllCourses = async () => {
     setIsLoading(true);
     const params: ListParams = {
-      _page: page,
-      _limit: rowsPerPage,
-      _instructor: user._id,
+      page,
+      limit: rowsPerPage,
+      _instructor: user.id,
     };
 
     try {
@@ -110,9 +110,7 @@ export default function Courses() {
           action={
             <Button
               variant="contained"
-              startIcon={
-                <Iconify icon="eva:plus-fill" width={20} height={20} />
-              }
+              startIcon={<Iconify icon="eva:plus-fill" width={20} height={20} />}
               onClick={() => navigate(PATH_INSTRUCTOR.courses.create)}
             >
               New Course
@@ -128,14 +126,11 @@ export default function Courses() {
                 <TableBody>
                   {!!courseList.length &&
                     courseList.map((course) => {
-                      const { _id, name, cover, price, priceSale, createdAt } =
-                        course;
+                      const { id, name, cover, price, priceSale, createdAt } = course;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
-                          <TableCell
-                            sx={{ display: 'flex', alignItems: 'center' }}
-                          >
+                        <TableRow hover key={id} tabIndex={-1} role="checkbox">
+                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
                             <Image
                               disabledEffect
                               alt={name}
@@ -154,17 +149,13 @@ export default function Courses() {
                           <TableCell style={{ minWidth: 160 }}>
                             {fDate(createdAt as Date)}
                           </TableCell>
-                          <TableCell align="right">
-                            {fCurrency(price)}
-                          </TableCell>
-                          <TableCell align="right">
-                            {fCurrency(priceSale)}
-                          </TableCell>
+                          <TableCell align="right">{fCurrency(price)}</TableCell>
+                          <TableCell align="right">{fCurrency(priceSale)}</TableCell>
                           <TableCell align="right">
                             <CourseMoreMenu
-                              courseId={_id as string}
+                              courseId={id as string}
                               courseName={name}
-                              onDelete={() => handleDeleteCourse(_id as string)}
+                              onDelete={() => handleDeleteCourse(id as string)}
                             />
                           </TableCell>
                         </TableRow>
@@ -183,7 +174,7 @@ export default function Courses() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={pagination._totalRows} //total courses
+            count={pagination.totalRows} //total courses
             rowsPerPage={rowsPerPage}
             page={page - 1}
             onPageChange={(event, value) => setPage(value + 1)}

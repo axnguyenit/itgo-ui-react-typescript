@@ -25,22 +25,34 @@ const initialState: Cart = {
   total: 0,
 };
 
-export const getCartFromServer = createAsyncThunk('cart/getCart', async () => {
-  const { cartItems } = await cartApi.get();
-  return cartItems;
-});
+export const getCartFromServer = createAsyncThunk(
+  'cart/getCart',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { cartItems } = await cartApi.get();
+      return cartItems;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const addToCart = createAsyncThunk(
   'cart/addToCart',
-  async (param: AddToCartProps) => {
-    const { data, course } = param;
-    const { cartItem } = await cartApi.add(data);
-    return {
-      _id: cartItem._id,
-      cartId: cartItem.cartId,
-      course,
-    };
-  },
+  async (params: AddToCartProps, { rejectWithValue }) => {
+    try {
+      const { data, course } = params;
+      const { cartItem } = await cartApi.add(data);
+
+      return {
+        id: cartItem.id,
+        cartId: cartItem.cartId,
+        course,
+      };
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
 );
 
 export const removeCartItem = createAsyncThunk(
@@ -48,7 +60,7 @@ export const removeCartItem = createAsyncThunk(
   async (id: string) => {
     await cartApi.removeItem(id);
     return id;
-  },
+  }
 );
 
 const cartSlice = createSlice({
@@ -59,9 +71,7 @@ const cartSlice = createSlice({
     getCart(state: Cart, action: PayloadAction<CartItem[]>) {
       const cart = action.payload;
       const subtotal = sum(
-        cart.map(
-          (cartItem) => cartItem.course.priceSale || cartItem.course.price,
-        ),
+        cart.map((cartItem) => cartItem.course.priceSale || cartItem.course.price)
       );
 
       state.cart = cart;
@@ -95,12 +105,12 @@ const cartSlice = createSlice({
         state.cart = payload;
       })
       .addCase(removeCartItem.fulfilled, (state, { payload }) => {
-        const updateCart = state.cart.filter((item) => item._id !== payload);
+        const updateCart = state.cart.filter((item) => item.id !== payload);
         state.cart = updateCart;
       })
       .addCase(addToCart.fulfilled, (state, { payload }) => {
         const course = payload;
-        state.cart = unionBy([...state.cart, course], '_id');
+        state.cart = unionBy([...state.cart, course], 'id');
       });
   },
 });

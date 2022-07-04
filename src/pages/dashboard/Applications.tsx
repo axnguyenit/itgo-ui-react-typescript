@@ -49,15 +49,15 @@ export default function Applications() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [applicationList, setApplications] = useState<ApplicationDetails[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: 5,
-    _page: page,
-    _totalRows: rowsPerPage,
+    limit: 5,
+    page,
+    totalRows: rowsPerPage,
   });
 
   const getApplications = async () => {
     const params: ListParams = {
-      _page: page,
-      _limit: rowsPerPage,
+      page,
+      limit: rowsPerPage,
     };
 
     setIsLoading(true);
@@ -97,8 +97,7 @@ export default function Applications() {
     setIsLoading(false);
   };
 
-  const emptyRows =
-    page > 0 ? Math.max(0, rowsPerPage - applicationList?.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, rowsPerPage - applicationList?.length) : 0;
 
   return (
     <Page title="Applications">
@@ -120,23 +119,15 @@ export default function Applications() {
                 <TableBody>
                   {!!applicationList?.length &&
                     applicationList?.map((application) => (
-                      <TableRow
-                        hover
-                        key={application?._id}
-                        tabIndex={-1}
-                        role="checkbox"
-                      >
-                        <TableCell
-                          sx={{ display: 'flex', alignItems: 'center' }}
-                        >
+                      <TableRow hover key={application?.id} tabIndex={-1} role="checkbox">
+                        <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
                           <Avatar
                             alt={application?.user?.firstName}
                             src={cloudinary.w100(application?.user?.avatar)}
                             sx={{ mr: 2 }}
                           />
                           <Typography variant="subtitle2" noWrap>
-                            {application?.user?.firstName}{' '}
-                            {application?.user?.lastName}
+                            {application?.user?.firstName} {application?.user?.lastName}
                           </Typography>
                         </TableCell>
                         <TableCell>{application?.user?.email}</TableCell>
@@ -144,14 +135,10 @@ export default function Applications() {
                         <TableCell align="left">{application?.cv}</TableCell>
                         <TableCell align="right">
                           <ApplicationMoreMenu
-                            applicationId={application?._id as string}
+                            applicationId={application?.id as string}
                             name={`${application?.user?.firstName} ${application?.user?.lastName}`}
-                            onDeny={() =>
-                              handleDeny(application?._id as string)
-                            }
-                            onApprove={() =>
-                              handleApprove(application?._id as string)
-                            }
+                            onDeny={() => handleDeny(application?.id as string)}
+                            onApprove={() => handleApprove(application?.id as string)}
                             cv={application.cv}
                           />
                         </TableCell>
@@ -170,7 +157,7 @@ export default function Applications() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={pagination._totalRows}
+            count={pagination.totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}
             onPageChange={(event, value) => setPage(value + 1)}

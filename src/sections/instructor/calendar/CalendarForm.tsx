@@ -146,11 +146,11 @@ export default function CalendarForm({
     const getAllCourses = async () => {
       try {
         const params = {
-          _instructor: user?._id,
+          _instructor: user?.id,
         };
         const { courses } = await courseApi.getAll(params);
         setCourseList(courses);
-        setValue('courseId', courses[0]?._id);
+        setValue('courseId', courses[0]?.id);
       } catch (error) {
         navigate(PATH_PAGE.page500);
       }
@@ -164,12 +164,7 @@ export default function CalendarForm({
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3} sx={{ p: 3 }}>
         <RHFTextField name="title" label="Title" />
-        <RHFTextField
-          name="description"
-          label="Description"
-          multiline
-          rows={4}
-        />
+        <RHFTextField name="description" label="Description" multiline rows={4} />
         <Grid container>
           <Grid item xs={12} md={6}>
             <Stack sx={{ mb: 3, mr: { md: 1 } }}>
@@ -182,14 +177,10 @@ export default function CalendarForm({
             </Stack>
           </Grid>
         </Grid>
-        <RHFSelect
-          name="courseId"
-          label="Course"
-          InputLabelProps={{ shrink: true }}
-        >
+        <RHFSelect name="courseId" label="Course" InputLabelProps={{ shrink: true }}>
           {!!courseList.length &&
             courseList.map((course) => (
-              <option key={course?._id} value={course?._id}>
+              <option key={course?.id} value={course?.id}>
                 {course?.name}
               </option>
             ))}
@@ -220,9 +211,7 @@ export default function CalendarForm({
                   {...params}
                   fullWidth
                   error={!!isDateError}
-                  helperText={
-                    isDateError && 'End date must be later than start date'
-                  }
+                  helperText={isDateError && 'End date must be later than start date'}
                 />
               )}
             />

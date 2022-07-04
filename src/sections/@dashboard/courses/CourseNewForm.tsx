@@ -110,7 +110,7 @@ export default function CourseNewForm({
 
   const defaultValues: CourseData = useMemo(
     () => ({
-      instructor: currentCourse?.instructor?._id || '',
+      instructor: currentCourse?.instructor?.id || '',
       name: currentCourse?.name || '',
       cover: currentCourse?.cover || '',
       price: currentCourse?.price || 0,
@@ -121,7 +121,7 @@ export default function CourseNewForm({
       requirements: currentCourse?.details.requirements || '',
       targetAudiences: currentCourse?.details.targetAudiences || '',
     }),
-    [currentCourse],
+    [currentCourse]
   );
 
   const methods = useForm<CourseData>({
@@ -142,7 +142,7 @@ export default function CourseNewForm({
     try {
       const { instructors } = await userApi.getAllInstructors({});
       setInstructorList(instructors);
-      if (!isEdit) setValue('instructor', instructors[0]?._id as string);
+      if (!isEdit) setValue('instructor', instructors[0]?.id as string);
     } catch (error) {}
   };
 
@@ -151,7 +151,7 @@ export default function CourseNewForm({
     if (isEdit && currentCourse) {
       reset(defaultValues);
       setValue('cover', cloudinary.w700(currentCourse?.cover));
-      setValue('instructor', currentCourse?.instructor._id as string);
+      setValue('instructor', currentCourse?.instructor.id as string);
     }
     if (!isEdit) reset(defaultValues);
 
@@ -161,7 +161,7 @@ export default function CourseNewForm({
   const onSubmit = async (data: CourseData) => {
     try {
       if (isEdit) {
-        data.id = currentCourse?._id;
+        data.id = currentCourse?.id;
         await courseApi.update(data);
       } else {
         await courseApi.add(data);
@@ -182,7 +182,7 @@ export default function CourseNewForm({
       reader.onloadend = () => setValue('cover', reader.result as string);
       reader.onerror = (error) => console.error(error);
     },
-    [setValue],
+    [setValue]
   );
 
   return (
@@ -230,7 +230,7 @@ export default function CourseNewForm({
                 >
                   {!!instructorList.length &&
                     instructorList.map((instructor) => (
-                      <option key={instructor?._id} value={instructor?._id}>
+                      <option key={instructor?.id} value={instructor?.id}>
                         {instructor?.email}
                       </option>
                     ))}
@@ -255,9 +255,7 @@ export default function CourseNewForm({
                           />
                         ))
                       }
-                      renderInput={(params) => (
-                        <TextField label="Tags" {...params} />
-                      )}
+                      renderInput={(params) => <TextField label="Tags" {...params} />}
                     />
                   )}
                 />
@@ -269,9 +267,7 @@ export default function CourseNewForm({
                   defaultValue={
                     getValues('minStudent') === 0 ? '' : getValues('minStudent')
                   }
-                  onChange={(event) =>
-                    setValue('minStudent', Number(event.target.value))
-                  }
+                  onChange={(event) => setValue('minStudent', Number(event.target.value))}
                   InputLabelProps={{ shrink: true }}
                   InputProps={{ type: 'number' }}
                 />
@@ -280,17 +276,11 @@ export default function CourseNewForm({
                   name="price"
                   label="Regular Price"
                   placeholder="0.00"
-                  defaultValue={
-                    getValues('price') === 0 ? '' : getValues('price')
-                  }
-                  onChange={(event) =>
-                    setValue('price', Number(event.target.value))
-                  }
+                  defaultValue={getValues('price') === 0 ? '' : getValues('price')}
+                  onChange={(event) => setValue('price', Number(event.target.value))}
                   InputLabelProps={{ shrink: true }}
                   InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
+                    startAdornment: <InputAdornment position="start">$</InputAdornment>,
                     type: 'number',
                   }}
                 />
@@ -302,14 +292,10 @@ export default function CourseNewForm({
                   defaultValue={
                     getValues('priceSale') === 0 ? '' : getValues('priceSale')
                   }
-                  onChange={(event) =>
-                    setValue('priceSale', Number(event.target.value))
-                  }
+                  onChange={(event) => setValue('priceSale', Number(event.target.value))}
                   InputLabelProps={{ shrink: true }}
                   InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
+                    startAdornment: <InputAdornment position="start">$</InputAdornment>,
                     type: 'number',
                   }}
                 />

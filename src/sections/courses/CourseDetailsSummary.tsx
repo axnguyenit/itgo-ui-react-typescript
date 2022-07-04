@@ -40,15 +40,13 @@ export default function CourseDetailsSummary({
   const { isAuthenticated } = useAuth();
 
   const handleAddCart = async (course: Course) => {
-    const isExisted = cart.find(
-      (cartItem) => cartItem.course?._id === course._id,
-    );
+    const isExisted = cart.find((cartItem) => cartItem.course?.id === course.id);
 
-    if (!isExisted && course._id) {
+    if (!isExisted && course.id) {
       try {
         const data: CartData = {
           total: cart.length + 1,
-          courseId: course._id,
+          courseId: course.id,
         };
         await dispatch(addToCart({ data, course })).unwrap();
         enqueueSnackbar('Add to cart successfully');

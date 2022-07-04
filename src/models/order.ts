@@ -5,7 +5,6 @@ import { Payment } from './payment';
 // ----------------------------------------------------------------------
 
 export interface OrderItem {
-  _id?: string;
   id?: string;
   orderId: string;
   userId: string;
@@ -17,7 +16,6 @@ export interface OrderItem {
 }
 
 export interface Order {
-  _id?: string;
   id?: string;
   userId: string;
   total: number;

@@ -4,7 +4,6 @@ import { User } from './user';
 // ----------------------------------------------------------------------
 
 export interface CourseDetail {
-  _id?: string;
   id?: string;
   overview: string;
   requirements: string;
@@ -16,7 +15,6 @@ export interface CourseDetail {
 }
 
 export interface Course {
-  _id?: string;
   id?: string;
   instructor: Partial<User>;
   name: string;

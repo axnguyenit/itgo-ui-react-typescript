@@ -61,9 +61,9 @@ export default function Courses() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [page, setPage] = useState<number>(1);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: LIMIT_COURSE,
-    _page: 1,
-    _totalRows: 1,
+    limit: LIMIT_COURSE,
+    page: 1,
+    totalRows: 1,
   });
   const [category, setCategory] = useState<string>('All');
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -76,7 +76,7 @@ export default function Courses() {
 
     if (_category) {
       const newCategory = TAGS_OPTION.find((option) =>
-        option.toLocaleLowerCase().includes(_category.toLocaleLowerCase()),
+        option.toLocaleLowerCase().includes(_category.toLocaleLowerCase())
       );
       setCategory(newCategory as string);
     }
@@ -84,8 +84,8 @@ export default function Courses() {
     const getAllCourses = async () => {
       setIsLoading(true);
       const params: ListParams = {
-        _page: Number(_page) || 1,
-        _limit: LIMIT_COURSE,
+        page: Number(_page) || 1,
+        limit: LIMIT_COURSE,
         _tags: _category && _category !== 'All' ? _category : '',
       };
 
@@ -153,10 +153,8 @@ export default function Courses() {
 
           <CourseList courses={courses} loading={isLoading} />
 
-          {!courses.length && !isLoading && (
-            <EmptyContent title="No matching courses" />
-          )}
-          {pagination._totalRows > LIMIT_COURSE && (
+          {!courses.length && !isLoading && <EmptyContent title="No matching courses" />}
+          {pagination.totalRows > LIMIT_COURSE && (
             <Stack
               direction="row"
               justifyContent="center"
@@ -164,7 +162,7 @@ export default function Courses() {
               sx={{ my: 3 }}
             >
               <Pagination
-                count={Math.ceil(pagination._totalRows / LIMIT_COURSE)}
+                count={Math.ceil(pagination.totalRows / LIMIT_COURSE)}
                 defaultPage={page}
                 onChange={(event, value) => handleChangePage(value)}
                 color="primary"

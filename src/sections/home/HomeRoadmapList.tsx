@@ -34,12 +34,13 @@ export default function HomeRoadmapList() {
     const getAllRoadmaps = async () => {
       setIsLoading(true);
       const params: ListParams = {
-        _page: 1,
-        _limit: 8,
+        page: 1,
+        limit: 8,
       };
       try {
-        const response = await roadmapApi.getAll(params);
-        setRoadmapList(response.roadmaps);
+        const { roadmaps } = await roadmapApi.getAll(params);
+
+        setRoadmapList(roadmaps);
       } catch (error) {}
       setIsLoading(false);
     };
@@ -71,18 +72,13 @@ export default function HomeRoadmapList() {
           <Grid container spacing={3}>
             {roadmapList.length > 0 &&
               roadmapList.map((roadmap) => (
-                <Grid key={roadmap._id} item xs={12} sm={6} md={4}>
+                <Grid key={roadmap.id} item xs={12} sm={6} md={4}>
                   <RootStyle
-                    onClick={() =>
-                      navigate(`${PATH_HOME.roadmaps.root}/${roadmap._id}`)
-                    }
+                    onClick={() => navigate(`${PATH_HOME.roadmaps.root}/${roadmap.id}`)}
                   >
                     <Box>
                       <Typography variant="h4">{roadmap.name}</Typography>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{ color: 'text.secondary' }}
-                      >
+                      <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
                         {roadmap.slogan} in {new Date().getFullYear()}
                       </Typography>
                     </Box>

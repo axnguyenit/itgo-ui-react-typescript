@@ -3,7 +3,6 @@ import { PaginationParams } from '.';
 // ----------------------------------------------------------------------
 
 export interface RoadmapDetail {
-  _id?: string;
   id?: string;
   roadmapId?: string;
   technology: string;
@@ -16,7 +15,6 @@ export interface RoadmapDetail {
 }
 
 export interface Roadmap {
-  _id?: string;
   id?: string;
   name: string;
   slogan: string;

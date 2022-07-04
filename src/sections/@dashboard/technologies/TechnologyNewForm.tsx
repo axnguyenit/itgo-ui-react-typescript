@@ -82,7 +82,7 @@ export default function TechnologyNewForm({
   const onSubmit = async (data: Technology) => {
     try {
       if (isEdit) {
-        data.id = currentTechnology._id;
+        data.id = currentTechnology.id;
         await technologyApi.update(data);
       } else {
         await technologyApi.add(data);
@@ -103,12 +103,10 @@ export default function TechnologyNewForm({
         reader.onloadend = () => {
           setValue('image', reader.result as string);
         };
-        reader.onerror = (error) => {
-          console.error(error);
-        };
+        reader.onerror = (error) => console.error(error);
       }
     },
-    [setValue],
+    [setValue]
   );
 
   return (

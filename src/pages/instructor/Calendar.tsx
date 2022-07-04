@@ -52,8 +52,8 @@ export default function Calendar() {
 
   const getEvents = async () => {
     try {
-      const response = await eventApi.getByInstructor();
-      setEvents(response.events);
+      const { events } = await eventApi.getByInstructor();
+      setEvents(events);
     } catch (error) {}
   };
 

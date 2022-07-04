@@ -37,12 +37,12 @@ export default function HomeInstructorList() {
   const getAllInstructors = async () => {
     setIsLoading(true);
     const params: ListParams = {
-      _page: 1,
-      _limit: 8,
+      page: 1,
+      limit: 8,
     };
     try {
-      const response = await userApi.getAllInstructors(params);
-      setInstructorList(response.instructors);
+      const { instructors } = await userApi.getAllInstructors(params);
+      setInstructorList(instructors);
     } catch (error) {}
     setIsLoading(false);
   };
@@ -120,10 +120,7 @@ export default function HomeInstructorList() {
               <Slider ref={carouselRef} {...settings}>
                 {instructorList.length > 0 &&
                   instructorList.map((instructor) => (
-                    <InstructorCard
-                      key={instructor._id}
-                      instructor={instructor}
-                    />
+                    <InstructorCard key={instructor.id} instructor={instructor} />
                   ))}
               </Slider>
             </CarouselArrows>
@@ -154,7 +151,7 @@ interface InstructorCardProps {
 }
 
 function InstructorCard({ instructor }: InstructorCardProps) {
-  const { _id, firstName, lastName, avatar, position } = instructor;
+  const { id, firstName, lastName, avatar, position } = instructor;
 
   return (
     <Card sx={{ textAlign: 'center', my: 3, mx: 1.5 }}>
@@ -193,7 +190,7 @@ function InstructorCard({ instructor }: InstructorCardProps) {
 
       <Box sx={{ mt: 6 }}>
         <Link
-          to={`${PATH_INSTRUCTOR.root}/${_id}`}
+          to={`${PATH_INSTRUCTOR.root}/${id}`}
           //
           color="inherit"
           component={RouterLink}

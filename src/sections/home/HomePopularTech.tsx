@@ -23,13 +23,13 @@ export default function HomePopularTech() {
   useEffect(() => {
     const getTechnologies = async () => {
       const params: ListParams = {
-        _page: 1,
-        _limit: 8,
+        page: 1,
+        limit: 8,
       };
       setIsLoading(true);
       try {
-        const response = await technologyApi.getAll(params);
-        setTechnologyList(response.technologies);
+        const { technologies } = await technologyApi.getAll(params);
+        setTechnologyList(technologies);
       } catch (error) {}
       setIsLoading(false);
     };
@@ -75,7 +75,7 @@ export default function HomePopularTech() {
             {technologyList.length > 0 &&
               technologyList.map((technology) => (
                 <Box
-                  key={technology._id}
+                  key={technology.id}
                   sx={{
                     pt: '60%',
                     borderRadius: 1,

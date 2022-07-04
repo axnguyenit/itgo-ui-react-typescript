@@ -16,9 +16,7 @@ const axiosInstance = axios.create({
   paramsSerializer: (params) => queryString.stringify(params),
 });
 
-axiosInstance.interceptors.request.use(
-  async (config: AxiosRequestConfig) => config,
-);
+axiosInstance.interceptors.request.use(async (config: AxiosRequestConfig) => config);
 
 type AxiosConfig = AxiosRequestConfig & {
   headers: AxiosRequestHeaders & {

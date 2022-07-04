@@ -43,17 +43,17 @@ export default function Roadmaps() {
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: 5,
-    _page: page,
-    _totalRows: rowsPerPage,
+    limit: 5,
+    page,
+    totalRows: rowsPerPage,
   });
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getRoadmaps = async () => {
     setIsLoading(true);
     const params = {
-      _page: page,
-      _limit: rowsPerPage,
+      page,
+      limit: rowsPerPage,
     };
 
     try {
@@ -83,18 +83,14 @@ export default function Roadmaps() {
     setPage(1);
   };
 
-  const emptyRows =
-    page > 0 ? Math.max(0, rowsPerPage - roadmapList.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, rowsPerPage - roadmapList.length) : 0;
 
   return (
     <Page title="Roadmaps">
       <Container maxWidth={'lg'}>
         <HeaderBreadcrumbs
           heading="Roadmaps"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Roadmaps' },
-          ]}
+          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Roadmaps' }]}
           action={
             <Button
               variant="contained"
@@ -116,20 +112,18 @@ export default function Roadmaps() {
                 <TableBody>
                   {!!roadmapList.length &&
                     roadmapList.map((roadmap) => {
-                      const { _id, name, slogan, description } = roadmap;
+                      const { id, name, slogan, description } = roadmap;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
+                        <TableRow hover key={id} tabIndex={-1} role="checkbox">
                           <TableCell>{name}</TableCell>
                           <TableCell align="left">{slogan}</TableCell>
                           <TableCell align="left">{description}</TableCell>
                           <TableCell align="right">
                             <RoadmapMoreMenu
-                              roadmapId={_id as string}
+                              roadmapId={id as string}
                               roadmapName={name}
-                              onDelete={() =>
-                                handleDeleteRoadmap(_id as string)
-                              }
+                              onDelete={() => handleDeleteRoadmap(id as string)}
                             />
                           </TableCell>
                         </TableRow>
@@ -148,7 +142,7 @@ export default function Roadmaps() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={pagination._totalRows}
+            count={pagination.totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}
             onPageChange={(event, value) => setPage(value + 1)}

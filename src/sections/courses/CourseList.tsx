@@ -29,10 +29,10 @@ export default function CourseList({ courses, loading }: CourseListProps) {
     >
       {(loading ? [...Array(8)] : courses).map((course, index) =>
         course ? (
-          <CourseCard key={course._id} course={course} />
+          <CourseCard key={course.id} course={course} />
         ) : (
           <SkeletonCourseItem key={index} />
-        ),
+        )
       )}
     </Box>
   );

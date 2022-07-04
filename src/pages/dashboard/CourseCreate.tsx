@@ -28,8 +28,8 @@ export default function CourseCreate() {
       if (!isEdit || !id) return;
       setIsLoading(true);
       try {
-        const response = await courseApi.get(id);
-        setCourse(response.course);
+        const { course } = await courseApi.get(id);
+        setCourse(course);
       } catch (error) {
         navigate(PATH_PAGE.page404);
       }

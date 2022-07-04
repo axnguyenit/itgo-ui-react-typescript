@@ -50,15 +50,15 @@ export default function Technologies() {
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [technologyList, setTechnologyList] = useState<Technology[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: 5,
-    _page: page,
-    _totalRows: rowsPerPage,
+    limit: 5,
+    page,
+    totalRows: rowsPerPage,
   });
 
   const getTechnologies = async () => {
     const params: ListParams = {
-      _page: page,
-      _limit: rowsPerPage,
+      page,
+      limit: rowsPerPage,
     };
 
     setIsLoading(true);
@@ -89,8 +89,7 @@ export default function Technologies() {
     setPage(1);
   };
 
-  const emptyRows =
-    page > 0 ? Math.max(0, rowsPerPage - technologyList.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, rowsPerPage - technologyList.length) : 0;
 
   return (
     <Page title="Technologies">
@@ -122,13 +121,11 @@ export default function Technologies() {
                 <TableBody>
                   {!!technologyList.length &&
                     technologyList.map((technology) => {
-                      const { _id, name, tag, image } = technology;
+                      const { id, name, tag, image } = technology;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
-                          <TableCell
-                            sx={{ display: 'flex', alignItems: 'center' }}
-                          >
+                        <TableRow hover key={id} tabIndex={-1} role="checkbox">
+                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
                             <Image
                               disabledEffect
                               alt={name}
@@ -146,11 +143,9 @@ export default function Technologies() {
 
                           <TableCell align="right">
                             <TechnologyMoreMenu
-                              technologyId={_id as string}
+                              technologyId={id as string}
                               technologyName={name}
-                              onDelete={() =>
-                                handleDeleteTechnology(_id as string)
-                              }
+                              onDelete={() => handleDeleteTechnology(id as string)}
                             />
                           </TableCell>
                         </TableRow>
@@ -169,7 +164,7 @@ export default function Technologies() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={pagination._totalRows}
+            count={pagination.totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}
             onPageChange={(event, value) => setPage(value + 1)}

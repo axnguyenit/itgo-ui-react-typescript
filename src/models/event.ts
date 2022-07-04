@@ -4,7 +4,6 @@ import { Course } from './course';
 // ----------------------------------------------------------------------
 
 export interface Event {
-  _id?: string;
   id?: string;
   title: string;
   instructor?: string;

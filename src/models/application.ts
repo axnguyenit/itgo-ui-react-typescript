@@ -4,7 +4,6 @@ import { User } from '.';
 // ----------------------------------------------------------------------
 
 export interface Application {
-  _id?: string;
   id?: string;
   user?: string;
   position: string;

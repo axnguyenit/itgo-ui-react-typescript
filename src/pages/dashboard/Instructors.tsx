@@ -47,22 +47,20 @@ export default function Instructors() {
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [userList, setInstructorList] = useState<Partial<User>[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
-    _limit: 5,
-    _page: page,
-    _totalRows: rowsPerPage,
+    limit: 5,
+    page,
+    totalRows: rowsPerPage,
   });
 
   const getInstructors = async () => {
     setIsLoading(true);
     const params: ListParams = {
-      _page: page,
-      _limit: rowsPerPage,
+      page,
+      limit: rowsPerPage,
     };
 
     try {
-      const { instructors, pagination } = await userApi.getAllInstructors(
-        params,
-      );
+      const { instructors, pagination } = await userApi.getAllInstructors(params);
       setInstructorList(instructors);
       setPagination(pagination);
     } catch (error) {}
@@ -102,7 +100,7 @@ export default function Instructors() {
                   {!!userList.length &&
                     userList.map((user) => {
                       const {
-                        _id,
+                        id,
                         firstName,
                         lastName,
                         email,
@@ -113,10 +111,8 @@ export default function Instructors() {
                       } = user;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
-                          <TableCell
-                            sx={{ display: 'flex', alignItems: 'center' }}
-                          >
+                        <TableRow hover key={id} tabIndex={-1} role="checkbox">
+                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
                             <Avatar
                               alt={firstName}
                               src={cloudinary.w100(avatar)}
@@ -127,9 +123,7 @@ export default function Instructors() {
                             </Typography>
                           </TableCell>
                           <TableCell align="left">{email}</TableCell>
-                          <TableCell align="left">
-                            {position ? position : '#'}
-                          </TableCell>
+                          <TableCell align="left">{position ? position : '#'}</TableCell>
                           <TableCell align="left">
                             {emailVerified ? 'Yes' : 'No'}
                           </TableCell>
@@ -143,7 +137,7 @@ export default function Instructors() {
                           </TableCell>
 
                           <TableCell align="right">
-                            <InstructorMoreMenu userId={_id as string} />
+                            <InstructorMoreMenu userId={id as string} />
                           </TableCell>
                         </TableRow>
                       );
@@ -161,7 +155,7 @@ export default function Instructors() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={pagination._totalRows}
+            count={pagination.totalRows}
             rowsPerPage={rowsPerPage}
             page={page - 1}
             onPageChange={(event, value) => setPage(value + 1)}

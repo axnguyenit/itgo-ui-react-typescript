@@ -15,14 +15,14 @@ export interface VariantType {
 }
 
 export interface PaginationParams {
-  _limit: number;
-  _page: number;
-  _totalRows: number;
+  limit: number;
+  page: number;
+  totalRows: number;
 }
 
 export interface ListParams {
-  _page?: number;
-  _limit?: number;
+  page?: number;
+  limit?: number;
 
   [key: string]: any;
 }

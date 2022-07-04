@@ -47,9 +47,9 @@ export default function CheckoutCourseList({
           <TableBody>
             {courses.length > 0 &&
               courses.map((item) => {
-                const { _id, name, price, priceSale, cover } = item?.course;
+                const { id, name, price, priceSale, cover } = item?.course;
                 return (
-                  <TableRow key={_id}>
+                  <TableRow key={id}>
                     <TableCell>
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Image
@@ -63,11 +63,7 @@ export default function CheckoutCourseList({
                           }}
                         />
                         <Box>
-                          <Typography
-                            noWrap
-                            variant="subtitle2"
-                            sx={{ maxWidth: 240 }}
-                          >
+                          <Typography noWrap variant="subtitle2" sx={{ maxWidth: 240 }}>
                             {name}
                           </Typography>
                         </Box>
@@ -75,18 +71,12 @@ export default function CheckoutCourseList({
                     </TableCell>
 
                     <TableCell align="right">
-                      {priceSale
-                        ? fCurrency(priceSale)
-                        : fCurrency(price as number)}
+                      {priceSale ? fCurrency(priceSale) : fCurrency(price as number)}
                     </TableCell>
 
                     <TableCell align="right">
-                      <IconButton onClick={() => onDelete(item?._id)}>
-                        <Iconify
-                          icon={'eva:trash-2-outline'}
-                          width={20}
-                          height={20}
-                        />
+                      <IconButton onClick={() => onDelete(item?.id)}>
+                        <Iconify icon={'eva:trash-2-outline'} width={20} height={20} />
                       </IconButton>
                     </TableCell>
                   </TableRow>

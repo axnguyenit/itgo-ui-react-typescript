@@ -149,7 +149,7 @@ export default function CourseNewForm({
   const onSubmit = async (data: CourseData) => {
     try {
       if (isEdit) {
-        data.id = currentCourse?._id;
+        data.id = currentCourse?.id;
         await courseApi.update(data);
       } else {
         await courseApi.add(data);

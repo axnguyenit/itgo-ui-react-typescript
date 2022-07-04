@@ -95,7 +95,7 @@ export default function Students() {
                   {!!studentList.length &&
                     studentList.map((user) => {
                       const {
-                        _id,
+                        id,
                         firstName,
                         lastName,
                         email,
@@ -106,10 +106,8 @@ export default function Students() {
                       } = user;
 
                       return (
-                        <TableRow hover key={_id} tabIndex={-1} role="checkbox">
-                          <TableCell
-                            sx={{ display: 'flex', alignItems: 'center' }}
-                          >
+                        <TableRow hover key={id} tabIndex={-1} role="checkbox">
+                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
                             <Avatar
                               alt={firstName}
                               src={cloudinary.w100(avatar)}
@@ -120,9 +118,7 @@ export default function Students() {
                             </Typography>
                           </TableCell>
                           <TableCell align="left">{email}</TableCell>
-                          <TableCell align="left">
-                            {position ? position : '#'}
-                          </TableCell>
+                          <TableCell align="left">{position ? position : '#'}</TableCell>
                           <TableCell align="left">
                             {isInstructor ? 'Instructor' : 'Student'}
                           </TableCell>
@@ -136,7 +132,7 @@ export default function Students() {
                           </TableCell>
 
                           {/* <TableCell align="right">
-														<UserMoreMenu userId={_id} />
+														<UserMoreMenu userId={id} />
 													</TableCell> */}
                         </TableRow>
                       );

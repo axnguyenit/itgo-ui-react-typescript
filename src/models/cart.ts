@@ -3,7 +3,7 @@ import { Course } from './course';
 // ----------------------------------------------------------------------
 
 export interface Cart {
-  _id: string;
+  id: string;
   userId: string;
 
   createdAt?: Date;
@@ -11,7 +11,7 @@ export interface Cart {
 }
 
 export interface CartItem {
-  _id: string;
+  id: string;
   cartId: string;
   course: Partial<Course>;
 
@@ -28,7 +28,7 @@ export interface AddToCartResponse {
   cartItem: {
     cartId: string;
     course: string;
-    _id: string;
+    id: string;
 
     createdAt: Date;
     updatedAt: Date;

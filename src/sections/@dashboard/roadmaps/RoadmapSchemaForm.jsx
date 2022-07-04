@@ -105,7 +105,7 @@ export default function RoadmapSchemaForm({ formData, isEdit }) {
 
     try {
       if (isEdit) {
-        formData.id = currentFormData._id;
+        formData.id = currentFormData.id;
         await roadmapApi.update(formData);
       } else {
         await roadmapApi.add(formData);

@@ -22,25 +22,23 @@ interface CourseCardProps {
 }
 
 export default function CourseCard({ course }: CourseCardProps) {
-  const { _id, name, cover, price, priceSale, instructor } = course;
+  const { id, name, cover, price, priceSale, instructor } = course;
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
 
-  const linkTo = `${PATH_HOME.courses.root}/${_id}`;
+  const linkTo = `${PATH_HOME.courses.root}/${id}`;
 
   const handleAddCart = async (course: Course) => {
-    const isExisted = cart.find(
-      (cartItem) => cartItem.course?._id === course._id,
-    );
+    const isExisted = cart.find((cartItem) => cartItem.course?.id === course.id);
 
-    if (!isExisted && course?._id) {
+    if (!isExisted && course?.id) {
       try {
         const data: CartData = {
           total: cart.length + 1,
-          courseId: course._id,
+          courseId: course.id,
         };
         await dispatch(addToCart({ data, course })).unwrap();
         enqueueSnackbar('Add to cart successfully');
@@ -93,11 +91,7 @@ export default function CourseCard({ course }: CourseCardProps) {
           </Box>
         </Box>
 
-        <Stack
-          direction="row"
-          alignItems="flex-end"
-          justifyContent="space-between"
-        >
+        <Stack direction="row" alignItems="flex-end" justifyContent="space-between">
           <Stack direction="row" alignItems="flex-end" spacing={0.5}>
             {!!priceSale && (
               <Typography
@@ -107,18 +101,12 @@ export default function CourseCard({ course }: CourseCardProps) {
                 {fCurrency(price)}
               </Typography>
             )}
-            <Typography variant="subtitle1">
-              {fCurrency(priceSale || price)}
-            </Typography>
+            <Typography variant="subtitle1">{fCurrency(priceSale || price)}</Typography>
           </Stack>
           {/* <Rating value={4.5} size="small" precision={0.1} readOnly /> */}
 
           <Box sx={{ flexGrow: 1 }} />
-          <Button
-            variant="contained"
-            onClick={() => handleAddCart(course)}
-            size="small"
-          >
+          <Button variant="contained" onClick={() => handleAddCart(course)} size="small">
             Add to cart
           </Button>
         </Stack>
