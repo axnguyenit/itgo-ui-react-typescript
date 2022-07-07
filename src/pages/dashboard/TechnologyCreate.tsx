@@ -25,7 +25,7 @@ function TechnologyCreate() {
       if (!isEdit || !id) return;
       setIsLoading(true);
       try {
-        const { technology } = await technologyApi.get(id);
+        const technology = await technologyApi.get(id);
         setTechnology(technology);
       } catch (error) {
         navigate(PATH_PAGE.page404);

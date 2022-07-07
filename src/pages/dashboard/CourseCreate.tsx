@@ -28,7 +28,7 @@ export default function CourseCreate() {
       if (!isEdit || !id) return;
       setIsLoading(true);
       try {
-        const { course } = await courseApi.get(id);
+        const course = await courseApi.get(id);
         setCourse(course);
       } catch (error) {
         navigate(PATH_PAGE.page404);

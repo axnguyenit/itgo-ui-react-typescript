@@ -54,8 +54,8 @@ export default function Students() {
       if (!id) return;
       setIsLoading(true);
       try {
-        const { students } = await courseApi.getStudents(id);
-        setStudentList(students);
+        const { results } = await courseApi.getStudents(id);
+        setStudentList(results);
       } catch (error) {
         navigate(PATH_PAGE.page404);
       }

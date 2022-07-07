@@ -1,4 +1,3 @@
-import { PaginationParams } from './common';
 import { User } from './user';
 
 // ----------------------------------------------------------------------
@@ -30,15 +29,6 @@ export interface Course {
   updatedAt?: Date;
 }
 
-export interface CoursesResponse {
-  courses: Course[];
-  pagination?: PaginationParams;
-}
-
-export interface CourseResponse {
-  course: Course;
-}
-
 export interface CourseData {
   id?: string;
   instructor?: string;
@@ -51,8 +41,4 @@ export interface CourseData {
   overview: string;
   requirements: string;
   targetAudiences: string;
-}
-
-export interface StudentsResponse {
-  students: Partial<User>[];
 }

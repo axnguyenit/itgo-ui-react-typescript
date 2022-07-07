@@ -24,12 +24,7 @@ import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
 import { ApplicationMoreMenu } from '~/sections/@dashboard/applications';
 import { cloudinary } from '~/utils';
 import { applicationApi } from '~/api';
-import {
-  ApplicationDetails,
-  HeaderLabel,
-  ListParams,
-  PaginationParams,
-} from '~/models';
+import { Application, HeaderLabel, ListParams, PaginationParams } from '~/models';
 
 // ----------------------------------------------------------------------
 
@@ -47,7 +42,7 @@ export default function Applications() {
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [applicationList, setApplications] = useState<ApplicationDetails[]>([]);
+  const [applicationList, setApplications] = useState<Application[]>([]);
   const [pagination, setPagination] = useState<PaginationParams>({
     limit: 5,
     page,
@@ -62,8 +57,8 @@ export default function Applications() {
 
     setIsLoading(true);
     try {
-      const { applications, pagination } = await applicationApi.getAll(params);
-      setApplications(applications);
+      const { results, pagination } = await applicationApi.getAll(params);
+      setApplications(results);
       pagination && setPagination(pagination);
     } catch (error) {}
     setIsLoading(false);

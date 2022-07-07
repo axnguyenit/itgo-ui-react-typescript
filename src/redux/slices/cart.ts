@@ -28,8 +28,8 @@ export const getCartFromServer = createAsyncThunk(
   'cart/getCart',
   async (_, { rejectWithValue }) => {
     try {
-      const { cartItems } = await cartApi.get();
-      return cartItems;
+      const { results } = await cartApi.get();
+      return results;
     } catch (error) {
       return rejectWithValue(error);
     }

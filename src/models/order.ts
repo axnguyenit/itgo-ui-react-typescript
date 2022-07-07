@@ -1,4 +1,3 @@
-import { PaginationParams } from '.';
 import { Course } from './course';
 import { Payment } from './payment';
 
@@ -23,9 +22,4 @@ export interface Order {
 
   createdAt?: Date;
   updatedAt?: Date;
-}
-
-export interface OrderResponse {
-  orders: OrderItem[];
-  pagination?: PaginationParams;
 }

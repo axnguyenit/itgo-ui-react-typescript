@@ -1,23 +1,13 @@
-import { PaginationParams } from '.';
 import { User } from '.';
 
 // ----------------------------------------------------------------------
 
 export interface Application {
   id?: string;
-  user?: string;
+  user?: Partial<User>;
   position: string;
   cv: string;
 
   createdAt?: Date;
   updatedAt?: Date;
-}
-
-export type ApplicationDetails = Application & {
-  user: Partial<User>;
-};
-
-export interface ApplicationResponse {
-  applications: ApplicationDetails[];
-  pagination?: PaginationParams;
 }

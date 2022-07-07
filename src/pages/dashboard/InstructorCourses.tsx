@@ -64,8 +64,8 @@ export default function InstructorCourses() {
       instructor: id,
     };
     try {
-      const { courses, pagination } = await courseApi.getAll(params);
-      setCourseList(courses);
+      const { results, pagination } = await courseApi.getAll(params);
+      setCourseList(results);
       pagination && setPagination(pagination);
     } catch (error) {
       navigate(PATH_PAGE.page404);

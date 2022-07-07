@@ -1,14 +1,14 @@
-import { Payment } from '~/models';
+import { Payment, PaymentURL, PostData } from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------
 
 const paymentApi = {
-  add(data: Payment): Promise<any> {
+  add(data: Payment): Promise<PostData> {
     const url = `/api/payments`;
     return axios.post(url, data);
   },
-  getPayUrl(): Promise<any> {
+  getPayUrl(): Promise<PaymentURL> {
     const url = '/api/payments/url';
     return axios.get(url);
   },

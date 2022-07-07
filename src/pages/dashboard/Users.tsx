@@ -59,9 +59,9 @@ export default function Users() {
     };
 
     try {
-      const { users, pagination } = await userApi.getAll(params);
-      setUserList(users);
-      setPagination(pagination);
+      const { results, pagination } = await userApi.getAll(params);
+      setUserList(results);
+      pagination && setPagination(pagination);
     } catch (error) {}
     setIsLoading(false);
   };

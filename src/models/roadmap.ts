@@ -1,18 +1,4 @@
-import { PaginationParams } from '.';
-
 // ----------------------------------------------------------------------
-
-export interface RoadmapDetail {
-  id?: string;
-  roadmapId?: string;
-  technology: string;
-  description: string;
-  image: string;
-  tag: string;
-
-  createdAt?: Date;
-  updatedAt?: Date;
-}
 
 export interface Roadmap {
   id?: string;
@@ -24,15 +10,18 @@ export interface Roadmap {
   updatedAt?: Date;
 }
 
-export interface RoadmapsResponse {
-  roadmaps: Roadmap[];
-  pagination?: PaginationParams;
+export interface RoadmapTechnology {
+  id?: string;
+  roadmapId?: string;
+  technology: string;
+  description: string;
+  image: string;
+  tag: string;
+
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export type RoadmapType = Roadmap & {
-  technologies: RoadmapDetail[];
+export type RoadmapDetail = Roadmap & {
+  technologies: RoadmapTechnology[];
 };
-
-export interface RoadmapResponse {
-  roadmap: RoadmapType;
-}

@@ -28,8 +28,8 @@ export default function HomePopularTech() {
       };
       setIsLoading(true);
       try {
-        const { technologies } = await technologyApi.getAll(params);
-        setTechnologyList(technologies);
+        const { results } = await technologyApi.getAll(params);
+        setTechnologyList(results);
       } catch (error) {}
       setIsLoading(false);
     };

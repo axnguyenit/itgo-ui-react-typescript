@@ -38,9 +38,9 @@ export default function HomeRoadmapList() {
         limit: 8,
       };
       try {
-        const { roadmaps } = await roadmapApi.getAll(params);
+        const { results } = await roadmapApi.getAll(params);
 
-        setRoadmapList(roadmaps);
+        setRoadmapList(results);
       } catch (error) {}
       setIsLoading(false);
     };

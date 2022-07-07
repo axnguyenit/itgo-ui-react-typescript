@@ -63,8 +63,8 @@ export default function Technologies() {
 
     setIsLoading(true);
     try {
-      const { technologies, pagination } = await technologyApi.getAll(params);
-      setTechnologyList(technologies);
+      const { results, pagination } = await technologyApi.getAll(params);
+      setTechnologyList(results);
       pagination && setPagination(pagination);
     } catch (error) {}
     setIsLoading(false);

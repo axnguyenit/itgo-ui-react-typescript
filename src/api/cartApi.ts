@@ -1,10 +1,10 @@
-import { AddToCartResponse, CartData, CartResponse } from '~/models';
+import { AddToCartResponse, CartData, CartItem, ListResponse, PostData } from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------
 
 const cartApi = {
-  get(): Promise<CartResponse> {
+  get(): Promise<ListResponse<CartItem>> {
     const url = '/api/cart';
     return axios.get(url);
   },
@@ -14,7 +14,7 @@ const cartApi = {
     return axios.post(url, data);
   },
 
-  removeItem(id: string): Promise<any> {
+  removeItem(id: string): Promise<PostData> {
     const url = `/api/cart/${id}`;
     return axios.delete(url);
   },

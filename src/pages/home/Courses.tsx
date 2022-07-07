@@ -90,8 +90,8 @@ export default function Courses() {
       };
 
       try {
-        const { courses, pagination } = await courseApi.getAll(params);
-        setCourses(courses);
+        const { results, pagination } = await courseApi.getAll(params);
+        setCourses(results);
         pagination && setPagination(pagination);
       } catch (error) {}
       setIsLoading(false);

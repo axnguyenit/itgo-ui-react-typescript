@@ -40,8 +40,8 @@ export default function Calendar() {
     (async () => {
       if (!id) return;
       try {
-        const { events } = await eventApi.getByStudent(id);
-        setEvents(events);
+        const { results } = await eventApi.getByStudent(id);
+        setEvents(results);
       } catch (error) {
         navigate(PATH_PAGE.page500);
       }

@@ -68,8 +68,8 @@ export default function Courses() {
     };
 
     try {
-      const { courses, pagination } = await courseApi.getAll(params);
-      setCourseList(courses);
+      const { results, pagination } = await courseApi.getAll(params);
+      setCourseList(results);
       pagination && setPagination(pagination);
     } catch (error) {
       navigate(PATH_PAGE.page500);

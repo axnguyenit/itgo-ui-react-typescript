@@ -57,8 +57,8 @@ export default function Roadmaps() {
     };
 
     try {
-      const { roadmaps, pagination } = await roadmapApi.getAll(params);
-      setRoadmapList(roadmaps);
+      const { results, pagination } = await roadmapApi.getAll(params);
+      setRoadmapList(results);
       pagination && setPagination(pagination);
     } catch (error) {}
     setIsLoading(false);

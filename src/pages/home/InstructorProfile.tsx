@@ -75,10 +75,10 @@ export default function InstructorProfile() {
       if (!id) return;
 
       try {
-        const { courses, pagination } = await courseApi.getAll(params);
-        const { user } = await userApi.get(id);
+        const { results, pagination } = await courseApi.getAll(params);
+        const user = await userApi.get(id);
         setUser(user);
-        setCourses(courses);
+        setCourses(results);
         pagination && setPagination(pagination);
       } catch (error) {
         navigate(PATH_PAGE.page404);

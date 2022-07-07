@@ -34,6 +34,16 @@ export interface MenuItem {
   children?: MenuItem[];
 }
 
+export interface ListResponse<T> {
+  results: T[];
+  pagination?: PaginationParams;
+}
+
+export interface PostData<T = any> {
+  result?: T;
+  msg: string;
+}
+
 export interface SubMenu {
   subheader: string;
   items: MenuItem[];

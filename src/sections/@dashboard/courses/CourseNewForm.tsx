@@ -140,9 +140,9 @@ export default function CourseNewForm({
 
   const getAllInstructors = async () => {
     try {
-      const { instructors } = await userApi.getAllInstructors({});
-      setInstructorList(instructors);
-      if (!isEdit) setValue('instructor', instructors[0]?.id as string);
+      const { results } = await userApi.getAllInstructors({});
+      setInstructorList(results);
+      if (!isEdit) setValue('instructor', results[0]?.id as string);
     } catch (error) {}
   };
 

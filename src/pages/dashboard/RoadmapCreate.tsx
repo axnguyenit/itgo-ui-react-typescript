@@ -10,14 +10,14 @@ import HeaderBreadcrumbs from '~/components/HeaderBreadcrumbs';
 import { RoadmapSchemaForm } from '~/sections/@dashboard/roadmaps';
 // api
 import { roadmapApi } from '~/api';
-import { RoadmapType } from '~/models';
+import { RoadmapDetail } from '~/models';
 
 function RoadmapCreate() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isEdit = pathname.includes('edit');
-  const [formData, setFormData] = useState<RoadmapType>();
+  const [formData, setFormData] = useState<RoadmapDetail>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function RoadmapCreate() {
       if (!isEdit || !id) return;
       setIsLoading(true);
       try {
-        const { roadmap } = await roadmapApi.get(id);
+        const roadmap = await roadmapApi.get(id);
         setFormData(roadmap);
       } catch (error) {
         navigate(PATH_PAGE.page404);
@@ -51,10 +51,7 @@ function RoadmapCreate() {
         />
 
         {(formData || !isEdit) && (
-          <RoadmapSchemaForm
-            isEdit={isEdit}
-            formData={formData as RoadmapType}
-          />
+          <RoadmapSchemaForm isEdit={isEdit} formData={formData as RoadmapDetail} />
         )}
       </Container>
     </Page>

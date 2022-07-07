@@ -1,30 +1,30 @@
-import { Event, EventResponse } from '~/models';
+import { Event, ListResponse, PostData } from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------
 
 const eventApi = {
-  getByInstructor(): Promise<EventResponse> {
+  getByInstructor(): Promise<ListResponse<Event>> {
     const url = '/api/events/get-by-instructor';
     return axios.get(url);
   },
 
-  getByStudent(courseId: string): Promise<EventResponse> {
+  getByStudent(courseId: string): Promise<ListResponse<Event>> {
     const url = `api/events/get-by-student/${courseId}`;
     return axios.get(url);
   },
 
-  add(data: Event): Promise<any> {
+  add(data: Event): Promise<PostData> {
     const url = '/api/events';
     return axios.post(url, data);
   },
 
-  update(data: Partial<Event>): Promise<any> {
+  update(data: Partial<Event>): Promise<PostData> {
     const url = `/api/events/${data.id}`;
     return axios.put(url, data);
   },
 
-  remove(id: string): Promise<any> {
+  remove(id: string): Promise<PostData> {
     const url = `/api/events/${id}`;
     return axios.delete(url);
   },

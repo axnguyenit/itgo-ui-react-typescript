@@ -1,4 +1,3 @@
-import { PaginationParams } from '.';
 import { Course } from './course';
 
 // ----------------------------------------------------------------------
@@ -23,11 +22,6 @@ export interface Event {
 
   createdAt?: Date;
   updatedAt?: Date;
-}
-
-export interface EventResponse {
-  events: Event[];
-  pagination?: PaginationParams;
 }
 
 export interface Signature {

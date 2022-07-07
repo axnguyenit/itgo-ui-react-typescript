@@ -38,8 +38,8 @@ function MyLearning() {
       setIsLoading(true);
       try {
         const params = { page, limit: LIMIT_COURSE };
-        const { orders, pagination } = await orderApi.getByUser(params);
-        setEnrolledCourseList(orders);
+        const { results, pagination } = await orderApi.getByUser(params);
+        setEnrolledCourseList(results);
         pagination && setPagination(pagination);
       } catch (error) {}
       setIsLoading(false);

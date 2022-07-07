@@ -16,3 +16,7 @@ export interface Payment {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export interface PaymentURL {
+  payUrl: string;
+}

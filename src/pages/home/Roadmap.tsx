@@ -11,12 +11,12 @@ import { roadmapApi } from '~/api';
 import { PATH_PAGE, PATH_HOME } from '~/routes/paths';
 // utils
 import { cloudinary } from '~/utils';
-import { RoadmapDetail, RoadmapType } from '~/models';
+import { RoadmapDetail, RoadmapTechnology } from '~/models';
 
 // ----------------------------------------------------------------------
 
 export default function Roadmap() {
-  const [roadmap, setRoadmap] = useState<RoadmapType>();
+  const [roadmap, setRoadmap] = useState<RoadmapDetail>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -26,7 +26,7 @@ export default function Roadmap() {
       setIsLoading(true);
       if (!id) return;
       try {
-        const { roadmap } = await roadmapApi.get(id);
+        const roadmap = await roadmapApi.get(id);
         setRoadmap(roadmap);
       } catch (error) {
         navigate(PATH_PAGE.page404);
@@ -75,7 +75,7 @@ export default function Roadmap() {
 }
 
 interface RoadmapItemProps {
-  technology: RoadmapDetail;
+  technology: RoadmapTechnology;
   onClick: (tag: string) => void;
   no: number;
 }

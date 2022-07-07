@@ -1,5 +1,3 @@
-import { PaginationParams } from './common';
-
 // ----------------------------------------------------------------------
 
 export interface User {
@@ -40,10 +38,6 @@ export interface LoginResponse {
   refreshToken: string;
 }
 
-export interface MyAccount {
-  user: Partial<User>;
-}
-
 export interface ChangePassword {
   oldPassword: string;
   newPassword: string;
@@ -56,20 +50,6 @@ export interface AccessToken {
 
 export interface RefreshToken {
   refreshToken: string;
-}
-
-export interface UserResponse {
-  user: Partial<User>;
-}
-
-export interface UsersResponse {
-  users: Partial<User>[];
-  pagination: PaginationParams;
-}
-
-export interface InstructorsResponse {
-  instructors: Partial<User>[];
-  pagination: PaginationParams;
 }
 
 export interface Email {

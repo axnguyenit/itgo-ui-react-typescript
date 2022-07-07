@@ -112,7 +112,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         if (accessToken) {
           setSession(accessToken, refreshToken);
 
-          const { user } = await userApi.myAccount();
+          const user = await userApi.myAccount();
 
           if (!user.emailVerified)
             navigate(PATH_AUTH.verify, { replace: true });

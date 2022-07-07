@@ -41,8 +41,8 @@ export default function HomeInstructorList() {
       limit: 8,
     };
     try {
-      const { instructors } = await userApi.getAllInstructors(params);
-      setInstructorList(instructors);
+      const { results } = await userApi.getAllInstructors(params);
+      setInstructorList(results);
     } catch (error) {}
     setIsLoading(false);
   };

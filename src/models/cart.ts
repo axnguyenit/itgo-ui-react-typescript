@@ -19,11 +19,6 @@ export interface CartItem {
   updatedAt?: Date;
 }
 
-export interface CartResponse {
-  cart: Cart;
-  cartItems: CartItem[];
-}
-
 export interface AddToCartResponse {
   cartItem: {
     cartId: string;

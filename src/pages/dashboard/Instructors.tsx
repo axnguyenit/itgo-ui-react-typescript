@@ -60,9 +60,9 @@ export default function Instructors() {
     };
 
     try {
-      const { instructors, pagination } = await userApi.getAllInstructors(params);
-      setInstructorList(instructors);
-      setPagination(pagination);
+      const { results, pagination } = await userApi.getAllInstructors(params);
+      setInstructorList(results);
+      pagination && setPagination(pagination);
     } catch (error) {}
     setIsLoading(false);
   };

@@ -148,9 +148,9 @@ export default function CalendarForm({
         const params = {
           instructor: user?.id,
         };
-        const { courses } = await courseApi.getAll(params);
-        setCourseList(courses);
-        setValue('courseId', courses[0]?.id);
+        const { results } = await courseApi.getAll(params);
+        setCourseList(results);
+        setValue('courseId', results[0]?.id);
       } catch (error) {
         navigate(PATH_PAGE.page500);
       }

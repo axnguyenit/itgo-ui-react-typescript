@@ -1,35 +1,33 @@
 import {
   User,
   ListParams,
-  InstructorsResponse,
-  UsersResponse,
   Register,
   ChangePassword,
   Login,
   LoginResponse,
-  MyAccount,
   AccessToken,
   RefreshToken,
   Email,
   ResetPassword,
-  UserResponse,
+  PostData,
+  ListResponse,
 } from '~/models';
 import { axios } from '~/utils';
 
 // ----------------------------------------------------------------------
 
 const userApi = {
-  getAll(params: ListParams): Promise<UsersResponse> {
+  getAll(params: ListParams): Promise<ListResponse<Partial<User>>> {
     const url = '/api/users';
     return axios.get(url, { params });
   },
 
-  get(id: string): Promise<UserResponse> {
+  get(id: string): Promise<Partial<User>> {
     const url = `/api/users/user/${id}`;
     return axios.get(url);
   },
 
-  register(data: Register): Promise<any> {
+  register(data: Register): Promise<PostData> {
     const url = '/api/auth/register';
     return axios.post(url, data);
   },
@@ -44,47 +42,47 @@ const userApi = {
     return axios.post(url, data);
   },
 
-  myAccount(): Promise<MyAccount> {
+  myAccount(): Promise<Partial<User>> {
     const url = `/api/users/my-account`;
     return axios.get(url);
   },
 
-  update(data: Partial<User>): Promise<any> {
+  update(data: Partial<User>): Promise<PostData> {
     const url = `/api/users/${data.id}`;
     return axios.put(url, data);
   },
 
-  getAllInstructors(params: ListParams): Promise<InstructorsResponse> {
+  getAllInstructors(params: ListParams): Promise<ListResponse<Partial<User>>> {
     const url = '/api/instructors';
     return axios.get(url, { params });
   },
 
-  requestVerifyEmail(data: Email): Promise<any> {
+  requestVerifyEmail(data: Email): Promise<PostData> {
     const url = '/api/auth/verify';
     return axios.post(url, data);
   },
 
-  verifyEmail(id: string, token: string): Promise<any> {
+  verifyEmail(id: string, token: string): Promise<PostData> {
     const url = `/api/auth/verify/${id}/${token}`;
     return axios.get(url);
   },
 
-  changePassword(data: ChangePassword): Promise<any> {
+  changePassword(data: ChangePassword): Promise<PostData> {
     const url = `/api/users/change-password`;
     return axios.post(url, data);
   },
 
-  forgotPassword(data: { email: string }): Promise<any> {
+  forgotPassword(data: Email): Promise<PostData> {
     const url = '/api/auth/forgot-password';
     return axios.post(url, data);
   },
 
-  checkRequestResetPassword(id: string, token: string): Promise<any> {
+  checkRequestResetPassword(id: string, token: string): Promise<PostData> {
     const url = `/api/auth/reset-password/${id}/${token}`;
     return axios.get(url);
   },
 
-  resetPassword(data: ResetPassword, id: string, token: string): Promise<any> {
+  resetPassword(data: ResetPassword, id: string, token: string): Promise<PostData> {
     const url = `/api/auth/reset-password/${id}/${token}`;
     return axios.post(url, data);
   },
